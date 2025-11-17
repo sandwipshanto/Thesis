@@ -13,12 +13,12 @@
 ---
 
 ## Progress Tracker
-**Overall:** 0/16 steps completed
+**Overall:** 4/16 steps completed
 
 ---
 
 ## Step 1: Setup Project Structure
-**Status:** ⬜ Not Started
+**Status:** ✅ Complete
 
 **Tasks:**
 - [ ] Create folder structure (data/, scripts/, results/, config/)
@@ -49,7 +49,7 @@
 ---
 
 ## Step 2: Create Base Dataset
-**Status:** ⬜ Not Started
+**Status:** ✅ Complete
 
 **Tasks:**
 - [ ] **Start with smaller dataset for initial testing:**
@@ -83,7 +83,7 @@
 ---
 
 ## Step 3: Implement 3-Step Prompt Generation
-**Status:** ⬜ Not Started
+**Status:** ✅ Complete
 
 **Tasks:**
 - [ ] **Step 1 (Already done in Step 2):** Convert questions → hypothetical scenarios
@@ -117,7 +117,7 @@
 ---
 
 ## Step 4: Create Jailbreak Templates
-**Status:** ⬜ Not Started
+**Status:** ⬜ Not Started (Note: Dataset transformation completed - Step 3 covers CM/CMP creation)
 
 **Tasks:**
 - [ ] Implement **5 jailbreak templates** (3 existing + 2 novel):
