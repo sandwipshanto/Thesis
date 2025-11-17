@@ -1,0 +1,41 @@
+# Core Dependencies for Bangla-English LLM Red-Teaming Research
+# Project: Extension of "Haet Bhasha aur Diskrimineshun" (arXiv:2505.14226)
+
+# API Access
+openai>=1.12.0                    # OpenRouter API client (unified access to all models)
+httpx>=0.24.0                     # HTTP client for OpenRouter
+
+# Data Processing
+pandas>=2.0.0                     # Data manipulation and analysis
+numpy                             # Numerical computing
+pyyaml>=6.0                       # YAML configuration file handling
+
+# Environment & Progress
+python-dotenv>=1.0.0              # Environment variable management (.env files)
+tqdm>=4.65.0                      # Progress bars for long-running tasks
+
+# Interpretability & Tokenization
+captum>=0.6.0                     # Integrated Gradients for interpretability
+transformers>=4.35.0              # HuggingFace transformers (tokenization analysis)
+torch>=2.0.0                      # PyTorch (required for transformers & captum)
+accelerate>=0.20.0                # Model loading optimization
+
+# Bangla NLP (Optional - for automated code-mixing)
+bnlp-toolkit>=4.0.0               # Bangla NLP toolkit (romanization, transliteration)
+
+# Statistical Analysis
+scipy>=1.10.0                     # Statistical tests (Wilcoxon signed-rank)
+scikit-learn>=1.3.0               # Machine learning utilities
+
+# Visualization
+matplotlib>=3.7.0                 # Plotting library
+seaborn>=0.12.0                   # Statistical data visualization
+plotly>=5.14.0                    # Interactive plots
+
+# Evaluation & Annotation
+pingouin>=0.5.3                   # ICC calculation for inter-annotator agreement
+
+# Utilities
+requests>=2.31.0                  # HTTP requests
+jsonlines>=3.1.0                  # JSONL file handling
+openpyxl>=3.1.0                   # Excel file support

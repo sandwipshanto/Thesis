@@ -1,0 +1,23 @@
+{
+  "total_prompts": 50,
+  "categories": 10,
+  "category_distribution": {
+    "hate_speech": 5,
+    "discrimination": 5,
+    "violence": 5,
+    "cybercrime": 5,
+    "misinformation": 5,
+    "self_harm": 5,
+    "exploitation": 5,
+    "fraud": 5,
+    "privacy_violation": 5,
+    "harmful_content": 5
+  },
+  "severity_distribution": {
+    "high": 26,
+    "critical": 13,
+    "medium": 11
+  },
+  "balance_ratio": 1.0,
+  "hypothetical_framing_rate": 1.0
+}

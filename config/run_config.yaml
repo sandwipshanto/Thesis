@@ -1,0 +1,129 @@
+# Manual Experiment Control Configuration
+# PRIMARY INTERFACE for running experiments
+# Edit this file to control which experiments run - NO CODE CHANGES NEEDED
+
+# =============================================================================
+# EXPERIMENT CONTROL
+# =============================================================================
+
+experiment:
+  # Select which models to test (comment out to disable)
+  enabled_models:
+    - 'gpt-4o-mini'         # ChatGPT-4o-mini (OpenAI)
+    - 'llama-3-8b'          # Llama-3-8B-Instruct (Meta)
+    - 'gemma-7b'            # Gemma-1.1-7b-it (Google)
+    - 'mistral-7b'          # Mistral-7B-Instruct-v0.3 (Mistral AI)
+  
+  # Select which jailbreak templates to use (comment out to disable)
+  enabled_templates:
+    - 'None'                # Baseline (no jailbreak)
+    - 'OM'                  # Opposite Mode
+    - 'AntiLM'              # AntiLM persona
+    - 'AIM'                 # Always Intelligent and Machiavellian
+    - 'Sandbox'             # Resilience testing (NOVEL)
+  
+  # Select which prompt sets to test (comment out to disable)
+  enabled_prompt_sets:
+    - 'English'             # Baseline (hypothetical scenarios)
+    - 'CM'                  # Code-Mixed (Banglish)
+    - 'CMP'                 # Code-Mixed + Phonetic Perturbations
+  
+  # Temperature settings
+  temperatures: [0.2, 0.6, 1.0]  # 3 temps for initial experiments
+  # temperatures: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]  # Uncomment for full replication
+  
+  # Number of prompts to use
+  num_prompts: 50           # Start small for validation
+  # num_prompts: 460        # Uncomment for full replication
+  
+  # Batch processing
+  batch_size: 10            # Process 10 prompts at a time
+  max_retries: 3            # Retry failed queries up to 3 times
+  save_interval: 50         # Save progress every 50 queries
+
+# =============================================================================
+# QUICK CONFIGURATIONS (Uncomment one to use)
+# =============================================================================
+
+# # MINIMAL TEST (1 model, 1 template, 1 prompt set, 1 temp = 50 queries)
+# experiment:
+#   enabled_models: ['gpt-4o-mini']
+#   enabled_templates: ['None']
+#   enabled_prompt_sets: ['English']
+#   temperatures: [0.6]
+#   num_prompts: 50
+#   batch_size: 10
+#   max_retries: 3
+#   save_interval: 10
+
+# # SINGLE MODEL FULL TEST (1 model, all templates, all sets, 3 temps = 2,250 queries)
+# experiment:
+#   enabled_models: ['gpt-4o-mini']
+#   enabled_templates: ['None', 'OM', 'AntiLM', 'AIM', 'Sandbox']
+#   enabled_prompt_sets: ['English', 'CM', 'CMP']
+#   temperatures: [0.2, 0.6, 1.0]
+#   num_prompts: 50
+#   batch_size: 10
+#   max_retries: 3
+#   save_interval: 50
+
+# # BASELINE COMPARISON (all models, no jailbreak, all sets, 3 temps = 1,800 queries)
+# experiment:
+#   enabled_models: ['gpt-4o-mini', 'llama-3-8b', 'gemma-7b', 'mistral-7b']
+#   enabled_templates: ['None']
+#   enabled_prompt_sets: ['English', 'CM', 'CMP']
+#   temperatures: [0.2, 0.6, 1.0]
+#   num_prompts: 50
+#   batch_size: 10
+#   max_retries: 3
+#   save_interval: 50
+
+# =============================================================================
+# OUTPUT SETTINGS
+# =============================================================================
+
+output:
+  # Where to save results
+  responses_dir: "results/responses/"
+  metrics_dir: "results/metrics/"
+  
+  # File naming
+  responses_file: "raw_responses.csv"
+  metrics_file: "aasr_aarr_results.csv"
+  
+  # What to save
+  save_responses: true
+  save_metrics: true
+  save_cost_log: true
+
+# =============================================================================
+# LOGGING
+# =============================================================================
+
+logging:
+  enabled: true
+  log_level: "INFO"         # DEBUG, INFO, WARNING, ERROR
+  console_output: true
+  file_output: true
+  log_file: "logs/experiment_run.log"
+
+# =============================================================================
+# COST MANAGEMENT
+# =============================================================================
+
+cost:
+  tracking_enabled: true
+  budget_limit: 150.0       # USD (set to 0 to disable limit)
+  alert_threshold: 100.0    # Alert when reaching this amount
+  
+# =============================================================================
+# CALCULATED STATISTICS (Auto-generated - DO NOT EDIT)
+# =============================================================================
+# Configurations: len(enabled_models) × len(enabled_templates) × len(enabled_prompt_sets) × len(temperatures)
+# Total queries: Configurations × num_prompts
+# Estimated cost: Total queries × ~$0.005-0.01 per query
+# 
+# Current setup:
+#   Configurations: 4 × 5 × 3 × 3 = 180
+#   Total queries: 180 × 50 = 9,000
+#   Estimated cost: $45 - $90
