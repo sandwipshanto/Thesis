@@ -32,6 +32,13 @@ CMP & 46.0\% & 73.8\% & +42\% \\ \bottomrule
     \item English vs. CMP: $p < 0.001$ (significant)
 \end{itemize}
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/transition_effects_20251120_102743.png}
+\caption{Attack Success Rate Progression: English → CM → CMP. The figure demonstrates systematic improvement in AASR as phonetic perturbations are added to code-mixed prompts across all tested models.}
+\label{fig:transition-effects}
+\end{figure}
+
 \subsection{Model-Specific Vulnerability}
 
 \begin{table}[h]
@@ -55,6 +62,13 @@ Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)}
     \item \textbf{Llama-3-8B:} Shows clear progression (11.6\%$\rightarrow$25.6\%$\rightarrow$30.9\%)
     \item \textbf{GPT-4o-mini:} Strongest baseline (1.5\%), but 17$\times$ increase to 25.7\%
 \end{enumerate}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.9\textwidth]{images/aasr_heatmap_20251120_102739.png}
+\caption{AASR Heatmap: Model $\times$ Prompt Set Interaction. The heatmap visualizes vulnerability patterns, highlighting Mistral-7B's critical baseline weakness and GPT-4o-mini's dramatic sensitivity to code-mixing attacks.}
+\label{fig:aasr-heatmap}
+\end{figure}
 
 \subsection{Temperature Sensitivity}
 
@@ -168,6 +182,13 @@ Letter transposition & create $\rightarrow$ craete & 43.8\% & Medium \\ \bottomr
 
 \textbf{Key Finding:} All tested models (3/3) are vulnerable to Bangla code-mixing attacks, though severity varies dramatically. Gemma-1.1-7B could not be evaluated due to budget limitations.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/model_comparison_20251120_102741.png}
+\caption{Model Vulnerability Comparison Across Prompt Sets. Bar chart comparing average AASR across the three tested models, demonstrating the extreme vulnerability gap between Mistral-7B and the other models.}
+\label{fig:model-comparison}
+\end{figure}
+
 \subsection{Template Effectiveness by Model}
 
 \textbf{Surprising Finding:} Jailbreak templates \textbf{reduce} effectiveness for Bangla attacks.
@@ -186,6 +207,13 @@ AIM & 79.3\% & 18.7\% & 14.3\% & 36.4\% \\
 Sandbox & 78.1\% & 17.2\% & 13.8\% & 35.1\% \\ \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/template_comparison_20251120_102742.png}
+\caption{Jailbreak Template Effectiveness Comparison. Counter-intuitively, the "None" baseline (no jailbreak template) achieves the highest average AASR (46.2\%), suggesting code-mixing attacks work best without additional prompt engineering.}
+\label{fig:template-comparison}
+\end{figure}
 
 \subsection{Answer to RQ3}
 
