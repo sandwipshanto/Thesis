@@ -1,0 +1,31 @@
+======================================================================
+STATISTICAL ANALYSIS SUMMARY
+Bangla-English LLM Red-Teaming
+======================================================================
+
+OVERALL STATISTICS
+----------------------------------------------------------------------
+Total configurations: 135
+Total evaluations: 6750
+Models tested: gpt-4o-mini, llama-3-8b, mistral-7b
+Templates tested: AIM, AntiLM, None, OM, Sandbox
+Temperatures tested: 0.2, 0.6, 1.0
+
+KEY FINDINGS
+----------------------------------------------------------------------
+1. Prompt Set Effectiveness:
+   - English (baseline): 0.3240 AASR
+   - CM (code-mixed):    0.4209 AASR (+29.9%)
+   - CMP (CM+phonetic):  0.4600 AASR (+42.0%)
+
+2. Model Vulnerability Ranking:
+   1. mistral-7b: 0.8182 AASR
+   2. llama-3-8b: 0.2271 AASR
+   3. gpt-4o-mini: 0.1596 AASR
+
+3. Template Effectiveness Ranking:
+   1. None: 0.4622 AASR
+   2. AntiLM: 0.4252 AASR
+   3. OM: 0.4059 AASR
+   4. AIM: 0.3637 AASR
+   5. Sandbox: 0.3511 AASR

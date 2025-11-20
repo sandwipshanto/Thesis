@@ -38,6 +38,7 @@ experiment:
   
   # Batch processing
   batch_size: 10            # Process 10 prompts at a time
+  max_workers: 20           # Parallel API requests (10-30 recommended)
   max_retries: 3            # Retry failed queries up to 3 times
   save_interval: 50         # Save progress every 50 queries
 
@@ -79,6 +80,19 @@ experiment:
 #   save_interval: 50
 
 # =============================================================================
+# DATA PATHS
+# =============================================================================
+
+data:
+  # Input prompts
+  english_prompts: "data/raw/harmful_prompts_english.csv"
+  cm_prompts: "data/processed/prompts_cm.csv"
+  cmp_prompts: "data/processed/prompts_cmp.csv"
+  
+  # Jailbreak templates
+  templates_file: "config/jailbreak_templates.yaml"
+
+# =============================================================================
 # OUTPUT SETTINGS
 # =============================================================================
 
@@ -115,6 +129,20 @@ cost:
   tracking_enabled: true
   budget_limit: 150.0       # USD (set to 0 to disable limit)
   alert_threshold: 100.0    # Alert when reaching this amount
+
+# =============================================================================
+# SAFETY AND ETHICS
+# =============================================================================
+
+safety:
+  # Require manual confirmation before running
+  require_confirmation: true
+  
+  # Add ethical disclaimer to outputs
+  add_disclaimer: true
+  
+  # Local storage only (never commit to public repos)
+  local_only: true
   
 # =============================================================================
 # CALCULATED STATISTICS (Auto-generated - DO NOT EDIT)

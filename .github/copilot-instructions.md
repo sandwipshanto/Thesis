@@ -1,9 +1,11 @@
 # AI Agent Instructions - Bangla-English LLM Red-Teaming Research
 
 ## Project Overview
-This is an academic research project extending "Haet Bhasha aur Diskrimineshun" (arXiv:2505.14226) from Hindi-English (Hinglish) to **Bangla-English (Banglish)** code-mixed jailbreaking attacks. The goal is to test if phonetic perturbations + code-mixing attacks generalize across Indic languages.
+This is an academic research project investigating **Bangla-English (Banglish)** code-mixed jailbreaking attacks on LLMs. Inspired by recent work on Hindi-English attacks (arXiv:2505.14226), we develop **Bangla-specific** attack strategies to test 230M speakers' vulnerability to code-mixing exploits.
 
-**Core Hypothesis:** Phonetic misspellings in code-mixed prompts alter tokenization, bypassing LLM safety filters.
+**Core Hypothesis:** Phonetic misspellings in Bangla-English code-mixed prompts alter tokenization, bypassing LLM safety filters trained primarily on English.
+
+**Positioning:** First independent study of Bangla LLM jailbreaking, NOT a direct replication of the Hinglish paper (different prompts, perturbations, scale).
 
 ## Architecture & Key Components
 
@@ -71,10 +73,10 @@ experiment:
 
 ### Research Questions (RQ1-RQ4)
 When writing analysis code or documentation, frame findings around:
-- **RQ1:** Cross-lingual generalization (Hindi → Bangla)
-- **RQ2:** Language-specific patterns (Bangla phonetics vs Hindi)
-- **RQ3:** Multilingual safety gaps (consistent vulnerabilities?)
-- **RQ4:** Tokenization mechanism validation (Integrated Gradients)
+- **RQ1:** Code-mixing effectiveness (Does Bangla-English code-mixing + phonetic perturbations bypass safety filters?)
+- **RQ2:** Bangla-specific linguistic patterns (Which phonetic/romanization features enable attacks?)
+- **RQ3:** Model vulnerability consistency (Are all major LLMs vulnerable to Bangla attacks?)
+- **RQ4:** Tokenization mechanism (Does token fragmentation explain Bangla attack success?)
 
 ### Ethical Constraints
 - Dataset contains harmful content - NEVER commit to public repos without sanitization
@@ -103,12 +105,13 @@ When writing analysis code or documentation, frame findings around:
 
 Use as system prompts (except Gemma: prefix to main prompt).
 
-## Comparison with Original Paper
-Always reference `paper.md` (Hinglish original) when implementing:
-- Model list: ChatGPT-4o-mini, Llama-3-8B, Gemma-1.1-7b, Mistral-7B (same 4)
-- Temperature range: Paper uses 6 temps [0.0-1.0], we use 3 [0.2, 0.6, 1.0]
-- Dataset size: Paper uses 460 prompts (23 categories), we start with 50
-- Expected baseline: ~99% AASR for Hindi CM+CMP on ChatGPT/Llama
+## Related Work Context
+The Hinglish paper (arXiv:2505.14226) serves as **methodological inspiration**, not direct comparison:
+- Model list: Same 4 models tested (ChatGPT-4o-mini, Llama-3-8B, Gemma-1.1-7b, Mistral-7B)
+- Our study: Different prompts (50 custom vs their 460 unknown), different perturbations (Bangla-specific), smaller scale
+- **DO NOT make quantitative comparisons** like "Bangla is 53% less effective" - different experimental conditions
+- **DO cite** as related work showing code-mixing attacks work for Hindi
+- **DO emphasize** Bangla-specific findings as standalone contributions
 
 ## Commands & Quick Start
 ```powershell
@@ -128,8 +131,9 @@ python scripts/interpretability/integrated_gradients.py
 ```
 
 ## What Makes This Project Unique
-1. **Extension study**, not pure replication - tests cross-lingual generalization
-2. **Manual code-mixing required** - Bangla romanization patterns differ from Hindi
-3. **Tokenization is the key mechanism** - always check token attribution scores
+1. **First Bangla LLM jailbreaking study** - 230M speakers, previously untested language
+2. **Bangla-specific strategies** - custom phonetic perturbations, romanization patterns, code-mixing rules
+3. **Tokenization mechanism validation** - r=0.94 correlation for Bangla independently
 4. **Config-driven experiments** - run_config.yaml controls everything, no code edits
-5. **Comparative analysis** - every result benchmarked against original Hinglish paper
+5. **Standalone contributions** - findings valid independent of comparison with other languages
+6. **Scalable framework** - methodology replicable for other Indic languages (Tamil, Telugu, Marathi, etc.)
