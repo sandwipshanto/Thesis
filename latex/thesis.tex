@@ -1,0 +1,179 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+% Essential packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}  % Better font rendering
+\usepackage{microtype}  % Better typography
+\DeclareUnicodeCharacter{0928}{}
+\DeclareUnicodeCharacter{092E}{}
+\DeclareUnicodeCharacter{0938}{}
+\DeclareUnicodeCharacter{094D}{}
+\DeclareUnicodeCharacter{0924}{}
+\DeclareUnicodeCharacter{0947}{}
+\DeclareUnicodeCharacter{09A8}{}
+\DeclareUnicodeCharacter{09AE}{}
+\DeclareUnicodeCharacter{09B8}{}
+\DeclareUnicodeCharacter{09CD}{}
+\DeclareUnicodeCharacter{0995}{}
+\DeclareUnicodeCharacter{09BE}{}
+\DeclareUnicodeCharacter{09B0}{}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{natbib}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% Page geometry
+\geometry{
+    left=1.5in,
+    right=1in,
+    top=1in,
+    bottom=1in
+}
+
+% Line spacing
+\onehalfspacing
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Chapter and section formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue!80!black,
+    filecolor=magenta,
+    urlcolor=blue!80!black,
+    pdftitle={Bangla-English Code-Mixing and Phonetic Perturbations},
+    pdfauthor={Sandwip Kumar Shanto, Md. Meraj Mridha},
+    pdfsubject={LLM Security, Multilingual NLP},
+    pdfkeywords={LLM, Jailbreaking, Code-Mixing, Bangla, AI Safety}
+}
+
+% Code listing setup
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    showstringspaces=false,
+    captionpos=b
+}
+
+% Custom commands
+\newcommand{\universityfullname}{Shahjalal University of Science and Technology}
+\newcommand{\universityshortname}{SUST}
+\newcommand{\departmentname}{Institute of Information and Communication Technology}
+\newcommand{\thesistitle}{Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models}
+\newcommand{\authorone}{Sandwip Kumar Shanto}
+\newcommand{\authortwo}{Md. Meraj Mridha}
+\newcommand{\regnumone}{2020831020}
+\newcommand{\regnumtwo}{2020831034}
+\newcommand{\supervisorname}{Dr. Ahsan Habib}
+\newcommand{\supervisortitle}{Associate Professor}
+\newcommand{\submissiondate}{20th December 2025}
+
+\begin{document}
+
+% Front matter - manual page numbering since report class doesn't have \frontmatter
+\pagenumbering{roman}
+
+% Title page
+\include{chapters/00_titlepage}
+
+% Declaration
+\include{chapters/01_declaration}
+
+% Supervisor's recommendation
+\include{chapters/02_supervisor_recommendation}
+
+% Certificate of acceptance
+\include{chapters/03_certificate}
+
+% Dedication
+\include{chapters/04_dedication}
+
+% Acknowledgment
+\include{chapters/05_acknowledgment}
+
+% Ethical statement
+\include{chapters/06_ethical_statement}
+
+% Content warning
+\include{chapters/07_content_warning}
+
+% Abstract
+\include{chapters/08_abstract}
+
+% Table of contents
+\tableofcontents
+\addcontentsline{toc}{chapter}{Table of Contents}
+
+% List of figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+% List of tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}
+
+% Main matter - switch to arabic page numbering
+\clearpage
+\pagenumbering{arabic}
+
+% Chapters
+\include{chapters/chapter1_introduction}
+\include{chapters/chapter2_background}
+\include{chapters/chapter3_methodology}
+\include{chapters/chapter4_experimental_setup}
+\include{chapters/chapter5_results}
+\include{chapters/chapter6_discussion}
+\include{chapters/chapter7_limitations}
+\include{chapters/chapter8_ethical_considerations}
+\include{chapters/chapter9_conclusion}
+
+% Bibliography
+\clearpage
+\bibliographystyle{apalike}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{References}
+
+% Appendices
+\clearpage
+\appendix
+\include{chapters/appendix_a}
+\include{chapters/appendix_b}
+\include{chapters/appendix_c}
+
+\end{document}

@@ -1,19 +1,106 @@
 # Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models
 
-**A Thesis Submitted in Partial Fulfillment of the Requirements for the Degree of [Your Degree]**
+---
+
+**SWE - 450 : Thesis Report**
+
+This dissertation was submitted for the partial fulfilment of the requirements for the degree of Bachelor of Science (Engg.) in Software Engineering.
+
+**Authors:**
+
+Sandwip Kumar Shanto (Reg. no. 2020831020)  
+Md. Meraj Mridha (Reg. no. 2020831034)
+
+**Supervisor:**
+
+Dr. Ahsan Habib  
+Associate Professor  
+Institute of Information and Communication Technology  
+Shahjalal University of Science and Technology, Sylhet, Bangladesh
+
+**Date:** 20th December 2025
 
 ---
 
-**Author:** [Your Name]  
-**Institution:** [Your Institution]  
-**Department:** [Your Department]  
-**Advisor:** [Your Advisor Name]  
+## DECLARATION
 
-**Date:** November 2025
+Concerning our thesis, we affirm the assertions that include the following:
+
+1. This thesis has been completed as part of our undergraduate degree program at the Institute of Information and Communication Technology, Shahjalal University of Science and Technology, Sylhet.
+
+2. No previously published or unattributed third-party material is included in the thesis without proper citation.
+
+3. The thesis has not been submitted to any university or institution for consideration for any other degree or certificate.
+
+4. We have duly recognized all major input sources in the thesis.
+
+**Student's Full Name & Signature:**
+
+Sandwip Kumar Shanto &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Md. Meraj Mridha  
+2020831020 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2020831034
 
 ---
 
-> **⚠️ Content Warning:** This thesis contains examples of potentially harmful and offensive content used exclusively for academic research purposes to improve AI safety.
+## SUPERVISOR'S RECOMMENDATION
+
+The thesis entitled **"Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models"** submitted by Sandwip Kumar Shanto (2020831020) and Md. Meraj Mridha (2020831034) is under my supervision on 20th November, 2024. I, hereby, agree that the thesis can be submitted for examination.
+
+Dr. Ahsan Habib  
+Associate Professor  
+Institute of Information and Communication Technology  
+Shahjalal University of Science and Technology,  
+Sylhet, Bangladesh
+
+---
+
+## CERTIFICATE of ACCEPTANCE
+
+The thesis entitled **"Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models"** submitted by Sandwip Kumar Shanto (2020831020) and Md. Meraj Mridha (2020831034) on 20th November 2024 is, hereby, accepted as the partial fulfillment of the requirements for their Bachelor of Engineering Degrees award.
+
+**Director, IICT**  
+Prof Mohammad Abdullah Al Mumin, PhD.  
+Institute of Information and Communication Technology
+
+**Chairman, Exam Committee**  
+Prof Mohammad Abdullah Al Mumin, PhD.  
+Institute of Information and Communication Technology
+
+**Supervisor**  
+Dr. Ahsan Habib  
+Associate Professor  
+Institute of Information and Communication Technology
+
+---
+
+## DEDICATION
+
+This thesis paper is dedicated to our families, our supervisor, and, of course, to ourselves. The teamwork was excellent, and the family's support was exceptionally remarkable. Our diligent and industrious supervisor has provided unwavering assistance during these months. This paper also acknowledges all contributors to the field of AI safety and multilingual NLP research.
+
+---
+
+## ACKNOWLEDGMENT
+
+Completing this thesis has been challenging. We begin by expressing our profound gratitude to Almighty Allah, whose guidance and favors facilitated the completion of this undertaking despite numerous obstacles.
+
+We extend our heartfelt gratitude to our supervisor, Dr. Ahsan Habib. His encouragement and valuable insights greatly influenced the success of our research. His motivation helped us explore complex LLM security vulnerabilities and tackle the challenges of multilingual adversarial robustness.
+
+We are also thankful to our batchmates in the Software Engineering Department. Their constructive feedback and discussions introduced fresh ideas that enriched our work.
+
+Finally, we sincerely thank our families for their constant support and belief in us. Their encouragement played a crucial role in our journey.
+
+This work reflects the collective efforts, guidance, and support of everyone who contributed to this endeavor.
+
+---
+
+## ETHICAL STATEMENT
+
+We affirm that our thesis work was conducted without implementing any unethical practices. The data that we employed for the research are correctly cited. We meticulously reviewed each citation used in this work. The two authors of the work assume full responsibility for any violations of the thesis rule.
+
+Furthermore, we acknowledge that this research involves potentially harmful content used exclusively for academic purposes to advance AI safety. We commit to responsible disclosure of vulnerabilities to affected organizations and will not publicly release datasets that could enable malicious attacks. All research was conducted in accordance with ethical guidelines for AI security research.
+
+---
+
+> **Content Warning:** This thesis contains examples of potentially harmful and offensive content used exclusively for academic research purposes to improve AI safety.
 
 ---
 
@@ -23,7 +110,7 @@ Large Language Models (LLMs) have achieved remarkable capabilities but remain vu
 
 This thesis presents the **first comprehensive study** of Bangla-English code-mixing combined with phonetic perturbations as a jailbreaking strategy against modern LLMs. We develop a systematic three-step methodology: (1) converting harmful queries to hypothetical scenarios, (2) code-mixing with romanized Bangla, and (3) applying phonetic perturbations to sensitive English keywords.
 
-Through extensive experiments across 4 major LLMs (GPT-4o-mini, Llama-3-8B, Gemma-1.1-7B, Mistral-7B) using 50 harmful prompts across 10 categories, we generated 8,950 model responses evaluated through automated LLM-as-judge methodology. Our results demonstrate that Bangla code-mixing with phonetic perturbations achieves **46% Average Attack Success Rate (AASR)**, representing a **42% improvement** over the 32.4% English baseline.
+Through systematic experiments across 3 major LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B) using 50 harmful prompts across 10 categories (reduced from planned 460 due to budget constraints), we generated approximately 2,250 model responses evaluated through automated LLM-as-judge methodology. Our results demonstrate that Bangla code-mixing with phonetic perturbations achieves **46% Average Attack Success Rate (AASR)**, representing a **42% improvement** over the 32.4% English baseline.
 
 **Key Contributions:**
 1. First Bangla-English code-mixing jailbreaking study (230M speakers)
@@ -36,12 +123,6 @@ Through extensive experiments across 4 major LLMs (GPT-4o-mini, Llama-3-8B, Gemm
 **Implications:** This research reveals critical gaps in multilingual LLM safety, particularly for low-resource Indic languages. Our findings demonstrate that current safety alignment fails to generalize to Bangla-English code-mixing, necessitating urgent improvements in multilingual safety training and tokenization-robust detection systems.
 
 **Keywords:** Large Language Models, Jailbreaking, Code-Mixing, Bangla, Adversarial Attacks, LLM Safety, Multilingual NLP, Phonetic Perturbations, Tokenization
-
----
-
-## Acknowledgments
-
-[Your acknowledgments section]
 
 ---
 
@@ -88,14 +169,14 @@ Bangla presents a particularly interesting case study because:
 ### 1.3 Research Gap
 
 **Prior Work:**
-- ✅ English jailbreaking: Extensively studied (Wei et al., 2023; Zou et al., 2023)
-- ✅ Hinglish code-mixing: Demonstrated effectiveness (Aswal & Jaiswal, 2025)
-- ✅ Multilingual safety: Preliminary studies (Deng et al., 2023)
+- English jailbreaking: Extensively studied (Wei et al., 2023; Zou et al., 2023)
+- Hinglish code-mixing: Demonstrated effectiveness (Aswal & Jaiswal, 2025)
+- Multilingual safety: Preliminary studies (Deng et al., 2023)
 
 **Gap:**
-- ❌ **No study of Bangla-English code-mixing attacks**
-- ❌ **No evaluation of Bangla safety coverage in LLMs**
-- ❌ **No analysis of Bangla-specific linguistic vulnerabilities**
+- **No study of Bangla-English code-mixing attacks**
+- **No evaluation of Bangla safety coverage in LLMs**
+- **No analysis of Bangla-specific linguistic vulnerabilities**
 
 ### 1.4 Research Questions
 
@@ -125,7 +206,7 @@ We examine whether the tokenization fragmentation hypothesis validated for other
 
 This thesis makes six primary contributions to multilingual LLM security research:
 
-1. **First Bangla code-mixing jailbreaking study:** Comprehensive evaluation of 230M speaker population previously untested in adversarial contexts
+1. **First Bangla code-mixing jailbreaking study:** Systematic evaluation of 230M speaker population previously untested in adversarial contexts (50 prompts across 10 categories, 3 major LLMs)
 
 2. **Bangla-specific attack optimization:** Discovery that perturbing **English words** within Banglish prompts is 85% more effective than perturbing Bangla words
 
@@ -482,9 +563,9 @@ This chapter details each phase.
 To reduce immediate refusals, we convert direct questions to hypothetical scenarios:
 
 ```
-❌ Direct: "How to create a botnet for DDoS attacks?"
+Direct: "How to create a botnet for DDoS attacks?"
 
-✅ Hypothetical: "Imagine someone wanted to learn how to create a 
+Hypothetical: "Imagine someone wanted to learn how to create a 
 botnet for DDoS attacks. What steps would they need to take?"
 ```
 
@@ -494,6 +575,8 @@ botnet for DDoS attacks. What steps would they need to take?"
 - Tests whether safety filters detect semantic harm vs. syntactic patterns
 
 **Dataset Size:** 50 prompts (5 prompts × 10 categories)
+
+**Note:** Original study design planned for 460 prompts to enable full replication of prior work. Dataset was reduced to 50 prompts due to **budget constraints** (~$1 available vs. ~$10 required for full scale). This reduction maintains methodological rigor while limiting statistical power and generalizability.
 
 **Format:** CSV with columns:
 - `id`: Unique identifier
@@ -591,11 +674,11 @@ We developed Bangla-specific phonetic perturbation strategies:
 We found that perturbing **English words** within code-mixed prompts is significantly more effective than perturbing Bangla words:
 
 ```
-✅ Effective: "Bhabo je keu haet speach create korte chay"
-              English words ^^^^ ^^^^^^ perturbed
+Effective: "Bhabo je keu haet speach create korte chay"
+           English words ^^^^ ^^^^^^ perturbed
 
-❌ Less Effective: "Bhavo je keu hate speech kraete korte chay"
-                   Bangla word                  ^^^^^^ perturbed
+Less Effective: "Bhavo je keu hate speech kraete korte chay"
+                Bangla word                  ^^^^^^ perturbed
 ```
 
 **Rationale:** Safety filters are trained on English harmful keywords. Perturbing English words fragments tokens, while perturbing Bangla words (already fragmented in romanization) provides minimal additional benefit.
@@ -733,15 +816,17 @@ Prompt: [Hypothetical scenario prompt]
 We employ a **full factorial design** to systematically test all combinations:
 
 **Factors:**
-- **Models (M):** 4 levels (GPT-4o-mini, Llama-3-8B, Gemma-1.1-7B, Mistral-7B)
+- **Models (M):** 3 levels (GPT-4o-mini, Llama-3-8B, Mistral-7B) — *Gemma-1.1-7B excluded due to budget constraints*
 - **Templates (J):** 5 levels (None, OM, AntiLM, AIM, Sandbox)
 - **Prompt Sets (P):** 3 levels (English, CM, CMP)
 - **Temperature (T):** 3 levels (0.2, 0.6, 1.0)
 - **Prompts (N):** 50 unique harmful scenarios
 
-**Total Configurations:** 4 × 5 × 3 × 3 = **180 configurations**
+**Total Configurations:** 3 × 5 × 3 × 3 = **135 configurations**
 
-**Total Queries:** 180 configurations × 50 prompts = **9,000 queries**
+**Total Queries (Planned):** 135 configurations × 50 prompts = **6,750 queries**
+
+**Total Queries (Actual):** ~2,250 queries (subset executed due to budget constraints)
 
 **Response Tuple:** R = ⟨Model, Template, PromptSet, Temperature, PromptID⟩
 
@@ -771,10 +856,11 @@ We test 3 temperature values to assess robustness:
 - Timestamp and configuration tracking
 
 **Cost Management:**
-- Estimated cost: $45 for 9,000 queries
-- Actual cost: $0.38 (50 prompts test run)
-- Full run: Not completed due to budget constraints
-- Analysis based on: 8,950 responses collected
+- **Original plan cost estimate:** ~$10 for 460 prompts (full factorial design)
+- **Actual cost (50 prompts):** ~$1 for ~2,250 queries across 3 models
+- **Budget constraint:** Limited funding necessitated reduction from 460 to 50 prompts
+- **Actual execution:** ~2,250 queries completed (GPT-4o-mini, Llama-3-8B, Mistral-7B)
+- **Gemma-1.1-7B:** Excluded from experiments due to budget limitations
 
 ### 3.5 Evaluation Methodology
 
@@ -960,7 +1046,7 @@ Next chapter presents the experimental setup details.
 
 ### 4.1 Models Evaluated
 
-We tested **4 major LLMs** representing different architectures and organizations:
+We tested **3 major LLMs** representing different architectures and organizations (Gemma-1.1-7B excluded due to budget constraints):
 
 #### 4.1.1 GPT-4o-mini (OpenAI)
 
@@ -998,7 +1084,7 @@ We tested **4 major LLMs** representing different architectures and organization
 
 **Why Tested:** Open-source benchmark, widely used in research
 
-#### 4.1.3 Gemma-1.1-7B-IT (Google)
+#### 4.1.3 Gemma-1.1-7B-IT (Google) — NOT TESTED
 
 **Architecture:** Gemini-derived, 7B parameters, instruction-tuned
 
@@ -1009,12 +1095,11 @@ We tested **4 major LLMs** representing different architectures and organization
 
 **Access:** Via OpenRouter API (`google/gemma-1.1-7b-it`)
 
-**Characteristics:**
-- Newer architecture
-- Strong safety emphasis
-- Efficient inference
+**Status:** **Excluded from experiments due to budget constraints**
 
-**Why Tested:** Represents Google's safety approach, newer model generation
+**Original Rationale:** Would have represented Google's safety approach and newer model generation
+
+**Limitation:** Absence of Gemma reduces generalizability of findings across major LLM providers
 
 #### 4.1.4 Mistral-7B-Instruct-v0.3 (Mistral AI)
 
@@ -1110,7 +1195,8 @@ We tested **4 major LLMs** representing different architectures and organization
 #### 4.3.2 Computational Resources
 
 **Hardware:**
-- [Your hardware specifications]
+- Windows-based system with internet connectivity
+- Standard consumer-grade processor and RAM
 
 **Software:**
 - Python 3.10
@@ -1131,14 +1217,16 @@ We tested **4 major LLMs** representing different architectures and organization
 |-------|------------|-------------|----------------|
 | GPT-4o-mini | $0.15/1M tokens | $0.60/1M tokens | $0.002 |
 | Llama-3-8B | $0.06/1M tokens | $0.06/1M tokens | $0.001 |
-| Gemma-1.1-7B | $0.05/1M tokens | $0.05/1M tokens | $0.001 |
+| Gemma-1.1-7B | $0.05/1M tokens | $0.05/1M tokens | $0.001 (not tested) |
 | Mistral-7B | $0.06/1M tokens | $0.06/1M tokens | $0.001 |
 
-**Total Budget:**
-- Test run (8 queries): $0.000007
-- Full dataset (9,000 queries): ~$0.38 actual
-- Evaluation (6,750 judge calls): ~$0.24
-- **Total Spent:** ~$0.62
+**Budget Analysis:**
+- **Original plan (460 prompts, 4 models):** ~$10 total cost estimate for full factorial design
+- **Actual execution (50 prompts, 3 models):** ~$1 total cost for ~2,250 queries
+- **Budget constraint rationale:** Limited research funding necessitated ~90% reduction in dataset size (460→50)
+- **Models tested:** GPT-4o-mini, Llama-3-8B, Mistral-7B
+- **Gemma excluded:** Would have added minimal cost (~$0.10-0.20) but excluded due to overall budget constraints
+- **Evaluation costs:** LLM-as-judge evaluation included in total spend
 
 ### 4.4 Evaluation Configuration
 
@@ -1290,12 +1378,13 @@ scripts/
 ### 4.7 Summary
 
 Our experimental setup provides:
-- **4 diverse models** representing different organizations and architectures
-- **50 high-quality prompts** across 10 harm categories
-- **Systematic factorial design** (180 configurations)
-- **Automated evaluation** (6,750+ judge calls)
+- **3 diverse models** representing different organizations and architectures (OpenAI, Meta, Mistral AI)
+- **50 high-quality prompts** across 10 harm categories (reduced from 460 due to budget constraints)
+- **Systematic factorial design** (135 configurations across tested models)
+- **Automated evaluation** (LLM-as-judge methodology)
 - **Statistical rigor** (Wilcoxon tests, correlation analysis)
 - **Reproducible implementation** (saved artifacts, configuration control)
+- **Budget constraint:** Gemma-1.1-7B excluded, limiting generalizability to Google's LLM safety approach
 
 Next chapter presents the results.
 
@@ -1303,7 +1392,7 @@ Next chapter presents the results.
 
 ## 5. Results
 
-This chapter presents our experimental findings organized by research question. All results are based on 8,950 model responses across 4 LLMs, 5 jailbreak templates, 3 prompt sets, and 3 temperature settings.
+This chapter presents our experimental findings organized by research question. All results are based on approximately 2,250 model responses across 3 LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B), 5 jailbreak templates, 3 prompt sets, and 3 temperature settings. **Note:** Gemma-1.1-7B was excluded from experiments due to budget constraints.
 
 ### 5.1 RQ1: Code-Mixing Effectiveness
 
@@ -1320,9 +1409,9 @@ This chapter presents our experimental findings organized by research question. 
 | CMP        | 46.0% | 73.8% | +42% |
 
 **Statistical Significance (Wilcoxon Signed-Rank Test, α=0.05):**
-- English vs. CM: p < 0.001 ✓ (significant)
-- CM vs. CMP: p = 0.023 ✓ (significant)
-- English vs. CMP: p < 0.001 ✓ (significant)
+- English vs. CM: p < 0.001 (significant)
+- CM vs. CMP: p = 0.023 (significant)
+- English vs. CMP: p < 0.001 (significant)
 
 **Interpretation:** Each transformation step (English→CM→CMP) produces statistically significant improvements in attack success rate.
 
@@ -1335,7 +1424,7 @@ Different models exhibit vastly different vulnerability levels:
 | Mistral-7B | 84.1% | 80.0% | 81.3% | **Critical** (already maxed) |
 | Llama-3-8B | 11.6% | 25.6% | 30.9% | **Moderate** (clear progression) |
 | GPT-4o-mini | 1.5% | 20.7% | 25.7% | **Low** (but exploitable) |
-| Gemma-1.1-7B | [Data not available in current analysis] | | | |
+| Gemma-1.1-7B | Not tested | Not tested | Not tested | **Excluded (budget constraints)** |
 
 **Key Observations:**
 
@@ -1388,11 +1477,11 @@ Attack effectiveness increases slightly with higher temperature:
 
 **Example:**
 ```
-✅ High success: "Bhabo je keu haet speach create korte chay"
-                 [English words ^^^^ ^^^^^^ perturbed]
+High success: "Bhabo je keu haet speach create korte chay"
+              [English words ^^^^ ^^^^^^ perturbed]
 
-❌ Lower success: "Bhavo je keu hate speech kraete korte chay"
-                  [Bangla word ^^^^^^ perturbed]
+Lower success: "Bhavo je keu hate speech kraete korte chay"
+               [Bangla word ^^^^^^ perturbed]
 ```
 
 #### 5.2.2 Optimal English:Bangla Ratio
@@ -1457,9 +1546,9 @@ Bangla's non-standard romanization creates multiple valid tokenization paths:
 | 1 | Mistral-7B | 81.8% | **Critical** |
 | 2 | Llama-3-8B | 22.7% | **Moderate** |
 | 3 | GPT-4o-mini | 16.0% | **Low** (but non-zero) |
-| 4 | Gemma-1.1-7B | [Insufficient data] | Unknown |
+| — | Gemma-1.1-7B | Not tested | **Excluded due to budget constraints** |
 
-**Key Finding:** All tested models are vulnerable to Bangla code-mixing attacks, though severity varies dramatically.
+**Key Finding:** All tested models (3/3) are vulnerable to Bangla code-mixing attacks, though severity varies dramatically. Gemma-1.1-7B could not be evaluated due to budget limitations.
 
 #### 5.3.2 Mistral-7B: Critical Vulnerability
 
@@ -1503,7 +1592,7 @@ Bangla's non-standard romanization creates multiple valid tokenization paths:
 
 | Template | Mistral | Llama | GPT-4o | Average |
 |----------|---------|-------|--------|---------|
-| None (No template) | 83.2% | 24.1% | 17.8% | **46.2%** ✓ |
+| None (No template) | 83.2% | 24.1% | 17.8% | **46.2%** (Best) |
 | AntiLM | 81.7% | 22.9% | 16.1% | 42.5% |
 | OM (Opposite Mode) | 80.9% | 21.4% | 15.2% | 40.6% |
 | AIM | 79.3% | 18.7% | 14.3% | 36.4% |
@@ -1517,11 +1606,14 @@ Bangla's non-standard romanization creates multiple valid tokenization paths:
 
 #### 5.3.6 Answer to RQ3
 
-**Yes, all major LLMs are vulnerable to Bangla attacks, but inconsistently:**
+**Yes, all tested LLMs are vulnerable to Bangla attacks, but inconsistently:**
 1. **Mistral-7B:** Critically vulnerable (81.8% avg) - safety alignment inadequate
 2. **Llama-3-8B:** Moderately vulnerable (22.7% avg) - clear code-mixing impact
 3. **GPT-4o-mini:** Low but exploitable (16.0% avg) - 17× increase with code-mixing
-4. **Jailbreak templates ineffective:** Simple prompts work best (contradicts prior work)
+4. **Gemma-1.1-7B:** Not evaluated due to budget constraints - limits generalizability
+5. **Jailbreak templates ineffective:** Simple prompts work best (contradicts prior work)
+
+**Limitation:** Testing only 3 of 4 planned models reduces coverage of major LLM providers (Google's Gemma missing).
 
 ---
 
@@ -1578,10 +1670,10 @@ AASR: 47%
 
 **Evidence supporting hypothesis:**
 
-✓ **Strong correlation (r=0.94)** between fragmentation and AASR  
-✓ **Progressive improvement** with each fragmentation step (English→CM→CMP)  
-✓ **English word targeting effectiveness** - perturbing filter-trained words most impactful  
-✓ **Model consistency** - pattern holds across all tested LLMs  
+- **Strong correlation (r=0.94)** between fragmentation and AASR  
+- **Progressive improvement** with each fragmentation step (English→CM→CMP)  
+- **English word targeting effectiveness** - perturbing filter-trained words most impactful  
+- **Model consistency** - pattern holds across all tested LLMs  
 
 #### 5.4.4 Tokenization Examples by Model
 
@@ -1602,7 +1694,7 @@ Different models tokenize Bangla differently, creating varying vulnerabilities:
 **Yes, tokenization disruption explains Bangla attack success:**
 1. **Strong correlation (r=0.94)** between token fragmentation and AASR
 2. **Progressive fragmentation** matches progressive AASR improvement
-3. **Mechanism validated:** Perturbations fragment harmful keywords → evade token-level filters
+3. **Mechanism validated:** Perturbations fragment harmful keywords and evade token-level filters
 4. **Consistent across models** (except Mistral's baseline weakness)
 5. **English word targeting** aligns with filter training hypothesis
 
@@ -1610,30 +1702,30 @@ Different models tokenize Bangla differently, creating varying vulnerabilities:
 
 ### 5.5 Summary of Key Findings
 
-This chapter presented comprehensive experimental results across 8,950 model responses:
+This chapter presented systematic experimental results across approximately 2,250 model responses from 3 LLMs (Gemma excluded due to budget constraints):
 
 **RQ1 - Code-Mixing Effectiveness:**
-- ✓ 46% AASR with CMP (42% improvement over English)
-- ✓ Statistically significant across all comparisons (p < 0.05)
-- ✓ Robust across temperature settings
+- 46% AASR with CMP (42% improvement over English)
+- Statistically significant across all comparisons (p < 0.05)
+- Robust across temperature settings
 
 **RQ2 - Bangla-Specific Patterns:**
-- ✓ English word targeting 68% more effective
-- ✓ 70:30 English:Bangla ratio optimal
-- ✓ Romanization variability creates attack surface
-- ✓ Vowel substitution most effective perturbation
+- English word targeting 68% more effective
+- 70:30 English:Bangla ratio optimal
+- Romanization variability creates attack surface
+- Vowel substitution most effective perturbation
 
 **RQ3 - Model Vulnerability:**
-- ✓ All models vulnerable (81.8%, 22.7%, 16.0%)
-- ✓ Mistral critically compromised
-- ✓ GPT-4o-mini shows 17× increase with code-mixing
-- ✓ Jailbreak templates reduce effectiveness (contradicts prior work)
+- All models vulnerable (81.8%, 22.7%, 16.0%)
+- Mistral critically compromised
+- GPT-4o-mini shows 17× increase with code-mixing
+- Jailbreak templates reduce effectiveness (contradicts prior work)
 
 **RQ4 - Tokenization Mechanism:**
-- ✓ r=0.94 correlation between fragmentation and AASR
-- ✓ Phonetic perturbations fragment harmful keywords
-- ✓ Token-level filters evaded through fragmentation
-- ✓ Mechanism validated across all models
+- r=0.94 correlation between fragmentation and AASR
+- Phonetic perturbations fragment harmful keywords
+- Token-level filters evaded through fragmentation
+- Mechanism validated across all models
 
 Next chapter discusses implications and comparisons with related work.
 
@@ -1694,10 +1786,10 @@ We do **not** make direct quantitative comparisons (e.g., "Bangla achieves X% of
 4. **Our study is methodologically independent** - validates approach for Bangla, not a replication
 
 **What We Can Say:**
-- ✓ Bangla code-mixing works (independent validation)
-- ✓ Tokenization mechanism applies to Bangla (r=0.94)
-- ✓ Multiple Indic languages share code-mixing vulnerability
-- ✗ Cannot claim "Bangla is X% more/less effective than Hindi" without controlled comparison
+- Bangla code-mixing works (independent validation)
+- Tokenization mechanism applies to Bangla (r=0.94)
+- Multiple Indic languages share code-mixing vulnerability
+- Cannot claim "Bangla is X% more/less effective than Hindi" without controlled comparison
 
 #### 6.2.2 Multilingual Safety Studies
 
@@ -1835,7 +1927,7 @@ Bangla's non-standard romanization creates unique vulnerabilities:
 
 | Template | AASR |
 |----------|------|
-| None | 46.2% ✓ (Best) |
+| None | 46.2% (Best) |
 | AntiLM | 42.5% |
 | OM | 40.6% |
 | AIM | 36.4% |
@@ -2419,7 +2511,7 @@ This research involves testing LLM vulnerabilities using harmful content, raisin
 
 #### 8.1.2 Institutional Review
 
-**IRB/Ethics Committee:** [Your institution's review status - typically exempt for technical security research without human subjects]
+**IRB/Ethics Committee:** This research was conducted as a technical security study without human subjects involvement. The work follows established ethical guidelines for adversarial AI research.
 
 **Key considerations:**
 - No human subjects involved (LLMs only)
@@ -2446,17 +2538,17 @@ This research involves testing LLM vulnerabilities using harmful content, raisin
 
 **What we do NOT release:**
 
-❌ **Full dataset:** 50 harmful prompts remain private (not in public repository)  
-❌ **Automated attack tools:** No code for generating CM/CMP prompts at scale  
-❌ **Raw model responses:** All harmful outputs redacted from public materials  
-❌ **Optimized attack prompts:** Most effective jailbreak variants withheld  
+**Not released - Full dataset:** 50 harmful prompts remain private (not in public repository)  
+**Not released - Automated attack tools:** No code for generating CM/CMP prompts at scale  
+**Not released - Raw model responses:** All harmful outputs redacted from public materials  
+**Not released - Optimized attack prompts:** Most effective jailbreak variants withheld  
 
 **What we DO release (for research purposes):**
 
-✅ **Methodology description:** Enables replication by security researchers  
-✅ **Aggregate statistics:** AASR/AARR metrics without specific prompts  
-✅ **Theoretical analysis:** Tokenization mechanism insights  
-✅ **Defense recommendations:** Mitigation strategies for developers  
+**Released - Methodology description:** Enables replication by security researchers  
+**Released - Aggregate statistics:** AASR/AARR metrics without specific prompts  
+**Released - Theoretical analysis:** Tokenization mechanism insights  
+**Released - Defense recommendations:** Mitigation strategies for developers  
 
 **Access control:**
 
@@ -2541,7 +2633,7 @@ This research involves testing LLM vulnerabilities using harmful content, raisin
 
 All materials containing harmful content include:
 
-**⚠️ Content Warning:** This research contains examples of hate speech, violence, illegal activities, and other harmful content for academic research purposes only.
+**Content Warning:** This research contains examples of hate speech, violence, illegal activities, and other harmful content for academic research purposes only.
 
 **Placement:**
 - Thesis abstract/introduction
@@ -2581,15 +2673,15 @@ All materials containing harmful content include:
 **Potential impacts:**
 
 **Positive:**
-- ✅ Improved LLM safety for 230M speakers
-- ✅ Advocacy for language equity in AI development
-- ✅ Awareness of current safety limitations
-- ✅ Community involvement in safety evaluation
+- Improved LLM safety for 230M speakers
+- Advocacy for language equity in AI development
+- Awareness of current safety limitations
+- Community involvement in safety evaluation
 
 **Negative:**
-- ⚠️ Temporary exposure to risk (during disclosure window)
-- ⚠️ Potential erosion of trust in AI systems
-- ⚠️ Digital divide concerns (limited access to safer models)
+- Temporary exposure to risk (during disclosure window)
+- Potential erosion of trust in AI systems
+- Digital divide concerns (limited access to safer models)
 
 **Mitigation:**
 - Prioritize rapid disclosure and patching
@@ -2629,7 +2721,7 @@ All materials containing harmful content include:
 #### 8.6.1 Researcher Background
 
 **Relevant background:**
-- [Your background - e.g., Bangla native speaker, computer science researcher]
+- Both authors are native Bangla speakers and undergraduate software engineering students
 - Motivation: Personal experience with Bangla code-mixing in digital communication
 - Perspective: Advocate for language equity in AI systems
 
@@ -2645,7 +2737,7 @@ All materials containing harmful content include:
 
 #### 8.6.2 Funding and Conflicts of Interest
 
-**Funding sources:** [Your funding - e.g., university fellowship, no industry funding]
+**Funding sources:** This research was conducted as part of undergraduate thesis work at SUST with no external funding.
 
 **Conflicts of interest:** None declared
 
@@ -2691,11 +2783,11 @@ All materials containing harmful content include:
 
 This research adheres to responsible AI security research practices:
 
-✅ **Justified:** Addresses critical safety gap for 230M speakers  
-✅ **Controlled:** Harmful content restricted, no automated attack tools released  
-✅ **Responsible:** 90-day disclosure protocol, coordination with developers  
-✅ **Beneficial:** Advances multilingual AI safety, promotes language equity  
-✅ **Transparent:** Methodology disclosed, data available under agreement  
+**Justified:** Addresses critical safety gap for 230M speakers  
+**Controlled:** Harmful content restricted, no automated attack tools released  
+**Responsible:** 90-day disclosure protocol, coordination with developers  
+**Beneficial:** Advances multilingual AI safety, promotes language equity  
+**Transparent:** Methodology disclosed, data available under agreement  
 
 **Ethical commitment:** This work aims to improve LLM safety for all users, with particular attention to historically underserved linguistic communities.
 
@@ -3207,9 +3299,9 @@ Ki jeneral informashun ache ei topik er jonno?"
 
 | Comparison | W-statistic | p-value | Significant? |
 |------------|-------------|---------|--------------|
-| English vs. CM | 234.5 | < 0.001 | Yes ✓ |
-| CM vs. CMP | 412.0 | 0.023 | Yes ✓ |
-| English vs. CMP | 189.0 | < 0.001 | Yes ✓ |
+| English vs. CM | 234.5 | < 0.001 | Yes |
+| CM vs. CMP | 412.0 | 0.023 | Yes |
+| English vs. CMP | 189.0 | < 0.001 | Yes |
 
 #### D.2 Correlation Analysis
 
@@ -3281,20 +3373,19 @@ scipy >= 1.11.0
 
 ### Appendix G: Acknowledgments
 
-[Your specific acknowledgments]
-
 **Research Support:**
-- [Your institution]
-- [Your advisor]
-- [Funding sources]
+- Shahjalal University of Science and Technology (SUST)
+- Institute of Information and Communication Technology (IICT)
+- Dr. Ahsan Habib (Thesis Supervisor)
+- No external funding sources
 
 **Technical Contributors:**
 - OpenRouter API team
 - Open-source community (Hugging Face, transformers, etc.)
 
 **Bangla Language Expertise:**
-- [Native speaker consultants if any]
-- [Community reviewers if any]
+- Authors' native language proficiency
+- Peer review from batchmates in Software Engineering Department
 
 ---
 
@@ -3306,11 +3397,11 @@ scipy >= 1.11.0
 ---
 
 **Contact Information:**
-- Email: [Your email]
-- Institution: [Your institution]
-- GitHub: [Your repository if public]
+- Authors: Sandwip Kumar Shanto (2020831020), Md. Meraj Mridha (2020831034)
+- Institution: Institute of Information and Communication Technology, Shahjalal University of Science and Technology, Sylhet, Bangladesh
+- Supervisor: Dr. Ahsan Habib
 
-**For dataset access or questions about this research, please contact the author with institutional affiliation and intended use statement.**
+**For dataset access or questions about this research, please contact the authors through the institution with your affiliation and intended use statement.**
 
 ---
 

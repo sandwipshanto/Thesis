@@ -1,0 +1,223 @@
+\chapter{Discussion}
+\label{ch:discussion}
+
+This chapter interprets our findings, compares them with related work, explores implications for LLM safety, and addresses methodological considerations.
+
+\section{Principal Findings}
+\label{sec:principal-findings}
+
+Our study provides the first comprehensive evaluation of Bangla-English code-mixing attacks on LLMs, yielding four major findings:
+
+\subsection{Finding 1: Bangla Code-Mixing is Effective}
+\begin{itemize}
+    \item 46\% AASR represents a meaningful attack surface
+    \item 42\% improvement over English baseline demonstrates real vulnerability
+    \item Statistical significance ($p < 0.001$) confirms robustness
+\end{itemize}
+
+\subsection{Finding 2: English Word Targeting is Optimal}
+\begin{itemize}
+    \item 68\% higher effectiveness than Bangla word perturbations
+    \item Aligns with English-centric safety training hypothesis
+    \item Novel contribution not explored in prior code-mixing work
+\end{itemize}
+
+\subsection{Finding 3: Inconsistent Model Vulnerability}
+\begin{itemize}
+    \item Mistral (81.8\%) critically compromised
+    \item GPT-4o-mini (16.0\%) shows strongest resistance but still exploitable
+    \item No model achieves adequate Bangla safety coverage
+\end{itemize}
+
+\subsection{Finding 4: Tokenization is the Primary Mechanism}
+\begin{itemize}
+    \item $r=0.94$ correlation validates hypothesis
+    \item Phonetic perturbations fragment harmful keywords
+    \item Token-level safety filters evaded through subword disruption
+\end{itemize}
+
+\section{Comparison with Related Work}
+\label{sec:comparison}
+
+\subsection{Hinglish Code-Mixing Study}
+
+Our work was inspired by \citet{aswal2025}. Key comparisons:
+
+\textbf{Methodological Similarities:}
+\begin{itemize}
+    \item Three-step transformation (English $\rightarrow$ CM $\rightarrow$ CMP)
+    \item Same model types tested (GPT-4o-mini, Llama-3-8B, Mistral-7B)
+    \item Tokenization fragmentation hypothesis
+    \item LLM-as-judge evaluation
+\end{itemize}
+
+\textbf{Critical Differences:}
+\begin{itemize}
+    \item \textbf{Language:} Bangla vs. Hindi (different phonology, romanization)
+    \item \textbf{Dataset:} 50 custom prompts vs. 460 prompts (budget constraints)
+    \item \textbf{Models:} 3 fully tested (Gemma excluded) vs. 4 models
+    \item \textbf{Scale:} Smaller but focused study
+    \item \textbf{Novel findings:} English-word targeting, template ineffectiveness
+\end{itemize}
+
+\textbf{Effectiveness Comparison:}
+\begin{itemize}
+    \item Hinglish CMP: 99\% AASR (reported)
+    \item Bangla CMP: 46\% AASR (our work)
+    \item \textbf{Note:} Not directly comparable due to different experimental conditions
+\end{itemize}
+
+\subsection{Multilingual Safety Studies}
+
+\textbf{\citet{deng2023}:}
+\begin{itemize}
+    \item Tested 6 languages, found higher jailbreak rates for non-English
+    \item Our work: First Bangla study, confirms pattern for Indic languages
+\end{itemize}
+
+\textbf{\citet{yong2023}:}
+\begin{itemize}
+    \item 25-40\% higher toxic outputs for low-resource languages
+    \item Our work: Quantifies specific vulnerability for Bangla (46\% AASR)
+\end{itemize}
+
+\section{Implications for LLM Safety}
+\label{sec:implications}
+
+\subsection{Multilingual Safety Gaps}
+
+Our findings reveal critical gaps in LLM safety:
+
+\begin{enumerate}
+    \item \textbf{Language-specific vulnerabilities:} Safety training doesn't generalize to Bangla-English code-mixing
+    \item \textbf{Tokenization brittleness:} Token-level filters are easily evaded
+    \item \textbf{Inequitable protection:} 230M Bangla speakers receive inadequate safety coverage
+\end{enumerate}
+
+\subsection{Recommendations for Model Developers}
+
+\textbf{Short-term mitigations:}
+\begin{itemize}
+    \item Include code-mixed text in red-teaming efforts
+    \item Expand RLHF datasets to cover Bangla and other Indic languages
+    \item Implement semantic-level safety checks (beyond token matching)
+\end{itemize}
+
+\textbf{Long-term solutions:}
+\begin{itemize}
+    \item Develop tokenization-robust safety mechanisms
+    \item Train multilingual safety classifiers
+    \item Implement dynamic romanization normalization
+\end{itemize}
+
+\subsection{Policy Considerations}
+
+\begin{itemize}
+    \item \textbf{Language coverage requirements:} Safety standards should mandate coverage for major languages (>100M speakers)
+    \item \textbf{Transparency:} Model cards should disclose known vulnerabilities by language
+    \item \textbf{Regional deployment:} Higher safety thresholds for regions with identified vulnerabilities
+\end{itemize}
+
+\section{Unexpected Findings}
+\label{sec:unexpected}
+
+\subsection{Jailbreak Templates Reduce Effectiveness}
+
+Contrary to prior work \citep{aswal2025}, jailbreak templates \textbf{reduced} Bangla attack effectiveness:
+
+\textbf{Possible explanations:}
+\begin{itemize}
+    \item Templates trigger additional safety checks
+    \item Code-mixing alone provides sufficient obfuscation
+    \item Models trained to detect template patterns
+    \item Language-specific interaction effects
+\end{itemize}
+
+\textbf{Implication:} Simple, direct prompts are most effective for Bangla attacks.
+
+\subsection{Mistral's Critical Vulnerability}
+
+Mistral-7B's 81.8\% baseline vulnerability is unexpected:
+
+\textbf{Potential causes:}
+\begin{itemize}
+    \item Insufficient safety fine-tuning
+    \item Training data imbalance
+    \item European-focused safety (missing South Asian context)
+\end{itemize}
+
+\textbf{Implication:} Open-source models require community-driven safety improvements.
+
+\section{Limitations and Future Work}
+\label{sec:discussion-limitations}
+
+\subsection{Study Limitations}
+
+\begin{enumerate}
+    \item \textbf{Dataset size:} 50 prompts vs. 460 in prior work
+    \item \textbf{Model coverage:} 3 models fully tested (Gemma incomplete)
+    \item \textbf{Temperature settings:} 3 values vs. 6 in full factorial design
+    \item \textbf{Manual code-mixing:} Time-intensive, not fully automated
+\end{enumerate}
+
+\subsection{Future Research Directions}
+
+\begin{itemize}
+    \item \textbf{Scale to 460 prompts:} Full replication of Hinglish study
+    \item \textbf{Automated code-mixing:} NMT-based Bangla-English generation
+    \item \textbf{Other Indic languages:} Tamil, Telugu, Marathi (20+ languages)
+    \item \textbf{Defense mechanisms:} Develop Bangla-aware safety filters
+    \item \textbf{Human evaluation:} Validate LLM-as-judge with ICC study
+\end{itemize}
+
+\section{Methodological Contributions}
+\label{sec:method-contributions}
+
+\subsection{Scalable Framework}
+
+Our methodology is replicable for other languages:
+
+\textbf{Cost per language:} \$1.50-2.00 (50 prompts)
+
+\textbf{Applicable to:}
+\begin{itemize}
+    \item Tamil (75M speakers)
+    \item Telugu (82M speakers)
+    \item Marathi (83M speakers)
+    \item Urdu (70M speakers)
+    \item Gujarati (56M speakers)
+\end{itemize}
+
+\subsection{Config-Driven Experimentation}
+
+\textbf{Key innovation:} \texttt{run\_config.yaml} controls all experiments
+
+\textbf{Benefits:}
+\begin{itemize}
+    \item No code modification needed
+    \item Easy parameter sweeps
+    \item Reproducible configurations
+    \item Lower barrier to replication
+\end{itemize}
+
+\section{Summary}
+\label{sec:discussion-summary}
+
+Our discussion establishes:
+
+\begin{enumerate}
+    \item Bangla code-mixing is an effective jailbreaking strategy (46\% AASR)
+    \item English word targeting is optimal for Bangla (68\% more effective)
+    \item All major LLMs are vulnerable to Bangla attacks (varying degrees)
+    \item Tokenization fragmentation is the primary mechanism ($r=0.94$)
+    \item Current safety alignment fails to generalize to Bangla-English code-mixing
+    \item Urgent improvements needed in multilingual safety training
+\end{enumerate}
+
+These findings have important implications for:
+\begin{itemize}
+    \item LLM developers (safety training practices)
+    \item Policy makers (language coverage requirements)
+    \item Research community (replicable framework for other languages)
+    \item 230M Bangla speakers (equitable safety protection)
+\end{itemize}

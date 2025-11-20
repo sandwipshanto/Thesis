@@ -1,0 +1,218 @@
+\chapter{Experimental Setup}
+\label{ch:experimental}
+
+\section{Models Evaluated}
+\label{sec:models}
+
+We tested \textbf{3 major LLMs} representing different architectures and organizations (Gemma-1.1-7B excluded due to budget constraints):
+
+\subsection{GPT-4o-mini (OpenAI)}
+
+\textbf{Architecture:} Transformer-based, $\sim$8B parameters (estimated)
+
+\textbf{Access:} Via OpenRouter API (\texttt{openai/gpt-4o-mini})
+
+\textbf{Why Tested:} Most widely deployed LLM, represents commercial state-of-the-art
+
+\subsection{Llama-3-8B-Instruct (Meta)}
+
+\textbf{Architecture:} Open-source transformer, 8B parameters
+
+\textbf{Access:} Via OpenRouter API (\texttt{meta-llama/llama-3-8b-instruct})
+
+\textbf{Why Tested:} Open-source benchmark, widely used in research
+
+\subsection{Gemma-1.1-7B-IT (Google) --- NOT TESTED}
+
+\textbf{Architecture:} Gemini-derived, 7B parameters, instruction-tuned
+
+\textbf{Access:} Via OpenRouter API (\texttt{google/gemma-1.1-7b-it})
+
+\textbf{Status:} \textbf{Excluded from experiments due to budget constraints}
+
+\textbf{Original Rationale:} Would have represented Google's safety approach and newer model generation
+
+\textbf{Limitation:} Absence of Gemma reduces generalizability of findings across major LLM providers
+
+\subsection{Mistral-7B-Instruct-v0.3 (Mistral AI)}
+
+\textbf{Architecture:} Open-source transformer, 7B parameters
+
+\textbf{Access:} Via OpenRouter API (\texttt{mistralai/mistral-7b-instruct-v0.3})
+
+\textbf{Why Tested:} Alternative to US models, different training philosophy
+
+\section{Dataset Statistics}
+\label{sec:dataset-stats}
+
+\subsection{Prompt Distribution}
+
+\textbf{Total Prompts:} 50
+
+\begin{table}[h]
+\centering
+\caption{Category Distribution}
+\label{tab:category-dist}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{Percentage} \\ \midrule
+Hate Speech \& Discrimination & 6 & 12\% \\
+Violence \& Self-Harm & 5 & 10\% \\
+Illegal Activities & 6 & 12\% \\
+Misinformation & 5 & 10\% \\
+Privacy Violations & 5 & 10\% \\
+Unethical Advice & 5 & 10\% \\
+Dangerous Instructions & 6 & 12\% \\
+Sexual Content & 4 & 8\% \\
+Child Safety & 4 & 8\% \\
+Extremism & 4 & 8\% \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Severity Distribution:}
+\begin{itemize}
+    \item Critical (5): 12 prompts (24\%)
+    \item High (4): 18 prompts (36\%)
+    \item Medium (3): 15 prompts (30\%)
+    \item Low (2): 5 prompts (10\%)
+\end{itemize}
+
+\subsection{Prompt Set Statistics}
+
+\begin{table}[h]
+\centering
+\caption{Prompt Set Characteristics}
+\label{tab:prompt-stats}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Metric} & \textbf{English} & \textbf{CM} & \textbf{CMP} \\ \midrule
+Avg words/prompt & 18.4 & 21.2 & 21.2 \\
+Avg characters & 124.3 & 142.7 & 142.7 \\
+Vocabulary size & 487 & 612 & 612 \\
+English words & 18.4 (100\%) & 14.8 (70\%) & 14.8 (70\%) \\
+Bangla words & 0 (0\%) & 6.4 (30\%) & 6.4 (30\%) \\
+Perturbed words & 0 & 0 & 4.1 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Execution Environment}
+\label{sec:environment}
+
+\subsection{API Configuration}
+
+\textbf{Platform:} OpenRouter (\url{https://openrouter.ai})
+
+\textbf{Rate Limits:}
+\begin{itemize}
+    \item GPT-4o-mini: 500 requests/minute
+    \item Llama-3-8B: 100 requests/minute
+    \item Gemma-1.1-7B: 100 requests/minute
+    \item Mistral-7B: 100 requests/minute
+\end{itemize}
+
+\subsection{Cost Analysis}
+
+\begin{table}[h]
+\centering
+\caption{API Pricing Structure}
+\label{tab:pricing}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Model} & \textbf{Input} & \textbf{Output} & \textbf{Est./Query} \\ \midrule
+GPT-4o-mini & \$0.15/1M & \$0.60/1M & \$0.002 \\
+Llama-3-8B & \$0.06/1M & \$0.06/1M & \$0.001 \\
+Gemma-1.1-7B & \$0.05/1M & \$0.05/1M & \$0.001 \\
+Mistral-7B & \$0.06/1M & \$0.06/1M & \$0.001 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Budget Analysis:}
+\begin{itemize}
+    \item \textbf{Original plan (460 prompts, 4 models):} $\sim$\$10 total cost estimate for full factorial design
+    \item \textbf{Actual execution (50 prompts, 3 models):} $\sim$\$1 total cost for $\sim$2,250 queries
+    \item \textbf{Budget constraint rationale:} Limited research funding necessitated $\sim$90\% reduction in dataset size (460$\rightarrow$50)
+    \item \textbf{Models tested:} GPT-4o-mini, Llama-3-8B, Mistral-7B
+    \item \textbf{Gemma excluded:} Would have added minimal cost ($\sim$\$0.10-0.20) but excluded due to overall budget constraints
+    \item \textbf{Evaluation costs:} LLM-as-judge evaluation included in total spend
+\end{itemize}
+
+\section{Evaluation Configuration}
+\label{sec:eval-config}
+
+\subsection{Judge Model}
+
+\textbf{Model:} GPT-4o-mini
+
+\textbf{Rationale:}
+\begin{itemize}
+    \item Cost-effective (\$0.000035/evaluation)
+    \item High accuracy (validated $\geq$ 0.70 ICC in prior work)
+    \item Consistent evaluation criteria
+\end{itemize}
+
+\section{Statistical Analysis Tools}
+\label{sec:stats-tools}
+
+\subsection{Descriptive Statistics}
+
+\textbf{Metrics Computed:}
+\begin{itemize}
+    \item Mean, median, standard deviation (AASR, AARR)
+    \item Min, max, quartiles
+    \item Confidence intervals (95\%)
+\end{itemize}
+
+\subsection{Inferential Statistics}
+
+\textbf{Wilcoxon Signed-Rank Test:}
+\begin{itemize}
+    \item Implementation: \texttt{scipy.stats.wilcoxon}
+    \item Paired comparisons (English vs. CM, CM vs. CMP)
+    \item Two-tailed test
+    \item Significance level: $\alpha = 0.05$
+\end{itemize}
+
+\textbf{Correlation Analysis:}
+\begin{itemize}
+    \item Pearson correlation (tokenization fragmentation vs. AASR)
+    \item Spearman correlation (ordinal relationships)
+\end{itemize}
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+\subsection{Data Preservation}
+
+\textbf{Saved Artifacts:}
+\begin{itemize}
+    \item All input prompts (3 CSV files)
+    \item All model responses (CSV with metadata)
+    \item All judge evaluations (CSV with scores)
+    \item Metrics per configuration (CSV)
+    \item Statistical test results (CSV)
+\end{itemize}
+
+\subsection{Code Availability}
+
+All code organized in modular structure:
+\begin{itemize}
+    \item \texttt{scripts/data\_preparation/} -- Prompt loading
+    \item \texttt{scripts/experiments/} -- Experiment runner
+    \item \texttt{scripts/evaluation/} -- LLM judge
+    \item \texttt{scripts/analysis/} -- Statistical tests
+    \item \texttt{scripts/utils/} -- API handlers
+\end{itemize}
+
+\section{Summary}
+\label{sec:exp-summary}
+
+Our experimental setup provides:
+\begin{itemize}
+    \item \textbf{3 diverse models} representing different organizations and architectures (OpenAI, Meta, Mistral AI)
+    \item \textbf{50 high-quality prompts} across 10 harm categories (reduced from 460 due to budget constraints)
+    \item \textbf{Systematic factorial design} (135 configurations across tested models)
+    \item \textbf{Automated evaluation} (LLM-as-judge methodology)
+    \item \textbf{Statistical rigor} (Wilcoxon tests, correlation analysis)
+    \item \textbf{Reproducible implementation} (saved artifacts, configuration control)
+    \item \textbf{Budget constraint:} Gemma-1.1-7B excluded, limiting generalizability to Google's LLM safety approach
+\end{itemize}

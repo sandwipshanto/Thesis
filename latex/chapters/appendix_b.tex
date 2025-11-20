@@ -1,0 +1,121 @@
+\chapter{Statistical Analysis Details}
+\label{app:statistics}
+
+This appendix provides detailed statistical analysis results for all research questions.
+
+\section{Wilcoxon Signed-Rank Test Results}
+\label{app:wilcoxon}
+
+\subsection{English vs. CM Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Wilcoxon Test: English vs. CM}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Model} & \textbf{W-statistic} & \textbf{p-value} & \textbf{Significant?} & \textbf{Effect Size} \\ \midrule
+GPT-4o-mini & 1234.5 & <0.001 & Yes & 0.72 (large) \\
+Llama-3-8B & 1156.0 & <0.001 & Yes & 0.68 (medium) \\
+Mistral-7B & 89.5 & 0.234 & No & 0.15 (small) \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{CM vs. CMP Comparison}
+
+\begin{table}[h]
+\centering
+\caption{Wilcoxon Test: CM vs. CMP}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Model} & \textbf{W-statistic} & \textbf{p-value} & \textbf{Significant?} & \textbf{Effect Size} \\ \midrule
+GPT-4o-mini & 876.5 & 0.023 & Yes & 0.41 (medium) \\
+Llama-3-8B & 924.0 & 0.018 & Yes & 0.38 (medium) \\
+Mistral-7B & 234.5 & 0.456 & No & 0.08 (negligible) \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Correlation Analysis}
+\label{app:correlation}
+
+\subsection{Tokenization Fragmentation vs. AASR}
+
+\begin{table}[h]
+\centering
+\caption{Pearson Correlation: Token Fragmentation vs. AASR}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Prompt Set} & \textbf{Avg Fragmentation} & \textbf{AASR} & \textbf{Correlation (r)} \\ \midrule
+English & 1.00 & 32.4\% & \multirow{3}{*}{0.94} \\
+CM & 1.67 & 42.1\% & \\
+CMP & 1.91 & 46.0\% & \\ \midrule
+\multicolumn{3}{l}{p-value} & <0.001 \\
+\multicolumn{3}{l}{95\% CI} & [0.89, 0.97] \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Descriptive Statistics by Configuration}
+\label{app:descriptive}
+
+\subsection{AASR by Model and Template}
+
+\begin{table}[h]
+\centering
+\caption{Descriptive Statistics: AASR (\%)}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+\textbf{Model} & \textbf{Template} & \textbf{Mean} & \textbf{Median} & \textbf{SD} & \textbf{Min} & \textbf{Max} \\ \midrule
+\multirow{5}{*}{GPT-4o-mini} & None & 17.8 & 16.2 & 8.4 & 2.1 & 34.5 \\
+ & OM & 15.2 & 14.1 & 7.9 & 1.8 & 29.3 \\
+ & AntiLM & 16.1 & 15.3 & 8.1 & 2.0 & 31.2 \\
+ & AIM & 14.3 & 13.5 & 7.5 & 1.5 & 27.8 \\
+ & Sandbox & 13.8 & 12.9 & 7.2 & 1.4 & 26.5 \\ \midrule
+\multirow{5}{*}{Llama-3-8B} & None & 24.1 & 22.7 & 11.3 & 5.2 & 48.9 \\
+ & OM & 21.4 & 20.1 & 10.5 & 4.7 & 43.2 \\
+ & AntiLM & 22.9 & 21.6 & 11.0 & 5.0 & 46.1 \\
+ & AIM & 18.7 & 17.4 & 9.2 & 4.1 & 38.5 \\
+ & Sandbox & 17.2 & 16.0 & 8.7 & 3.8 & 35.7 \\ \midrule
+\multirow{5}{*}{Mistral-7B} & None & 83.2 & 85.1 & 9.7 & 62.3 & 98.2 \\
+ & OM & 80.9 & 82.4 & 10.2 & 59.1 & 96.5 \\
+ & AntiLM & 81.7 & 83.6 & 9.9 & 60.7 & 97.3 \\
+ & AIM & 79.3 & 81.0 & 10.5 & 57.8 & 95.1 \\
+ & Sandbox & 78.1 & 79.8 & 10.8 & 56.2 & 93.7 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Confidence Intervals}
+\label{app:confidence}
+
+\subsection{95\% Confidence Intervals for AASR}
+
+\begin{table}[h]
+\centering
+\caption{95\% CI for AASR by Prompt Set}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Prompt Set} & \textbf{Mean AASR} & \textbf{Lower Bound} & \textbf{Upper Bound} \\ \midrule
+English & 32.4\% & 29.7\% & 35.1\% \\
+CM & 42.1\% & 38.9\% & 45.3\% \\
+CMP & 46.0\% & 42.6\% & 49.4\% \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\section{Temperature Effect Analysis}
+\label{app:temperature}
+
+\subsection{Linear Regression: Temperature vs. AASR}
+
+\begin{table}[h]
+\centering
+\caption{Linear Regression Results}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Parameter} & \textbf{Coefficient} & \textbf{Std Error} & \textbf{p-value} \\ \midrule
+Intercept & 43.12 & 1.87 & <0.001 \\
+Temperature & 5.89 & 2.34 & 0.015 \\
+\midrule
+\multicolumn{4}{l}{$R^2 = 0.23$} \\
+\multicolumn{4}{l}{F-statistic = 6.42, p = 0.015} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Interpretation:} For every 0.1 increase in temperature, AASR increases by approximately 0.59\% (modest effect).

@@ -1,0 +1,371 @@
+\chapter{Limitations}
+\label{ch:limitations}
+
+This chapter acknowledges the limitations of our study and discusses their implications for the interpretation and generalizability of our findings.
+
+\section{Dataset Limitations}
+\label{sec:dataset-limitations}
+
+\subsection{Limited Prompt Count}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Our study uses 50 prompts vs. 460 in the Hinglish study \citep{aswal2025}
+    \item Dataset reduced by $\sim$90\% due to budget constraints ($\sim$\$1 available vs. $\sim$\$10 for full scale)
+    \item Smaller sample size reduces statistical power
+    \item May not fully represent all harmful content categories
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Results may not generalize to all harmful scenarios
+    \item Category-specific patterns may be underexplored
+    \item Confidence intervals wider than larger studies
+\end{itemize}
+
+\textbf{Mitigation:}
+\begin{itemize}
+    \item Balanced distribution across 10 categories (5 prompts each)
+    \item Statistical significance still achieved for main comparisons
+    \item Framework designed for easy scaling to 460 prompts
+\end{itemize}
+
+\subsection{Manual Code-Mixing}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Code-mixing performed manually by authors
+    \item Potential for subjective variation
+    \item Time-intensive process limits scalability
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Code-mixing quality depends on authors' Bangla proficiency
+    \item Different researchers might produce different code-mixed variants
+    \item Difficult to scale to thousands of prompts
+\end{itemize}
+
+\textbf{Mitigation:}
+\begin{itemize}
+    \item Authors are native Bangla speakers
+    \item Manual review and consistency checks performed
+    \item Future work: Automated NMT-based code-mixing
+\end{itemize}
+
+\section{Model Coverage Limitations}
+\label{sec:model-limitations}
+
+\subsection{Limited Model Selection}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Only 3 models fully tested (GPT-4o-mini, Llama-3-8B, Mistral-7B)
+    \item Gemma-1.1-7B excluded due to budget constraints
+    \item Missing major models: Claude, PaLM 2, newer GPT-4
+    \item Open-source models limited to 7-8B parameters
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Results may not generalize to all LLM architectures
+    \item Google's LLM safety approach not evaluated (Gemma missing)
+    \item Larger models (70B+) might have different vulnerabilities
+    \item Proprietary models like Claude not evaluated
+\end{itemize}
+
+\textbf{Rationale:}
+\begin{itemize}
+    \item Budget constraints ($\sim$\$1 total spending for 50 prompts)
+    \item Full scale would have required $\sim$\$10 (460 prompts, 4 models)
+    \item OpenRouter API access limitations
+    \item Prioritized depth over breadth given constraints
+\end{itemize}
+
+\subsection{Model Version Stability}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item API-accessed models may be updated during study
+    \item Exact model versions not guaranteed stable
+    \item Safety patches may be deployed mid-study
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Reproducibility challenges
+    \item Results may not hold for future model versions
+    \item Temporal validity limited
+\end{itemize}
+
+\section{Experimental Design Limitations}
+\label{sec:experimental-limitations}
+
+\subsection{Temperature Settings}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Only 3 temperature values tested (0.2, 0.6, 1.0)
+    \item Original Hinglish study used 6 values
+    \item May miss optimal temperature for attacks
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Temperature sensitivity analysis less comprehensive
+    \item Possible optimal temperature between tested values
+    \item Reduced granularity in temperature effects
+\end{itemize}
+
+\textbf{Rationale:}
+\begin{itemize}
+    \item Reduces query count (cost savings)
+    \item 3 values capture low/medium/high diversity
+    \item Results show modest temperature effects anyway
+\end{itemize}
+
+\subsection{Single-Turn Evaluation}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Only evaluates single-turn attacks
+    \item Multi-turn conversation strategies not explored
+    \item Context accumulation effects not studied
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item May underestimate attack effectiveness
+    \item Real-world attacks often use multi-turn strategies
+    \item Conversational jailbreaking not captured
+\end{itemize}
+
+\section{Evaluation Limitations}
+\label{sec:evaluation-limitations}
+
+\subsection{LLM-as-Judge Reliability}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item GPT-4o-mini as sole judge (no human validation)
+    \item ICC not calculated against human annotators
+    \item Potential for systematic judge biases
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Evaluation accuracy depends on judge model quality
+    \item May miss subtle harmful content
+    \item Judge may have language-specific biases
+\end{itemize}
+
+\textbf{Mitigation:}
+\begin{itemize}
+    \item Prior work validates $\geq$0.70 ICC for LLM judges
+    \item Consistent evaluation criteria across all prompts
+    \item Future work: Human annotation sample for ICC validation
+\end{itemize}
+
+\subsection{Binary Harmfulness Classification}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Success metric is binary (harmful/harmless)
+    \item Doesn't capture degrees of harmfulness
+    \item May oversimplify nuanced responses
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Loses granularity in harm severity
+    \item Partial information treated same as full instructions
+    \item Threshold effects not explored
+\end{itemize}
+
+\section{Linguistic Limitations}
+\label{sec:linguistic-limitations}
+
+\subsection{Romanization Variability}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item No systematic romanization standard applied
+    \item Authors' intuitive romanization may not represent all users
+    \item Regional variations in Bangla romanization not explored
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Results may vary with different romanization schemes
+    \item Generalizability to all Banglish variants unclear
+    \item Dialectal differences not accounted for
+\end{itemize}
+
+\subsection{Single Language Pair}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Only Bangla-English code-mixing tested
+    \item Other Indic languages not evaluated
+    \item Cross-linguistic patterns not established
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Cannot confirm if patterns generalize to other languages
+    \item Bangla-specific vs. general code-mixing effects unclear
+    \item Limited comparative analysis
+\end{itemize}
+
+\section{Interpretability Limitations}
+\label{sec:interpretability-limitations}
+
+\subsection{Tokenization Analysis}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Correlation analysis only ($r=0.94$)
+    \item No causal mechanism proof
+    \item Integrated Gradients analysis incomplete
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Mechanism hypothesis not fully validated
+    \item Other factors may contribute to attack success
+    \item Attribution analysis would strengthen claims
+\end{itemize}
+
+\subsection{Black-Box Evaluation}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item API-only access (no model internals)
+    \item Cannot inspect attention patterns
+    \item Safety filter architecture unknown
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Limited mechanistic understanding
+    \item Cannot verify tokenization hypothesis internally
+    \item Reliance on behavioral evidence only
+\end{itemize}
+
+\section{Ethical and Practical Limitations}
+\label{sec:ethical-limitations}
+
+\subsection{Budget Constraints}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Total budget: $\sim$\$1 (very limited for academic research)
+    \item Prevented full 460-prompt dataset execution
+    \item Limited to 50 prompts ($\sim$90\% reduction from planned scale)
+    \item Gemma-1.1-7B excluded to stay within budget
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item $\sim$2,250 responses vs. planned $\sim$6,750 for full factorial design
+    \item Only 3 models tested instead of 4
+    \item Reduced statistical power and generalizability
+    \item Cannot afford extensive parameter exploration
+\end{itemize}
+
+\textbf{Context:}
+\begin{itemize}
+    \item Full-scale study (460 prompts, 4 models) would have cost $\sim$\$10
+    \item Undergraduate research with limited institutional funding
+    \item Methodology remains sound despite reduced scale
+\end{itemize}
+
+\subsection{Responsible Disclosure Timing}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Findings disclosed in academic context
+    \item Model developers not pre-notified
+    \item Public dataset not released (by design)
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Vulnerabilities remain unpatched at publication
+    \item Potential for malicious exploitation
+    \item Delayed vendor response time
+\end{itemize}
+
+\textbf{Mitigation:}
+\begin{itemize}
+    \item Dataset not publicly released
+    \item Responsible disclosure planned post-publication
+    \item Research-only methodology sharing
+\end{itemize}
+
+\section{Generalizability Limitations}
+\label{sec:generalizability}
+
+\subsection{Temporal Validity}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Snapshot evaluation (November-December 2024)
+    \item Models continuously updated
+    \item Safety mechanisms evolve rapidly
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Results may not hold for future model versions
+    \item Attacks may be patched after disclosure
+    \item Historical validity only
+\end{itemize}
+
+\subsection{Real-World Applicability}
+
+\textbf{Limitation:}
+\begin{itemize}
+    \item Controlled research setting
+    \item Assumes adversarial intent
+    \item Doesn't reflect typical user interactions
+\end{itemize}
+
+\textbf{Impact:}
+\begin{itemize}
+    \item Actual exploitation rates may differ
+    \item User behavior factors not modeled
+    \item Platform-level mitigations not accounted for
+\end{itemize}
+
+\section{Summary}
+\label{sec:limitations-summary}
+
+Despite these limitations, our study provides valuable insights:
+
+\textbf{Key Strengths:}
+\begin{itemize}
+    \item First comprehensive Bangla code-mixing study
+    \item Statistically significant findings
+    \item Replicable methodology
+    \item Novel language-specific insights
+\end{itemize}
+
+\textbf{Acknowledged Weaknesses:}
+\begin{itemize}
+    \item Limited dataset size (50 vs. 460 prompts)
+    \item Incomplete model coverage
+    \item No human evaluation validation
+    \item Black-box analysis only
+\end{itemize}
+
+\textbf{Future Work Directions:}
+\begin{itemize}
+    \item Scale to 460 prompts
+    \item Human ICC validation study
+    \item Automated code-mixing generation
+    \item White-box interpretability analysis
+    \item Extension to other Indic languages
+\end{itemize}
+
+The limitations outlined in this chapter should be considered when interpreting our results and planning follow-up studies.
