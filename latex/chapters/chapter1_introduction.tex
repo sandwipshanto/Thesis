@@ -4,7 +4,7 @@
 \section{Overview}
 \label{sec:overview}
 
-Large Language Models (LLMs) have transformed human-computer interaction, serving billions of users worldwide through applications ranging from customer service chatbots to educational tools and creative assistants. The release of models like ChatGPT \citep{openai2023}, Llama \citep{meta2024}, Gemini \citep{google2024}, and Mistral has democratized access to powerful AI systems, enabling users from diverse linguistic backgrounds to interact with these technologies in their native languages or preferred communication styles. However, this global accessibility introduces critical safety challenges that remain poorly understood for low-resource languages, particularly in the context of adversarial attacks exploiting code-mixing and phonetic perturbations.
+Large Language Models (LLMs) have transformed human-computer interaction, serving billions of users worldwide through applications ranging from customer service chatbots to educational tools and creative assistants. The release of models like ChatGPT \citep{openai2023}, Llama \citep{dubey2024}, Gemini \citep{google2024}, and Mistral has democratized access to powerful AI systems, enabling users from diverse linguistic backgrounds to interact with these technologies in their native languages or preferred communication styles. However, this global accessibility introduces critical safety challenges that remain poorly understood for low-resource languages, particularly in the context of adversarial attacks exploiting code-mixing and phonetic perturbations.
 
 \section{Motivation and Research Problem}
 \label{sec:motivation}
@@ -81,15 +81,4 @@ This thesis makes six primary contributions to multilingual LLM security researc
 \section{Thesis Organization}
 \label{sec:organization}
 
-The remainder of this thesis is organized as follows:
-
-\begin{itemize}
-    \item \textbf{Chapter~\ref{ch:background}} reviews related work on LLM jailbreaking, multilingual safety, code-mixing, and phonetic perturbations
-    \item \textbf{Chapter~\ref{ch:methodology}} describes our three-step methodology for generating Bangla code-mixed prompts with phonetic perturbations
-    \item \textbf{Chapter~\ref{ch:experimental}} details the experimental setup including models, datasets, evaluation metrics, and statistical methods
-    \item \textbf{Chapter~\ref{ch:results}} presents comprehensive results for all four research questions
-    \item \textbf{Chapter~\ref{ch:discussion}} discusses implications, compares findings with related work, and addresses methodological considerations
-    \item \textbf{Chapter~\ref{ch:limitations}} acknowledges limitations including dataset size, model scope, and experimental constraints
-    \item \textbf{Chapter~\ref{ch:ethical}} addresses ethical considerations including responsible disclosure and dataset handling
-    \item \textbf{Chapter~\ref{ch:conclusion}} concludes with key takeaways and future research directions
-\end{itemize}
+The remainder of this thesis is organized as follows. Chapter~\ref{ch:background} reviews related work on LLM jailbreaking, multilingual safety, code-mixing, and phonetic perturbations, establishing the theoretical foundation for our investigation. Chapter~\ref{ch:methodology} describes our systematic three-step methodology for generating Bangla code-mixed prompts with phonetic perturbations, including the prompt transformation pipeline and jailbreak template implementations. Chapter~\ref{ch:experimental} details the comprehensive experimental setup including model selection, dataset statistics, evaluation metrics, and statistical validation methods. Chapter~\ref{ch:results} presents empirical findings for all four research questions, supported by quantitative analysis and statistical significance testing. Chapter~\ref{ch:discussion} discusses the broader implications of our findings, compares results with related work on multilingual vulnerabilities, and addresses methodological considerations. Chapter~\ref{ch:limitations} acknowledges important limitations including dataset size constraints, model scope restrictions, and experimental boundary conditions. Chapter~\ref{ch:ethical} addresses critical ethical considerations including responsible disclosure protocols and dataset handling procedures. Finally, Chapter~\ref{ch:conclusion} concludes with key takeaways and promising directions for future research in multilingual LLM security.

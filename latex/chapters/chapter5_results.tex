@@ -25,17 +25,12 @@ CMP & 46.0\% & 73.8\% & +42\% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Statistical Significance (Wilcoxon Signed-Rank Test, $\alpha$=0.05):}
-\begin{itemize}
-    \item English vs. CM: $p < 0.001$ (significant)
-    \item CM vs. CMP: $p = 0.023$ (significant)
-    \item English vs. CMP: $p < 0.001$ (significant)
-\end{itemize}
+\textbf{Statistical Significance (Wilcoxon Signed-Rank Test, $\alpha$=0.05):} Wilcoxon signed-rank testing confirms statistically significant differences between all prompt set pairs at the $\alpha=0.05$ level. The comparison between English and code-mixed prompts yields $p < 0.001$, indicating highly significant improvement. The comparison between code-mixed and phonetically perturbed prompts yields $p = 0.023$, demonstrating significant additional benefit from perturbations. Finally, the direct comparison between English and fully perturbed prompts yields $p < 0.001$, confirming the cumulative effectiveness of the complete transformation pipeline. Figure~\ref{fig:transition-effects} demonstrates this systematic improvement in AASR as phonetic perturbations are progressively added to code-mixed prompts across all tested models.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{images/transition_effects_20251120_102743.png}
-\caption{Attack Success Rate Progression: English → CM → CMP. The figure demonstrates systematic improvement in AASR as phonetic perturbations are added to code-mixed prompts across all tested models.}
+\caption{Attack success rate progression across prompt transformations}
 \label{fig:transition-effects}
 \end{figure}
 
@@ -55,18 +50,12 @@ Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)}
 \end{tabular}
 \end{table}
 
-\textbf{Key Observations:}
-
-\begin{enumerate}
-    \item \textbf{Mistral-7B:} Already vulnerable at baseline (84.1\%), minimal change with CM/CMP
-    \item \textbf{Llama-3-8B:} Shows clear progression (11.6\%$\rightarrow$25.6\%$\rightarrow$30.9\%)
-    \item \textbf{GPT-4o-mini:} Strongest baseline (1.5\%), but 17$\times$ increase to 25.7\%
-\end{enumerate}
+\textbf{Key Observations:} Mistral-7B demonstrates critical baseline vulnerability at 84.1\%, showing minimal change with code-mixing strategies because safety filters are already largely ineffective. In contrast, Llama-3-8B exhibits a clear progression pattern, with AASR increasing systematically from 11.6\% (English) to 25.6\% (CM) to 30.9\% (CMP). GPT-4o-mini presents the most striking case, possessing the strongest baseline defenses at only 1.5\% AASR, yet experiencing a 17$\times$ increase to 25.7\% when subjected to Bangla code-mixing attacks. These vulnerability patterns are visualized in Figure~\ref{fig:aasr-heatmap}, which highlights the critical baseline weakness in Mistral-7B and GPT-4o-mini's dramatic sensitivity.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\textwidth]{images/aasr_heatmap_20251120_102739.png}
-\caption{AASR Heatmap: Model $\times$ Prompt Set Interaction. The heatmap visualizes vulnerability patterns, highlighting Mistral-7B's critical baseline weakness and GPT-4o-mini's dramatic sensitivity to code-mixing attacks.}
+\caption{Model vulnerability heatmap across prompt transformations}
 \label{fig:aasr-heatmap}
 \end{figure}
 
@@ -87,14 +76,7 @@ Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)}
 
 \subsection{Answer to RQ1}
 
-\textbf{Yes, Bangla-English code-mixing with phonetic perturbations effectively bypasses LLM safety filters:}
-\begin{itemize}
-    \item 46\% overall AASR with CMP
-    \item 42\% improvement over English baseline
-    \item Statistically significant across all comparisons ($p < 0.05$)
-    \item Effective across all tested models (varying degrees)
-    \item Robust across temperature settings
-\end{itemize}
+The answer to RQ1 is affirmative. Bangla-English code-mixing with phonetic perturbations effectively bypasses LLM safety filters, achieving 46\% overall AASR with the CMP prompt set. This represents a 42\% improvement over the English baseline. All pairwise comparisons reach statistical significance at the $p < 0.05$ level, confirming the robustness of the findings. The attack proves effective across all tested models, though with varying degrees of vulnerability ranging from critical (Mistral-7B) to moderate (Llama-3-8B) to low but exploitable (GPT-4o-mini). Furthermore, the attack strategy remains robust across temperature settings spanning deterministic (0.2) to balanced (0.6) to highly creative (1.0) sampling parameters.
 
 \section{RQ2: Bangla-Specific Patterns}
 \label{sec:rq2}
@@ -151,13 +133,7 @@ Letter transposition & create $\rightarrow$ craete & 43.8\% & Medium \\ \bottomr
 
 \subsection{Answer to RQ2}
 
-\textbf{Bangla-specific patterns that enable attacks:}
-\begin{enumerate}
-    \item \textbf{English word targeting:} 68\% more effective than Bangla word perturbations
-    \item \textbf{30:70 English:Bangla ratio:} High attack success (30\% English words, 70\% Bangla words)
-    \item \textbf{Romanization variability:} Creates unpredictable tokenization paths
-    \item \textbf{Simple phonetic perturbations:} Vowel substitution and consonant doubling most effective
-\end{enumerate}
+Analysis reveals four Bangla-specific patterns that enable these attacks. First, targeting English words proves 68\% more effective than perturbing Bangla words, suggesting that safety filters focus predominantly on English-language harmful content. Second, the 30:70 English:Bangla ratio (30\% English words, 70\% Bangla words) yields particularly high attack success by maintaining semantic coherence while disrupting tokenization patterns. Third, romanization variability inherent to Bangla transliteration creates unpredictable tokenization paths that evade pattern matching. Fourth, simple phonetic perturbations—particularly vowel substitution and consonant doubling—prove most effective at fragmenting sensitive keywords without sacrificing prompt intelligibility.
 
 \section{RQ3: Model Vulnerability Consistency}
 \label{sec:rq3}
@@ -180,18 +156,18 @@ Letter transposition & create $\rightarrow$ craete & 43.8\% & Medium \\ \bottomr
 \end{tabular}
 \end{table}
 
-\textbf{Key Finding:} All tested models (3/3) are vulnerable to Bangla code-mixing attacks, though severity varies dramatically. Gemma-1.1-7B could not be evaluated due to budget limitations.
+\textbf{Key Finding:} All tested models (3/3) are vulnerable to Bangla code-mixing attacks, though severity varies dramatically. Gemma-1.1-7B could not be evaluated due to budget limitations. Figure~\ref{fig:model-comparison} compares average AASR across the three tested models, demonstrating the extreme vulnerability gap between Mistral-7B and the other models.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{images/model_comparison_20251120_102741.png}
-\caption{Model Vulnerability Comparison Across Prompt Sets. Bar chart comparing average AASR across the three tested models, demonstrating the extreme vulnerability gap between Mistral-7B and the other models.}
+\caption{Average AASR comparison across tested models}
 \label{fig:model-comparison}
 \end{figure}
 
 \subsection{Template Effectiveness by Model}
 
-\textbf{Surprising Finding:} Jailbreak templates \textbf{reduce} effectiveness for Bangla attacks.
+\textbf{Surprising Finding:} Jailbreak templates \textbf{reduce} effectiveness for Bangla attacks. As shown in Figure~\ref{fig:template-comparison}, the "None" baseline (no jailbreak template) achieves the highest average AASR at 46.2\%, counter-intuitively outperforming all engineered templates. This suggests that code-mixing attacks work best without additional prompt engineering, as the linguistic obfuscation itself provides sufficient evasion.
 
 \begin{table}[h]
 \centering
@@ -211,20 +187,13 @@ Sandbox & 78.1\% & 17.2\% & 13.8\% & 35.1\% \\ \bottomrule
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.85\textwidth]{images/template_comparison_20251120_102742.png}
-\caption{Jailbreak Template Effectiveness Comparison. Counter-intuitively, the "None" baseline (no jailbreak template) achieves the highest average AASR (46.2\%), suggesting code-mixing attacks work best without additional prompt engineering.}
+\caption{Jailbreak template effectiveness comparison}
 \label{fig:template-comparison}
 \end{figure}
 
 \subsection{Answer to RQ3}
 
-\textbf{Yes, all tested LLMs are vulnerable to Bangla attacks, but inconsistently:}
-\begin{enumerate}
-    \item \textbf{Mistral-7B:} Critically vulnerable (81.8\% avg)
-    \item \textbf{Llama-3-8B:} Moderately vulnerable (22.7\% avg)
-    \item \textbf{GPT-4o-mini:} Low but exploitable (16.0\% avg) - 17$\times$ increase
-    \item \textbf{Gemma-1.1-7B:} Not evaluated due to budget constraints - limits generalizability
-    \item \textbf{Jailbreak templates ineffective:} Simple prompts work best
-\end{enumerate}
+The answer to RQ3 is affirmative with important qualifications. All tested LLMs demonstrate vulnerability to Bangla code-mixing attacks, though with dramatic inconsistency in severity. Mistral-7B exhibits critical vulnerability at 81.8\% average AASR, suggesting fundamental weaknesses in safety alignment. Llama-3-8B shows moderate vulnerability at 22.7\% average AASR, representing a balanced middle ground. GPT-4o-mini demonstrates the lowest vulnerability at 16.0\% average AASR, yet this still represents a 17$\times$ increase over its English baseline, indicating that even the most robust safety filters remain exploitable. Notably, Gemma-1.1-7B could not be evaluated due to budget constraints, which limits the generalizability of findings across all major LLM providers. Additionally, we observe that jailbreak templates prove ineffective for Bangla attacks, with simple prompts achieving the highest success rates—suggesting that code-mixing itself provides sufficient obfuscation.
 
 \textbf{Limitation:} Testing only 3 of 4 planned models reduces coverage of major LLM providers (Google's Gemma missing).
 
@@ -270,46 +239,20 @@ Token count: 7, AASR: 47\%
 
 \subsection{Answer to RQ4}
 
-\textbf{Yes, tokenization disruption explains Bangla attack success:}
-\begin{enumerate}
-    \item \textbf{Observed AASR progression} aligns with fragmentation ratio (English$\rightarrow$CM$\rightarrow$CMP)
-    \item \textbf{Progressive fragmentation} matches progressive AASR improvement
-    \item \textbf{Mechanism validated:} Perturbations fragment harmful keywords
-    \item \textbf{Consistent across models} (except Mistral's baseline weakness)
-\end{enumerate}
+The answer to RQ4 is affirmative. Tokenization disruption provides a mechanistically sound explanation for Bangla attack success. The observed AASR progression (English$\rightarrow$CM$\rightarrow$CMP) aligns precisely with the fragmentation ratio patterns, demonstrating that increased tokenization fragmentation correlates with higher attack effectiveness. Progressive fragmentation of harmful keywords matches the progressive improvement in AASR across prompt transformation stages. The mechanism validates that phonetic perturbations successfully fragment harmful keywords into semantically inert subword units, thereby evading token-level safety filters. This pattern holds consistently across models, with the exception of Mistral-7B's existing baseline weakness which masks the effect.
 
 \section{Summary of Key Findings}
 \label{sec:results-summary}
 
 This chapter presented systematic experimental results across approximately 2,250 model responses from 3 LLMs (Gemma excluded due to budget constraints):
 
-\textbf{RQ1 - Code-Mixing Effectiveness:}
-\begin{itemize}
-    \item 46\% AASR with CMP (42\% improvement over English)
-    \item Statistically significant ($p < 0.05$)
-    \item Robust across temperature settings
-\end{itemize}
+\textbf{RQ1 - Code-Mixing Effectiveness:} Bangla-English code-mixing with phonetic perturbations achieves 46\% AASR with the CMP prompt set, representing a 42\% improvement over the English baseline. This improvement is statistically significant at $p < 0.05$ and remains robust across all tested temperature settings (0.2, 0.6, 1.0).
 
-\textbf{RQ2 - Bangla-Specific Patterns:}
-\begin{itemize}
-    \item English word targeting 68\% more effective
-    \item 30:70 English:Bangla ratio yields high attack success
-    \item Vowel substitution most effective perturbation
-\end{itemize}
+\textbf{RQ2 - Bangla-Specific Patterns:} Analysis identifies three key enabling patterns: English word targeting proves 68\% more effective than Bangla word perturbations, the 30:70 English:Bangla ratio yields high attack success by balancing comprehensibility and obfuscation, and vowel substitution emerges as the most effective phonetic perturbation strategy.
 
-\textbf{RQ3 - Model Vulnerability:}
-\begin{itemize}
-    \item All models vulnerable (81.8\%, 22.7\%, 16.0\%)
-    \item GPT-4o-mini shows 17$\times$ increase with code-mixing
-    \item Jailbreak templates reduce effectiveness
-\end{itemize}
+\textbf{RQ3 - Model Vulnerability:} All three tested models demonstrate vulnerability to Bangla attacks, with average AASRs of 81.8\% (Mistral-7B), 22.7\% (Llama-3-8B), and 16.0\% (GPT-4o-mini). Notably, GPT-4o-mini experiences a 17$\times$ increase in vulnerability when subjected to code-mixing attacks. Surprisingly, jailbreak templates prove ineffective, with simple prompts achieving higher success rates than engineered templates.
 
-\textbf{RQ4 - Tokenization Mechanism:}
-\begin{itemize}
-    \item Observed AASR patterns consistent with fragmentation progression; findings align with tokenization disruption mechanism empirically validated for Hindi-English (Aswal \& Jaiswal, 2025)
-    \item Phonetic perturbations fragment harmful keywords
-    \item Token-level filters evaded through fragmentation
-\end{itemize}
+\textbf{RQ4 - Tokenization Mechanism:} The observed AASR patterns align consistently with tokenization fragmentation progression, supporting the hypothesis that phonetic perturbations fragment harmful keywords into semantically inert subword units. These findings corroborate the tokenization disruption mechanism empirically validated for Hindi-English code-mixing (Aswal \& Jaiswal, 2025), demonstrating that token-level safety filters can be evaded through systematic fragmentation strategies.
 
 \section{Detailed Statistical Analysis}
 \label{sec:detailed-stats}

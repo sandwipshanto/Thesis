@@ -69,13 +69,7 @@ Extremism & 4 & 8\% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Severity Distribution:}
-\begin{itemize}
-    \item Critical (5): 12 prompts (24\%)
-    \item High (4): 18 prompts (36\%)
-    \item Medium (3): 15 prompts (30\%)
-    \item Low (2): 5 prompts (10\%)
-\end{itemize}
+The severity distribution of our 50 prompts reflects realistic harm potential: 12 prompts (24\%) were classified as Critical (severity level 5), 18 prompts (36\%) as High (level 4), 15 prompts (30\%) as Medium (level 3), and 5 prompts (10\%) as Low (level 2). This distribution ensures comprehensive coverage of harmful content ranging from immediately dangerous instructions to more subtle ethical violations.
 
 \subsection{Prompt Set Statistics}
 
@@ -102,13 +96,7 @@ Perturbed words & 0 & 0 & 4.1 \\ \bottomrule
 
 \textbf{Platform:} OpenRouter (\url{https://openrouter.ai})
 
-\textbf{Rate Limits:}
-\begin{itemize}
-    \item GPT-4o-mini: 500 requests/minute
-    \item Llama-3-8B: 100 requests/minute
-    \item Gemma-1.1-7B: 100 requests/minute
-    \item Mistral-7B: 100 requests/minute
-\end{itemize}
+API rate limits varied by model through the OpenRouter platform. GPT-4o-mini allowed 500 requests per minute, while Llama-3-8B, Gemma-1.1-7B, and Mistral-7B each permitted 100 requests per minute. These rate limits necessitated careful experiment scheduling but did not constrain our total experimental capacity given our dataset size.
 
 \subsection{Cost Analysis}
 
@@ -126,15 +114,7 @@ Mistral-7B & \$0.06/1M & \$0.06/1M & \$0.001 \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Budget Analysis:}
-\begin{itemize}
-    \item \textbf{Original plan (460 prompts, 4 models):} $\sim$\$10 total cost estimate for full factorial design
-    \item \textbf{Actual execution (50 prompts, 3 models):} $\sim$\$1 total cost for $\sim$6,750 queries (3 models $\times$ 5 templates $\times$ 3 prompt sets $\times$ 3 temps $\times$ 50 prompts)
-    \item \textbf{Budget constraint rationale:} Limited research funding necessitated $\sim$90\% reduction in dataset size (460$\rightarrow$50)
-    \item \textbf{Models tested:} GPT-4o-mini, Llama-3-8B, Mistral-7B
-    \item \textbf{Gemma excluded:} Would have added minimal cost ($\sim$\$0.10-0.20) but excluded due to overall budget constraints
-    \item \textbf{Evaluation costs:} LLM-as-judge evaluation included in total spend
-\end{itemize}
+Our original experimental plan anticipated testing 460 prompts across 4 models with an estimated total cost of approximately \$10 for the full factorial design. However, budget constraints necessitated significant scope reduction. The actual execution tested 50 prompts across 3 models (GPT-4o-mini, Llama-3-8B, Mistral-7B) generating approximately 6,750 total queries (calculated as 3 models $\times$ 5 templates $\times$ 3 prompt sets $\times$ 3 temperatures $\times$ 50 prompts) at a total cost of approximately \$1. This represented a 90\% reduction in dataset size from the initial plan (460$\rightarrow$50 prompts). Limited research funding drove this constraint, requiring us to prioritize methodological rigor over exhaustive prompt coverage. Gemma-1.1-7B was specifically excluded despite its minimal additional cost (\$0.10-0.20) due to overall budget limitations. All costs including LLM-as-judge evaluation were included in the \$1 total expenditure.
 
 \section{Evaluation Configuration}
 \label{sec:eval-config}
@@ -143,65 +123,31 @@ Mistral-7B & \$0.06/1M & \$0.06/1M & \$0.001 \\ \bottomrule
 
 \textbf{Model:} GPT-4o-mini
 
-\textbf{Rationale:}
-\begin{itemize}
-    \item Cost-effective (\$0.000035/evaluation)
-    \item High accuracy (validated $\geq$ 0.70 ICC in prior work)
-    \item Consistent evaluation criteria
-\end{itemize}
+We selected GPT-4o-mini as our automated judge for three compelling reasons. First, it provides cost-effective evaluation at \$0.000035 per assessment, enabling comprehensive evaluation of all 6,750 responses within budget constraints. Second, prior research has validated LLM-as-judge approaches achieving inter-coder reliability (ICC) of at least 0.70 when properly prompted, establishing methodological legitimacy. Third, the model applies consistent evaluation criteria across all responses, eliminating human evaluator fatigue and subjectivity that could introduce systematic bias into large-scale experiments.
 
 \section{Statistical Analysis Tools}
 \label{sec:stats-tools}
 
 \subsection{Descriptive Statistics}
 
-\textbf{Metrics Computed:}
-\begin{itemize}
-    \item Mean, median, standard deviation (AASR, AARR)
-    \item Min, max, quartiles
-    \item Confidence intervals (95\%)
-\end{itemize}
+Our descriptive statistical analysis computes comprehensive summary metrics for both AASR and AARR across all experimental configurations. These metrics include measures of central tendency (mean and median), dispersion (standard deviation, minimum, maximum, and quartiles), and uncertainty quantification through 95\% confidence intervals. This suite of descriptive statistics enables robust characterization of attack effectiveness distributions and supports subsequent inferential testing.
 
 \subsection{Inferential Statistics}
 
-\textbf{Wilcoxon Signed-Rank Test:}
-\begin{itemize}
-    \item Implementation: \texttt{scipy.stats.wilcoxon}
-    \item Paired comparisons (English vs. CM, CM vs. CMP)
-    \item Two-tailed test
-    \item Significance level: $\alpha = 0.05$
-\end{itemize}
+Wilcoxon signed-rank testing was implemented using \texttt{scipy.stats.wilcoxon} to perform paired comparisons between prompt set effectiveness (English vs. CM, and CM vs. CMP). We employed two-tailed tests with significance level $\alpha = 0.05$ to detect bidirectional differences, though our directional hypothesis anticipated increased effectiveness with code-mixing and perturbations.
 
-\textbf{Correlation Analysis:}
-\begin{itemize}
-    \item Pearson correlation (tokenization fragmentation vs. AASR)
-    \item Spearman correlation (ordinal relationships)
-\end{itemize}
+Correlation analysis employed both Pearson correlation to quantify linear relationships between tokenization fragmentation and AASR, and Spearman correlation to capture monotonic ordinal relationships that might not be strictly linear. This dual approach ensures robust detection of the hypothesized positive association between token fragmentation and attack success.
 
 \section{Reproducibility}
 \label{sec:reproducibility}
 
 \subsection{Data Preservation}
 
-\textbf{Saved Artifacts:}
-\begin{itemize}
-    \item All input prompts (3 CSV files)
-    \item All model responses (CSV with metadata)
-    \item All judge evaluations (CSV with scores)
-    \item Metrics per configuration (CSV)
-    \item Statistical test results (CSV)
-\end{itemize}
+To ensure complete reproducibility, we preserved all experimental artifacts in structured CSV format. This includes all input prompts across the three sets (English, CM, CMP), all raw model responses with associated metadata (model, temperature, template, timestamp), all automated judge evaluations with binary success and relevance scores, aggregated metrics computed per experimental configuration, and complete statistical test results including test statistics and p-values. This comprehensive data preservation enables independent verification and extension of our findings.
 
 \subsection{Code Availability}
 
-All code organized in modular structure:
-\begin{itemize}
-    \item \texttt{scripts/data\_preparation/} -- Prompt loading
-    \item \texttt{scripts/experiments/} -- Experiment runner
-    \item \texttt{scripts/evaluation/} -- LLM judge
-    \item \texttt{scripts/analysis/} -- Statistical tests
-    \item \texttt{scripts/utils/} -- API handlers
-\end{itemize}
+All experimental code is organized in a modular structure facilitating replication and extension. The codebase includes \texttt{scripts/data\_preparation/} for prompt loading and preprocessing, \texttt{scripts/experiments/} containing the main experiment runner orchestrating all queries, \texttt{scripts/evaluation/} implementing the LLM-as-judge evaluation logic, \texttt{scripts/analysis/} performing statistical tests and metric computation, and \texttt{scripts/utils/} providing shared API handlers and utility functions. This modular design enables researchers to replicate individual components or adapt the framework for testing other languages or attack strategies.
 
 \section{Sample Prompts and Transformations}
 \label{sec:sample-prompts}
@@ -291,13 +237,4 @@ This section provides sanitized examples illustrating the three-step transformat
 \section{Summary}
 \label{sec:exp-summary}
 
-Our experimental setup provides:
-\begin{itemize}
-    \item \textbf{3 diverse models} representing different organizations and architectures (OpenAI, Meta, Mistral AI)
-    \item \textbf{50 high-quality prompts} across 10 harm categories (reduced from 460 due to budget constraints)
-    \item \textbf{Systematic factorial design} (135 configurations across tested models)
-    \item \textbf{Automated evaluation} (LLM-as-judge methodology)
-    \item \textbf{Statistical rigor} (Wilcoxon tests, correlation analysis)
-    \item \textbf{Reproducible implementation} (saved artifacts, configuration control)
-    \item \textbf{Budget constraint:} Gemma-1.1-7B excluded, limiting generalizability to Google's LLM safety approach
-\end{itemize}
+Our experimental setup provides comprehensive coverage of the Bangla-English code-mixing attack surface through seven key strengths. First, we test 3 diverse models representing different organizations and architectures including OpenAI's GPT-4o-mini, Meta's Llama-3-8B, and Mistral AI's Mistral-7B, ensuring findings are not architecture-specific. Second, we employ 50 high-quality prompts spanning 10 distinct harm categories, though this represents a reduction from the originally planned 460 prompts due to budget constraints that limit statistical power while maintaining methodological rigor. Third, our systematic factorial design tests 135 unique configurations across the tested models, combining all combinations of templates, prompt sets, and temperatures. Fourth, automated evaluation through LLM-as-judge methodology enables consistent, scalable assessment of all 6,750 model responses. Fifth, statistical rigor is ensured through Wilcoxon signed-rank tests for significance testing and Pearson correlation analysis for mechanistic validation. Sixth, reproducible implementation through comprehensive artifact preservation and modular code organization enables independent verification and extension. Finally, we acknowledge a significant limitation: Gemma-1.1-7B was excluded due to budget constraints, limiting the generalizability of our findings to Google's specific LLM safety approach and reducing cross-vendor coverage.

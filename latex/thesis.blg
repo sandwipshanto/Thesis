@@ -1,0 +1,88 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesis.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: chapters/00_titlepage.aux
+Reallocating 'name_of_file' (item size: 1) to 28 items.
+A level-1 auxiliary file: chapters/01_declaration.aux
+Reallocating 'name_of_file' (item size: 1) to 42 items.
+A level-1 auxiliary file: chapters/02_supervisor_recommendation.aux
+Reallocating 'name_of_file' (item size: 1) to 28 items.
+A level-1 auxiliary file: chapters/03_certificate.aux
+Reallocating 'name_of_file' (item size: 1) to 27 items.
+A level-1 auxiliary file: chapters/04_dedication.aux
+Reallocating 'name_of_file' (item size: 1) to 31 items.
+A level-1 auxiliary file: chapters/05_acknowledgment.aux
+Reallocating 'name_of_file' (item size: 1) to 34 items.
+A level-1 auxiliary file: chapters/06_ethical_statement.aux
+Reallocating 'name_of_file' (item size: 1) to 32 items.
+A level-1 auxiliary file: chapters/07_content_warning.aux
+Reallocating 'name_of_file' (item size: 1) to 25 items.
+A level-1 auxiliary file: chapters/08_abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 35 items.
+A level-1 auxiliary file: chapters/chapter1_introduction.aux
+Reallocating 'name_of_file' (item size: 1) to 33 items.
+A level-1 auxiliary file: chapters/chapter2_background.aux
+Reallocating 'name_of_file' (item size: 1) to 34 items.
+A level-1 auxiliary file: chapters/chapter3_methodology.aux
+Reallocating 'name_of_file' (item size: 1) to 41 items.
+A level-1 auxiliary file: chapters/chapter4_experimental_setup.aux
+Reallocating 'name_of_file' (item size: 1) to 30 items.
+A level-1 auxiliary file: chapters/chapter5_results.aux
+Reallocating 'name_of_file' (item size: 1) to 33 items.
+A level-1 auxiliary file: chapters/chapter6_discussion.aux
+Reallocating 'name_of_file' (item size: 1) to 34 items.
+A level-1 auxiliary file: chapters/chapter7_limitations.aux
+Reallocating 'name_of_file' (item size: 1) to 45 items.
+A level-1 auxiliary file: chapters/chapter8_ethical_considerations.aux
+Reallocating 'name_of_file' (item size: 1) to 33 items.
+A level-1 auxiliary file: chapters/chapter9_conclusion.aux
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+The style file: apalike.bst
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'name_of_file' (item size: 1) to 24 items.
+A level-1 auxiliary file: chapters/appendix_c.aux
+Database file #1: references.bib
+Warning--I didn't find a database entry for "meta2024"
+You've used 16 entries,
+            1935 wiz_defined-function locations,
+            569 strings with 7250 characters,
+and the built_in function-call counts, 7283 in all, are:
+= -- 679
+> -- 430
+< -- 10
++ -- 158
+- -- 154
+* -- 604
+:= -- 1282
+add.period$ -- 46
+call.type$ -- 16
+change.case$ -- 153
+chr.to.int$ -- 16
+cite$ -- 16
+duplicate$ -- 268
+empty$ -- 425
+format.name$ -- 173
+if$ -- 1410
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 14
+newline$ -- 81
+num.names$ -- 48
+pop$ -- 164
+preamble$ -- 1
+purify$ -- 153
+quote$ -- 0
+skip$ -- 215
+stack$ -- 0
+substring$ -- 368
+swap$ -- 55
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 96
+warning$ -- 0
+while$ -- 46
+width$ -- 0
+write$ -- 196
+(There was 1 warning)

@@ -8,41 +8,17 @@ This chapter addresses the ethical dimensions of our research, including respons
 
 \subsection{AI Safety Motivation}
 
-Our research is conducted with the primary goal of \textbf{improving AI safety}:
-
-\begin{itemize}
-    \item Identifying vulnerabilities enables vendors to patch them
-    \item Understanding attack mechanisms informs better safety design
-    \item Documenting language-specific gaps promotes equitable protection
-    \item Academic disclosure advances collective security knowledge
-\end{itemize}
+Our research is conducted with the primary goal of \textbf{improving AI safety}. By identifying vulnerabilities, we enable vendors to develop and deploy patches before widespread exploitation. Understanding attack mechanisms informs fundamentally better safety architecture design rather than reactive patching. Documenting language-specific gaps promotes equitable protection for underserved language communities, while academic disclosure advances collective security knowledge through transparent peer review and reproducible methodologies.
 
 \subsection{Dual-Use Dilemma}
 
 We acknowledge the dual-use nature of our work:
 
-\textbf{Beneficial uses:}
-\begin{itemize}
-    \item LLM developers improve multilingual safety training
-    \item Researchers develop tokenization-robust defenses
-    \item Policy makers establish language coverage requirements
-    \item Red-teaming teams expand testing methodologies
-\end{itemize}
+\textbf{Beneficial uses:} Our findings enable multiple positive applications. LLM developers can improve multilingual safety training by incorporating code-mixing scenarios into RLHF datasets. Researchers gain insights for developing tokenization-robust defense mechanisms that operate at semantic rather than token levels. Policy makers can establish evidence-based language coverage requirements mandating safety for languages with substantial speaker populations. Red-teaming teams can expand their testing methodologies to systematically include code-mixing attack vectors.
 
-\textbf{Potential misuse:}
-\begin{itemize}
-    \item Malicious actors may exploit documented vulnerabilities
-    \item Attack techniques may be weaponized before patches deployed
-    \item Code-mixing strategies may be applied to other languages
-\end{itemize}
+\textbf{Potential misuse:} We acknowledge three primary misuse risks. Malicious actors may exploit the documented vulnerabilities against deployed systems during the responsible disclosure window. Attack techniques may be weaponized through automated tools before vendors deploy defensive patches. Code-mixing strategies may be systematically applied to other low-resource languages, expanding the attack surface beyond our Bangla-specific investigation.
 
-\textbf{Our position:} The benefits of disclosure outweigh risks because:
-\begin{enumerate}
-    \item Vulnerabilities likely already known to sophisticated adversaries
-    \item Academic transparency accelerates collective defense
-    \item Responsible disclosure protocols minimize exploitation window
-    \item Dataset restrictions limit easy replication
-\end{enumerate}
+\textbf{Our position:} The benefits of disclosure outweigh risks for four compelling reasons. First, these vulnerabilities are likely already known to sophisticated adversaries with resources to conduct similar research independently. Second, academic transparency accelerates collective defense by enabling parallel research and independent verification. Third, our responsible disclosure protocols minimize the exploitation window through coordinated vendor notification before publication. Fourth, dataset access restrictions limit easy replication by requiring formal research agreements.
 
 \section{Responsible Disclosure}
 \label{sec:responsible-disclosure}
@@ -66,14 +42,7 @@ We commit to notifying affected organizations:
     \item \textbf{Public disclosure:} Academic publication after patch deployment
 \end{enumerate}
 
-\textbf{Report contents:}
-\begin{itemize}
-    \item Executive summary of findings
-    \item Methodology description (without full prompts)
-    \item AASR metrics per model
-    \item Recommended mitigations
-    \item Offer to collaborate on fixes
-\end{itemize}
+\textbf{Report contents:} Each vendor notification includes an executive summary of model-specific findings, a methodology description (without disclosing full attack prompts), quantitative AASR metrics for their specific model, evidence-based mitigation recommendations, and an offer to collaborate on developing and validating fixes.
 
 \subsection{Dataset Handling}
 

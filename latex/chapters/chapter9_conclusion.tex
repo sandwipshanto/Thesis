@@ -111,40 +111,19 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 
 \textbf{Question:} \textit{Does Bangla-English code-mixing with phonetic perturbations bypass LLM safety filters?}
 
-\textbf{Answer:} \textbf{Yes.}
-
-\begin{itemize}
-    \item 46\% AASR achieved with CMP (vs. 32.4\% English baseline)
-    \item 42\% improvement statistically significant ($p < 0.001$)
-    \item Effective across all tested models (varying degrees)
-    \item Robust across temperature settings (43.5\%-49.2\%)
-\end{itemize}
+\textbf{Answer:} \textbf{Yes.} Bangla-English code-mixing with phonetic perturbations achieves 46\% AASR with the CMP prompt set, compared to 32.4\% with the English baseline. This 42\% improvement is statistically significant at $p < 0.001$. The attack proves effective across all tested models, though with varying degrees of vulnerability, and remains robust across temperature settings, ranging from 43.5\% to 49.2\% AASR.
 
 \subsection{RQ2: Bangla-Specific Patterns}
 
 \textbf{Question:} \textit{Which phonetic and romanization features enable Bangla attacks?}
 
-\textbf{Answer:} Four key patterns identified:
-
-\begin{enumerate}
-    \item \textbf{English word targeting:} 68\% more effective than Bangla word perturbations
-    \item \textbf{30:70 English:Bangla ratio:} High attack success (30\% English, 70\% Bangla)
-    \item \textbf{Romanization variability:} Non-standard romanization creates multiple tokenization paths
-    \item \textbf{Simple perturbations:} Vowel substitution and consonant doubling most effective
-\end{enumerate}
+\textbf{Answer:} Four key patterns identified. First, English word targeting proves 68\% more effective than Bangla word perturbations, suggesting safety filters focus on English harmful content. Second, the 30:70 English:Bangla ratio (30\% English, 70\% Bangla) yields high attack success by balancing comprehensibility and obfuscation. Third, Bangla's non-standard romanization creates multiple tokenization paths that evade pattern matching. Fourth, simple phonetic perturbations—particularly vowel substitution and consonant doubling—prove most effective at fragmenting sensitive keywords.
 
 \subsection{RQ3: Model Vulnerability}
 
 \textbf{Question:} \textit{Are all major LLMs vulnerable to Bangla attacks?}
 
-\textbf{Answer:} \textbf{Yes, all tested models are vulnerable, but inconsistently.}
-
-\begin{itemize}
-    \item \textbf{Mistral-7B:} 81.8\% avg AASR (critically vulnerable)
-    \item \textbf{Llama-3-8B:} 22.7\% avg AASR (moderately vulnerable)
-    \item \textbf{GPT-4o-mini:} 16.0\% avg AASR (low but exploitable - 17$\times$ increase with code-mixing)
-    \item \textbf{Jailbreak templates:} Reduce effectiveness (simple prompts work best)
-\end{itemize}
+\textbf{Answer:} \textbf{Yes, all tested models are vulnerable, but inconsistently.} Mistral-7B exhibits critical vulnerability at 81.8\% average AASR. Llama-3-8B demonstrates moderate vulnerability at 22.7\% average AASR. GPT-4o-mini shows the lowest vulnerability at 16.0\% average AASR, yet this represents a 17$\times$ increase when subjected to code-mixing attacks, confirming that even the strongest safety filters remain exploitable. Notably, jailbreak templates actually reduce effectiveness, with simple prompts achieving the highest success rates.
 
 \subsection{RQ4: Tokenization Mechanism}
 
@@ -164,27 +143,11 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 
 \subsection{Immediate Implications}
 
-\textbf{For LLM Developers:}
-\begin{itemize}
-    \item Bangla safety coverage inadequate across all tested models
-    \item Code-mixing should be included in red-teaming efforts
-    \item Token-level safety filters insufficient for multilingual contexts
-    \item English-centric training creates exploitable gaps
-\end{itemize}
+\textbf{For LLM Developers:} Our findings demonstrate that Bangla safety coverage remains inadequate across all tested models, indicating a critical need to include code-mixing scenarios in red-teaming efforts. Token-level safety filters prove insufficient for multilingual contexts, as English-centric training approaches create systematically exploitable gaps for the 230 million Bangla speakers worldwide.
 
-\textbf{For Policy Makers:}
-\begin{itemize}
-    \item Language coverage requirements needed (mandate safety for >100M speaker languages)
-    \item Transparency requirements: Disclose known language-specific vulnerabilities
-    \item Equitable deployment standards: Regional safety thresholds
-\end{itemize}
+\textbf{For Policy Makers:} These findings necessitate language coverage requirements mandating safety guarantees for languages with over 100 million speakers. Policymakers should establish transparency requirements compelling developers to disclose known language-specific vulnerabilities, alongside equitable deployment standards that enforce regional safety thresholds proportional to user populations.
 
-\textbf{For Research Community:}
-\begin{itemize}
-    \item 20+ other Indic languages likely vulnerable (Tamil, Telugu, Marathi, etc.)
-    \item Scalable framework enables rapid multilingual safety assessment
-    \item Tokenization robustness critical research direction
-\end{itemize}
+\textbf{For Research Community:} Our Bangla-specific findings suggest that 20+ other Indic languages—including Tamil, Telugu, and Marathi—likely exhibit similar vulnerabilities. The scalable framework developed in this thesis enables rapid multilingual safety assessment across these languages, establishing tokenization robustness as a critical research direction for the broader NLP safety community.
 
 \subsection{Long-Term Implications}
 

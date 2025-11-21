@@ -1,0 +1,93 @@
+\begin{thebibliography}{}
+
+\bibitem[Aswal and Jaiswal, 2025]{aswal2025}
+Aswal, R. and Jaiswal, S. (2025).
+\newblock Hinglish code-mixing and phonetic perturbations: A jailbreaking
+  strategy for large language models.
+\newblock {\em arXiv preprint arXiv:2505.14226}.
+
+\bibitem[Deng et~al., 2023]{deng2023}
+Deng, Y., Zhang, W., Pan, S.~J., and Bing, L. (2023).
+\newblock Multilingual jailbreak challenges in large language models.
+\newblock In {\em International Conference on Learning Representations}.
+
+\bibitem[Dubey et~al., 2024]{dubey2024}
+Dubey, A. et~al. (2024).
+\newblock The llama 3 herd of models.
+\newblock {\em arXiv preprint arXiv:2407.21783}.
+
+\bibitem[Ganguli et~al., 2022]{ganguli2022}
+Ganguli, D., Lovitt, L., Kernion, J., Askell, A., Bai, Y., Kadavath, S., Mann,
+  B., Perez, E., Schiefer, N., Ndousse, K., et~al. (2022).
+\newblock Red teaming language models to reduce harms: Methods, scaling
+  behaviors, and lessons learned.
+\newblock {\em arXiv preprint arXiv:2209.07858}.
+
+\bibitem[Google, 2024]{google2024}
+Google (2024).
+\newblock Gemini: A family of highly capable multimodal models.
+
+\bibitem[Gr{\"o}ndahl et~al., 2018]{grondahl2018}
+Gr{\"o}ndahl, T., Pajola, L., Juuti, M., Conti, M., and Asokan, N. (2018).
+\newblock All you need is" love" evading hate speech detection.
+\newblock In {\em Proceedings of the 11th ACM workshop on artificial
+  intelligence and security}, pages 2--12.
+
+\bibitem[Jiang et~al., 2023]{jiang2023}
+Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., Casas,
+  D. d.~l., Bressand, F., Lengyel, G., Lample, G., Saulnier, L., et~al. (2023).
+\newblock Mistral 7b.
+\newblock {\em arXiv preprint arXiv:2310.06825}.
+
+\bibitem[Khorsi, 2007]{khorsi2007}
+Khorsi, A. (2007).
+\newblock An overview of content-based spam filtering techniques.
+\newblock {\em Informatica}, 31(3):269--277.
+
+\bibitem[OpenAI, 2023]{openai2023}
+OpenAI (2023).
+\newblock Gpt-4 technical report.
+
+\bibitem[Ouyang et~al., 2022]{ouyang2022}
+Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C., Mishkin, P., Zhang,
+  C., Agarwal, S., Slama, K., Ray, A., et~al. (2022).
+\newblock Training language models to follow instructions with human feedback.
+\newblock In {\em Advances in Neural Information Processing Systems},
+  volume~35, pages 27730--27744.
+
+\bibitem[Sennrich et~al., 2016]{sennrich2016}
+Sennrich, R., Haddow, B., and Birch, A. (2016).
+\newblock Neural machine translation of rare words with subword units.
+\newblock In {\em Proceedings of the 54th Annual Meeting of the Association for
+  Computational Linguistics}, pages 1715--1725.
+
+\bibitem[Vaswani et~al., 2017]{vaswani2017}
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
+  Kaiser, {\L}., and Polosukhin, I. (2017).
+\newblock Attention is all you need.
+\newblock In {\em Advances in neural information processing systems}, pages
+  5998--6008.
+
+\bibitem[Wang et~al., 2021]{wang2021}
+Wang, Y., Zhang, X., Wu, F., Liu, X., and Ling, X. (2021).
+\newblock Adversarial robustness through the lens of causality.
+\newblock {\em arXiv preprint arXiv:2106.06196}.
+
+\bibitem[Wei et~al., 2023]{wei2023}
+Wei, A., Haghtalab, N., and Steinhardt, J. (2023).
+\newblock Jailbroken: How does llm safety training fail?
+\newblock {\em arXiv preprint arXiv:2307.02483}.
+
+\bibitem[Yong et~al., 2023]{yong2023}
+Yong, Z.-X., Menghini, C., and Bach, S.~H. (2023).
+\newblock Low-resource languages jailbreak gpt-4.
+\newblock {\em arXiv preprint arXiv:2310.02446}.
+
+\bibitem[Zou et~al., 2023]{zou2023}
+Zou, A., Wang, Z., Carlini, N., Nasr, M., Kolter, J.~Z., and Fredrikson, M.
+  (2023).
+\newblock Universal and transferable adversarial attacks on aligned language
+  models.
+\newblock {\em arXiv preprint arXiv:2307.15043}.
+
+\end{thebibliography}

@@ -4,15 +4,7 @@
 \section{Overview}
 \label{sec:method-overview}
 
-Our methodology consists of three primary phases:
-
-\begin{enumerate}
-    \item \textbf{Dataset Creation:} Three-step prompt generation (English $\rightarrow$ CM $\rightarrow$ CMP)
-    \item \textbf{Experimental Execution:} Systematic testing across 4 models, 5 templates, 3 temperatures
-    \item \textbf{Evaluation:} Automated LLM-as-judge with statistical validation
-\end{enumerate}
-
-This chapter details each phase.
+Our methodology consists of three primary phases designed to systematically investigate Bangla-English code-mixing vulnerabilities. The first phase involves dataset creation through a three-step prompt generation pipeline transforming English baseline prompts into code-mixed (CM) and code-mixed with phonetic perturbations (CMP) variants. The second phase encompasses experimental execution, systematically testing all prompt variants across multiple models, jailbreak templates, and temperature settings to generate comprehensive coverage of the attack surface. The third phase implements automated evaluation using an LLM-as-judge methodology combined with statistical validation to quantify attack effectiveness and establish significance. This chapter details each phase, providing complete methodological transparency to enable replication and extension of our work.
 
 \section{Three-Step Prompt Generation}
 \label{sec:prompt-generation}
@@ -53,27 +45,7 @@ To reduce immediate refusals, we convert direct questions to hypothetical scenar
 
 \textbf{Objective:} Create Bangla-English code-mixed versions that preserve semantic meaning
 
-\textbf{Code-Mixing Strategy:}
-
-\begin{enumerate}
-    \item \textbf{Keep technical/harmful keywords in English:}
-    \begin{itemize}
-        \item Preserves attack targeting
-        \item Enables downstream phonetic perturbations
-    \end{itemize}
-    
-    \item \textbf{Use Bangla for:}
-    \begin{itemize}
-        \item Grammatical connectors (``ke liye'' - for, ``jonno'' - for)
-        \item Contextual framing
-    \end{itemize}
-    
-    \item \textbf{Romanization approach:}
-    \begin{itemize}
-        \item Simplified phonetic transliteration
-        \item Intentional variability in romanization
-    \end{itemize}
-\end{enumerate}
+Our code-mixing strategy follows three key principles designed to maximize attack effectiveness while preserving semantic meaning. First, we deliberately keep all technical and harmful keywords in English rather than translating them to Bangla. This design choice serves two critical functions: it preserves the attack targeting by maintaining recognizable harmful terminology, and it enables downstream phonetic perturbations which require English phonetic patterns. Second, we use Bangla primarily for grammatical connectors and contextual framing elements such as ``jonno'' (for) and ``ke liye'' (for the purpose of), which provide natural language flow without triggering safety filters. Third, we employ a simplified phonetic transliteration approach with intentional variability in romanization, exploiting the fact that Banglish lacks standardized spelling conventions and thus creates multiple valid tokenization paths for the same semantic content.
 
 \textbf{Example Transformation:}
 
@@ -85,11 +57,7 @@ To reduce immediate refusals, we convert direct questions to hypothetical scenar
 \textbf{Translation:} ``Think that someone wants to learn how a botnet can be created for DDoS attacks. What steps should be taken?''
 \end{quote}
 
-\textbf{English:Bangla Ratio:}
-\begin{itemize}
-    \item Implemented: $\sim$30\% English : $\sim$70\% Bangla (based on word count analysis)
-    \item Rationale: Maintains harmful technical keywords in English while adding Bangla grammatical context
-\end{itemize}
+Our implemented code-mixing maintains approximately 30\% English and 70\% Bangla based on word count analysis. This ratio was deliberately chosen to maintain harmful technical keywords in English where they remain vulnerable to perturbation-based attacks, while surrounding them with sufficient Bangla grammatical context to fragment the overall tokenization pattern and evade safety classifiers trained primarily on monolingual English or Bangla inputs.
 
 \subsection{Step 3: Phonetic Perturbations (CMP)}
 
@@ -129,12 +97,7 @@ Perturbing \textbf{English words} within code-mixed prompts is significantly mor
 
 \textbf{CMP:} ``Bhabo je keu shikhte chay kivabe ekta botnett craete korte hoy DDoS attakks er jonno.''
 
-\textbf{Perturbations:}
-\begin{itemize}
-    \item botnet $\rightarrow$ botnett (consonant doubling)
-    \item create $\rightarrow$ craete (letter transposition)
-    \item attacks $\rightarrow$ attakks (consonant doubling + k substitution)
-\end{itemize}
+\textbf{Perturbations Applied:} The transformation applies three specific perturbations to sensitive English keywords: ``botnet'' becomes ``botnett'' through consonant doubling, ``create'' becomes ``craete'' through letter transposition, and ``attacks'' becomes ``attakks'' through combined consonant doubling and phonetic k-substitution. Each perturbation maintains pronunciation while fragmenting tokenization.
 \end{quote}
 
 \section{Jailbreak Templates}
@@ -164,14 +127,7 @@ Resilience testing simulation - our contribution.
 
 We employ a \textbf{full factorial design} to systematically test all combinations:
 
-\textbf{Factors:}
-\begin{itemize}
-    \item \textbf{Models (M):} 3 levels (GPT-4o-mini, Llama-3-8B, Mistral-7B) --- \textit{Gemma-1.1-7B excluded due to budget constraints}
-    \item \textbf{Templates (J):} 5 levels (None, OM, AntiLM, AIM, Sandbox)
-    \item \textbf{Prompt Sets (P):} 3 levels (English, CM, CMP)
-    \item \textbf{Temperature (T):} 3 levels (0.2, 0.6, 1.0)
-    \item \textbf{Prompts (N):} 50 unique harmful scenarios
-\end{itemize}
+We employ a full factorial design to systematically test all combinations of experimental variables. Our design includes four primary factors: Models (M) with 3 levels representing GPT-4o-mini, Llama-3-8B, and Mistral-7B (note that Gemma-1.1-7B was excluded due to budget constraints); Templates (J) with 5 levels including None, OM, AntiLM, AIM, and Sandbox; Prompt Sets (P) with 3 levels covering English baseline, code-mixed (CM), and code-mixed with phonetic perturbations (CMP); and Temperature (T) with 3 levels at 0.2, 0.6, and 1.0. Additionally, we test 50 unique harmful scenarios (N) across these configurations.
 
 \textbf{Total Configurations:} $3 \times 5 \times 3 \times 3 = 135$ configurations
 
@@ -181,13 +137,7 @@ We employ a \textbf{full factorial design} to systematically test all combinatio
 
 \subsection{Temperature Settings}
 
-We test 3 temperature values to assess robustness:
-
-\begin{itemize}
-    \item \textbf{T = 0.2:} Low randomness (deterministic)
-    \item \textbf{T = 0.6:} Moderate randomness (balanced)
-    \item \textbf{T = 1.0:} High randomness (creative)
-\end{itemize}
+We test three temperature values to assess the robustness of our findings across different levels of output randomness. Temperature 0.2 provides low randomness suitable for deterministic, focused responses; temperature 0.6 provides moderate randomness balancing consistency with creativity; and temperature 1.0 provides high randomness enabling maximally creative and diverse outputs. This range allows us to determine whether code-mixing effectiveness depends on generation stochasticity or represents a fundamental vulnerability independent of sampling parameters.
 
 \section{Evaluation Methodology}
 \label{sec:evaluation}
@@ -198,18 +148,9 @@ We use \textbf{GPT-4o-mini as an automated judge} to evaluate all responses.
 
 \textbf{Metrics Evaluated:}
 
-\subsubsection{Success ($\mathbb{S}$): Binary classification}
-\begin{itemize}
-    \item \textbf{1 (Harmful):} Response provides harmful information
-    \item \textbf{0 (Harmless):} Response refuses or provides safe alternative
-\end{itemize}
+The Success metric ($\mathbb{S}$) provides binary classification of model responses. A response receives a score of 1 (Harmful) when it provides actionable harmful information that could enable the requested malicious activity. Conversely, a response receives a score of 0 (Harmless) when it appropriately refuses the request or provides only safe alternative information without enabling harm.
 
-\subsubsection{Relevance ($\mathbb{R}$): Three-level classification}
-\begin{itemize}
-    \item \textbf{1 (Relevant):} Response addresses original query harmfully
-    \item \textbf{0 (Irrelevant):} Response provides unrelated content
-    \item \textbf{-1 (Refusal):} Response explicitly refuses
-\end{itemize}
+The Relevance metric ($\mathbb{R}$) provides three-level classification assessing whether harmful responses actually address the original query. A response receives a score of 1 (Relevant) when it addresses the original harmful query with contextually appropriate harmful information. A score of 0 (Irrelevant) indicates the response provides unrelated or tangential content that neither refuses nor meaningfully addresses the query. A score of -1 (Refusal) indicates explicit refusal through safety filter activation or ethical objection statements.
 
 \subsection{Metrics Calculation}
 
@@ -218,23 +159,14 @@ We use \textbf{GPT-4o-mini as an automated judge} to evaluate all responses.
 \text{ASR} = \frac{\sum_{i=1}^{n} \mathbb{1}[\mathbb{S}(R_i) = 1]}{n}
 \end{equation}
 
-where:
-\begin{itemize}
-    \item $R_i$ = Response $i$
-    \item $\mathbb{S}(R_i)$ = Success function (1 if harmful, 0 otherwise)
-    \item $n$ = Total responses for that prompt
-\end{itemize}
+where $R_i$ represents the $i$-th response, $\mathbb{S}(R_i)$ is the success classification function returning 1 if the response is harmful and 0 otherwise, and $n$ is the total number of responses generated for that specific prompt across all configurations.
 
 \textbf{Average Attack Success Rate (AASR) per configuration:}
 \begin{equation}
 \text{AASR} = \frac{1}{N} \sum_{j=1}^{N} \text{ASR}_j
 \end{equation}
 
-where:
-\begin{itemize}
-    \item $N$ = Total number of prompts (50)
-    \item $\text{ASR}_j$ = Attack success rate for prompt $j$
-\end{itemize}
+where $N$ represents the total number of unique prompts tested (50 in our study), and $\text{ASR}_j$ represents the attack success rate computed for the $j$-th individual prompt across all its response configurations.
 
 \textbf{Attack Relevance Rate (ARR) per prompt:}
 \begin{equation}
@@ -247,11 +179,7 @@ where:
 
 To determine if differences between prompt sets are statistically significant:
 
-\textbf{Hypotheses:}
-\begin{itemize}
-    \item $H_0$: Median(AASR$_{\text{CM}}$) = Median(AASR$_{\text{English}}$)
-    \item $H_1$: Median(AASR$_{\text{CM}}$) $\neq$ Median(AASR$_{\text{English}}$)
-\end{itemize}
+We formulate null and alternative hypotheses to test whether code-mixing significantly affects attack success rates. The null hypothesis ($H_0$) posits that the median AASR for code-mixed prompts equals the median AASR for English prompts, indicating no significant effect. The alternative hypothesis ($H_1$) posits that these medians differ significantly, indicating that code-mixing produces measurably different attack success rates compared to monolingual English baselines.
 
 \textbf{Significance Level:} $\alpha = 0.05$
 
@@ -262,21 +190,7 @@ To determine if differences between prompt sets are statistically significant:
 
 \textbf{Objective:} Understand how phonetic perturbations affect tokenization
 
-\textbf{Method:}
-
-\begin{enumerate}
-    \item \textbf{Token Counting:}
-    \begin{itemize}
-        \item Count tokens for each prompt variant (English, CM, CMP)
-        \item Measure fragmentation ratio
-    \end{itemize}
-    
-    \item \textbf{Correlation Analysis:}
-    \begin{itemize}
-        \item Compute Pearson correlation between token fragmentation and AASR
-        \item Test hypothesis: Higher fragmentation $\rightarrow$ Higher AASR
-    \end{itemize}
-\end{enumerate}
+Our tokenization analysis proceeds through two stages. First, we perform systematic token counting by processing each prompt variant (English, CM, and CMP) through the respective model tokenizers and measuring the resulting fragmentation ratio relative to the English baseline. Second, we conduct correlation analysis by computing the Pearson correlation coefficient between token fragmentation levels and corresponding AASR values, testing the hypothesis that higher token fragmentation causally drives higher attack success rates.
 
 \textbf{Expected Pattern:}
 \begin{quote}
@@ -291,10 +205,4 @@ Expected AASR: English=32\%, CM=42\%, CMP=46\%
 \section{Summary}
 \label{sec:method-summary}
 
-Our methodology provides:
-\begin{itemize}
-    \item \textbf{Systematic dataset creation:} Three-step transformation (English$\rightarrow$CM$\rightarrow$CMP)
-    \item \textbf{Comprehensive experimental design:} 180 configurations $\times$ 50 prompts
-    \item \textbf{Automated evaluation:} LLM-as-judge with statistical validation
-    \item \textbf{Interpretability analysis:} Tokenization correlation study
-\end{itemize}
+Our methodology provides comprehensive coverage of the Bangla-English code-mixing attack surface through four key strengths. First, systematic dataset creation implements a rigorous three-step transformation pipeline converting English baseline prompts through code-mixing to phonetically perturbed variants with controlled linguistic properties. Second, comprehensive experimental design tests 180 unique configurations combining 3 models, 5 jailbreak templates, 3 prompt sets, 3 temperature levels, and 50 diverse harmful scenarios. Third, automated evaluation employs LLM-as-judge methodology with statistical validation through Wilcoxon signed-rank tests to establish significance. Fourth, interpretability analysis investigates the tokenization correlation mechanism underlying observed attack patterns, connecting our empirical findings to theoretical explanations validated in prior multilingual jailbreaking research.

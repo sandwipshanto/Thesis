@@ -1,26 +1,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Phonetic Perturbation Types}}{16}{table.caption.9}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Phonetic Perturbation Types}}{15}{table.caption.9}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Category Distribution}}{22}{table.caption.10}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Prompt Set Characteristics}}{22}{table.caption.11}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces API Pricing Structure}}{23}{table.caption.12}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Category Distribution}}{21}{table.caption.10}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Prompt Set Characteristics}}{21}{table.caption.11}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces API Pricing Structure}}{22}{table.caption.12}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Overall Attack Success Rates by Prompt Set}}{28}{table.caption.13}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces AASR by Model and Prompt Set}}{29}{table.caption.15}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Overall Attack Success Rates by Prompt Set}}{27}{table.caption.13}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces AASR by Model and Prompt Set}}{28}{table.caption.15}%
 \contentsline {table}{\numberline {5.3}{\ignorespaces AASR by Temperature (CMP Set)}}{29}{table.caption.17}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces Targeting Strategy Effectiveness}}{30}{table.caption.18}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces Code-Mixing Ratio Impact}}{31}{table.caption.19}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces Perturbation Type Effectiveness}}{31}{table.caption.20}%
-\contentsline {table}{\numberline {5.7}{\ignorespaces Model Vulnerability Hierarchy}}{32}{table.caption.21}%
-\contentsline {table}{\numberline {5.8}{\ignorespaces AASR by Template Across Models}}{33}{table.caption.23}%
-\contentsline {table}{\numberline {5.9}{\ignorespaces Tokenization Fragmentation vs. AASR}}{34}{table.caption.25}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Targeting Strategy Effectiveness}}{29}{table.caption.18}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces Code-Mixing Ratio Impact}}{30}{table.caption.19}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces Perturbation Type Effectiveness}}{30}{table.caption.20}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces Model Vulnerability Hierarchy}}{31}{table.caption.21}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces AASR by Template Across Models}}{32}{table.caption.23}%
+\contentsline {table}{\numberline {5.9}{\ignorespaces Tokenization Fragmentation vs. AASR}}{33}{table.caption.25}%
 \contentsline {table}{\numberline {5.10}{\ignorespaces Wilcoxon Test: English vs. CM by Model}}{35}{table.caption.26}%
-\contentsline {table}{\numberline {5.11}{\ignorespaces Wilcoxon Test: CM vs. CMP by Model}}{36}{table.caption.27}%
-\contentsline {table}{\numberline {5.12}{\ignorespaces Pearson Correlation: Token Fragmentation vs. AASR}}{36}{table.caption.28}%
+\contentsline {table}{\numberline {5.11}{\ignorespaces Wilcoxon Test: CM vs. CMP by Model}}{35}{table.caption.27}%
+\contentsline {table}{\numberline {5.12}{\ignorespaces Pearson Correlation: Token Fragmentation vs. AASR}}{35}{table.caption.28}%
 \contentsline {table}{\numberline {5.13}{\ignorespaces AASR Descriptive Statistics (\%) by Model and Template}}{36}{table.caption.29}%
-\contentsline {table}{\numberline {5.14}{\ignorespaces 95\% Confidence Intervals for AASR by Prompt Set}}{37}{table.caption.30}%
+\contentsline {table}{\numberline {5.14}{\ignorespaces 95\% Confidence Intervals for AASR by Prompt Set}}{36}{table.caption.30}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

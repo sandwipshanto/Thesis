@@ -6,9 +6,9 @@
 \contentsline {chapter}{Ethical Statement}{vi}{chapter*.6}%
 \contentsline {chapter}{Content Warning}{vii}{chapter*.7}%
 \contentsline {chapter}{Abstract}{viii}{chapter*.8}%
-\contentsline {chapter}{Table of Contents}{xvi}{Item.10}%
-\contentsline {chapter}{List of Figures}{xvi}{Item.10}%
-\contentsline {chapter}{List of Tables}{xvii}{Item.10}%
+\contentsline {chapter}{Table of Contents}{xvi}{chapter*.8}%
+\contentsline {chapter}{List of Figures}{xvi}{chapter*.8}%
+\contentsline {chapter}{List of Tables}{xvii}{chapter*.8}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Overview}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Motivation and Research Problem}{1}{section.1.2}%
@@ -16,22 +16,22 @@
 \contentsline {section}{\numberline {1.4}Research Questions}{3}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}RQ1: Code-Mixing Effectiveness}{3}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}RQ2: Bangla-Specific Patterns}{3}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}RQ3: Model Vulnerability}{3}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.3}RQ3: Model Vulnerability}{4}{subsection.1.4.3}%
 \contentsline {subsection}{\numberline {1.4.4}RQ4: Tokenization Mechanism}{4}{subsection.1.4.4}%
 \contentsline {section}{\numberline {1.5}Contributions}{4}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Thesis Organization}{4}{section.1.6}%
+\contentsline {section}{\numberline {1.6}Thesis Organization}{5}{section.1.6}%
 \contentsline {chapter}{\numberline {2}Background and Related Work}{6}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Large Language Models and Safety Alignment}{6}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Evolution of LLMs}{6}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Safety Alignment Techniques}{6}{subsection.2.1.2}%
 \contentsline {subsubsection}{Supervised Fine-Tuning (SFT)}{6}{subsection.2.1.2}%
-\contentsline {subsubsection}{Reinforcement Learning from Human Feedback (RLHF)}{7}{subsection.2.1.2}%
+\contentsline {subsubsection}{Reinforcement Learning from Human Feedback (RLHF)}{6}{subsection.2.1.2}%
 \contentsline {subsubsection}{Constitutional AI}{7}{subsection.2.1.2}%
 \contentsline {subsubsection}{Red-Teaming}{7}{subsection.2.1.2}%
 \contentsline {section}{\numberline {2.2}Jailbreaking and Adversarial Attacks on LLMs}{7}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Jailbreaking Taxonomy}{7}{subsection.2.2.1}%
 \contentsline {subsubsection}{Prompt Engineering}{7}{subsection.2.2.1}%
-\contentsline {subsubsection}{Template-Based Attacks}{8}{subsection.2.2.1}%
+\contentsline {subsubsection}{Template-Based Attacks}{7}{subsection.2.2.1}%
 \contentsline {subsubsection}{Token-Level Manipulation}{8}{subsection.2.2.1}%
 \contentsline {subsubsection}{Multi-Turn Exploitation}{8}{subsection.2.2.1}%
 \contentsline {subsubsection}{Multilingual Attacks}{8}{subsection.2.2.1}%
@@ -46,191 +46,189 @@
 \contentsline {subsection}{\numberline {2.5.1}English-Centric Safety Training}{10}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Cross-Lingual Safety Evaluation}{11}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Hinglish Code-Mixing Attacks}{11}{subsection.2.5.3}%
-\contentsline {section}{\numberline {2.6}Tokenization and Subword Segmentation}{12}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Byte-Pair Encoding (BPE)}{12}{subsection.2.6.1}%
+\contentsline {section}{\numberline {2.6}Tokenization and Subword Segmentation}{11}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Byte-Pair Encoding (BPE)}{11}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}Implications for Code-Mixing}{12}{subsection.2.6.2}%
 \contentsline {section}{\numberline {2.7}Summary}{12}{section.2.7}%
-\contentsline {chapter}{\numberline {3}Methodology}{14}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Overview}{14}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Three-Step Prompt Generation}{14}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Step 1: English Baseline Creation}{14}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Step 2: Code-Mixing (CM)}{15}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Step 3: Phonetic Perturbations (CMP)}{16}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Jailbreak Templates}{17}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Template 1: None (Baseline)}{17}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Template 2: Opposite Mode (OM)}{17}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Template 3: AntiLM}{17}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Template 4: AIM (Always Intelligent and Machiavellian)}{17}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Template 5: Sandbox (Novel)}{17}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Experimental Design}{17}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Factorial Design}{17}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Temperature Settings}{18}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Evaluation Methodology}{18}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}LLM-as-Judge Approach}{18}{subsection.3.5.1}%
-\contentsline {subsubsection}{Success ($\mathbb {S}$): Binary classification}{18}{subsection.3.5.1}%
-\contentsline {subsubsection}{Relevance ($\mathbb {R}$): Three-level classification}{18}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Metrics Calculation}{19}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Statistical Validation}{19}{subsection.3.5.3}%
-\contentsline {section}{\numberline {3.6}Interpretability Analysis}{20}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Tokenization Study}{20}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Summary}{20}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Experimental Setup}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Models Evaluated}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}GPT-4o-mini (OpenAI)}{21}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Llama-3-8B-Instruct (Meta)}{21}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Gemma-1.1-7B-IT (Google) --- NOT TESTED}{21}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Mistral-7B-Instruct-v0.3 (Mistral AI)}{21}{subsection.4.1.4}%
-\contentsline {section}{\numberline {4.2}Dataset Statistics}{22}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Prompt Distribution}{22}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Prompt Set Statistics}{22}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Execution Environment}{23}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}API Configuration}{23}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Cost Analysis}{23}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}Evaluation Configuration}{24}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Judge Model}{24}{subsection.4.4.1}%
-\contentsline {section}{\numberline {4.5}Statistical Analysis Tools}{24}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Descriptive Statistics}{24}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Inferential Statistics}{24}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Reproducibility}{25}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Data Preservation}{25}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Code Availability}{25}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Sample Prompts and Transformations}{25}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}Example 1: Hate Speech Category}{25}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}Example 2: Illegal Activities Category}{26}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}Model Response Examples}{27}{subsection.4.7.3}%
-\contentsline {section}{\numberline {4.8}Summary}{27}{section.4.8}%
-\contentsline {chapter}{\numberline {5}Results}{28}{chapter.5}%
-\contentsline {section}{\numberline {5.1}RQ1: Code-Mixing Effectiveness}{28}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Overall Attack Success Rates}{28}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Model-Specific Vulnerability}{29}{subsection.5.1.2}%
-\contentsline {subsection}{\numberline {5.1.3}Temperature Sensitivity}{29}{subsection.5.1.3}%
-\contentsline {subsection}{\numberline {5.1.4}Answer to RQ1}{30}{subsection.5.1.4}%
-\contentsline {section}{\numberline {5.2}RQ2: Bangla-Specific Patterns}{30}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}English Word Targeting Strategy}{30}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Optimal English:Bangla Ratio}{31}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Effective Perturbation Types}{31}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Answer to RQ2}{31}{subsection.5.2.4}%
-\contentsline {section}{\numberline {5.3}RQ3: Model Vulnerability Consistency}{31}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Overall Model Ranking}{32}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Template Effectiveness by Model}{32}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {3}Methodology}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Overview}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Three-Step Prompt Generation}{13}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Step 1: English Baseline Creation}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Step 2: Code-Mixing (CM)}{14}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Step 3: Phonetic Perturbations (CMP)}{15}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Jailbreak Templates}{16}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Template 1: None (Baseline)}{16}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Template 2: Opposite Mode (OM)}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Template 3: AntiLM}{16}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Template 4: AIM (Always Intelligent and Machiavellian)}{16}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Template 5: Sandbox (Novel)}{16}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Experimental Design}{16}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Factorial Design}{16}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Temperature Settings}{17}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Evaluation Methodology}{17}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}LLM-as-Judge Approach}{17}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Metrics Calculation}{18}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Statistical Validation}{18}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Interpretability Analysis}{18}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Tokenization Study}{18}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7}Summary}{19}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Experimental Setup}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Models Evaluated}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}GPT-4o-mini (OpenAI)}{20}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Llama-3-8B-Instruct (Meta)}{20}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Gemma-1.1-7B-IT (Google) --- NOT TESTED}{20}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Mistral-7B-Instruct-v0.3 (Mistral AI)}{20}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Dataset Statistics}{21}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Prompt Distribution}{21}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Prompt Set Statistics}{21}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Execution Environment}{22}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}API Configuration}{22}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Cost Analysis}{22}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Evaluation Configuration}{22}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Judge Model}{22}{subsection.4.4.1}%
+\contentsline {section}{\numberline {4.5}Statistical Analysis Tools}{23}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Descriptive Statistics}{23}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Inferential Statistics}{23}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Reproducibility}{24}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Data Preservation}{24}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}Code Availability}{24}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.7}Sample Prompts and Transformations}{24}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}Example 1: Hate Speech Category}{24}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}Example 2: Illegal Activities Category}{25}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}Model Response Examples}{26}{subsection.4.7.3}%
+\contentsline {section}{\numberline {4.8}Summary}{26}{section.4.8}%
+\contentsline {chapter}{\numberline {5}Results}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}RQ1: Code-Mixing Effectiveness}{27}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Overall Attack Success Rates}{27}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Model-Specific Vulnerability}{28}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Temperature Sensitivity}{28}{subsection.5.1.3}%
+\contentsline {subsection}{\numberline {5.1.4}Answer to RQ1}{28}{subsection.5.1.4}%
+\contentsline {section}{\numberline {5.2}RQ2: Bangla-Specific Patterns}{29}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}English Word Targeting Strategy}{29}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Optimal English:Bangla Ratio}{30}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Effective Perturbation Types}{30}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Answer to RQ2}{30}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}RQ3: Model Vulnerability Consistency}{30}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Overall Model Ranking}{31}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Template Effectiveness by Model}{31}{subsection.5.3.2}%
 \contentsline {subsection}{\numberline {5.3.3}Answer to RQ3}{32}{subsection.5.3.3}%
 \contentsline {section}{\numberline {5.4}RQ4: Tokenization Mechanism}{33}{section.5.4}%
 \contentsline {subsection}{\numberline {5.4.1}Token Fragmentation Analysis}{33}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Example Tokenization Breakdown}{34}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}Answer to RQ4}{34}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.2}Example Tokenization Breakdown}{33}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Answer to RQ4}{33}{subsection.5.4.3}%
 \contentsline {section}{\numberline {5.5}Summary of Key Findings}{34}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Detailed Statistical Analysis}{35}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Wilcoxon Signed-Rank Test Results}{35}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Correlation Analysis Details}{36}{subsection.5.6.2}%
-\contentsline {subsection}{\numberline {5.6.3}Descriptive Statistics by Configuration}{36}{subsection.5.6.3}%
-\contentsline {subsection}{\numberline {5.6.4}95\% Confidence Intervals}{36}{subsection.5.6.4}%
-\contentsline {chapter}{\numberline {6}Discussion}{38}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Principal Findings}{38}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Finding 1: Bangla Code-Mixing is Effective}{38}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Finding 2: English Word Targeting is Optimal}{38}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Finding 3: Inconsistent Model Vulnerability}{38}{subsection.6.1.3}%
-\contentsline {subsection}{\numberline {6.1.4}Finding 4: Tokenization is the Primary Mechanism}{39}{subsection.6.1.4}%
-\contentsline {section}{\numberline {6.2}Comparison with Related Work}{39}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Hinglish Code-Mixing Study}{39}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Multilingual Safety Studies}{40}{subsection.6.2.2}%
-\contentsline {section}{\numberline {6.3}Implications for LLM Safety}{40}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Multilingual Safety Gaps}{40}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Recommendations for Model Developers}{40}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Policy Considerations}{41}{subsection.6.3.3}%
-\contentsline {section}{\numberline {6.4}Unexpected Findings}{41}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Jailbreak Templates Reduce Effectiveness}{41}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Mistral's Critical Vulnerability}{41}{subsection.6.4.2}%
-\contentsline {section}{\numberline {6.5}Limitations and Future Work}{42}{section.6.5}%
-\contentsline {subsection}{\numberline {6.5.1}Study Limitations}{42}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Future Research Directions}{42}{subsection.6.5.2}%
-\contentsline {section}{\numberline {6.6}Methodological Contributions}{42}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Scalable Framework}{42}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}Config-Driven Experimentation}{43}{subsection.6.6.2}%
-\contentsline {section}{\numberline {6.7}Summary}{43}{section.6.7}%
-\contentsline {chapter}{\numberline {7}Limitations}{44}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Dataset Limitations}{44}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Limited Prompt Count}{44}{subsection.7.1.1}%
-\contentsline {subsection}{\numberline {7.1.2}Manual Code-Mixing}{45}{subsection.7.1.2}%
-\contentsline {section}{\numberline {7.2}Model Coverage Limitations}{45}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Limited Model Selection}{45}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Model Version Stability}{46}{subsection.7.2.2}%
-\contentsline {section}{\numberline {7.3}Experimental Design Limitations}{46}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Temperature Settings}{46}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Single-Turn Evaluation}{47}{subsection.7.3.2}%
-\contentsline {section}{\numberline {7.4}Evaluation Limitations}{47}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}LLM-as-Judge Reliability}{47}{subsection.7.4.1}%
-\contentsline {subsection}{\numberline {7.4.2}Binary Harmfulness Classification}{48}{subsection.7.4.2}%
-\contentsline {section}{\numberline {7.5}Linguistic Limitations}{48}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Romanization Variability}{48}{subsection.7.5.1}%
-\contentsline {subsection}{\numberline {7.5.2}Single Language Pair}{48}{subsection.7.5.2}%
-\contentsline {section}{\numberline {7.6}Interpretability Limitations}{49}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Tokenization Analysis}{49}{subsection.7.6.1}%
-\contentsline {subsection}{\numberline {7.6.2}Black-Box Evaluation}{49}{subsection.7.6.2}%
-\contentsline {section}{\numberline {7.7}Ethical and Practical Limitations}{50}{section.7.7}%
-\contentsline {subsection}{\numberline {7.7.1}Budget Constraints}{50}{subsection.7.7.1}%
-\contentsline {subsection}{\numberline {7.7.2}Responsible Disclosure Timing}{50}{subsection.7.7.2}%
-\contentsline {section}{\numberline {7.8}Generalizability Limitations}{51}{section.7.8}%
-\contentsline {subsection}{\numberline {7.8.1}Temporal Validity}{51}{subsection.7.8.1}%
-\contentsline {subsection}{\numberline {7.8.2}Real-World Applicability}{51}{subsection.7.8.2}%
-\contentsline {section}{\numberline {7.9}Summary}{52}{section.7.9}%
-\contentsline {chapter}{\numberline {8}Ethical Considerations}{53}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Research Justification}{53}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}AI Safety Motivation}{53}{subsection.8.1.1}%
-\contentsline {subsection}{\numberline {8.1.2}Dual-Use Dilemma}{53}{subsection.8.1.2}%
-\contentsline {section}{\numberline {8.2}Responsible Disclosure}{54}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Vendor Notification Plan}{54}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Dataset Handling}{55}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Harm Mitigation Strategies}{55}{section.8.3}%
-\contentsline {subsection}{\numberline {8.3.1}Methodological Safeguards}{55}{subsection.8.3.1}%
-\contentsline {subsection}{\numberline {8.3.2}Content Warning}{56}{subsection.8.3.2}%
-\contentsline {section}{\numberline {8.4}Institutional Review}{56}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Ethical Approval}{56}{subsection.8.4.1}%
-\contentsline {subsection}{\numberline {8.4.2}Human Subjects}{57}{subsection.8.4.2}%
-\contentsline {section}{\numberline {8.5}Broader Societal Implications}{57}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}Equitable AI Safety}{57}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}Potential Benefits}{58}{subsection.8.5.2}%
-\contentsline {subsection}{\numberline {8.5.3}Potential Harms}{58}{subsection.8.5.3}%
-\contentsline {section}{\numberline {8.6}Author Responsibilities}{58}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Commitments}{58}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Lessons Learned}{59}{subsection.8.6.2}%
-\contentsline {section}{\numberline {8.7}Call to Action}{60}{section.8.7}%
-\contentsline {section}{\numberline {8.8}Summary}{60}{section.8.8}%
-\contentsline {chapter}{\numberline {9}Conclusion and Future Work}{62}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Summary of Contributions}{62}{section.9.1}%
-\contentsline {subsection}{\numberline {9.1.1}Contribution 1: First Bangla Code-Mixing Study}{62}{subsection.9.1.1}%
-\contentsline {subsection}{\numberline {9.1.2}Contribution 2: English Word Targeting Discovery}{62}{subsection.9.1.2}%
-\contentsline {subsection}{\numberline {9.1.3}Contribution 3: Template Ineffectiveness Finding}{63}{subsection.9.1.3}%
-\contentsline {subsection}{\numberline {9.1.4}Contribution 4: Tokenization Mechanism Validation}{63}{subsection.9.1.4}%
-\contentsline {subsection}{\numberline {9.1.5}Contribution 5: Romanization Variability Analysis}{64}{subsection.9.1.5}%
-\contentsline {subsection}{\numberline {9.1.6}Contribution 6: Scalable Framework}{64}{subsection.9.1.6}%
-\contentsline {section}{\numberline {9.2}Answers to Research Questions}{64}{section.9.2}%
-\contentsline {subsection}{\numberline {9.2.1}RQ1: Code-Mixing Effectiveness}{64}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}RQ2: Bangla-Specific Patterns}{65}{subsection.9.2.2}%
-\contentsline {subsection}{\numberline {9.2.3}RQ3: Model Vulnerability}{65}{subsection.9.2.3}%
-\contentsline {subsection}{\numberline {9.2.4}RQ4: Tokenization Mechanism}{65}{subsection.9.2.4}%
-\contentsline {section}{\numberline {9.3}Implications for AI Safety}{66}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Immediate Implications}{66}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Long-Term Implications}{66}{subsection.9.3.2}%
-\contentsline {section}{\numberline {9.4}Future Research Directions}{67}{section.9.4}%
-\contentsline {subsection}{\numberline {9.4.1}Immediate Next Steps}{67}{subsection.9.4.1}%
-\contentsline {subsubsection}{Scale to 460 Prompts}{67}{subsection.9.4.1}%
-\contentsline {subsubsection}{Human Evaluation Validation}{67}{subsection.9.4.1}%
-\contentsline {subsubsection}{Complete Gemma Evaluation}{68}{subsection.9.4.1}%
-\contentsline {subsection}{\numberline {9.4.2}Medium-Term Extensions}{68}{subsection.9.4.2}%
-\contentsline {subsubsection}{Automated Code-Mixing}{68}{subsection.9.4.2}%
-\contentsline {subsubsection}{Other Indic Languages}{68}{subsection.9.4.2}%
-\contentsline {subsubsection}{Defense Development}{69}{Item.122}%
-\contentsline {subsection}{\numberline {9.4.3}Long-Term Vision}{69}{subsection.9.4.3}%
-\contentsline {subsubsection}{Multilingual Safety Benchmark}{69}{subsection.9.4.3}%
-\contentsline {subsubsection}{Tokenization-Robust Safety}{70}{subsection.9.4.3}%
-\contentsline {subsubsection}{Equitable AI Safety Framework}{70}{Item.129}%
-\contentsline {section}{\numberline {9.5}Closing Remarks}{70}{section.9.5}%
-\contentsline {subsection}{\numberline {9.5.1}Key Takeaways}{70}{subsection.9.5.1}%
-\contentsline {subsection}{\numberline {9.5.2}Call to Action}{71}{subsection.9.5.2}%
-\contentsline {subsection}{\numberline {9.5.3}Final Thoughts}{71}{subsection.9.5.3}%
-\contentsline {chapter}{\numberline {A}Experimental Configuration Files}{73}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Main Configuration: run\_config.yaml}{73}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Model Configuration: model\_config.yaml}{74}{section.A.2}%
-\contentsline {section}{\numberline {A.3}Jailbreak Templates: jailbreak\_templates.yaml}{75}{section.A.3}%
-\contentsline {section}{\numberline {A.4}Judge Prompts: judge\_prompts.yaml}{76}{section.A.4}%
-\contentsline {chapter}{References}{73}{subsection.9.5.3}%
+\contentsline {section}{\numberline {5.6}Detailed Statistical Analysis}{34}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Wilcoxon Signed-Rank Test Results}{34}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Correlation Analysis Details}{35}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Descriptive Statistics by Configuration}{35}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}95\% Confidence Intervals}{35}{subsection.5.6.4}%
+\contentsline {chapter}{\numberline {6}Discussion}{37}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Principal Findings}{37}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Finding 1: Bangla Code-Mixing is Effective}{37}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Finding 2: English Word Targeting is Optimal}{37}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Finding 3: Inconsistent Model Vulnerability}{37}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}Finding 4: Tokenization is the Primary Mechanism}{38}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Comparison with Related Work}{38}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Hinglish Code-Mixing Study}{38}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Multilingual Safety Studies}{39}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Implications for LLM Safety}{39}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Multilingual Safety Gaps}{39}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Recommendations for Model Developers}{39}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Policy Considerations}{40}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}Unexpected Findings}{40}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Jailbreak Templates Reduce Effectiveness}{40}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Mistral's Critical Vulnerability}{40}{subsection.6.4.2}%
+\contentsline {section}{\numberline {6.5}Limitations and Future Work}{41}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}Study Limitations}{41}{subsection.6.5.1}%
+\contentsline {subsection}{\numberline {6.5.2}Future Research Directions}{41}{subsection.6.5.2}%
+\contentsline {section}{\numberline {6.6}Methodological Contributions}{41}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Scalable Framework}{41}{subsection.6.6.1}%
+\contentsline {subsection}{\numberline {6.6.2}Config-Driven Experimentation}{42}{subsection.6.6.2}%
+\contentsline {section}{\numberline {6.7}Summary}{42}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Limitations}{43}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Dataset Limitations}{43}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Limited Prompt Count}{43}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Manual Code-Mixing}{44}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Model Coverage Limitations}{44}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Limited Model Selection}{44}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Model Version Stability}{45}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Experimental Design Limitations}{45}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Temperature Settings}{45}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Single-Turn Evaluation}{46}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Evaluation Limitations}{46}{section.7.4}%
+\contentsline {subsection}{\numberline {7.4.1}LLM-as-Judge Reliability}{46}{subsection.7.4.1}%
+\contentsline {subsection}{\numberline {7.4.2}Binary Harmfulness Classification}{47}{subsection.7.4.2}%
+\contentsline {section}{\numberline {7.5}Linguistic Limitations}{47}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Romanization Variability}{47}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Single Language Pair}{47}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}Interpretability Limitations}{48}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}Tokenization Analysis}{48}{subsection.7.6.1}%
+\contentsline {subsection}{\numberline {7.6.2}Black-Box Evaluation}{48}{subsection.7.6.2}%
+\contentsline {section}{\numberline {7.7}Ethical and Practical Limitations}{49}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Budget Constraints}{49}{subsection.7.7.1}%
+\contentsline {subsection}{\numberline {7.7.2}Responsible Disclosure Timing}{49}{subsection.7.7.2}%
+\contentsline {section}{\numberline {7.8}Generalizability Limitations}{50}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Temporal Validity}{50}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}Real-World Applicability}{50}{subsection.7.8.2}%
+\contentsline {section}{\numberline {7.9}Summary}{51}{section.7.9}%
+\contentsline {chapter}{\numberline {8}Ethical Considerations}{52}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Research Justification}{52}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}AI Safety Motivation}{52}{subsection.8.1.1}%
+\contentsline {subsection}{\numberline {8.1.2}Dual-Use Dilemma}{52}{subsection.8.1.2}%
+\contentsline {section}{\numberline {8.2}Responsible Disclosure}{53}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Vendor Notification Plan}{53}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Dataset Handling}{54}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Harm Mitigation Strategies}{54}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Methodological Safeguards}{54}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Content Warning}{55}{subsection.8.3.2}%
+\contentsline {section}{\numberline {8.4}Institutional Review}{55}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Ethical Approval}{55}{subsection.8.4.1}%
+\contentsline {subsection}{\numberline {8.4.2}Human Subjects}{56}{subsection.8.4.2}%
+\contentsline {section}{\numberline {8.5}Broader Societal Implications}{56}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}Equitable AI Safety}{56}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}Potential Benefits}{57}{subsection.8.5.2}%
+\contentsline {subsection}{\numberline {8.5.3}Potential Harms}{57}{subsection.8.5.3}%
+\contentsline {section}{\numberline {8.6}Author Responsibilities}{57}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Commitments}{57}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Lessons Learned}{58}{subsection.8.6.2}%
+\contentsline {section}{\numberline {8.7}Call to Action}{59}{section.8.7}%
+\contentsline {section}{\numberline {8.8}Summary}{59}{section.8.8}%
+\contentsline {chapter}{\numberline {9}Conclusion and Future Work}{61}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Summary of Contributions}{61}{section.9.1}%
+\contentsline {subsection}{\numberline {9.1.1}Contribution 1: First Bangla Code-Mixing Study}{61}{subsection.9.1.1}%
+\contentsline {subsection}{\numberline {9.1.2}Contribution 2: English Word Targeting Discovery}{61}{subsection.9.1.2}%
+\contentsline {subsection}{\numberline {9.1.3}Contribution 3: Template Ineffectiveness Finding}{62}{subsection.9.1.3}%
+\contentsline {subsection}{\numberline {9.1.4}Contribution 4: Tokenization Mechanism Validation}{62}{subsection.9.1.4}%
+\contentsline {subsection}{\numberline {9.1.5}Contribution 5: Romanization Variability Analysis}{63}{subsection.9.1.5}%
+\contentsline {subsection}{\numberline {9.1.6}Contribution 6: Scalable Framework}{63}{subsection.9.1.6}%
+\contentsline {section}{\numberline {9.2}Answers to Research Questions}{63}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}RQ1: Code-Mixing Effectiveness}{63}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}RQ2: Bangla-Specific Patterns}{64}{subsection.9.2.2}%
+\contentsline {subsection}{\numberline {9.2.3}RQ3: Model Vulnerability}{64}{subsection.9.2.3}%
+\contentsline {subsection}{\numberline {9.2.4}RQ4: Tokenization Mechanism}{64}{subsection.9.2.4}%
+\contentsline {section}{\numberline {9.3}Implications for AI Safety}{65}{section.9.3}%
+\contentsline {subsection}{\numberline {9.3.1}Immediate Implications}{65}{subsection.9.3.1}%
+\contentsline {subsection}{\numberline {9.3.2}Long-Term Implications}{65}{subsection.9.3.2}%
+\contentsline {section}{\numberline {9.4}Future Research Directions}{66}{section.9.4}%
+\contentsline {subsection}{\numberline {9.4.1}Immediate Next Steps}{66}{subsection.9.4.1}%
+\contentsline {subsubsection}{Scale to 460 Prompts}{66}{subsection.9.4.1}%
+\contentsline {subsubsection}{Human Evaluation Validation}{66}{subsection.9.4.1}%
+\contentsline {subsubsection}{Complete Gemma Evaluation}{66}{subsection.9.4.1}%
+\contentsline {subsection}{\numberline {9.4.2}Medium-Term Extensions}{67}{subsection.9.4.2}%
+\contentsline {subsubsection}{Automated Code-Mixing}{67}{subsection.9.4.2}%
+\contentsline {subsubsection}{Other Indic Languages}{67}{subsection.9.4.2}%
+\contentsline {subsubsection}{Defense Development}{68}{Item.80}%
+\contentsline {subsection}{\numberline {9.4.3}Long-Term Vision}{68}{subsection.9.4.3}%
+\contentsline {subsubsection}{Multilingual Safety Benchmark}{68}{subsection.9.4.3}%
+\contentsline {subsubsection}{Tokenization-Robust Safety}{69}{subsection.9.4.3}%
+\contentsline {subsubsection}{Equitable AI Safety Framework}{69}{Item.87}%
+\contentsline {section}{\numberline {9.5}Closing Remarks}{69}{section.9.5}%
+\contentsline {subsection}{\numberline {9.5.1}Key Takeaways}{69}{subsection.9.5.1}%
+\contentsline {subsection}{\numberline {9.5.2}Call to Action}{70}{subsection.9.5.2}%
+\contentsline {subsection}{\numberline {9.5.3}Final Thoughts}{70}{subsection.9.5.3}%
+\contentsline {chapter}{References}{73}{chapter*.31}%
+\contentsline {chapter}{\numberline {A}Experimental Configuration Files}{74}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Main Configuration: run\_config.yaml}{74}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Model Configuration: model\_config.yaml}{75}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Jailbreak Templates: jailbreak\_templates.yaml}{76}{section.A.3}%
+\contentsline {section}{\numberline {A.4}Judge Prompts: judge\_prompts.yaml}{77}{section.A.4}%
