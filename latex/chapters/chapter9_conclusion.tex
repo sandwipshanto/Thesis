@@ -30,7 +30,7 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 \begin{itemize}
     \item Discovered that perturbing English words is 85\% more effective than perturbing Bangla words
     \item Validated through systematic comparison (52.3\% vs. 31.1\% AASR)
-    \item Identified optimal 70:30 English:Bangla ratio
+    \item Identified 30:70 English:Bangla ratio yields high attack success
 \end{itemize}
 
 \textbf{Significance:}
@@ -60,7 +60,7 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 
 \textbf{Achievement:}
 \begin{itemize}
-    \item Strong correlation ($r=0.94$, $p<0.001$) between token fragmentation and AASR
+    \item Observed AASR progression aligns with fragmentation progression; patterns consistent with tokenization disruption mechanism empirically validated for Hindi-English (Aswal \& Jaiswal, 2025)
     \item Validated progressive fragmentation hypothesis (1.0$\times$ $\rightarrow$ 1.67$\times$ $\rightarrow$ 1.91$\times$)
     \item Provided mechanistic explanation for Bangla attack success
 \end{itemize}
@@ -128,7 +128,7 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 
 \begin{enumerate}
     \item \textbf{English word targeting:} 68\% more effective than Bangla word perturbations
-    \item \textbf{70:30 English:Bangla ratio:} Optimal for attack success
+    \item \textbf{30:70 English:Bangla ratio:} High attack success (30\% English, 70\% Bangla)
     \item \textbf{Romanization variability:} Non-standard romanization creates multiple tokenization paths
     \item \textbf{Simple perturbations:} Vowel substitution and consonant doubling most effective
 \end{enumerate}
@@ -153,7 +153,7 @@ This thesis presents the \textbf{first comprehensive study} of Bangla-English co
 \textbf{Answer:} \textbf{Yes, strong evidence supports tokenization disruption hypothesis.}
 
 \begin{itemize}
-    \item Pearson correlation: $r=0.94$ ($p < 0.001$)
+    \item Pattern observation: AASR progression aligns with fragmentation (consistent with Hinglish findings: $r=0.94$ reported by Aswal \& Jaiswal, 2025)
     \item Progressive fragmentation matches progressive AASR improvement
     \item English word perturbations fragment safety filter targets
     \item Pattern consistent across all tested models
@@ -373,7 +373,7 @@ This thesis demonstrates that Bangla-English code-mixing combined with phonetic 
 \begin{enumerate}
     \item \textbf{Bangla is vulnerable:} All major LLMs show exploitable weaknesses
     \item \textbf{English-centric training fails:} Safety doesn't generalize to code-mixing
-    \item \textbf{Tokenization is the mechanism:} Strong correlation ($r=0.94$) validates hypothesis
+    \item \textbf{Tokenization mechanism applies:} Bangla-English patterns consistent with mechanism empirically validated for Hindi-English (Aswal \& Jaiswal, 2025)
     \item \textbf{Simple attacks work best:} Jailbreak templates unnecessary for Bangla
     \item \textbf{Scalable framework:} Methodology replicable for 20+ other languages
 \end{enumerate}

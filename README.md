@@ -38,7 +38,7 @@ Thesis-1/
 │   └── utils/                      # Helper utilities
 │
 ├── results/                        # Experimental results
-│   ├── responses/                  # Model responses (~2,250 queries)
+│   ├── responses/                  # Model responses (~6,750 queries)
 │   ├── metrics/                    # AASR/AARR scores
 │   ├── analysis/                   # Statistical test results
 │   ├── plots/                      # Visualizations
@@ -104,9 +104,9 @@ python scripts/analysis/statistical_tests.py
 
 - **46% AASR** with Bangla code-mixing + phonetic perturbations (42% improvement over English)
 - **English word targeting** is 68% more effective than Bangla word perturbations
-- **70:30 English:Bangla ratio** optimal for attack success
+- **30:70 English:Bangla ratio** optimal for attack success
 - **All 3 tested LLMs vulnerable** (Mistral-7B: 81.8%, Llama-3-8B: 22.7%, GPT-4o-mini: 16.0%)
-- **Tokenization fragmentation** strongly correlates with attack success (r=0.94)
+- **Tokenization fragmentation** strongly correlates with attack success
 
 ---
 
@@ -124,7 +124,7 @@ python scripts/analysis/statistical_tests.py
 **Three-Step Prompt Transformation:**
 
 1. **English Baseline** → Hypothetical scenario framing
-2. **Code-Mixing (CM)** → 70% English + 30% Bangla (romanized)
+2. **Code-Mixing (CM)** → 30% English + 70% Bangla (romanized)
 3. **Phonetic Perturbations (CMP)** → Misspell English keywords
 
 **Experimental Design:**
@@ -133,7 +133,7 @@ python scripts/analysis/statistical_tests.py
 - **Prompts:** 50 harmful prompts (10 categories)
 - **Templates:** 5 jailbreak templates (None, OM, AntiLM, AIM, Sandbox)
 - **Temperatures:** 0.2, 0.6, 1.0
-- **Total Queries:** ~2,250 model responses
+- **Total Queries:** ~6,750 model responses
 - **Budget:** ~$1 (reduced from planned $10 for 460 prompts)
 
 ---

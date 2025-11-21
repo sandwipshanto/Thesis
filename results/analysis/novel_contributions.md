@@ -13,7 +13,7 @@ This study makes **six primary contributions** to multilingual LLM security rese
 1. **First Bangla code-mixing jailbreaking study** (new language, 230M speakers)
 2. **Bangla-specific attack optimization** (English word targeting in code-mixed contexts)
 3. **Template ineffectiveness discovery** (jailbreak templates counterproductive for Bangla)
-4. **Tokenization mechanism validation** (r=0.94 correlation for Bangla)
+4. **Tokenization mechanism application** (Bangla patterns consistent with mechanism validated for Hindi-English)
 5. **Romanization variability analysis** (non-standard Banglish creates unique vulnerabilities)
 6. **Scalable multilingual security testing framework** (replicable for other Indic languages)
 
@@ -50,9 +50,9 @@ This study makes **six primary contributions** to multilingual LLM security rese
 - Phonetic perturbations adapted for Bangla phonology
 
 **Evaluation Framework:**
-- 8,950 LLM responses across 4 models
-- 6,750 GPT-4o-mini judge evaluations
-- 135 model × template × prompt set × temperature configurations
+- ~6,750 LLM responses across 3 models (Gemma excluded due to budget)
+- ~6,750 GPT-4o-mini judge evaluations
+- 135 configurations tested (3 models × 5 templates × 3 prompt sets × 3 temperatures)
 
 **Result:** **First Bangla adversarial dataset** for LLM security research, publicly available for future work
 
@@ -62,7 +62,7 @@ This study makes **six primary contributions** to multilingual LLM security rese
 
 ### Novel Finding: English Word Targeting in Code-Mixed Contexts
 
-**Discovery:** Perturbing **English words** within Banglish prompts is 85% more effective than perturbing Bangla words
+**Discovery:** Perturbing **English words** within Banglish prompts is 68% more effective than perturbing Bangla words
 
 **Example:**
 ```
@@ -86,7 +86,7 @@ This study makes **six primary contributions** to multilingual LLM security rese
 ### Practical Impact
 
 **Attack Strategy:**
-- Maintain 70:30 English:Bangla ratio
+- Maintain ~30:70 English:Bangla ratio (30% English words, 70% Bangla words)
 - Apply phonetic perturbations to English sensitive words only
 - Use Bangla for context/grammar ("ke liye", "jonno")
 - Achieves **46% AASR** (vs 32.4% English baseline)
@@ -138,19 +138,19 @@ This study makes **six primary contributions** to multilingual LLM security rese
 
 ---
 
-## Contribution 4: Tokenization Mechanism Validation for Bangla
+## Contribution 4: Tokenization Mechanism Application to Bangla
 
-### Quantified Correlation
+### Observed Pattern Consistent with Hindi-English Findings
 
-**Finding:** Token fragmentation strongly predicts attack success for Bangla
+**Finding:** Token fragmentation progression aligns with AASR progression for Bangla
 
-| Prompt Type | Avg Tokens/Word | Fragmentation | AASR | Correlation |
+| Prompt Type | Avg Tokens/Word | Fragmentation | AASR | Pattern |
 |-------------|-----------------|---------------|------|-------------|
-| English | 1.2 | Baseline | 32.4% | - |
-| CM | 1.8 | +50% | 42.1% | r = 0.89 |
-| CMP | 2.3 | +92% | 46.0% | **r = 0.94** |
+| English | 1.12 | Baseline | 32.4% | - |
+| CM | 1.87 | +67% | 42.1% | Consistent |
+| CMP | 2.14 | +91% | 46.0% | Consistent |
 
-**Validation:** **r = 0.94 correlation** confirms tokenization disruption as primary mechanism for Bangla
+**Finding:** AASR patterns consistent with tokenization disruption mechanism empirically validated for Hindi-English (Aswal & Jaiswal, 2025 reported r=0.94 via Integrated Gradients)
 
 ### Mechanism
 
@@ -167,9 +167,9 @@ Result:  Safety filter MISSES fragmented keywords → BYPASS
 
 **Key Insight:** Safety filters operate at **token level**, but semantic understanding operates at **sequence level**. Fragmentation exploits this gap.
 
-### Generalization
+### Application to Bangla
 
-This validates the tokenization disruption mechanism **independently for Bangla**, demonstrating it's not language-specific but a systematic vulnerability in current LLM architectures.
+Our Bangla-English findings align with the tokenization disruption mechanism empirically validated for Hindi-English (Aswal & Jaiswal, 2025), demonstrating the mechanism generalizes across Indic code-mixed languages. Direct empirical validation for Bangla via Integrated Gradients remains future work.
 
 ---
 
@@ -210,9 +210,9 @@ This validates the tokenization disruption mechanism **independently for Bangla*
 
 **Our Framework:**
 1. **3-Step Prompt Generation:** English → Code-Mixed → Phonetically Perturbed
-2. **Systematic Evaluation:** 4 models × 5 templates × 3 temperatures
-3. **LLM-as-Judge:** GPT-4o-mini for automated evaluation (validated: ICC ≥ 0.70)
-4. **Statistical Validation:** Wilcoxon signed-rank tests (p = 0.05)
+2. **Systematic Evaluation:** 3 models × 5 templates × 3 temperatures (Gemma excluded due to budget)
+3. **LLM-as-Judge:** GPT-4o-mini for automated evaluation (ICC ≥ 0.70 reported in prior work)
+4. **Statistical Validation:** Wilcoxon signed-rank tests (α = 0.05)
 
 **Generalizability:** This methodology can be applied to **any Indic language** with romanized script:
 - Tamil (75M speakers)
@@ -223,7 +223,7 @@ This validates the tokenization disruption mechanism **independently for Bangla*
 
 ### Cost Efficiency
 
-**Our Study:** $0.38 for 8,950 queries (50 prompts, 3 temps, 135 configs)
+**Our Study:** ~$1 for ~6,750 queries (50 prompts, 3 models, 5 templates, 3 temps)
 
 **Scaling:** ~$1.50-2.00 per language for comprehensive evaluation
 
@@ -236,9 +236,9 @@ This validates the tokenization disruption mechanism **independently for Bangla*
 | Contribution | Type | Impact |
 |--------------|------|--------|
 | 1. First Bangla study | **Population** | 230M speakers previously untested |
-| 2. English word targeting | **Attack Strategy** | 85% more effective than Bangla word targeting |
+| 2. English word targeting | **Attack Strategy** | 68% more effective than Bangla word targeting |
 | 3. Template ineffectiveness | **Attack Simplification** | No jailbreak templates needed for Bangla |
-| 4. Tokenization validation | **Mechanism** | r=0.94 confirms theory for Bangla |
+| 4. Tokenization application | **Mechanism** | Bangla patterns align with Hindi-English validated mechanism |
 | 5. Romanization variability | **Linguistic** | Bangla-specific vulnerability |
 | 6. Scalable framework | **Methodology** | Replicable for 20+ Indic languages |
 
@@ -251,7 +251,7 @@ This validates the tokenization disruption mechanism **independently for Bangla*
 1. ✅ **First Bangla LLM adversarial evaluation** (new language)
 2. ✅ **Standalone findings** (not dependent on cross-lingual comparison)
 3. ✅ **Language-specific discoveries** (template ineffectiveness, English targeting)
-4. ✅ **Mechanistic validation** (tokenization correlation independent of other studies)
+4. ✅ **Mechanism application** (demonstrates Hindi-English validated mechanism generalizes to Bangla)
 5. ✅ **Scalable methodology** (low cost, high replicability)
 6. ✅ **Actionable recommendations** (specific to Bangla safety coverage)
 

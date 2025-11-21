@@ -1,0 +1,14 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Attack Success Rate Progression: English → CM → CMP. The figure demonstrates systematic improvement in AASR as phonetic perturbations are added to code-mixed prompts across all tested models.}}{29}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces AASR Heatmap: Model $\times $ Prompt Set Interaction. The heatmap visualizes vulnerability patterns, highlighting Mistral-7B's critical baseline weakness and GPT-4o-mini's dramatic sensitivity to code-mixing attacks.}}{30}{figure.caption.16}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Model Vulnerability Comparison Across Prompt Sets. Bar chart comparing average AASR across the three tested models, demonstrating the extreme vulnerability gap between Mistral-7B and the other models.}}{32}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Jailbreak Template Effectiveness Comparison. Counter-intuitively, the "None" baseline (no jailbreak template) achieves the highest average AASR (46.2\%), suggesting code-mixing attacks work best without additional prompt engineering.}}{33}{figure.caption.24}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

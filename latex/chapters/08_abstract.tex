@@ -5,14 +5,14 @@ Large Language Models (LLMs) have achieved remarkable capabilities but remain vu
 
 This thesis presents the \textbf{first comprehensive study} of Bangla-English code-mixing combined with phonetic perturbations as a jailbreaking strategy against modern LLMs. We develop a systematic three-step methodology: (1) converting harmful queries to hypothetical scenarios, (2) code-mixing with romanized Bangla, and (3) applying phonetic perturbations to sensitive English keywords.
 
-Through systematic experiments across 3 major LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B) using 50 harmful prompts across 10 categories (reduced from planned 460 due to budget constraints), we generated approximately 2,250 model responses evaluated through automated LLM-as-judge methodology. Our results demonstrate that Bangla code-mixing with phonetic perturbations achieves \textbf{46\% Average Attack Success Rate (AASR)}, representing a \textbf{42\% improvement} over the 32.4\% English baseline.
+Through systematic experiments across 3 major LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B) using 50 harmful prompts across 10 categories (reduced from planned 460 due to budget constraints), we generated approximately 6,750 model responses evaluated through automated LLM-as-judge methodology. Our results demonstrate that Bangla code-mixing with phonetic perturbations achieves \textbf{46\% Average Attack Success Rate (AASR)}, representing a \textbf{42\% improvement} over the 32.4\% English baseline.
 
 \noindent\textbf{Key Contributions:}
 \begin{enumerate}
     \item First Bangla-English code-mixing jailbreaking study (230M speakers, 50 prompts across 10 categories, 3 major LLMs)
-    \item Discovery that perturbing English words in Banglish contexts is 85\% more effective than perturbing Bangla words
+    \item Discovery that perturbing English words in Banglish contexts is 68\% more effective than perturbing Bangla words
     \item Finding that jailbreak templates reduce effectiveness for Bangla (simple prompts work best)
-    \item Validation of tokenization disruption mechanism for Bangla (r=0.94 correlation)
+    \item Application of tokenization disruption mechanism (empirically validated for Hindi-English by Aswal \& Jaiswal, 2025) to Bangla-English context
     \item Identification of Bangla's non-standard romanization as a unique vulnerability
     \item Development of scalable framework applicable to 20+ Indic languages
 \end{enumerate}

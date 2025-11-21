@@ -151,6 +151,7 @@
 % Main matter - switch to arabic page numbering
 \clearpage
 \pagenumbering{arabic}
+\setcounter{page}{1}
 
 % Chapters
 \include{chapters/chapter1_introduction}
@@ -169,11 +170,15 @@
 \bibliography{references}
 \addcontentsline{toc}{chapter}{References}
 
-% Appendices
+% Appendices - Content integrated into main chapters
+% Appendix A (Sample Prompts) -> Integrated into Chapter 4, Section 4.7
+% Appendix B (Statistical Tables) -> Integrated into Chapter 5, Section 5.6
+% Appendix C (Configuration Files) -> Kept as reference appendix below
+
 \clearpage
 \appendix
-\include{chapters/appendix_a}
-\include{chapters/appendix_b}
-\include{chapters/appendix_c}
+% \include{chapters/appendix_a}  % Integrated into Chapter 4
+% \include{chapters/appendix_b}  % Integrated into Chapter 5
+\include{chapters/appendix_c}    % Configuration files kept for reference
 
 \end{document}
