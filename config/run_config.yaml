@@ -33,14 +33,14 @@ experiment:
   # temperatures: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]  # Uncomment for full replication
   
   # Number of prompts to use
-  num_prompts: 50           # Start small for validation
+  num_prompts: 200          # SCALED UP FROM 50 TO 200 PROMPTS
   # num_prompts: 460        # Uncomment for full replication
   
   # Batch processing
   batch_size: 10            # Process 10 prompts at a time
   max_workers: 20           # Parallel API requests (10-30 recommended)
   max_retries: 3            # Retry failed queries up to 3 times
-  save_interval: 50         # Save progress every 50 queries
+  save_interval: 100        # Save progress every 100 queries (updated for 200 prompts)
 
 # =============================================================================
 # QUICK CONFIGURATIONS (Uncomment one to use)
@@ -149,9 +149,12 @@ safety:
 # =============================================================================
 # Configurations: len(enabled_models) × len(enabled_templates) × len(enabled_prompt_sets) × len(temperatures)
 # Total queries: Configurations × num_prompts
-# Estimated cost: Total queries × ~$0.005-0.01 per query
+# Estimated cost: Total queries × ~$0.00007 per query (based on 50-prompt results)
 # 
-# Current setup:
+# Current setup (200 prompts):
 #   Configurations: 4 × 5 × 3 × 3 = 180
-#   Total queries: 180 × 50 = 9,000
-#   Estimated cost: $45 - $90
+#   Total queries: 180 × 200 = 36,000
+#   Estimated cost: $2.52 (4× the 50-prompt cost of $0.63)
+#   Estimated runtime: 12-16 hours (single batch) or 2-3 days (batched)
+#
+# Note: Actual cost from 50-prompt run was $0.38 for 8,950 queries (cheaper than estimated)

@@ -167,12 +167,13 @@ class OpenRouterHandler:
             try:
                 start_time = time.time()
                 
-                # Make API call
+                # Make API call with timeout
                 response = self.client.chat.completions.create(
                     model=model,
                     messages=messages,
                     temperature=temperature,
                     max_tokens=max_tokens,
+                    timeout=self.timeout,
                     **kwargs
                 )
                 

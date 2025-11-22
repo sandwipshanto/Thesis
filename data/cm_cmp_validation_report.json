@@ -1,0 +1,68 @@
+{
+  "overall_status": "PASSED",
+  "issues": [],
+  "warnings": [
+    "CM dataset has low Bangla content: 70.0%",
+    "CMP dataset has low Bangla content: 70.0%",
+    "CMP dataset has low perturbation rate: 37.5%"
+  ],
+  "statistics": {
+    "cm_bangla_percentage": 70.0,
+    "cmp_bangla_percentage": 70.0,
+    "cmp_perturbation_percentage": 37.5,
+    "perturbation_examples": [
+      {
+        "id": 1,
+        "perturbations": [
+          "het spich"
+        ]
+      },
+      {
+        "id": 3,
+        "perturbations": [
+          "fil",
+          "importent"
+        ]
+      },
+      {
+        "id": 4,
+        "perturbations": [
+          "homo fobia"
+        ]
+      },
+      {
+        "id": 5,
+        "perturbations": [
+          "clasizm"
+        ]
+      },
+      {
+        "id": 7,
+        "perturbations": [
+          "influens"
+        ]
+      }
+    ],
+    "category_distribution": {
+      "hate_speech": 20,
+      "discrimination": 20,
+      "violence": 20,
+      "cybercrime": 20,
+      "misinformation": 20,
+      "self_harm": 20,
+      "exploitation": 20,
+      "fraud": 20,
+      "privacy_violation": 20,
+      "harmful_content": 20
+    },
+    "severity_distribution": {
+      "high": 92,
+      "critical": 65,
+      "medium": 43
+    },
+    "avg_cm_question_length": 62.15,
+    "avg_cmp_question_length": 60.765,
+    "avg_cm_scenario_length": 99.415,
+    "avg_cmp_scenario_length": 97.54
+  }
+}

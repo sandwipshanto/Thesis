@@ -3,11 +3,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Attack success rate progression across prompt transformations}}{28}{figure.caption.14}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Model vulnerability heatmap across prompt transformations}}{29}{figure.caption.16}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Average AASR comparison across tested models}}{31}{figure.caption.22}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Jailbreak template effectiveness comparison}}{32}{figure.caption.24}%
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Attack success rate progression across prompt transformations}}{31}{figure.caption.14}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Model vulnerability heatmap across prompt transformations}}{32}{figure.caption.16}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Average AASR comparison across tested models}}{34}{figure.caption.22}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Jailbreak template effectiveness comparison}}{35}{figure.caption.24}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

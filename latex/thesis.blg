@@ -40,13 +40,10 @@ A level-1 auxiliary file: chapters/chapter9_conclusion.aux
 Reallocating 'name_of_file' (item size: 1) to 8 items.
 The style file: apalike.bst
 Reallocating 'name_of_file' (item size: 1) to 11 items.
-Reallocating 'name_of_file' (item size: 1) to 24 items.
-A level-1 auxiliary file: chapters/appendix_c.aux
 Database file #1: references.bib
-Warning--I didn't find a database entry for "meta2024"
 You've used 16 entries,
             1935 wiz_defined-function locations,
-            569 strings with 7250 characters,
+            567 strings with 7219 characters,
 and the built_in function-call counts, 7283 in all, are:
 = -- 679
 > -- 430
@@ -85,4 +82,3 @@ warning$ -- 0
 while$ -- 46
 width$ -- 0
 write$ -- 196
-(There was 1 warning)

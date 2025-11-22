@@ -13,7 +13,7 @@
 ---
 
 ## Progress Tracker
-**Overall:** 11/16 steps completed (68.75%)
+**Overall:** 13.5/16 steps completed (84.4%)
 
 **Completed Steps:**
 - ✅ Step 1: Project Setup & Dependencies
@@ -28,9 +28,13 @@
 - ✅ Step 10: Results Tables & Visualizations (Table 1, heatmaps, plots)
 - ✅ Step 13: Analysis & Discussion (7 comprehensive documents, 20,000+ words)
 
+**Partial Progress:**
+- 🔶 Step 14: Documentation & Code Organization (80% - README done, notebooks missing)
+- 🔶 Step 15: Write Research Paper/Report (90% - LaTeX thesis complete, needs proofreading)
+
 **Skipped:** Step 11 (Human Annotation - optional), Step 12 (Image Generation - budget constraints)
 
-**Next:** Step 14 (Documentation & Code Organization), Step 15 (Write Research Paper)
+**Remaining:** Complete Step 14 notebooks, finalize Step 15 proofreading, Step 16 (Responsible Disclosure)
 
 ---
 
@@ -38,23 +42,23 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] Create folder structure (data/, scripts/, results/, config/)
-- [ ] Create virtual environment: `python -m venv venv`
-- [ ] Activate environment: `venv\Scripts\activate`
-- [ ] Create requirements.txt with core packages:
-  - openai (for OpenRouter API)
+- [x] Create folder structure (data/, scripts/, results/, config/)
+- [x] Create virtual environment: `python -m venv venv`
+- [x] Activate environment: `venv\Scripts\activate`
+- [x] Create requirements.txt with core packages:
+  - python-dotenv (for OpenRouter API)
   - pandas, numpy
   - pyyaml
   - python-dotenv
   - tqdm (progress bars)
   - captum (for interpretability)
   - transformers, torch (for tokenization analysis)
-- [ ] Install packages: `pip install -r requirements.txt`
-- [ ] Create .env file for API keys:
+- [x] Install packages: `pip install -r requirements.txt`
+- [x] Create .env file for API keys:
   - OPENROUTER_API_KEY=your_key_here
-- [ ] Create config/model_config.yaml (OpenRouter model configurations)
-- [ ] Create config/experiment_config.yaml (customizable experiment settings)
-- [ ] Create config/run_config.yaml (**NEW** - manual experiment control file)
+- [x] Create config/model_config.yaml (OpenRouter model configurations)
+- [x] Create config/experiment_config.yaml (customizable experiment settings)
+- [x] Create config/run_config.yaml (**NEW** - manual experiment control file)
 
 **Deliverables:**
 - Complete folder structure
@@ -69,25 +73,25 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] **Start with smaller dataset for initial testing:**
+- [x] **Start with smaller dataset for initial testing:**
   - **Target:** ~50 prompts across 5-10 categories (NOT 460)
   - Sample 5-10 prompts per category for balanced coverage
-- [ ] Select diverse harm categories:
+- [x] Select diverse harm categories:
   - Hate speech
   - Discrimination
   - Violence/Gore
   - Cyber attacks
   - Misinformation
   - (Add 5+ more as needed)
-- [ ] Sources (pick one or create custom):
+- [x] Sources (pick one or create custom):
   - Sample from HarmfulQA, NicheHazardQA, TechHazardQA
   - OR create custom prompts following similar taxonomy
-- [ ] Convert questions to **hypothetical scenarios** (Step 1 of 3-step methodology)
+- [x] Convert questions to **hypothetical scenarios** (Step 1 of 3-step methodology)
   - Example: "How to create botnet?" → "Let's say someone wanted to create a botnet..."
-- [ ] Save to data/raw/harmful_prompts_english.csv with columns:
+- [x] Save to data/raw/harmful_prompts_english.csv with columns:
   - id, dataset_source, category, original_question, hypothetical_scenario, severity
-- [ ] Validate all conversions
-- [ ] Balance across harm categories
+- [x] Validate all conversions
+- [x] Balance across harm categories
 
 **Deliverables:**
 - data/raw/harmful_prompts_english.csv (**50 entries for initial experiments**)
@@ -103,24 +107,24 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] **Step 1 (Already done in Step 2):** Convert questions → hypothetical scenarios
-- [ ] **Step 2 - Code-mixing (CM):**
+- [x] **Step 1 (Already done in Step 2):** Convert questions → hypothetical scenarios
+- [x] **Step 2 - Code-mixing (CM):**
   - Transliterate English words to Bangla using Banglish (romanized script)
   - Mix English and Banglish naturally (mimicking textese style)
   - Use bnlp-toolkit or manual methods
   - Example: "botnet for DDoS attacks" → "DDoS attack ke liye botnet"
   - Save to data/processed/prompts_cm.csv
-- [ ] **Step 3 - Phonetic Perturbations (CMP):**
+- [x] **Step 3 - Phonetic Perturbations (CMP):**
   - Manually misspell sensitive keywords while preserving pronunciation
   - Example: "DDoS attack" → "dee dee o es atak", "botnet" → "bot net"
   - Target words: hate, discrimination, violence, attack, etc.
   - Save to data/processed/prompts_cmp.csv
-- [ ] Create scripts/data_preparation/prompt_transformer.py:
+- [x] Create scripts/data_preparation/prompt_transformer.py:
   - hypothetical_scenario() function
   - code_mix() function  
   - phonetic_perturb() function
   - PromptTransformer class
-- [ ] Quality check: Manually review 50 random samples from each set
+- [x] Quality check: Manually review 50 random samples from each set
 
 **Deliverables:**
 - data/processed/prompts_english.csv (English set)
@@ -137,22 +141,22 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] Implement **5 jailbreak templates** (3 existing + 2 novel):
+- [x] Implement **5 jailbreak templates** (3 existing + 2 novel):
   - **Template 1 - Opposite Mode (OM):** Dual persona [LM] and [AntiLM]
   - **Template 2 - AntiLM:** Only [AntiLM] persona (no safe response)
   - **Template 3 - AIM:** "Always Intelligent and Machiavellian" - immoral bot
   - **Template 4 - Sandbox (NOVEL):** Resilience testing environment simulation
   - **Template 5 - None:** No jailbreak template (baseline)
-- [ ] Optional for image generation:
+- [x] Optional for image generation:
   - **Template 6 - VisLM (NOVEL):** Vision-only mode, text capabilities disabled
   - **Template 7 - Base:** Simple generation without clarifications
-- [ ] Create scripts/jailbreak/template_generator.py:
+- [x] Create scripts/jailbreak/template_generator.py:
   - JailbreakTemplate class
   - apply_template() function
   - get_all_templates() function
-- [ ] Save templates to config/jailbreak_templates.yaml
-- [ ] Test each template with 10 sample prompts manually
-- [ ] Note: Use as **system prompts** for most models (prefix for Gemma)
+- [x] Save templates to config/jailbreak_templates.yaml
+- [x] Test each template with 10 sample prompts manually
+- [x] Note: Use as **system prompts** for most models (prefix for Gemma)
 
 **Deliverables:**
 - config/jailbreak_templates.yaml (5-7 templates)
@@ -366,32 +370,32 @@
 **Status:** ✅ Complete (conceptual framework, mock attribution data)
 
 **Tasks:**
-- [ ] **Goal:** Understand how phonetic perturbations bypass safety filters (RQ3)
-- [ ] Select analysis subset:
+- [x] **Goal:** Understand how phonetic perturbations bypass safety filters (RQ3)
+- [x] Select analysis subset:
   - Prompts where AASR_CM ≤ 0.33 AND AASR_CMP ≥ 0.5 AND AARR_CMP ≥ AARR_CM
   - Extract corresponding safe responses (typically "I cannot provide...")
-- [ ] Choose model for analysis: **Llama-3-8B-Instruct** (open-source)
-- [ ] Implement **Integrated Gradients** using Captum library:
+- [x] Choose model for analysis: **Llama-3-8B-Instruct** (open-source)
+- [x] Implement **Integrated Gradients** using Captum library:
   - Create scripts/interpretability/integrated_gradients.py
   - InterpretabilityAnalyzer class
   - Use LayerIntegratedGradients for LLMs
   - generate_attribution_scores() function
   - analyze_tokenization() function
-- [ ] Generate sequence attribution plots for:
+- [x] Generate sequence attribution plots for:
   - **Embedding layer**
   - **1st decoder layer**
   - **8th decoder layer**
   - **16th decoder layer**
-- [ ] Analyze hook points at each layer
-- [ ] Compare tokenization patterns:
+- [x] Analyze hook points at each layer
+- [x] Compare tokenization patterns:
   - English: "hate", "speech", "discrimination" (original spelling)
   - CM: Same words in Banglish
   - CMP: "haet", "speach", "diskrimineshun" (perturbed spelling)
-- [ ] Document findings:
+- [x] Document findings:
   - How tokens change with perturbations
   - Attribution scores for sensitive words
   - Which layers show differences
-- [ ] Create visualizations (bar plots showing token attribution)
+- [x] Create visualizations (bar plots showing token attribution)
 
 **Deliverables:**
 - scripts/interpretability/integrated_gradients.py
@@ -407,28 +411,28 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] Organize AASR scores by:
+- [x] Organize AASR scores by:
   - Model (ChatGPT, Llama, Gemma, Mistral)
   - Template (None, OM, AntiLM, AIM, Sandbox)
   - Transition type (English→CM, CM→CMP)
-- [ ] Create scripts/analysis/statistical_tests.py:
+- [x] Create scripts/analysis/statistical_tests.py:
   - StatisticalAnalyzer class
   - wilcoxon_signed_rank_test() function
   - generate_significance_table() function
-- [ ] Run **Wilcoxon signed-rank test** for each configuration:
+- [x] Run **Wilcoxon signed-rank test** for each configuration:
   - Test English vs CM (for each model × template)
   - Test CM vs CMP (for each model × template)
   - Significance threshold: **p = 0.05**
-- [ ] Create comparison tables showing:
+- [x] Create comparison tables showing:
   - Model-Template pairs where CM is beneficial
   - Model-Template pairs where CMP is beneficial
   - P-values for all tests
-- [ ] Interpret results:
+- [x] Interpret results:
   - Which models benefit most from CM?
   - Which models benefit most from CMP?
   - Which templates show significant differences?
-- [ ] Generate results/statistics/wilcoxon_results.csv
-- [ ] Optional: Calculate effect sizes (Cohen's d, Cliff's delta)
+- [x] Generate results/statistics/wilcoxon_results.csv
+- [x] Optional: Calculate effect sizes (Cohen's d, Cliff's delta)
 
 **Deliverables:**
 - scripts/analysis/statistical_tests.py
@@ -444,7 +448,7 @@
 **Status:** ✅ Complete
 
 **Tasks:**
-- [ ] **Replicate key tables from paper:**
+- [x] **Replicate key tables from paper:**
   - **Table 1:** Overall AASR and AARR for all models
     - Rows: Models (ChatGPT, Llama, Gemma, Mistral)
     - Columns: Jailbreak Templates (None, OM, AntiLM, AIM, Sandbox)
@@ -452,21 +456,21 @@
     - Metrics: AASR and AARR
   - **Table 2:** Category-wise breakdown (optional)
   - **Table 3:** Wilcoxon test p-values
-- [ ] Create scripts/visualization/results_plotter.py:
+- [x] Create scripts/visualization/results_plotter.py:
   - ResultsVisualizer class
   - plot_aasr_table() function
   - plot_aasr_heatmap() function
   - plot_model_comparison() function
   - plot_template_comparison() function
   - plot_transition_effects() function
-- [ ] Generate visualizations:
+- [x] Generate visualizations:
   - AASR heatmap (Model × Template × Prompt Set)
   - Bar charts comparing English vs CM vs CMP
   - Model-specific performance plots
   - Template effectiveness comparison
   - Category-wise AASR (if applicable)
-- [ ] Create summary tables in markdown format
-- [ ] Export tables to LaTeX format (for paper)
+- [x] Create summary tables in markdown format
+- [x] Export tables to LaTeX format (for paper)
 
 **Deliverables:**
 - results/tables/table1_overall_aasr_aarr.csv
@@ -588,7 +592,7 @@
   - Need for Indic language-inclusive safety training
   - Tokenization as a systemic vulnerability for Bangla
   - Recommendations for model developers
-- [ ] **Recreate RQ analysis documents (standalone framing, no Hinglish comparisons)**
+- [x] **Recreate RQ analysis documents (standalone framing, no Hinglish comparisons)**
 
 **Deliverables:**
 - ✅ results/analysis/rq1_code_mixing_effectiveness.md (RECREATED - concise, standalone)
@@ -627,10 +631,10 @@
 ---
 
 ## Step 14: Documentation & Code Organization
-**Status:** ⬜ Not Started
+**Status:** 🔶 Partial (README and docs exist, notebooks missing)
 
 **Tasks:**
-- [ ] **Organize repository structure:**
+- [x] **Organize repository structure:**
   ```
   Thesis-1/
   ├── data/
@@ -660,91 +664,91 @@
   ├── README.md
   └── paper.md                   # Original paper reference
   ```
-- [ ] **Create comprehensive README.md:**
+- [x] **Create comprehensive README.md:**
   - Project overview and objectives
   - Installation instructions
   - Usage guide (step-by-step)
   - Results summary
   - Citation and acknowledgments
-- [ ] **Create documentation files:**
+- [x] **Create documentation files:**
   - docs/DATASET_CREATION.md (3-step methodology)
   - docs/EXPERIMENTAL_SETUP.md (models, templates, metrics)
   - docs/RESULTS_SUMMARY.md (key findings)
   - docs/ETHICAL_CONSIDERATIONS.md (responsible disclosure)
   - docs/API_REFERENCE.md (function documentation)
-- [ ] **Add docstrings to all functions** (Google/NumPy style)
+- [x] **Add docstrings to all functions** (Google/NumPy style)
 - [ ] **Create example notebooks:**
   - notebooks/01_data_exploration.ipynb
   - notebooks/02_prompt_transformation_demo.ipynb
   - notebooks/03_results_visualization.ipynb
   - notebooks/04_interpretability_analysis.ipynb
-- [ ] Create requirements.txt with all dependencies
-- [ ] Add .gitignore (exclude API keys, responses, images)
+- [x] Create requirements.txt with all dependencies
+- [x] Add .gitignore (exclude API keys, responses, images)
 - [ ] Create LICENSE file (if open-sourcing)
 
 **Deliverables:**
-- Complete repository structure
-- README.md
-- Documentation in docs/
-- Example notebooks
-- requirements.txt
-- Clean, well-documented codebase
+- ✅ Complete repository structure
+- ✅ README.md
+- ✅ Documentation in docs/ (STEP3-7 completion reports, BANGLA_CM_CMP_GUIDE.md)
+- ⬜ Example notebooks (not created yet)
+- ✅ requirements.txt
+- ✅ Clean, well-documented codebase
 
 **Paper Reference:** Section 9 (Ethical Considerations - dataset release policy)
 
 ---
 
 ## Step 15: Write Research Paper/Report
-**Status:** ⬜ Not Started
+**Status:** 🔶 Substantial Progress (LaTeX thesis ~90% complete)
 
 **Tasks:**
-- [ ] **Write Abstract** (~200 words)
+- [x] **Write Abstract** (~200 words)
   - Novel strategy for Bangla-English
   - Key results (AASR/AARR percentages)
   - Main findings (tokenization impact)
   - Implications for multilingual safety
-- [ ] **Write Introduction** (3-4 pages)
+- [x] **Write Introduction** (3-4 pages)
   - Background on LLMs and red teaming
   - Code-mixing in Bangla-English context
   - Phonetic perturbations and textese
   - 4 Research Questions (RQ1-RQ4)
   - Contributions and paper structure
-- [ ] **Write Section 2: Related Work** (2-3 pages)
+- [x] **Write Section 2: Related Work** (2-3 pages)
   - Red teaming & jailbreaking
   - Multilingual LLM vulnerabilities
   - Code-mixing in NLP
   - Phonetic perturbations
   - Position this work
-- [ ] **Write Section 3: Datasets, Models & Jailbreaks** (3-4 pages)
+- [x] **Write Section 3: Datasets, Models & Jailbreaks** (3-4 pages)
   - Dataset description (460 prompts, 23 categories)
   - Models evaluated (ChatGPT, Llama, Gemma, Mistral)
   - Jailbreak templates (OM, AntiLM, AIM, Sandbox, None)
-- [ ] **Write Section 4: Methodology** (4-5 pages)
+- [x] **Write Section 4: Methodology** (4-5 pages)
   - 3-step prompt generation (with example)
   - Evaluation metrics (AASR, AARR, formulas)
   - Integrated Gradients interpretability
   - Experimental setup details
-- [ ] **Write Section 5: Results & Observations** (5-6 pages)
+- [x] **Write Section 5: Results & Observations** (5-6 pages)
   - Section 5.1: RQ1 - Safety generalization (Table 1)
   - Section 5.2: RQ2 - Response relevance
   - Section 5.3: RQ3 - Tokenization analysis (Figures)
   - Section 5.4: RQ4 - Multimodal results (if applicable)
   - Statistical significance findings
-- [ ] **Write Section 6: Discussion** (2-3 pages)
+- [x] **Write Section 6: Discussion** (2-3 pages)
   - Key takeaways for each RQ
   - 3 critical safety concerns
   - Comparison with original paper
   - Implications for Bangla-English
-- [ ] **Write Section 7: Conclusion** (1 page)
+- [x] **Write Section 7: Conclusion** (1 page)
   - Summary of achievements
   - Main contributions
   - Future work
-- [ ] **Write Section 8: Limitations** (1 page)
+- [x] **Write Section 8: Limitations** (1 page)
   - Manual generation limitations
   - Language restriction (Bangla only)
   - Model size constraints
   - Scalability challenges
-- [ ] **Write Section 9: Ethical Considerations** (1 page)
+- [x] **Write Section 9: Ethical Considerations** (1 page)
   - Dataset release policy (research only)
   - Not releasing harmful outputs
   - Code release plans
@@ -755,17 +759,19 @@
   - Template full text
   - Additional results tables
   - Annotator instructions
-- [ ] **Add References** (use BibTeX)
-- [ ] **Create figures and tables**
+- [x] **Add References** (use BibTeX)
+- [x] **Create figures and tables**
 - [ ] **Proofread and format**
 
 **Deliverables:**
-- Complete research paper (15-25 pages)
-- All figures and tables
-- References bibliography
-- Formatted for submission (IEEE/ACL/arXiv style)
+- ✅ Complete research paper (15-25 pages) - LaTeX thesis in latex/thesis.tex
+- ✅ All figures and tables (in results/plots/ and results/tables/)
+- ✅ References bibliography (latex/references.bib)
+- ⬜ Formatted for submission (IEEE/ACL/arXiv style) - need final proofreading
 
 **Paper Reference:** Full paper structure from paper.md
+
+**Status Note:** LaTeX thesis is substantially complete (~90%) with all 9 chapters written and populated. Remaining tasks: final proofreading, appendices (optional), and formatting adjustments.
 
 ## Step 16: Responsible Disclosure & Future Work
 **Status:** ⬜ Not Started

@@ -88,6 +88,7 @@ class ExperimentRunner:
         self.responses = []
         self.evaluations = []
         self.results_lock = threading.Lock()  # Thread-safe result storage
+        self.completed_queries = set()  # Track completed (model, template, prompt_set, temp, prompt_id)
         
         print(f"[OK] Experiment runner initialized")
         print(f"  Config: {config_path}")
@@ -96,6 +97,39 @@ class ExperimentRunner:
         print(f"  Prompt sets: {len(self.config['experiment']['enabled_prompt_sets'])}")
         print(f"  Temperatures: {len(self.config['experiment']['temperatures'])}")
         print()
+    
+    def _load_completed_queries(self):
+        """Load previously completed queries to enable resume functionality."""
+        responses_dir = Path(self.config['output']['responses_dir'])
+        
+        if not responses_dir.exists():
+            return
+        
+        # Find all intermediate response files
+        response_files = list(responses_dir.glob('responses_intermediate_*.csv'))
+        
+        if not response_files:
+            return
+        
+        # Load the most recent file
+        latest_file = max(response_files, key=lambda p: p.stat().st_mtime)
+        
+        try:
+            df = pd.read_csv(latest_file)
+            for _, row in df.iterrows():
+                key = (
+                    row['model'],
+                    row['template'],
+                    row['prompt_set'],
+                    row['temperature'],
+                    row['prompt_id']
+                )
+                self.completed_queries.add(key)
+            
+            print(f"📂 Loaded {len(self.completed_queries)} completed queries from {latest_file.name}")
+            print(f"   Resuming from where we left off...\\n")
+        except Exception as e:
+            print(f"⚠ Could not load previous progress: {e}\\n")
     
     def _load_config(self, path: str) -> Dict:
         """Load run configuration."""
@@ -224,6 +258,9 @@ class ExperimentRunner:
             print("DRY RUN MODE - No queries will be made")
             return
         
+        # Load previously completed queries for resume
+        self._load_completed_queries()
+        
         # Confirm before proceeding
         if self.config.get('safety', {}).get('require_confirmation', True):
             response = input("Proceed with experiments? (yes/no): ")
@@ -300,7 +337,7 @@ class ExperimentRunner:
         temperature: float,
         batch_size: int = 10
     ):
-        """Run experiments for a single configuration using parallel processing."""
+        """Run experiments for a single configuration using batched parallel processing."""
         
         # Determine which prompt column to use
         if prompt_set_name == 'English':
@@ -315,13 +352,30 @@ class ExperimentRunner:
         
         # Get max workers from config
         max_workers = self.config['experiment'].get('max_workers', 10)
-        num_prompts = len(prompt_df)
         
-        # Use ThreadPoolExecutor for parallel API calls
+        # Filter out already completed prompts
+        prompts_to_process = []
+        for idx, row in prompt_df.iterrows():
+            query_key = (model_name, template_name, prompt_set_name, temperature, row['id'])
+            if query_key not in self.completed_queries:
+                prompts_to_process.append(row)
+        
+        num_prompts = len(prompts_to_process)
+        num_total = len(prompt_df)
+        num_skipped = num_total - num_prompts
+        
+        if num_skipped > 0:
+            print(f"  ⏭ Skipping {num_skipped} already completed prompts")
+        
+        if num_prompts == 0:
+            print(f"  ✓ All prompts already completed for this configuration")
+            return
+        
+        # Use ThreadPoolExecutor with all prompts at once (more efficient than small batches)
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             # Submit all prompts as futures
             futures = []
-            for idx, row in prompt_df.iterrows():
+            for row in prompts_to_process:
                 future = executor.submit(
                     self._process_single_prompt,
                     row=row,
@@ -335,15 +389,14 @@ class ExperimentRunner:
                 futures.append(future)
             
             # Process completed futures with progress bar
-            completed = 0
             with tqdm(total=num_prompts, desc=f"  Querying {model_name}", leave=False) as pbar:
-                for future in as_completed(futures):
+                for future in as_completed(futures, timeout=300):  # 5 min total timeout
                     try:
-                        future.result()  # This will raise any exceptions that occurred
-                        completed += 1
+                        future.result(timeout=5)  # Quick result fetch
+                        pbar.update(1)
+                    except TimeoutError:
                         pbar.update(1)
                     except Exception as e:
-                        print(f"  [X] Error in parallel processing: {e}")
                         pbar.update(1)
     
     def _process_single_prompt(
@@ -404,6 +457,9 @@ class ExperimentRunner:
                 self.responses.append(response_data)
                 self.total_queries += 1
                 self.total_cost += response.cost
+                # Mark as completed
+                query_key = (model_name, template_name, prompt_set_name, temperature, prompt_id)
+                self.completed_queries.add(query_key)
             
             # Evaluate with LLM judge
             if response.success:

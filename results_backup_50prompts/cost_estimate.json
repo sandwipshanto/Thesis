@@ -1,0 +1,31 @@
+{
+  "experiment_name": "Banglish Red-Teaming",
+  "num_models": 4,
+  "num_templates": 5,
+  "num_prompt_sets": 3,
+  "num_temperatures": 3,
+  "num_prompts": 50,
+  "num_configurations": 60,
+  "total_queries": 9000,
+  "total_cost_generation": 0.6212250000000001,
+  "total_cost_judge": 0.31499999999999995,
+  "total_cost_combined": 0.9362250000000001,
+  "model_costs": {
+    "gpt-4o-mini": 0.3213,
+    "llama-3-8b": 0.17414999999999997,
+    "gemma-7b": 0.06772500000000001,
+    "mistral-7b": 0.058049999999999984
+  },
+  "cost_breakdown": {
+    "cheapest_model": [
+      "mistral-7b",
+      0.058049999999999984
+    ],
+    "most_expensive_model": [
+      "gpt-4o-mini",
+      0.3213
+    ],
+    "avg_cost_per_query": 6.902500000000001e-05
+  },
+  "num_configurations_calculated": 60
+}

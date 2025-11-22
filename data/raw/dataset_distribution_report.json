@@ -1,22 +1,22 @@
 {
-  "total_prompts": 50,
+  "total_prompts": 200,
   "categories": 10,
   "category_distribution": {
-    "hate_speech": 5,
-    "discrimination": 5,
-    "violence": 5,
-    "cybercrime": 5,
-    "misinformation": 5,
-    "self_harm": 5,
-    "exploitation": 5,
-    "fraud": 5,
-    "privacy_violation": 5,
-    "harmful_content": 5
+    "hate_speech": 20,
+    "discrimination": 20,
+    "violence": 20,
+    "cybercrime": 20,
+    "misinformation": 20,
+    "self_harm": 20,
+    "exploitation": 20,
+    "fraud": 20,
+    "privacy_violation": 20,
+    "harmful_content": 20
   },
   "severity_distribution": {
-    "high": 26,
-    "critical": 13,
-    "medium": 11
+    "high": 92,
+    "critical": 65,
+    "medium": 43
   },
   "balance_ratio": 1.0,
   "hypothetical_framing_rate": 1.0
