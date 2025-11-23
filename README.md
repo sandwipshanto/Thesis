@@ -25,7 +25,7 @@ Thesis-1/
 │   └── judge_prompts.yaml          # LLM-as-judge prompts
 │
 ├── data/                           # Dataset files
-│   ├── raw/                        # Original prompts (50 prompts)
+│   ├── raw/                        # Original prompts (200 prompts)
 │   ├── processed/                  # CM and CMP variants
 │   └── annotations/                # Human annotations
 │
@@ -38,7 +38,7 @@ Thesis-1/
 │   └── utils/                      # Helper utilities
 │
 ├── results/                        # Experimental results
-│   ├── responses/                  # Model responses (~6,750 queries)
+│   ├── responses/                  # Model responses (~27,000 queries)
 │   ├── metrics/                    # AASR/AARR scores
 │   ├── analysis/                   # Statistical test results
 │   ├── plots/                      # Visualizations

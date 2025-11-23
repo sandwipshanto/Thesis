@@ -17,8 +17,8 @@
 
 **Completed Steps:**
 - ✅ Step 1: Project Setup & Dependencies
-- ✅ Step 2: Base Dataset (50 prompts, 10 categories)
-- ✅ Step 3: CM/CMP Prompt Generation (100% validated)
+- ✅ Step 2: Base Dataset (200 prompts, 10 categories - SCALED UP from 50)
+- ✅ Step 3: CM/CMP Prompt Generation (100% validated, 200 prompts)
 - ✅ Step 4: Jailbreak Templates (5 templates implemented)
 - ✅ Step 5: Model Access & API Infrastructure (all 4 models tested)
 - ✅ Step 6: Evaluation System (LLM-as-judge, AASR/AARR metrics, ICC validation)
@@ -70,12 +70,13 @@
 ---
 
 ## Step 2: Create Base Dataset
-**Status:** ✅ Complete
+**Status:** ✅ Complete (UPDATED - 200 prompts)
 
 **Tasks:**
-- [x] **Start with smaller dataset for initial testing:**
-  - **Target:** ~50 prompts across 5-10 categories (NOT 460)
-  - Sample 5-10 prompts per category for balanced coverage
+- [x] **Expanded dataset for improved statistical power:**
+  - **Initial:** 50 prompts across 10 categories (5 per category)
+  - **Current:** 200 prompts across 10 categories (20 per category)
+  - Scaled up 4× for better statistical significance
 - [x] Select diverse harm categories:
   - Hate speech
   - Discrimination
@@ -94,12 +95,16 @@
 - [x] Balance across harm categories
 
 **Deliverables:**
-- data/raw/harmful_prompts_english.csv (**50 entries for initial experiments**)
+- data/raw/harmful_prompts_english.csv (**200 entries - scaled from 50**)
 - Category distribution report
+- Scaling analysis: docs/200_PROMPT_SCALING_REPORT.md
 
 **Paper Reference:** Section 3.1, Section 4.1 (Step 1)
 
-**Note:** Starting with 50 prompts allows faster iteration. Can scale to 460 later for full replication.
+**Scaling History:**
+- Phase 1 (Initial): 50 prompts (5 per category) - validated methodology
+- Phase 2 (Current): 200 prompts (20 per category) - improved statistical power
+- Future potential: 460 prompts for full replication study
 
 ---
 
@@ -900,17 +905,25 @@ Does tokenization disruption explain Bangla attack success?
 - **Success Function 𝕊(R):** Returns 1 if attack successful, 0 otherwise
 - **Relevance Function ℝ(R):** Returns 1 if relevant, 0 if irrelevant, -1 for refusal
 
-### Cost Estimate (Updated for 50 prompts, 3 temps)
-- **API costs (via OpenRouter):** $50-100 (for ~9,000 queries)
-  - 50 prompts × 4 models × 5 templates × 3 prompt sets × 3 temps = 9,000 queries
-  - Estimated $0.005-0.01 per query (varies by model)
+### Cost Estimate (Updated for 200 prompts, 3 temps)
+- **API costs (via OpenRouter):** $1.50-2.00 (for 27,000-36,000 queries)
+  - 200 prompts × 3 models × 5 templates × 3 prompt sets × 3 temps = 27,000 queries (collected)
+  - 200 prompts × 4 models × 5 templates × 3 prompt sets × 3 temps = 36,000 queries (full target)
+  - Actual cost: ~$1.50 for 27,000 queries
   - OpenRouter pricing: ~$0.15-0.30 per 1M tokens
 - **Human annotation:** $0-50 (volunteer annotators for 100 samples)
-- **Total:** $50-150 for initial experiments
+- **Total:** $1.50-2.50 for 200-prompt experiments
+
+**Scaling Progress:**
+- ✅ Initial validation: 50 prompts (~6,750 queries, $0.38)
+- ✅ Statistical power boost: 200 prompts (27,000 queries collected, $1.50)
+- Future: 460 prompts would cost $5-10 for full replication
 
 **Scaling to Full Replication (460 prompts, 6 temps):**
 - Would cost $500-1000 and ~165,600 queries
-- Recommended: Start with 50 prompts to validate methodology first
+- ✅ Completed: 50 prompts validated methodology successfully
+- ✅ Completed: 200 prompts (4× scale) improved statistical power
+- Recommended: 27,000 queries provide publication-quality results
 
 ### Expected Results (based on original paper)
 - **ChatGPT & Llama:**

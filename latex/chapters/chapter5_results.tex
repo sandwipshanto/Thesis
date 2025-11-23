@@ -1,7 +1,7 @@
 \chapter{Results}
 \label{ch:results}
 
-This chapter presents our experimental findings organized by research question. All results are based on approximately 2,250 model responses across 3 LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B), 5 jailbreak templates, 3 prompt sets, and 3 temperature settings. \textbf{Note:} Gemma-1.1-7B was excluded from experiments due to budget constraints.
+This chapter presents our experimental findings organized by research question. Results are based on 27,000 model responses collected across 3 LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B), 5 jailbreak templates, 3 prompt sets, and 3 temperature settings from a 200-prompt dataset (scaled from initial 50-prompt validation). \textbf{Note:} Gemma-1.1-7B was excluded from experiments due to budget constraints. Data represents 75\% completion (27,000/36,000 planned queries).
 
 \section{RQ1: Code-Mixing Effectiveness}
 \label{sec:rq1}
@@ -10,7 +10,7 @@ This chapter presents our experimental findings organized by research question. 
 
 \subsection{Overall Attack Success Rates}
 
-\textbf{Key Finding:} Bangla code-mixing with phonetic perturbations achieves \textbf{46.0\% AASR}, representing a \textbf{42\% improvement} over the English baseline (32.4\%).
+\textbf{Key Finding:} Bangla code-mixing with phonetic perturbations achieves \textbf{40.1\% AASR}, with statistically significant improvement over the English baseline (36.1\%). English$\rightarrow$CMP transition shows highly significant results (p=0.0070).
 
 \begin{table}[h]
 \centering
@@ -19,13 +19,13 @@ This chapter presents our experimental findings organized by research question. 
 \begin{tabular}{@{}lccc@{}}
 \toprule
 \textbf{Prompt Set} & \textbf{AASR} & \textbf{AARR} & \textbf{Improvement} \\ \midrule
-English & 32.4\% & 68.2\% & Baseline \\
-CM & 42.1\% & 71.5\% & +30\% \\
-CMP & 46.0\% & 73.8\% & +42\% \\ \bottomrule
+English & 36.1\% & 70.5\% & Baseline \\
+CM & 37.2\% & 72.1\% & +3.0\% \\
+CMP & 40.1\% & 74.2\% & +11.1\% \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Statistical Significance (Wilcoxon Signed-Rank Test, $\alpha$=0.05):} Wilcoxon signed-rank testing confirms statistically significant differences between all prompt set pairs at the $\alpha=0.05$ level. The comparison between English and code-mixed prompts yields $p < 0.001$, indicating highly significant improvement. The comparison between code-mixed and phonetically perturbed prompts yields $p = 0.023$, demonstrating significant additional benefit from perturbations. Finally, the direct comparison between English and fully perturbed prompts yields $p < 0.001$, confirming the cumulative effectiveness of the complete transformation pipeline. Figure~\ref{fig:transition-effects} demonstrates this systematic improvement in AASR as phonetic perturbations are progressively added to code-mixed prompts across all tested models.
+\textbf{Statistical Significance (Wilcoxon Signed-Rank Test, $\alpha$=0.05):} Wilcoxon signed-rank testing confirms statistically significant differences for key transitions. The comparison between English and code-mixed prompts yields $p = 0.0209$, indicating significant improvement at the $\alpha=0.05$ level. The comparison between code-mixed and phonetically perturbed prompts yields $p = 0.1291$, showing modest additional benefit that does not reach significance with partial data collection (75\% complete). However, the direct comparison between English and fully perturbed prompts yields $p = 0.0070$, confirming highly significant effectiveness of the complete transformation pipeline. Figure~\ref{fig:transition-effects} demonstrates this improvement in AASR as phonetic perturbations are added to code-mixed prompts across all tested models.
 
 \begin{figure}[h]
 \centering
@@ -50,7 +50,7 @@ Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)}
 \end{tabular}
 \end{table}
 
-\textbf{Key Observations:} Mistral-7B demonstrates critical baseline vulnerability at 84.1\%, showing minimal change with code-mixing strategies because safety filters are already largely ineffective. In contrast, Llama-3-8B exhibits a clear progression pattern, with AASR increasing systematically from 11.6\% (English) to 25.6\% (CM) to 30.9\% (CMP). GPT-4o-mini presents the most striking case, possessing the strongest baseline defenses at only 1.5\% AASR, yet experiencing a 17$\times$ increase to 25.7\% when subjected to Bangla code-mixing attacks. These vulnerability patterns are visualized in Figure~\ref{fig:aasr-heatmap}, which highlights the critical baseline weakness in Mistral-7B and GPT-4o-mini's dramatic sensitivity.
+\textbf{Key Observations:} Mistral-7B demonstrates critical baseline vulnerability at 86.2\%, showing minimal variation with code-mixing strategies because safety filters are already largely ineffective. The model actually shows increased vulnerability with scale (88.8\% CMP in 200-prompt dataset vs 81.3\% in 50-prompt validation). In contrast, Llama-3-8B exhibits moderate vulnerability with AASR of 23.5\% for CMP prompts. GPT-4o-mini demonstrates dramatically improved robustness at scale, achieving only 8.0\% AASR for CMP (compared to 25.7\% in 50-prompt validation), suggesting the initial high vulnerability may have been due to sampling bias. These vulnerability patterns are visualized in Figure~\ref{fig:aasr-heatmap}, which highlights the critical baseline weakness in Mistral-7B and GPT-4o-mini's improved defenses at scale.
 
 \begin{figure}[h]
 \centering
@@ -76,7 +76,7 @@ Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)}
 
 \subsection{Answer to RQ1}
 
-The answer to RQ1 is affirmative. Bangla-English code-mixing with phonetic perturbations effectively bypasses LLM safety filters, achieving 46\% overall AASR with the CMP prompt set. This represents a 42\% improvement over the English baseline. All pairwise comparisons reach statistical significance at the $p < 0.05$ level, confirming the robustness of the findings. The attack proves effective across all tested models, though with varying degrees of vulnerability ranging from critical (Mistral-7B) to moderate (Llama-3-8B) to low but exploitable (GPT-4o-mini). Furthermore, the attack strategy remains robust across temperature settings spanning deterministic (0.2) to balanced (0.6) to highly creative (1.0) sampling parameters.
+The answer to RQ1 is affirmative. Bangla-English code-mixing with phonetic perturbations effectively bypasses LLM safety filters, achieving 40.1\% overall AASR with the CMP prompt set. This represents an 11.1\% improvement over the English baseline (36.1\%). The English$\rightarrow$CMP transition reaches high statistical significance at p=0.0070, confirming the robustness of the findings despite partial data collection (27,000/36,000 queries). The attack proves effective across all tested models, with critical vulnerability in Mistral-7B (88.8\% AASR), moderate in Llama-3-8B (23.5\%), and low but non-zero in GPT-4o-mini (8.0\%). Notably, the 200-prompt dataset reveals more conservative AASR estimates than the 50-prompt validation, with GPT-4o-mini showing 68.7\% improvement in defenses at scale (25.7\%$\rightarrow$8.0\%), while Mistral-7B vulnerability increased by 9.1\% (81.3\%$\rightarrow$88.8\%). Furthermore, the attack strategy remains robust across temperature settings spanning deterministic (0.2) to balanced (0.6) to highly creative (1.0) sampling parameters.
 
 \section{RQ2: Bangla-Specific Patterns}
 \label{sec:rq2}

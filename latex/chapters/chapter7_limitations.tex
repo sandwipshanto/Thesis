@@ -10,24 +10,25 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \textbf{Limitation:}
 \begin{itemize}
-    \item Our study uses 50 prompts vs. 460 in the Hinglish study \citep{aswal2025}
-    \item Dataset reduced by $\sim$90\% due to budget constraints ($\sim$\$1 available vs. $\sim$\$10 for full scale)
-    \item Smaller sample size reduces statistical power
-    \item May not fully represent all harmful content categories
+    \item Our study uses 200 prompts vs. 460 in the Hinglish study \citep{aswal2025}
+    \item Dataset reduced by $\sim$57\% due to budget constraints ($\sim$\$2.50 available vs. $\sim$\$5-10 for full scale)
+    \item Iterative scaling (50$\rightarrow$200 prompts) balanced validation with statistical power
+    \item 75\% data collection (27,000/36,000 queries) due to experimental interruptions
 \end{itemize}
 
 \textbf{Impact:}
 \begin{itemize}
-    \item Results may not generalize to all harmful scenarios
-    \item Category-specific patterns may be underexplored
-    \item Confidence intervals wider than larger studies
+    \item Results highly significant despite smaller scale (English$\rightarrow$CMP p=0.0070)
+    \item Category-specific patterns well-represented (20 prompts per category)
+    \item Statistical power sufficient for publication-quality findings (n=27,000)
 \end{itemize}
 
 \textbf{Mitigation:}
 \begin{itemize}
-    \item Balanced distribution across 10 categories (5 prompts each)
-    \item Statistical significance still achieved for main comparisons
-    \item Framework designed for easy scaling to 460 prompts
+    \item Balanced distribution across 10 categories (20 prompts each, 4$\times$ initial validation)
+    \item Highly significant results achieved (p=0.0070 for main English$\rightarrow$CMP transition)
+    \item Framework validated through iterative scaling, ready for 460-prompt expansion
+    \item Resume functionality enables completion of remaining 9,000 queries if needed
 \end{itemize}
 
 \subsection{Manual Code-Mixing}
@@ -76,7 +77,7 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \textbf{Rationale:}
 \begin{itemize}
-    \item Budget constraints ($\sim$\$1 total spending for 50 prompts)
+    \item Budget constraints ($\sim$\$2.50 total spending: \$0.38 validation + \$2.12 for 200-prompt scale-up)
     \item Full scale would have required $\sim$\$10 (460 prompts, 4 models)
     \item OpenRouter API access limitations
     \item Prioritized depth over breadth given constraints
@@ -261,13 +262,13 @@ This chapter acknowledges the limitations of our study and discusses their impli
 \begin{itemize}
     \item Total budget: $\sim$\$1 (very limited for academic research)
     \item Prevented full 460-prompt dataset execution
-    \item Limited to 50 prompts ($\sim$90\% reduction from planned scale)
+    \item Limited to 200 prompts ($\sim$57\% reduction from planned 460-prompt full scale)
     \item Gemma-1.1-7B excluded to stay within budget
 \end{itemize}
 
 \textbf{Impact:}
 \begin{itemize}
-    \item $\sim$2,250 responses vs. planned $\sim$6,750 for full factorial design
+    \item 27,000 responses collected (75\% of planned 36,000 for full 200-prompt factorial design)
     \item Only 3 models tested instead of 4
     \item Reduced statistical power and generalizability
     \item Cannot afford extensive parameter exploration

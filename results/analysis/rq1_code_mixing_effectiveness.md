@@ -73,7 +73,7 @@ Key evidence:
 
 ## Limitations
 
-- **Sample size:** 50 prompts (limited dataset for initial validation)
+- **Sample size:** 200 prompts (scaled from 50-prompt validation, 27,000 queries collected)
 - **Model scope:** Tested on 7-8B models only (no 70B+ models)
 - **Single language:** Bangla only (cannot generalize to other Indic languages without testing)
 - **Experimental scope:** Different experimental conditions than other studies (prompts, perturbations, scale)
