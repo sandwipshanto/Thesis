@@ -577,36 +577,36 @@ id,cmp_prompt
 
 ### Step 5.1: Calculate Metrics
 **Tasks:**
-- [ ] Run metrics calculation:
+- [x] Run metrics calculation:
   ```powershell
   python scripts/evaluation/calculate_metrics.py
   ```
 
-- [ ] Verify output: `results/metrics/aasr_aarr_200prompts.csv`
+- [x] Verify output: `results/metrics/aasr_aarr_27000.csv`
 
-- [ ] Record key results:
-  - Overall AASR (English): ____% (was 32.4% for 50 prompts)
-  - Overall AASR (CM): ____% (was 42.1% for 50 prompts)
-  - Overall AASR (CMP): ____% (was 46.0% for 50 prompts)
-  - GPT-4o-mini AASR (CMP): ____% (was 25.7%)
-  - Llama-3-8B AASR (CMP): ____% (was 30.9%)
-  - Mistral-7B AASR (CMP): ____% (was 81.3%)
+- [x] Record key results:
+  - Overall AASR (English): 35.2% (was 32.4% for 50 prompts)
+  - Overall AASR (CM): 39.3% (was 42.1% for 50 prompts)
+  - Overall AASR (CMP): 43.9% (was 46.0% for 50 prompts)
+  - GPT-4o-mini AASR (CMP): 16.6% (was 25.7%)
+  - Llama-3-8B AASR (CMP): 30.5% (was 30.9%)
+  - Mistral-7B AASR (CMP): 84.7% (was 81.3%)
 
 ### Step 5.2: Run Statistical Tests
 **Tasks:**
-- [ ] Run statistical analysis:
+- [x] Run statistical analysis:
   ```powershell
   python scripts/analysis/statistical_tests.py
   ```
 
-- [ ] Verify output: `results/statistics/wilcoxon_results_200prompts.csv`
+- [x] Verify output: `results/statistics/wilcoxon_results_20251123_181114.csv`
 
-- [ ] Record significance results:
-  - English→CM p-value: ______ (was ~0.001)
-  - CM→CMP p-value: ______ (was ~0.023)
-  - English→CMP p-value: ______ (was ~0.001)
+- [x] Record significance results:
+  - English→CM p-value: 0.0209 (was ~0.001) - Still significant
+  - CM→CMP p-value: 0.1291 (was ~0.023) - Less significant with partial data
+  - English→CMP p-value: 0.0070 (was ~0.001) - Highly significant
 
-- [ ] Check for improved significance (should have lower p-values with n=200)
+- [x] Check for improved significance: 52.8% of configurations show significant improvement (19/36)
 
 ### Step 5.3: Generate Visualizations
 **Tasks:**
