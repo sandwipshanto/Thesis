@@ -36,13 +36,16 @@
 \usepackage{cleveref}
 \usepackage{caption}
 \usepackage{subcaption}
-\usepackage{enumitem}
+\usepackage[inline]{enumitem}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{natbib}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{tocloft}
+
+% Configure enumitem to remove external numbering and put numbers inside boxes
+\setlist[enumerate]{leftmargin=*,labelindent=0pt,label=\arabic*.}
 
 % Page geometry
 \geometry{
@@ -128,9 +131,6 @@
 % Title page
 \include{chapters/00_titlepage}
 
-% Declaration
-\include{chapters/01_declaration}
-
 % Supervisor's recommendation
 \include{chapters/02_supervisor_recommendation}
 
@@ -174,11 +174,10 @@
 \include{chapters/chapter2_background}
 \include{chapters/chapter3_methodology}
 \include{chapters/chapter4_experimental_setup}
-\include{chapters/chapter5_results}
-\include{chapters/chapter6_discussion}
-\include{chapters/chapter7_limitations}
-\include{chapters/chapter8_ethical_considerations}
-\include{chapters/chapter9_conclusion}
+\include{chapters/chapter5_results_discussion}
+\include{chapters/chapter6_limitations}
+\include{chapters/chapter7_ethical_considerations}
+\include{chapters/chapter8_conclusion}
 
 % Bibliography
 \clearpage

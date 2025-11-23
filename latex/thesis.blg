@@ -1,50 +1,28 @@
-This is BibTeX, Version 0.99d
+This is BibTeX, Version 0.99d (TeX Live 2023/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
-Reallocating 'name_of_file' (item size: 1) to 26 items.
 A level-1 auxiliary file: chapters/00_titlepage.aux
-Reallocating 'name_of_file' (item size: 1) to 28 items.
-A level-1 auxiliary file: chapters/01_declaration.aux
-Reallocating 'name_of_file' (item size: 1) to 42 items.
 A level-1 auxiliary file: chapters/02_supervisor_recommendation.aux
-Reallocating 'name_of_file' (item size: 1) to 28 items.
 A level-1 auxiliary file: chapters/03_certificate.aux
-Reallocating 'name_of_file' (item size: 1) to 27 items.
 A level-1 auxiliary file: chapters/04_dedication.aux
-Reallocating 'name_of_file' (item size: 1) to 31 items.
 A level-1 auxiliary file: chapters/05_acknowledgment.aux
-Reallocating 'name_of_file' (item size: 1) to 34 items.
 A level-1 auxiliary file: chapters/06_ethical_statement.aux
-Reallocating 'name_of_file' (item size: 1) to 32 items.
 A level-1 auxiliary file: chapters/07_content_warning.aux
-Reallocating 'name_of_file' (item size: 1) to 25 items.
 A level-1 auxiliary file: chapters/08_abstract.aux
-Reallocating 'name_of_file' (item size: 1) to 35 items.
 A level-1 auxiliary file: chapters/chapter1_introduction.aux
-Reallocating 'name_of_file' (item size: 1) to 33 items.
 A level-1 auxiliary file: chapters/chapter2_background.aux
-Reallocating 'name_of_file' (item size: 1) to 34 items.
 A level-1 auxiliary file: chapters/chapter3_methodology.aux
-Reallocating 'name_of_file' (item size: 1) to 41 items.
 A level-1 auxiliary file: chapters/chapter4_experimental_setup.aux
-Reallocating 'name_of_file' (item size: 1) to 30 items.
-A level-1 auxiliary file: chapters/chapter5_results.aux
-Reallocating 'name_of_file' (item size: 1) to 33 items.
-A level-1 auxiliary file: chapters/chapter6_discussion.aux
-Reallocating 'name_of_file' (item size: 1) to 34 items.
-A level-1 auxiliary file: chapters/chapter7_limitations.aux
-Reallocating 'name_of_file' (item size: 1) to 45 items.
-A level-1 auxiliary file: chapters/chapter8_ethical_considerations.aux
-Reallocating 'name_of_file' (item size: 1) to 33 items.
-A level-1 auxiliary file: chapters/chapter9_conclusion.aux
-Reallocating 'name_of_file' (item size: 1) to 8 items.
+A level-1 auxiliary file: chapters/chapter5_results_discussion.aux
+A level-1 auxiliary file: chapters/chapter6_limitations.aux
+A level-1 auxiliary file: chapters/chapter7_ethical_considerations.aux
+A level-1 auxiliary file: chapters/chapter8_conclusion.aux
 The style file: apalike.bst
-Reallocating 'name_of_file' (item size: 1) to 11 items.
 Database file #1: references.bib
 Warning--empty journal in sailaja2012
 You've used 73 entries,
             1935 wiz_defined-function locations,
-            834 strings with 19593 characters,
+            832 strings with 19545 characters,
 and the built_in function-call counts, 34659 in all, are:
 = -- 3191
 > -- 2215

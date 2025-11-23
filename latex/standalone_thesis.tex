@@ -1948,44 +1948,44 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \subsection{Limited Prompt Count}
 
-\textbf{Limitation:}
+Limitation:
 \begin{itemize}
-    \item Our study uses 50 prompts vs. 460 in the Hinglish study \citep{aswal2025}
-    \item Smaller sample size reduces statistical power
+    \item Our study uses 200 prompts vs. 460 in the Hinglish study
+    \item Smaller sample size reduces statistical power compared to full replication
     \item May not fully represent all harmful content categories
 \end{itemize}
 
-\textbf{Impact:}
+Impact:
 \begin{itemize}
     \item Results may not generalize to all harmful scenarios
     \item Category-specific patterns may be underexplored
     \item Confidence intervals wider than larger studies
 \end{itemize}
 
-\textbf{Mitigation:}
+Mitigation:
 \begin{itemize}
-    \item Balanced distribution across 10 categories (5 prompts each)
-    \item Statistical significance still achieved for main comparisons
+    \item Balanced distribution across 10 categories
+    \item Statistical significance still achieved for main comparisons (p=0.0070)
     \item Framework designed for easy scaling to 460 prompts
 \end{itemize}
 
 \subsection{Manual Code-Mixing}
 
-\textbf{Limitation:}
+Limitation:
 \begin{itemize}
     \item Code-mixing performed manually by authors
     \item Potential for subjective variation
     \item Time-intensive process limits scalability
 \end{itemize}
 
-\textbf{Impact:}
+Impact:
 \begin{itemize}
     \item Code-mixing quality depends on authors' Bangla proficiency
     \item Different researchers might produce different code-mixed variants
     \item Difficult to scale to thousands of prompts
 \end{itemize}
 
-\textbf{Mitigation:}
+Mitigation:
 \begin{itemize}
     \item Authors are native Bangla speakers
     \item Manual review and consistency checks performed
@@ -1997,25 +1997,25 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \subsection{Limited Model Selection}
 
-\textbf{Limitation:}
+Limitation:
 \begin{itemize}
-    \item Only 3 models fully tested (Gemma incomplete)
+    \item Only 3 models tested due to budget constraints
     \item Missing major models: Claude, PaLM 2, newer GPT-4
     \item Open-source models limited to 7-8B parameters
 \end{itemize}
 
-\textbf{Impact:}
+Impact:
 \begin{itemize}
     \item Results may not generalize to all LLM architectures
     \item Larger models (70B+) might have different vulnerabilities
     \item Proprietary models like Claude not evaluated
 \end{itemize}
 
-\textbf{Rationale:}
+Rationale:
 \begin{itemize}
-    \item Budget constraints (\$0.62 total spending)
+    \item Budget constraints limited full factorial design
     \item OpenRouter API access limitations
-    \item 4 models align with prior work for comparability
+    \item 3 models provide sufficient diversity for initial evaluation
 \end{itemize}
 
 \subsection{Model Version Stability}

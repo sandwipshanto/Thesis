@@ -29,7 +29,7 @@ Our work was inspired by \citet{aswal2025}. Key comparisons:
 
 \textbf{Methodological Similarities:} Our experimental design deliberately parallels the Hinglish study in several key respects. Both employ a three-step transformation pipeline (English $\rightarrow$ CM $\rightarrow$ CMP), test the same model architectures (GPT-4o-mini, Llama-3-8B, Mistral-7B), investigate the tokenization fragmentation hypothesis, and utilize LLM-as-judge evaluation for scalable response assessment.
 
-\textbf{Critical Differences:} Despite methodological parallels, our work constitutes an independent contribution with several distinguishing features. We investigate Bangla rather than Hindi, which differs substantially in phonology and romanization conventions. Our dataset comprises 50 carefully curated custom prompts compared to their 460 prompts, reflecting budget constraints that limited us to testing 3 models fully (Gemma excluded) versus their 4-model coverage. While smaller in scale, our study yields novel findings including the English-word targeting strategy and the counterintuitive ineffectiveness of jailbreak templates for code-mixing attacks.
+Critical Differences: Despite methodological parallels, our work constitutes an independent contribution with several distinguishing features. We investigate Bangla rather than Hindi, which differs substantially in phonology and romanization conventions. Our dataset comprises 200 carefully curated prompts compared to their 460 prompts, reflecting budget constraints that limited us to testing 3 models fully. While smaller in scale, our study yields novel findings including the English-word targeting strategy and the counterintuitive ineffectiveness of jailbreak templates for code-mixing attacks.
 
 \textbf{Effectiveness Comparison:} The Hinglish study reported 99\% AASR with their CMP variant, while our Bangla CMP achieves 46\% AASR. However, these figures are not directly comparable due to different experimental conditions, including distinct prompt sets, evaluation criteria, and language-specific characteristics. The absolute effectiveness difference likely reflects a combination of linguistic variation, dataset composition, and methodological choices rather than inherent superiority of one attack language over another.
 
@@ -81,10 +81,10 @@ Mistral-7B's 81.8\% baseline vulnerability is unexpected:
 \subsection{Study Limitations}
 
 \begin{enumerate}
-    \item \textbf{Dataset size:} 200 prompts (scaled from 50) vs. 460 in prior work
-    \item \textbf{Model coverage:} 3 models fully tested (Gemma incomplete)
-    \item \textbf{Temperature settings:} 3 values vs. 6 in full factorial design
-    \item \textbf{Manual code-mixing:} Time-intensive, not fully automated
+    \item Dataset size: 200 prompts (scaled from 50) vs. 460 in prior work
+    \item Model coverage: 3 models fully tested
+    \item Temperature settings: 3 values vs. 6 in full factorial design
+    \item Manual code-mixing: Time-intensive, not fully automated
 \end{enumerate}
 
 \subsection{Future Research Directions}

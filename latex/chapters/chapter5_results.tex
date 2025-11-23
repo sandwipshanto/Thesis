@@ -1,7 +1,7 @@
 \chapter{Results}
 \label{ch:results}
 
-This chapter presents our experimental findings organized by research question. Results are based on 27,000 model responses collected across 3 LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B), 5 jailbreak templates, 3 prompt sets, and 3 temperature settings from a 200-prompt dataset (scaled from initial 50-prompt validation). \textbf{Note:} Gemma-1.1-7B was excluded from experiments due to budget constraints. Data represents 75\% completion (27,000/36,000 planned queries).
+This chapter presents our experimental findings organized by research question. Results are based on 27,000 model responses collected across 3 LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B), 5 jailbreak templates, 3 prompt sets, and 3 temperature settings from a 200-prompt dataset (scaled from initial 50-prompt validation). Data represents 75\% completion (27,000/36,000 planned queries).
 
 \section{RQ1: Code-Mixing Effectiveness}
 \label{sec:rq1}
@@ -42,11 +42,10 @@ CMP & 40.1\% & 74.2\% & +11.1\% \\ \bottomrule
 \label{tab:model-aasr}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Model} & \textbf{English} & \textbf{CM} & \textbf{CMP} & \textbf{Level} \\ \midrule
-Mistral-7B & 84.1\% & 80.0\% & 81.3\% & \textbf{Critical} \\
-Llama-3-8B & 11.6\% & 25.6\% & 30.9\% & \textbf{Moderate} \\
-GPT-4o-mini & 1.5\% & 20.7\% & 25.7\% & \textbf{Low} \\
-Gemma-1.1-7B & Not tested & Not tested & Not tested & \textbf{Excluded (budget)} \\ \bottomrule
+Model & English & CM & CMP & Level \\ \midrule
+Mistral-7B & 84.1\% & 80.0\% & 81.3\% & Critical \\
+Llama-3-8B & 11.6\% & 25.6\% & 30.9\% & Moderate \\
+GPT-4o-mini & 1.5\% & 20.7\% & 25.7\% & Low \\ \bottomrule
 \end{tabular}
 \end{table}
 
@@ -148,11 +147,10 @@ Analysis reveals four Bangla-specific patterns that enable these attacks. First,
 \label{tab:model-hierarchy}
 \begin{tabular}{@{}clcc@{}}
 \toprule
-\textbf{Rank} & \textbf{Model} & \textbf{Avg AASR} & \textbf{Level} \\ \midrule
-1 & Mistral-7B & 81.8\% & \textbf{Critical} \\
-2 & Llama-3-8B & 22.7\% & \textbf{Moderate} \\
-3 & GPT-4o-mini & 16.0\% & \textbf{Low} \\
---- & Gemma-1.1-7B & Not tested & \textbf{Excluded (budget)} \\ \bottomrule
+Rank & Model & Avg AASR & Level \\ \midrule
+1 & Mistral-7B & 81.8\% & Critical \\
+2 & Llama-3-8B & 22.7\% & Moderate \\
+3 & GPT-4o-mini & 16.0\% & Low \\ \bottomrule
 \end{tabular}
 \end{table}
 

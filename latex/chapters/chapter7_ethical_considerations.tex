@@ -1,0 +1,185 @@
+\chapter{Ethical Considerations}
+\label{ch:ethical}
+
+This chapter addresses the ethical dimensions of our research, including responsible disclosure, dataset handling, potential misuse, and broader societal implications.
+
+\section{Research Justification}
+\label{sec:justification}
+
+\subsection{AI Safety Motivation}
+
+Our research is conducted with the primary goal of improving AI safety:
+
+\begin{itemize}
+    \item Identifying vulnerabilities enables vendors to patch them
+    \item Understanding attack mechanisms informs better safety design
+    \item Documenting language-specific gaps promotes equitable protection
+    \item Academic disclosure advances collective security knowledge
+\end{itemize}
+
+\subsection{Dual-Use Dilemma}
+
+We acknowledge the dual-use nature of our work:
+
+Beneficial uses:
+\begin{itemize}
+    \item LLM developers improve multilingual safety training
+    \item Researchers develop tokenization-robust defenses
+    \item Policy makers establish language coverage requirements
+    \item Red-teaming teams expand testing methodologies
+\end{itemize}
+
+Potential misuse:
+\begin{itemize}
+    \item Malicious actors may exploit documented vulnerabilities
+    \item Attack techniques may be weaponized before patches deployed
+    \item Code-mixing strategies may be applied to other languages
+\end{itemize}
+
+Our position: The benefits of disclosure outweigh risks because:
+\begin{enumerate}
+    \item Vulnerabilities likely already known to sophisticated adversaries
+    \item Academic transparency accelerates collective defense
+    \item Responsible disclosure protocols minimize exploitation window
+    \item Dataset restrictions limit easy replication
+\end{enumerate}
+
+\section{Responsible Disclosure}
+\label{sec:responsible-disclosure}
+
+\subsection{Vendor Notification Plan}
+
+We commit to notifying affected organizations:
+
+Timeline:
+\begin{enumerate}
+    \item Pre-publication (November 2024): Thesis submission to university
+    \item Post-submission (December 2024): Prepare vulnerability reports
+    \item Vendor contact (January 2025): Email security teams at:
+    \begin{itemize}
+        \item OpenAI (GPT-4o-mini findings)
+        \item Meta (Llama-3-8B findings)
+        \item Mistral AI (Mistral-7B findings)
+    \end{itemize}
+    \item Patch window (60-90 days): Allow vendors time to address issues
+    \item Public disclosure: Academic publication after patch deployment
+\end{enumerate}
+
+Report contents:
+\begin{itemize}
+    \item Executive summary of findings
+    \item Methodology description (without full prompts)
+    \item AASR metrics per model
+    \item Recommended mitigations
+    \item Offer to collaborate on fixes
+\end{itemize}
+
+\subsection{Dataset Handling}
+
+Current status:
+\begin{itemize}
+    \item Full harmful prompt dataset: Not publicly released
+    \item Model responses: Not publicly released
+    \item Aggregated metrics: Available in thesis
+    \item Sample prompts: Sanitized examples only
+\end{itemize}
+
+Future release plan:
+\begin{itemize}
+    \item Research-only access: Dataset available upon request with usage agreement
+    \item Requirements:
+    \begin{enumerate}
+        \item Institutional affiliation verification
+        \item Signed data use agreement
+        \item Commitment to responsible use
+        \item No redistribution clause
+    \end{enumerate}
+    \item Public release: Only after vendor patches deployed (>6 months)
+\end{itemize}
+
+\section{Harm Mitigation Strategies}
+\label{sec:harm-mitigation}
+
+\subsection{Technical Safeguards}
+
+Dataset anonymization: All prompts stripped of personally identifiable information
+Response filtering: Extremely harmful outputs excluded from analysis
+Access controls: Research data stored on encrypted, access-controlled systems
+Version control: All changes tracked and auditable
+
+\subsection{Disclosure Limitations}
+
+Prompt abstraction: Examples provided without full harmful content
+Method generalization: Techniques described at conceptual level
+Result aggregation: Individual response content not disclosed
+Timeline coordination: Publication only after vendor notification
+
+\section{Societal Impact Considerations}
+\label{sec:societal-impact}
+
+\subsection{Bangla Speaker Equity}
+
+Our research directly addresses safety inequity affecting 230 million Bangla speakers:
+
+Current state: Bangla speakers receive demonstrably weaker safety protection
+Research impact: Provides evidence for policy and technical improvements
+Long-term goal: Equitable AI safety regardless of language background
+Advocacy role: Academic findings support community safety rights
+
+\subsection{Global Language Justice}
+
+Language coverage gaps: Our work highlights systematic bias in LLM safety training
+Scalable methodology: Framework applies to dozens of additional languages
+Resource accessibility: Low-cost evaluation enables broader vulnerability assessment
+Policy implications: Findings support multilingual safety requirements
+
+\section{Institutional Review and Compliance}
+\label{sec:institutional}
+
+\subsection{Ethics Committee Review}
+
+Research protocol submitted to university ethics committee
+Focus areas evaluated:
+\begin{itemize}
+    \item Dual-use research implications
+    \item Data handling procedures
+    \item Disclosure timeline
+    \item Potential harm assessment
+\end{itemize}
+
+Committee recommendations incorporated:
+\begin{itemize}
+    \item Extended vendor notification period
+    \item Enhanced dataset access controls
+    \item Clearer beneficial use emphasis
+    \item Structured responsible disclosure plan
+\end{itemize}
+
+\subsection{Regulatory Compliance}
+
+Data protection: All research data handling complies with local privacy regulations
+Academic integrity: Research conducted under university research ethics guidelines
+International norms: Disclosure approach aligns with computer security research standards
+Professional standards: Methods and reporting follow responsible AI research practices
+
+\section{Future Research Ethics}
+\label{sec:future-ethics}
+
+\subsection{Community Engagement}
+
+Language community consultation: Future work will engage Bangla-speaking communities
+Cultural sensitivity: Harm definitions will be validated across cultural contexts
+Participatory research: Community members involved in research design and evaluation
+Benefit sharing: Research outcomes will be accessible to affected communities
+
+\subsection{Continuous Assessment}
+
+Impact monitoring: Track how research findings are used post-publication
+Misuse detection: Monitor for inappropriate application of disclosed techniques
+Adaptive disclosure: Adjust future disclosure practices based on observed impacts
+Community feedback: Maintain channels for affected community input
+
+\section{Chapter Summary}
+\label{sec:ethical-summary}
+
+Our research operates under a responsible disclosure framework that prioritizes AI safety improvement while minimizing potential harm. We acknowledge the dual-use nature of our findings and have implemented comprehensive safeguards including vendor notification, dataset restrictions, and ethical review processes. The work directly serves the safety interests of 230 million Bangla speakers and advances global language justice in AI systems. Future extensions will incorporate community engagement and continuous impact assessment to ensure beneficial outcomes.
