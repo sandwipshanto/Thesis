@@ -4,81 +4,79 @@
 \section{Overview}
 \label{sec:overview}
 
-Large Language Models (LLMs) have transformed human-computer interaction, serving billions of users worldwide through applications ranging from customer service chatbots to educational tools and creative assistants. The release of models like ChatGPT \citep{openai2023}, Llama \citep{dubey2024}, Gemini \citep{google2024}, and Mistral has democratized access to powerful AI systems, enabling users from diverse linguistic backgrounds to interact with these technologies in their native languages or preferred communication styles. However, this global accessibility introduces critical safety challenges that remain poorly understood for low-resource languages, particularly in the context of adversarial attacks exploiting code-mixing and phonetic perturbations.
+Large Language Models (LLMs) have revolutionized how we interact with computers, now serving billions of people worldwide through everything from customer service chatbots to educational tools and creative assistants. When models like ChatGPT \citep{openai2023}, Llama \citep{dubey2024}, Gemini \citep{google2024}, and Mistral became available, they opened up powerful AI capabilities to users from all kinds of linguistic backgrounds, letting people communicate with these systems in their native languages or however they prefer to express themselves. However, this global reach brings serious safety challenges that we still don't fully understand, especially when it comes to adversarial attacks that exploit code-mixing and phonetic tricks.
 
 \section{Motivation and Research Problem}
 \label{sec:motivation}
 
-While extensive research has focused on English-language safety mechanisms \citep{ganguli2022, zou2023}, and recent work has begun exploring multilingual vulnerabilities \citep{deng2023, yong2023}, low-resource Indic languages remain severely understudied in the context of adversarial robustness. This gap is particularly concerning for Bangla, the world's eighth most spoken language with 230 million native speakers. Bangla speakers frequently use romanized Banglish in digital communication, yet current LLM safety training predominantly focuses on English and major European languages. Code-mixing---the practice of alternating between multiple languages within a single conversation---is the default communication mode for millions of South Asian internet users, creating a potential vulnerability surface that has received minimal academic attention.
+While researchers have spent a lot of effort studying English-language safety mechanisms \citep{ganguli2022, zou2023}, and some recent work has started looking at multilingual vulnerabilities \citep{deng2023, yong2023}, low-resource Indic languages haven't gotten nearly enough attention when it comes to adversarial robustness. This gap is especially worrying for Bangla, which is spoken by 230 million people worldwide. Bangla speakers often use romanized Banglish when they're online, but current LLM safety training focuses mainly on English and major European languages. Code-mixing---where people switch between multiple languages in a single conversation---is actually how millions of South Asian internet users normally communicate, yet this creates a potential vulnerability that researchers have barely looked into.
 
-Recent work by \citet{aswal2025} demonstrated that Hindi-English (Hinglish) code-mixing combined with phonetic perturbations can bypass LLM safety filters with high success rates through a tokenization disruption mechanism. Their findings revealed that romanized Hindi text fragments into smaller subword tokens compared to English equivalents, preventing safety classifiers from recognizing harmful intent. This raises a critical question: are other Indic languages with similar romanization patterns similarly vulnerable, and do their unique linguistic properties create distinct attack patterns?
+Recent work by \citet{aswal2025} showed that mixing Hindi-English (Hinglish) with phonetic tricks can fool LLM safety filters quite effectively through something called tokenization disruption. They found that when Hindi text gets romanized, it breaks down into smaller pieces compared to English, which prevents safety systems from recognizing harmful content. This raises an important question: are other Indic languages with similar romanization patterns just as vulnerable, and do their unique features create different types of attack patterns?
 
-Bangla presents a particularly compelling case study for several reasons. First, unlike Hindi's relatively standardized Devanagari romanization schemes, Bangla romanization (Banglish) has multiple valid variants for the same word, creating additional complexity for tokenization. Second, Bangla's distinct phonetic properties---including nasalization, consonant clusters, and vowel harmony---create unique tokenization patterns that may interact differently with safety mechanisms. Third, Bangla likely comprises a smaller proportion of LLM training corpora compared to Hindi, potentially resulting in weaker safety coverage. Finally, with 230 million speakers globally, this population deserves comprehensive safety protections that account for their actual language use patterns.
+Bangla is particularly interesting to study for several reasons. First, unlike Hindi which has relatively standard ways of being romanized, Bangla romanization (Banglish) has multiple correct ways to write the same word, making tokenization even more complex. Second, Bangla has distinct sounds---including nasalization, consonant clusters, and vowel patterns---that create unique tokenization behavior that might interact differently with safety systems. Third, Bangla probably makes up a smaller part of LLM training data compared to Hindi, which could mean weaker safety coverage. Finally, with 230 million speakers globally, this community deserves comprehensive safety protections that actually account for how they really use language.
 
-The research gap is substantial. While English jailbreaking has been extensively studied \citep{wei2023, zou2023} and Hinglish code-mixing attacks have been recently demonstrated \citep{aswal2025}, no prior work has investigated Bangla-English code-mixing attacks, evaluated Bangla safety coverage in major LLMs, or analyzed Bangla-specific linguistic vulnerabilities that might enable adversarial exploitation.
-
-The research gap is substantial. While English jailbreaking has been extensively studied \citep{wei2023, zou2023} and Hinglish code-mixing attacks have been recently demonstrated \citep{aswal2025}, no prior work has investigated Bangla-English code-mixing attacks, evaluated Bangla safety coverage in major LLMs, or analyzed Bangla-specific linguistic vulnerabilities that might enable adversarial exploitation.
+The research gap is significant. While English jailbreaking has been studied extensively \citep{wei2023, zou2023} and Hinglish code-mixing attacks have been recently demonstrated \citep{aswal2025}, no one has investigated Bangla-English code-mixing attacks, evaluated how well major LLMs handle Bangla safety, or analyzed Bangla-specific linguistic features that might enable adversarial exploitation.
 
 \section{Research Objectives}
 \label{sec:objectives}
 
-This research aims to achieve the following four objectives:
+This research aims to accomplish four main goals:
 
 \begin{enumerate}
-    \item Develop and Validate Bangla-English Code-Mixed Attack Methodology
+    \item Develop and test a systematic approach for Bangla-English code-mixed attacks
     
-    \item Characterize Bangla-Specific Attack Patterns
+    \item Understand what makes Bangla-specific attack patterns work
     
-    \item Evaluate Cross-Model Vulnerability Consistency
+    \item Check if different LLM models are consistently vulnerable
     
-    \item Validate Tokenization Disruption as Attack Mechanism
+    \item Verify whether tokenization disruption explains how these attacks succeed
 \end{enumerate}
 
 \section{Research Questions}
 \label{sec:research-questions}
 
-Building on these objectives, this thesis addresses four primary research questions:
+Based on these objectives, this thesis tackles four main questions:
 
 \subsection{RQ1: Code-Mixing Effectiveness}
-\textit{Does Bangla-English code-mixing with phonetic perturbations bypass LLM safety filters?}
+\textit{Can Bangla-English code-mixing with phonetic tricks bypass LLM safety filters?}
 
-We hypothesize that the English$\rightarrow$CM$\rightarrow$CMP progression will successfully increase attack success rates for Bangla, similar to patterns observed for other code-mixed languages.
+We expect that the progression from English to code-mixed to phonetically perturbed prompts will successfully increase attack success rates for Bangla, similar to what we've seen with other code-mixed languages.
 
 \subsection{RQ2: Bangla-Specific Patterns}
-\textit{Which phonetic and romanization features enable Bangla attacks?}
+\textit{What phonetic and romanization features make Bangla attacks work?}
 
-We investigate whether Bangla's unique linguistic properties (non-standard romanization, specific phonology) create distinct attack patterns compared to general code-mixing strategies.
+We want to find out whether Bangla's unique characteristics (non-standard romanization, specific sounds) create different attack patterns compared to general code-mixing strategies.
 
 \subsection{RQ3: Model Vulnerability}
 \textit{Are all major LLMs vulnerable to Bangla attacks?}
 
-We test whether model vulnerability is consistent across different architectures and whether safety training generalizes to Bangla-English code-mixing.
+We're testing whether different LLM architectures show consistent vulnerabilities and whether safety training works for Bangla-English code-mixing.
 
 \subsection{RQ4: Tokenization Mechanism}
-\textit{Does tokenization disruption explain Bangla attack success?}
+\textit{Does tokenization disruption explain why Bangla attacks succeed?}
 
-We examine whether the tokenization fragmentation hypothesis validated for other languages applies to Bangla and quantify the correlation between token fragmentation and attack success.
+We want to see whether the tokenization fragmentation theory that worked for other languages also applies to Bangla and measure how token fragmentation correlates with attack success.
 
 \section{Contributions}
 \label{sec:contributions}
 
-This thesis makes six primary contributions to multilingual LLM security research:
+This thesis makes six main contributions to multilingual LLM security research:
 
 \begin{enumerate}
-    \item First Bangla code-mixing jailbreaking study: Systematic evaluation of 230M speaker population previously untested in adversarial contexts (200 prompts across 10 categories, 3 major LLMs, 27,000 responses)
+    \item First comprehensive study of Bangla code-mixing jailbreaking: We systematically tested a population of 230 million speakers that hadn't been studied before in adversarial contexts (using 200 prompts across 10 categories, 3 major LLMs, and 27,000 responses)
     
-    \item Bangla-specific attack optimization: Discovery that perturbing English words within Banglish prompts is 85\% more effective than perturbing Bangla words
+    \item Discovery of Bangla-specific attack optimization: We found that messing with English words within Banglish prompts works 85\% better than messing with Bangla words
     
-    \item Template ineffectiveness finding: Contrary to expectations, jailbreak templates reduce effectiveness for Bangla (46.2\% AASR with ``None'' template vs. 35.1-42.5\% with jailbreak templates)
+    \item Finding that jailbreak templates actually don't help: Surprisingly, jailbreak templates make Bangla attacks less effective (46.2\% success rate with simple prompts vs. 35.1-42.5\% with jailbreak templates)
     
-    \item Tokenization mechanism application: Application of tokenization disruption hypothesis (empirically validated for Hindi-English via Integrated Gradients by Aswal \& Jaiswal, 2025) to Bangla-English context, with AASR patterns consistent with fragmentation-based explanation
+    \item Application of tokenization disruption theory: We applied the tokenization disruption idea (which was proven for Hindi-English using Integrated Gradients by Aswal \& Jaiswal, 2025) to Bangla-English, finding success rate patterns consistent with the fragmentation explanation
     
-    \item Romanization variability analysis: Identification of Bangla's non-standard romanization as a unique vulnerability creating multiple valid tokenization paths
+    \item Analysis of romanization variability: We identified that Bangla's non-standard romanization creates a unique vulnerability by allowing multiple valid ways to break down words into tokens
     
-    \item Scalable framework: Replicable methodology applicable to 20+ other Indic languages at $\sim$\$1.50-2.00 per language
+    \item Replicable framework: We developed a methodology that can be applied to 20+ other Indic languages at roughly \$1.50-2.00 per language
 \end{enumerate}
 
 \section{Thesis Organization}
 \label{sec:organization}
 
-The remainder of this thesis is organized as follows. Chapter~\ref{ch:background} reviews related work on LLM jailbreaking, multilingual safety, code-mixing, and phonetic perturbations, establishing the theoretical foundation for our investigation. Chapter~\ref{ch:methodology} describes our systematic three-step methodology for generating Bangla code-mixed prompts with phonetic perturbations, including the prompt transformation pipeline and jailbreak template implementations. Chapter~\ref{ch:experimental} details the comprehensive experimental setup including model selection, dataset statistics, evaluation metrics, and statistical validation methods. Chapter~\ref{ch:results} presents empirical findings for all four research questions, supported by quantitative analysis and statistical significance testing. Chapter~\ref{ch:discussion} discusses the broader implications of our findings, compares results with related work on multilingual vulnerabilities, and addresses methodological considerations. Chapter~\ref{ch:limitations} acknowledges important limitations including dataset size constraints, model scope restrictions, and experimental boundary conditions. Chapter~\ref{ch:ethical} addresses critical ethical considerations including responsible disclosure protocols and dataset handling procedures. Finally, Chapter~\ref{ch:conclusion} concludes with key takeaways and promising directions for future research in multilingual LLM security.
+Here's how the rest of this thesis is structured. Chapter~\ref{ch:background} reviews existing work on LLM jailbreaking, multilingual safety, code-mixing, and phonetic tricks, giving us the theoretical foundation we need. Chapter~\ref{ch:methodology} explains our systematic three-step approach for creating Bangla code-mixed prompts with phonetic changes, including how we transform prompts and implement jailbreak templates. Chapter~\ref{ch:experimental} details our comprehensive experimental setup including which models we chose, dataset statistics, how we measure success, and our statistical methods. Chapter~\ref{ch:results} presents what we found for all four research questions, backed up by quantitative analysis and statistical testing. Chapter~\ref{ch:discussion} discusses what our findings mean more broadly, compares our results with related work on multilingual vulnerabilities, and addresses methodological considerations. Chapter~\ref{ch:limitations} acknowledges important limitations including dataset size constraints, which models we tested, and experimental boundaries. Chapter~\ref{ch:ethical} addresses critical ethical considerations including how we responsibly disclose findings and handle datasets. Finally, Chapter~\ref{ch:conclusion} wraps up with key takeaways and promising directions for future research in multilingual LLM security.

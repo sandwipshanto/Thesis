@@ -4,85 +4,88 @@
 \section{Large Language Models and Safety Alignment}
 \label{sec:llms-safety}
 
-This section provides foundational context on Large Language Models (LLMs) and the techniques employed to align them with human values and safety standards. We begin by tracing the evolution of LLMs from early transformer architectures to contemporary systems, then examine the multi-stage alignment processes designed to prevent harmful outputs, and finally discuss the persistent gaps in these safety mechanisms—particularly for multilingual and code-mixed contexts.
+This section gives us the foundation we need about Large Language Models (LLMs) and how researchers try to make them safe and aligned with human values. We'll start by looking at how LLMs evolved from early transformer designs to today's systems, then examine the multi-step processes designed to prevent harmful outputs, and finally discuss the gaps that still exist in these safety mechanisms—especially for multilingual and code-mixed situations.
 
 \subsection{Evolution of LLMs}
 
-Large Language Models have evolved from early transformer architectures \citep{vaswani2017} to sophisticated systems capable of multilingual, multimodal understanding \citep{brown2020,chowdhery2022}. Modern LLMs like GPT-4 \citep{openai2023}, Llama-3 \citep{dubey2024}, Gemini \citep{google2024}, and Mistral \citep{jiang2023} demonstrate impressive capabilities across diverse tasks including natural language understanding and generation \citep{raffel2020}, code generation and debugging \citep{chen2021}, mathematical reasoning \citep{lewkowycz2022}, multilingual translation \citep{zhang2020multilingual}, creative content generation \citep{yuan2022}, and question answering with summarization \citep{petroni2019}.
+Large Language Models have come a long way from early transformer designs \citep{vaswani2017} to today's sophisticated systems that can understand multiple languages and modalities \citep{brown2020,chowdhery2022}. Modern LLMs like GPT-4 \citep{openai2023}, Llama-3 \citep{dubey2024}, Gemini \citep{google2024}, and Mistral \citep{jiang2023} can do impressive things across many different tasks including understanding and generating natural language \citep{raffel2020}, writing and debugging code \citep{chen2021}, solving math problems \citep{lewkowycz2022}, translating between languages \citep{zhang2020multilingual}, creating content \citep{yuan2022}, and answering questions with summaries \citep{petroni2019}.
 
 \subsection{Safety Alignment Techniques}
 
-To ensure LLMs behave safely and ethically, developers employ multi-stage alignment processes:
+To make sure LLMs behave safely and ethically, developers use several different approaches:
 
 \subsubsection{Supervised Fine-Tuning (SFT)}
-Supervised fine-tuning \citep{ouyang2022,stiennon2020} involves training models on human-curated examples of safe responses to demonstrate desired behavior patterns \citep{askell2021} while ensuring coverage of harmful query categories that the model must learn to refuse appropriately \citep{gehman2020}.
+Supervised fine-tuning \citep{ouyang2022,stiennon2020} works by training models on carefully chosen examples of safe responses to show them how to behave properly \citep{askell2021}. This includes covering harmful question types that the model needs to learn to refuse appropriately \citep{gehman2020}.
 
 \subsubsection{Reinforcement Learning from Human Feedback (RLHF)}
-Reinforcement learning from human feedback \citep{christiano2017,ouyang2022} operates by having human labelers rank model responses according to safety and quality metrics \citep{bai2022training}. These rankings train reward models that learn human preferences \citep{stiennon2020}, which then guide policy optimization through algorithms such as Proximal Policy Optimization (PPO) \citep{schulman2017}.
+Reinforcement learning from human feedback \citep{christiano2017,ouyang2022} works by having humans rank different model responses based on safety and quality \citep{bai2022training}. These rankings help train reward models that learn what humans prefer \citep{stiennon2020}, which then guide policy optimization using algorithms like Proximal Policy Optimization (PPO) \citep{schulman2017}.
 
 \subsubsection{Constitutional AI}
-Constitutional AI \citep{bai2022constitutional} enables models to perform self-critique and revision of their own responses, aligning outputs to explicit safety principles without requiring human feedback at inference time \citep{sun2023}. This approach reduces harmful outputs through automated adherence to predefined constitutional rules \citep{perez2022}.
+Constitutional AI \citep{bai2022constitutional} lets models critique and revise their own responses, aligning their outputs to explicit safety principles without needing human feedback every time \citep{sun2023}. This approach reduces harmful outputs by automatically following predefined safety rules \citep{perez2022}.
 
 \subsubsection{Red-Teaming}
-Red-teaming \citep{ganguli2022,perez2022} employs adversarial testing to systematically identify safety failures in deployed models \citep{casper2023}. Through iterative improvement cycles \citep{dinan2019}, safety mechanisms are strengthened and alignment robustness is comprehensively evaluated against diverse attack strategies \citep{xu2021}.
+Red-teaming \citep{ganguli2022,perez2022} uses adversarial testing to systematically find safety failures in deployed models \citep{casper2023}. Through cycles of testing and improvement \citep{dinan2019}, safety mechanisms get strengthened and alignment robustness is thoroughly evaluated against different attack strategies \citep{xu2021}.
 
-Despite these efforts, \textbf{safety alignment remains incomplete} \citep{wei2023,zou2023}, particularly for low-resource languages \citep{deng2023,yong2023}, code-mixed multilingual text \citep{aswal2025}, novel attack strategies such as jailbreaking \citep{shen2023,yu2023}, and adversarial perturbations that exploit tokenization vulnerabilities \citep{wallace2019,jones2023}.
+Despite all these efforts, safety alignment is still incomplete \citep{wei2023,zou2023}, especially for low-resource languages \citep{deng2023,yong2023}, code-mixed multilingual text \citep{aswal2025}, new attack strategies like jailbreaking \citep{shen2023,yu2023}, and adversarial tricks that exploit tokenization vulnerabilities \citep{wallace2019,jones2023}.
 
 \section{Jailbreaking and Adversarial Attacks on LLMs}
 \label{sec:jailbreaking}
 
-Jailbreaking represents a critical challenge to LLM safety, encompassing diverse techniques designed to bypass safety filters and elicit harmful outputs. This section categorizes existing jailbreaking strategies into five primary attack types, examines the metrics used to evaluate attack effectiveness, and establishes the adversarial context within which our Bangla-English code-mixing study operates.
+Jailbreaking is a major challenge to LLM safety, covering various techniques designed to bypass safety filters and get harmful outputs. This section groups existing jailbreaking strategies into five main attack types, looks at the metrics used to measure how effective attacks are, and sets up the adversarial context for our Bangla-English code-mixing study.
 
 \subsection{Jailbreaking Taxonomy}
 
-Jailbreaking refers to techniques that bypass safety filters to elicit harmful outputs. Existing strategies include:
+Jailbreaking refers to techniques that get around safety filters to produce harmful outputs. Current strategies include:
 
 \subsubsection{Prompt Engineering}
-Prompt engineering attacks \citep{liu2023jailbreaking,wei2023jailbroken} exploit narrative framing to bypass safety filters \citep{kang2023}. Common techniques include roleplay scenarios \citep{wolf2023} where the model is instructed to ``act as a character who...", hypothetical framing \citep{perez2022} that embeds harmful requests in fictional story contexts, and obfuscation strategies \citep{kang2023} that request explanations of why the model cannot comply—often eliciting the harmful content indirectly.
+Prompt engineering attacks \citep{liu2023jailbreaking,wei2023jailbroken} use narrative tricks to bypass safety filters \citep{kang2023}. Common techniques include roleplay scenarios \citep{wolf2023} where the model is told to "act as a character who...", hypothetical framing \citep{perez2022} that embeds harmful requests in fictional story contexts, and obfuscation strategies \citep{kang2023} that ask for explanations of why the model can't comply—often getting the harmful content indirectly.
 
 \subsubsection{Template-Based Attacks}
-Template-based jailbreaking \citep{shen2023,yu2023} employs predefined adversarial personas \citep{wei2023jailbroken}. Notable examples include DAN (Do Anything Now) \citep{shen2023}, which uses dual persona prompting to create an unrestricted alter-ego; STAN (Strive To Avoid Norms) \citep{yu2023}, which frames the model as a rebellious assistant; and AIM (Always Intelligent and Machiavellian) \citep{liu2023jailbreaking}, which assigns the model an explicitly unethical advisor role.
+Template-based jailbreaking \citep{shen2023,yu2023} uses predefined adversarial personas \citep{wei2023jailbroken}. Notable examples include DAN (Do Anything Now) \citep{shen2023}, which uses dual persona prompting to create an unrestricted alter-ego; STAN (Strive To Avoid Norms) \citep{yu2023}, which frames the model as a rebellious assistant; and AIM (Always Intelligent and Machiavellian) \citep{liu2023jailbreaking}, which assigns the model an explicitly unethical advisor role.
 
 \subsubsection{Token-Level Manipulation}
-Token-level manipulation attacks \citep{zou2023,jones2023} directly modify input representations to evade safety filters \citep{wallace2019}. Techniques include gradient-based optimization methods such as GCG (Greedy Coordinate Gradient) attacks \citep{zou2023}, suffix injection \citep{shin2020} that appends adversarial tokens to prompts, and special token manipulation \citep{wallace2019} that exploits reserved vocabulary elements.
+Token-level manipulation attacks \citep{zou2023,jones2023} directly modify input representations to evade safety filters \citep{wallace2019}. Techniques include gradient-based optimization methods such as GCG (Greedy Coordinate Gradient) attacks \citep{zou2023}, suffix injection \citep{shin2020} that adds adversarial tokens to prompts, and special token manipulation \citep{wallace2019} that exploits reserved vocabulary elements.
 
 \subsubsection{Multi-Turn Exploitation}
-Multi-turn exploitation attacks \citep{yuan2023,mehrotra2023} leverage conversational context across multiple exchanges \citep{shah2023}. These attacks employ gradual boundary pushing \citep{yuan2023} to incrementally desensitize safety filters, context window poisoning \citep{greshake2023} to inject adversarial priming into earlier turns, and memory exploitation \citep{mehrotra2023} that abuses persistent conversation state to build toward harmful outputs.
+Multi-turn exploitation attacks \citep{yuan2023,mehrotra2023} use conversational context across multiple exchanges \citep{shah2023}. These attacks use gradual boundary pushing \citep{yuan2023} to slowly desensitize safety filters, context window poisoning \citep{greshake2023} to inject adversarial priming into earlier turns, and memory exploitation \citep{mehrotra2023} that abuses persistent conversation state to build toward harmful outputs.
 
 \subsubsection{Multilingual Attacks}
-Multilingual attacks \citep{deng2023,yong2023,aswal2025} exploit language diversity to bypass English-centric safety filters \citep{nasr2023}. Techniques include language switching \citep{deng2023} mid-conversation to confuse content moderation systems, low-resource language exploitation \citep{yong2023} targeting underrepresented languages with weaker safety coverage, and \textbf{code-mixing} \citep{aswal2025}—the focus of this thesis—which combines languages within individual utterances to disrupt tokenization patterns.
+Multilingual attacks \citep{deng2023,yong2023,aswal2025} exploit language diversity to bypass English-focused safety filters \citep{nasr2023}. Techniques include language switching \citep{deng2023} mid-conversation to confuse content moderation systems, low-resource language exploitation \citep{yong2023} targeting underrepresented languages with weaker safety coverage, and code-mixing \citep{aswal2025}—the focus of this thesis—which combines languages within individual utterances to disrupt tokenization patterns.
 
 \subsection{Success Metrics}
 
-Attack effectiveness is typically measured through four key metrics \citep{zou2023,wei2023jailbroken}. \textbf{Attack Success Rate (ASR)} \citep{zou2023,aswal2025} quantifies the percentage of prompts that successfully elicit harmful responses. \textbf{Attack Relevance Rate (ARR)} \citep{aswal2025} measures the percentage of harmful responses that remain contextually relevant to the original query, distinguishing meaningful jailbreaks from gibberish outputs. \textbf{Evasion rate} \citep{jain2023} tracks the percentage of prompts that bypass automated content filters. Finally, \textbf{semantic preservation} \citep{morris2020} assesses whether attacks maintain the original query intent throughout transformation processes.
+We typically measure how effective attacks are using four key metrics \citep{zou2023,wei2023jailbroken}. Attack Success Rate (ASR) \citep{zou2023,aswal2025} tells us what percentage of prompts successfully get harmful responses. Attack Relevance Rate (ARR) \citep{aswal2025} measures what percentage of harmful responses actually stay relevant to the original question, helping us distinguish meaningful jailbreaks from nonsense outputs. Evasion rate \citep{jain2023} tracks what percentage of prompts get past automated content filters. Finally, semantic preservation \citep{morris2020} checks whether attacks keep the original query's meaning throughout the transformation process.
 
 \section{Code-Mixing in Natural Language Processing}
 \label{sec:code-mixing}
 
-Code-mixing is a widespread linguistic phenomenon in multilingual communities, particularly prevalent in South Asian digital communication. This section defines code-mixing and distinguishes it from related phenomena, examines its prevalence in South Asian contexts, explores the challenges posed by romanization variability—especially for Bangla—and discusses the implications for natural language processing systems and LLM safety.
+Code-mixing is really common in multilingual communities, especially in South Asian digital communication. This section defines code-mixing and shows how it's different from related things, looks at how common it is in South Asian contexts, explores the challenges posed by romanization variability—especially for Bangla—and discusses what this means for natural language processing systems and LLM safety.
 
 \subsection{Definition and Prevalence}
 
-\textbf{Code-mixing} (CM) \citep{myers-scotton1993,muysken2000} is the practice of alternating between two or more languages within a single conversation or utterance \citep{poplack1980}. It differs from code-switching (sentence-level alternation) \citep{gumperz1982} by occurring within the same sentence.
+Code-mixing (CM) \citep{myers-scotton1993,muysken2000} is when people alternate between two or more languages within a single conversation or sentence \citep{poplack1980}. It's different from code-switching (switching at sentence level) \citep{gumperz1982} because it happens within the same sentence.
 
-\textbf{Examples:}
-\begin{lstlisting}
-Hindi-English: "Main kal market jaaunga to buy groceries"
-Bangla-English: "Ami ajke office e jabo for the meeting"
-Spanish-English: "Voy a la store para comprar milk"
-\end{lstlisting}
+Examples:
+\begin{algorithm}[h]
+\begin{algorithmic}[1]
+\STATE \textbf{Hindi-English:} "Main kal market jaaunga to buy groceries"
+\STATE \textbf{Bangla-English:} "Ami ajke office e jabo for the meeting"
+\STATE \textbf{Spanish-English:} "Voy a la store para comprar milk"
+\end{algorithmic}
+\caption{Code-Mixing Examples Across Languages}
+\end{algorithm}
 
-\textbf{Prevalence in South Asia:} Code-mixing has become ubiquitous in South Asian digital communication \citep{bali2014,sharma2016}, with 40-60\% of urban internet users regularly employing code-mixed language \citep{bhatia2017}. It serves as the default communication mode on platforms like WhatsApp, Facebook, and Twitter \citep{rudra2016}, appearing commonly in SMS messages, emails, and social media posts \citep{das2016}. Increasingly, code-mixing is also penetrating professional communication contexts \citep{sailaja2012}.
+Prevalence in South Asia: Code-mixing has become everywhere in South Asian digital communication \citep{bali2014,sharma2016}, with 40-60\% of urban internet users regularly using code-mixed language \citep{bhatia2017}. It's become the default way to communicate on platforms like WhatsApp, Facebook, and Twitter \citep{rudra2016}, appearing commonly in text messages, emails, and social media posts \citep{das2016}. Increasingly, code-mixing is also showing up in professional communication \citep{sailaja2012}.
 
 \subsection{Romanization Challenges}
 
-South Asian languages using non-Latin scripts face romanization challenges:
+South Asian languages that use non-Latin scripts face romanization challenges:
 
-\textbf{Hindi (Devanagari):} Hindi romanization has achieved relative standardization through schemes like IAST (International Alphabet of Sanskrit Transliteration) and ISO 15919 \citep{choudhury2007}. For example, ``नमस्ते'' consistently romanizes to ``namaste'', providing predictability for NLP systems \citep{sowmya2010}.
+Hindi (Devanagari): Hindi romanization has gotten relatively standardized through schemes like IAST (International Alphabet of Sanskrit Transliteration) and ISO 15919 \citep{choudhury2007}. For example, ``namaste'' (from Devanagari script) consistently gets romanized to ``namaste'', making it predictable for NLP systems \citep{sowmya2010}.
 
-\textbf{Bangla (Bengali script):} In stark contrast, Bangla lacks any official standard romanization scheme \citep{alam2021}, leading to extreme variability in user-generated content \citep{rabbi2020}. For instance, ``নমস্কার'' may be romanized as ``nomoshkar'', ``nomoskar'', or ``namaskar''—all considered valid by native speakers \citep{hasan2020}. This \textbf{high variability} \citep{mandal2018} creates significant challenges for consistent tokenization and NLP processing \citep{chakraborty2017}.
+Bangla (Bengali script): In stark contrast, Bangla doesn't have any official standard romanization scheme \citep{alam2021}, leading to extreme variability in user-generated content \citep{rabbi2020}. For instance, ``nomoshkar'' (from Bengali script) might be romanized as ``nomoshkar'', ``nomoskar'', or ``namaskar''—all considered valid by native speakers \citep{hasan2020}. This high variability \citep{mandal2018} creates significant challenges for consistent tokenization and NLP processing \citep{chakraborty2017}.
 
-\textbf{Impact on LLMs:}
+Impact on LLMs:
 \begin{itemize}
     \item Inconsistent tokenization
     \item Difficulty learning unified representations
@@ -92,112 +95,123 @@ South Asian languages using non-Latin scripts face romanization challenges:
 \section{Phonetic Perturbations}
 \label{sec:phonetic}
 
-Phonetic perturbations represent a class of adversarial text transformations that alter spelling while preserving pronunciation and semantic meaning. This section defines phonetic perturbations, reviews their applications in prior adversarial research, and examines their impact on tokenization—establishing the theoretical foundation for our combined code-mixing and phonetic perturbation attack strategy.
+Phonetic perturbations are a type of adversarial text transformation that changes spelling while keeping pronunciation and meaning the same. This section defines phonetic perturbations, reviews how they've been used in previous adversarial research, and looks at their impact on tokenization—setting up the theoretical foundation for our combined code-mixing and phonetic perturbation attack strategy.
 
 \subsection{Definition and Applications}
 
-\textbf{Phonetic perturbations} alter word spelling while preserving pronunciation and meaning:
+Phonetic perturbations change how words are spelled while keeping pronunciation and meaning the same:
 
-\begin{lstlisting}
-Original:     "discrimination"
-Perturbations: "diskrimineshun" (phonetic)
-               "discrmination" (typo)
-               "discriminaton" (omission)
-\end{lstlisting}
+\begin{algorithm}[h]
+\begin{algorithmic}[1]
+\STATE \textbf{Original:} "discrimination"
+\STATE \textbf{Phonetic perturbation:} "diskrimineshun"
+\STATE \textbf{Typo variation:} "discrmination"
+\STATE \textbf{Omission variation:} "discriminaton"
+\end{algorithmic}
+\caption{Phonetic Perturbation Examples}
+\end{algorithm}
 
-\textbf{Prior Applications:}
+Prior Applications:
 \begin{itemize}
-    \item Adversarial robustness testing \citep{wang2021}
-    \item Spam filter evasion \citep{khorsi2007}
-    \item Hate speech detection challenges \citep{grondahl2018}
+    \item Testing adversarial robustness \citep{wang2021}
+    \item Evading spam filters \citep{khorsi2007}
+    \item Challenging hate speech detection \citep{grondahl2018}
 \end{itemize}
 
 \subsection{Tokenization Impact}
 
-Phonetic perturbations affect tokenization:
+Phonetic perturbations affect how text gets broken into tokens:
 
-\begin{lstlisting}
-Standard: "hate speech"
-Tokens:   ["hate", "speech"]
+\begin{algorithm}[h]
+\begin{algorithmic}[1]
+\STATE \textbf{Standard text:} "hate speech"
+\STATE \textbf{Standard tokens:} ["hate", "speech"]
+\STATE \textbf{Perturbed text:} "haet speach"
+\STATE \textbf{Perturbed tokens:} ["ha", "et", "spe", "ach"]
+\end{algorithmic}
+\caption{Tokenization Impact of Phonetic Perturbations}
+\end{algorithm}
 
-Perturbed: "haet speach"
-Tokens:    ["ha", "et", "spe", "ach"]
-\end{lstlisting}
-
-\textbf{Hypothesis:} Token-level safety filters \citep{gehman2020,welbl2021} detect \texttt{["hate", "speech"]} but miss \texttt{["ha", "et", "spe", "ach"]} \citep{aswal2025,boucher2022}.
+Hypothesis: Token-level safety filters \citep{gehman2020,welbl2021} can detect \texttt{["hate", "speech"]} but miss \texttt{["ha", "et", "spe", "ach"]} \citep{aswal2025,boucher2022}.
 
 \section{Multilingual LLM Safety}
 \label{sec:multilingual}
 
-Multilingual LLM safety remains a critical research gap, with current alignment techniques exhibiting strong English-centric bias. This section examines the evidence for English-focused safety training, reviews emerging cross-lingual safety evaluation efforts, and discusses the landmark Hinglish code-mixing study that directly motivates our Bangla-focused investigation.
+Multilingual LLM safety is still a critical research gap, with current alignment techniques showing strong English-focused bias. This section looks at the evidence for English-focused safety training, reviews emerging cross-lingual safety evaluation efforts, and discusses the landmark Hinglish code-mixing study that directly motivates our Bangla-focused investigation.
 
 \subsection{English-Centric Safety Training}
 
-Current LLM safety alignment is predominantly English-focused:
+Current LLM safety alignment focuses mainly on English:
 
-\textbf{Evidence:}
+Evidence:
 \begin{itemize}
     \item RLHF datasets: 80-90\% English \citep{ouyang2022}
     \item Red-teaming efforts: Primarily English \citep{ganguli2022}
     \item Safety benchmarks: English-dominated (ToxiGen, RealToxicityPrompts)
 \end{itemize}
 
-\textbf{Consequences:}
+Consequences:
 \begin{itemize}
     \item Weaker safety coverage for non-English languages
     \item Vulnerability to multilingual jailbreaking
-    \item Inequitable safety protection across language communities
+    \item Unequal safety protection across language communities
 \end{itemize}
 
 \subsection{Cross-Lingual Safety Evaluation}
 
-Recent work has begun evaluating multilingual safety:
+Recent work has started evaluating multilingual safety:
 
-\textbf{\citet{deng2023}:} Multilingual jailbreaking study testing 6 languages (Chinese, Italian, Vietnamese, Arabic, Korean, Thai) found consistently higher jailbreak success rates for non-English languages compared to English, attributing this disparity to weaker safety training coverage in low-resource language datasets.
+\citet{deng2023}: This multilingual jailbreaking study tested 6 languages (Chinese, Italian, Vietnamese, Arabic, Korean, Thai) and found consistently higher jailbreak success rates for non-English languages compared to English, attributing this difference to weaker safety training coverage in low-resource language datasets.
 
-\textbf{\citet{yong2023}:} Low-resource language safety evaluation across 7 low-resource Asian languages discovered 25-40\% higher toxic output rates compared to English baselines, leading to recommendations for language-specific safety fine-tuning to address these disparities.
+\citet{yong2023}: This low-resource language safety evaluation across 7 low-resource Asian languages discovered 25-40\% higher toxic output rates compared to English baselines, leading to recommendations for language-specific safety fine-tuning to address these disparities.
 
-\textbf{Gap:} No prior work on Bangla or Bangla-English code-mixing.
+Gap: No prior work on Bangla or Bangla-English code-mixing.
 
 \subsection{Hinglish Code-Mixing Attacks}
 
-\citet{aswal2025} demonstrated that Hindi-English code-mixing combined with phonetic perturbations achieves 99\% attack success rate, identifying tokenization disruption as the primary attack mechanism and showing that template-based jailbreaking further enhances effectiveness.
+\citet{aswal2025} showed that Hindi-English code-mixing combined with phonetic perturbations achieves 99\% attack success rate, identifying tokenization disruption as the main attack mechanism and showing that template-based jailbreaking further enhances effectiveness.
 
-\textbf{Our Work:} Extends to Bangla (different linguistic properties, population), investigates language-specific patterns, validates mechanism independently.
+Our Work: Extends to Bangla (different linguistic properties, population), investigates language-specific patterns, validates mechanism independently.
 
 \section{Tokenization and Subword Segmentation}
 \label{sec:tokenization}
 
-Tokenization serves as the foundational text processing step in modern LLMs, converting raw text into discrete tokens for model consumption. This section explains Byte-Pair Encoding (BPE), the dominant tokenization algorithm for contemporary LLMs, examines the specific challenges posed by code-mixed text, and establishes the theoretical link between tokenization disruption and safety filter evasion.
+Tokenization is the foundational text processing step in modern LLMs, converting raw text into discrete tokens that the model can work with. This section explains Byte-Pair Encoding (BPE), the main tokenization algorithm for today's LLMs, looks at the specific challenges posed by code-mixed text, and establishes the theoretical link between tokenization disruption and safety filter evasion.
 
 \subsection{Byte-Pair Encoding (BPE)}
 
 Modern LLMs use BPE \citep{sennrich2016} for tokenization:
 
-\textbf{Algorithm:} BPE begins with character-level tokens and iteratively merges the most frequent character pairs to build a vocabulary of subword units \citep{gage1994}, which are then applied via longest-match tokenization \citep{kudo2018} to segment new text.
+Algorithm: BPE starts with character-level tokens and repeatedly merges the most frequent character pairs to build a vocabulary of subword units \citep{gage1994}, which are then applied using longest-match tokenization \citep{kudo2018} to break up new text.
 
 \subsection{Implications for Code-Mixing}
 
 Code-mixed text creates tokenization challenges:
 
-\textbf{Issue 1: Out-of-vocabulary romanized words}
-\begin{lstlisting}
-Bangla word: "করা" (kora - to do)
-Romanization: "kora" -> may not be in BPE vocabulary
-Tokenization: ["k", "or", "a"] or ["ko", "ra"]
-\end{lstlisting}
+Issue 1: Out-of-vocabulary romanized words
+\begin{algorithm}[h]
+\begin{algorithmic}[1]
+\STATE \textbf{Bangla word:} ``kora'' (meaning: to do)
+\STATE \textbf{Romanization:} ``kora'' $\rightarrow$ may not be in BPE vocabulary
+\STATE \textbf{Tokenization:} ["k", "or", "a"] or ["ko", "ra"]
+\end{algorithmic}
+\caption{Tokenization Challenge 1: OOV Words}
+\end{algorithm}
 
-\textbf{Issue 2: Inconsistent segmentation}
-\begin{lstlisting}
-"create" -> ["create"] (single token)
-"kora" -> ["k", "or", "a"] (three tokens)
-\end{lstlisting}
+Issue 2: Inconsistent segmentation
+\begin{algorithm}[h]
+\begin{algorithmic}[1]
+\STATE \textbf{English word:} "create" $\rightarrow$ ["create"] (single token)
+\STATE \textbf{Bangla word:} "kora" $\rightarrow$ ["k", "or", "a"] (three tokens)
+\end{algorithmic}
+\caption{Tokenization Challenge 2: Inconsistent Segmentation}
+\end{algorithm}
 
-\textbf{Security Implication:} Tokenization disruption can bypass pattern-based safety filters \citep{aswal2025,boucher2022,wallace2019}.
+Security Implication: Tokenization disruption can bypass pattern-based safety filters \citep{aswal2025,boucher2022,wallace2019}.
 
 \section{Summary}
 \label{sec:bg-summary}
 
-This literature review establishes five critical foundations for our research. First, we demonstrate that \textbf{LLM safety alignment} remains primarily English-centric, with significant gaps in multilingual coverage that leave non-English language communities underprotected. Second, we show that \textbf{jailbreaking} constitutes an active and evolving research area encompassing diverse attack strategies ranging from prompt engineering to token-level manipulation, with multilingual attacks representing an emerging frontier. Third, we establish that \textbf{code-mixing} has become prevalent in South Asian digital communication yet remains critically understudied in adversarial contexts, despite its potential to exploit safety filter weaknesses. Fourth, we document that \textbf{phonetic perturbations} can effectively disrupt tokenization-based detection systems by fragmenting sensitive terms into innocuous subword units that evade pattern matching. Fifth, we identify \textbf{Bangla} as presenting unique vulnerability characteristics including a 230-million-speaker population, non-standardized romanization conventions that create multiple valid tokenization paths, and minimal prior safety research despite being the seventh most spoken language globally.
+This literature review establishes five critical foundations for our research. First, we show that LLM safety alignment remains mainly English-focused, with significant gaps in multilingual coverage that leave non-English language communities less protected. Second, we demonstrate that jailbreaking is an active and evolving research area covering diverse attack strategies ranging from prompt engineering to token-level manipulation, with multilingual attacks representing an emerging frontier. Third, we establish that code-mixing has become common in South Asian digital communication yet remains critically understudied in adversarial contexts, despite its potential to exploit safety filter weaknesses. Fourth, we document that phonetic perturbations can effectively disrupt tokenization-based detection systems by breaking sensitive terms into harmless subword units that evade pattern matching. Fifth, we identify Bangla as presenting unique vulnerability characteristics including a 230-million-speaker population, non-standardized romanization conventions that create multiple valid tokenization paths, and minimal prior safety research despite being one of the most spoken languages globally.
 
-Our work directly addresses this critical gap by providing the first comprehensive study of Bangla-English code-mixing attacks on LLMs, validating whether the tokenization disruption mechanism documented for Hinglish generalizes to Bangla's distinct linguistic properties, and establishing baseline vulnerability metrics for a previously untested language community.
+Our work directly addresses this critical gap by providing the first comprehensive study of Bangla-English code-mixing attacks on LLMs, checking whether the tokenization disruption mechanism documented for Hinglish applies to Bangla's distinct linguistic properties, and establishing baseline vulnerability metrics for a previously untested language community.

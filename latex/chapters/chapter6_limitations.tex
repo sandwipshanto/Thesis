@@ -1,189 +1,69 @@
 \chapter{Limitations}
 \label{ch:limitations}
 
-This chapter acknowledges the limitations of our study and discusses their implications for the interpretation and generalizability of our findings.
+Here we'll be honest about the limitations of our study and talk about what they mean for interpreting and generalizing our findings.
 
 \section{Dataset Limitations}
-\label{sec:dataset-limitations}
+\label{sec:datasetlimitations}
+
+Our dataset faces several constraints that affect the scope and generalizability of our findings. The most significant limitation is the reduced sample size compared to related work, alongside manual processing requirements that limit scalability.
 
 \subsection{Limited Prompt Count}
 
-Limitation:
-\begin{itemize}
-    \item Our study uses 200 prompts vs. 460 in the Hinglish study
-    \item Smaller sample size reduces statistical power compared to full replication
-    \item May not fully represent all harmful content categories
-\end{itemize}
+Our study employs 200 prompts compared to 460 in the Hinglish study, which reduces statistical power and may not fully represent all harmful content categories. This smaller sample size results in wider confidence intervals and potentially limits the generalizability of results to all harmful scenarios. However, we maintained balanced distribution across 10 categories and achieved statistical significance for main comparisons (p=0.0070). The framework is designed for easy scaling to 460 prompts in future work.
 
-Impact:
-\begin{itemize}
-    \item Results may not generalize to all harmful scenarios
-    \item Category-specific patterns may be underexplored
-    \item Confidence intervals wider than larger studies
-\end{itemize}
+\subsection{Manual CodeMixing}
 
-Mitigation:
-\begin{itemize}
-    \item Balanced distribution across 10 categories
-    \item Statistical significance still achieved for main comparisons (p=0.0070)
-    \item Framework designed for easy scaling to 460 prompts
-\end{itemize}
-
-\subsection{Manual Code-Mixing}
-
-Limitation:
-\begin{itemize}
-    \item Code-mixing performed manually by authors
-    \item Potential for subjective variation
-    \item Time-intensive process limits scalability
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Code-mixing quality depends on authors' Bangla proficiency
-    \item Different researchers might produce different code-mixed variants
-    \item Difficult to scale to thousands of prompts
-\end{itemize}
-
-Mitigation:
-\begin{itemize}
-    \item Authors are native Bangla speakers
-    \item Manual review and consistency checks performed
-    \item Future work: Automated NMT-based code-mixing
-\end{itemize}
+Codemixing was performed manually by the authors, introducing potential for subjective variation and creating a time-intensive process that limits scalability. The quality of codemixing depends on the authors' Bangla proficiency, and different researchers might produce different variants. To mitigate this, both authors are native Bangla speakers, manual review and consistency checks were performed, and future work will develop automated NMTbased codemixing systems.
 
 \section{Model Coverage Limitations}
-\label{sec:model-limitations}
+\label{sec:modelcoveragelimitations}
+
+Budget constraints and API access limitations restricted our model evaluation scope. While we tested representative models from major categories, comprehensive coverage of all LLM architectures remains incomplete.
 
 \subsection{Limited Model Selection}
 
-Limitation:
-\begin{itemize}
-    \item Only 3 models tested due to budget constraints
-    \item Missing major models: Claude, PaLM 2, newer GPT-4
-    \item Open-source models limited to 7-8B parameters
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Results may not generalize to all LLM architectures
-    \item Larger models (70B+) might have different vulnerabilities
-    \item Proprietary models like Claude not evaluated
-\end{itemize}
-
-Rationale:
-\begin{itemize}
-    \item Budget constraints limited full factorial design
-    \item OpenRouter API access limitations
-    \item 3 models provide sufficient diversity for initial evaluation
-\end{itemize}
+Only 3 models were tested due to budget constraints, missing major models like Claude, PaLM 2, and newer GPT4 variants. Opensource models were limited to 78B parameters. This means results may not generalize to all LLM architectures, larger models (70B+) might exhibit different vulnerabilities, and proprietary models like Claude remain unevaluated. The choice was justified by budget constraints that limited full factorial design, OpenRouter API access limitations, and the assessment that 3 models provide sufficient diversity for initial evaluation.
 
 \subsection{Model Version Stability}
 
-Limitation:
-\begin{itemize}
-    \item API-accessed models may be updated during study
-    \item Exact model versions not guaranteed stable
-    \item Safety patches may be deployed mid-study
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Reproducibility challenges
-    \item Results may not hold for future model versions
-    \item Temporal validity limited
-\end{itemize}
+API accessed models may be updated during the study period, with exact model versions not guaranteed stable and safety patches potentially deployed midstudy. This creates reproducibility challenges, where results may not hold for future model versions and temporal validity is limited.
 
 \section{Experimental Design Limitations}
-\label{sec:experimental-limitations}
+\label{sec:experimentaldesignlimitations}
+
+Our experimental design contains several constraints that may limit the comprehensive exploration of attack effectiveness and evaluation accuracy.
 
 \subsection{Temperature Settings}
 
-Limitation:
-\begin{itemize}
-    \item Only 3 temperature values tested (0.2, 0.6, 1.0)
-    \item Limited exploration of temperature sensitivity
-    \item May miss optimal attack temperature ranges
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Attack effectiveness may be underestimated
-    \item Temperature-model interaction effects unexplored
-    \item Optimization potential remains unknown
-\end{itemize}
+Only 3 temperature values were tested (0.2, 0.6, 1.0), providing limited exploration of temperature sensitivity and potentially missing optimal attack temperature ranges. This constraint means attack effectiveness may be underestimated, temperature model interaction effects remain unexplored, and optimization potential remains unknown.
 
 \subsection{Evaluation Methodology}
 
-Limitation:
-\begin{itemize}
-    \item LLM-as-judge evaluation without human validation
-    \item Potential bias in GPT-4o-mini judge responses
-    \item No inter-annotator reliability measurement
-\end{itemize}
+LLMasjudge evaluation was conducted without human validation, introducing potential bias in GPT4omini judge responses and lacking interannotator reliability measurement. This means AASR measurements may contain systematic bias, results depend on judge model quality, and a human evaluation gold standard is missing. To mitigate these concerns, judge prompts were carefully designed and tested, consistent evaluation was applied across all conditions, and future human annotation studies are planned.
 
-Impact:
-\begin{itemize}
-    \item AASR measurements may contain systematic bias
-    \item Results depend on judge model quality
-    \item Human evaluation gold standard missing
-\end{itemize}
+\section{Language Specific Limitations}
+\label{sec:languagespecificlimitations}
 
-Mitigation:
-\begin{itemize}
-    \item Judge prompts carefully designed and tested
-    \item Consistent evaluation across all conditions
-    \item Future work: Human annotation study planned
-\end{itemize}
-
-\section{Language-Specific Limitations}
-\label{sec:language-limitations}
+Our approach to Bangla language processing and cultural context contains limitations that may affect the generalizability of findings across different Bangla speaking communities and cultural contexts.
 
 \subsection{Romanization Variation}
 
-Limitation:
-\begin{itemize}
-    \item Manual romanization choices may not represent all variants
-    \item Regional differences in Bangla romanization not captured
-    \item Phonetic perturbation strategies may be incomplete
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Attack effectiveness may vary across romanization schemes
-    \item Results may not generalize to all Bangla-speaking regions
-    \item Optimal perturbation strategies may remain undiscovered
-\end{itemize}
+Manual romanization choices may not represent all variants, regional differences in Bangla romanization are not captured, and phonetic perturbation strategies may be incomplete. This means attack effectiveness may vary across romanization schemes, results may not generalize to all Bangla speaking regions, and optimal perturbation strategies may remain undiscovered.
 
 \subsection{Cultural Context}
 
-Limitation:
-\begin{itemize}
-    \item Harmful content categories reflect Western perspectives
-    \item Cultural nuances in harm perception not fully captured
-    \item Bangla-specific harmful content patterns underexplored
-\end{itemize}
-
-Impact:
-\begin{itemize}
-    \item Culturally relevant vulnerabilities may be missed
-    \item Attack success metrics may not reflect real-world harm
-    \item Defense strategies may not address culture-specific risks
-\end{itemize}
+Harmful content categories reflect Western perspectives, cultural nuances in harm perception are not fully captured, and Bangla specific harmful content patterns remain underexplored. Consequently, culturally relevant vulnerabilities may be missed, attack success metrics may not reflect realworld harm, and defense strategies may not address culture specific risks.
 
 \section{Future Work Directions}
-\label{sec:limitations-future}
+\label{sec:futureworkdirections}
+
+Addressing the limitations identified in our study requires both immediate extensions to strengthen current findings and longterm research initiatives to expand the methodology's scope and impact.
 
 \subsection{Immediate Extensions}
 
-Scale to 460 prompts: Full replication of Hinglish study methodology
-Human evaluation: Validate LLM-as-judge with inter-annotator reliability
-Additional models: Include Claude, PaLM, and larger parameter models
-Automated code-mixing: Develop NMT-based Bangla-English generation
+Immediate priorities include scaling to 460 prompts for full replication of Hinglish study methodology, conducting human evaluation to validate LLMasjudge with interannotator reliability, testing additional models including Claude, PaLM, and larger parameter models, and developing automated codemixing through NMTbased Bangla English generation systems.
 
-\subsection{Long-term Research}
+\subsection{Longterm Research}
 
-Extended Indic languages: Apply methodology to Tamil, Telugu, Marathi, Urdu
-Defense development: Create Bangla-aware safety filters and normalization
-Cultural adaptation: Develop region-specific harmful content taxonomies
-Mechanistic understanding: Deep analysis of tokenization and attention patterns
+Longterm objectives involve extending the methodology to additional Indic languages including Tamil, Telugu, Marathi, and Urdu, developing defense systems through Bangla aware safety filters and normalization techniques, adapting the approach for cultural contexts by developing region specific harmful content taxonomies, and advancing mechanistic understanding through deep analysis of tokenization and attention patterns.

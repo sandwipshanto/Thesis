@@ -5,19 +5,6 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}  % Better font rendering
 \usepackage{microtype}  % Better typography
-\DeclareUnicodeCharacter{0928}{}
-\DeclareUnicodeCharacter{092E}{}
-\DeclareUnicodeCharacter{0938}{}
-\DeclareUnicodeCharacter{094D}{}
-\DeclareUnicodeCharacter{0924}{}
-\DeclareUnicodeCharacter{0947}{}
-\DeclareUnicodeCharacter{09A8}{}
-\DeclareUnicodeCharacter{09AE}{}
-\DeclareUnicodeCharacter{09B8}{}
-\DeclareUnicodeCharacter{09CD}{}
-\DeclareUnicodeCharacter{0995}{}
-\DeclareUnicodeCharacter{09BE}{}
-\DeclareUnicodeCharacter{09B0}{}
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{graphicx}
@@ -39,7 +26,7 @@
 \usepackage[inline]{enumitem}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{tocloft}
@@ -93,10 +80,9 @@
     citecolor=blue!80!black,
     filecolor=magenta,
     urlcolor=blue!80!black,
-    pdftitle={Bangla-English Code-Mixing and Phonetic Perturbations},
-    pdfauthor={Sandwip Kumar Shanto, Md. Meraj Mridha},
-    pdfsubject={LLM Security, Multilingual NLP},
-    pdfkeywords={LLM, Jailbreaking, Code-Mixing, Bangla, AI Safety}
+    unicode=true,
+    pdfstartview=FitH,
+    bookmarksopen=true
 }
 
 % Code listing setup
@@ -131,7 +117,10 @@
 % Title page
 \include{chapters/00_titlepage}
 
-% Supervisor's recommendation
+% Declaration
+\include{chapters/01_declaration}
+
+% Supervisor Recommendation
 \include{chapters/02_supervisor_recommendation}
 
 % Certificate of acceptance
@@ -179,9 +168,10 @@
 \include{chapters/chapter7_ethical_considerations}
 \include{chapters/chapter8_conclusion}
 
-% Bibliography
+% References
 \clearpage
-\bibliographystyle{apalike}
+\bibliographystyle{ieeetr}
+\renewcommand{\bibname}{References}
 \bibliography{references}
 \addcontentsline{toc}{chapter}{References}
 
