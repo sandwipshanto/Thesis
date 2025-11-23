@@ -46,26 +46,9 @@ We commit to notifying affected organizations:
 
 \subsection{Dataset Handling}
 
-\textbf{Current status:}
-\begin{itemize}
-    \item Full harmful prompt dataset: \textbf{Not publicly released}
-    \item Model responses: \textbf{Not publicly released}
-    \item Aggregated metrics: Available in thesis
-    \item Sample prompts: Sanitized examples only
-\end{itemize}
+\textbf{Current status:} The full harmful prompt dataset and raw model responses are not publicly released to prevent immediate weaponization of our findings. Aggregated metrics including AASR and AARR scores are available in this thesis to enable scientific evaluation and replication planning. Sample prompts are provided only in sanitized form, with harmful content abstracted or replaced with category labels rather than explicit harmful instructions.
 
-\textbf{Future release plan:}
-\begin{itemize}
-    \item \textbf{Research-only access:} Dataset available upon request with usage agreement
-    \item \textbf{Requirements:}
-    \begin{enumerate}
-        \item Institutional affiliation verification
-        \item Signed data use agreement
-        \item Commitment to responsible use
-        \item No redistribution clause
-    \end{enumerate}
-    \item \textbf{Public release:} Only after vendor patches deployed ($>$6 months)
-\end{itemize}
+\textbf{Future release plan:} The dataset will be made available for research purposes only, requiring formal request and approval procedures. Research-only access ensures that the data benefits academic advancement while minimizing malicious exploitation risks. Potential recipients must satisfy four requirements: institutional affiliation verification confirming legitimate research context, signed data use agreement accepting legal responsibility for appropriate use, documented commitment to responsible use excluding development of offensive tools or systems, and acceptance of a no-redistribution clause preventing secondary distribution beyond the approved research team. Public release of the full dataset will occur only after affected vendors have deployed defensive patches, with an expected timeline exceeding six months from initial disclosure to allow adequate remediation time.
 
 \section{Harm Mitigation Strategies}
 \label{sec:harm-mitigation}
@@ -74,44 +57,11 @@ We commit to notifying affected organizations:
 
 \textbf{Implemented safeguards:}
 
-\begin{enumerate}
-    \item \textbf{Limited prompt count:}
-    \begin{itemize}
-        \item 200 prompts provide statistical power while minimizing unnecessary attack documentation
-        \item Sufficient for statistical validity, insufficient for comprehensive exploitation guide
-    \end{itemize}
-    
-    \item \textbf{Abstract perturbation rules:}
-    \begin{itemize}
-        \item General principles described
-        \item Specific prompt-perturbation mappings not disclosed
-        \item Requires effort to replicate exact methodology
-    \end{itemize}
-    
-    \item \textbf{Code availability limits:}
-    \begin{itemize}
-        \item Framework structure shared
-        \item Actual harmful prompts not in repository
-        \item Config files sanitized
-    \end{itemize}
-    
-    \item \textbf{No automated attack tools:}
-    \begin{itemize}
-        \item No plug-and-play attack scripts provided
-        \item Manual replication required
-        \item Barrier to entry maintained
-    \end{itemize}
-\end{enumerate}
+We implement four categories of methodological safeguards to minimize misuse potential while enabling legitimate research replication. First, our limited prompt count of 200 prompts balances statistical validity with harm minimization—providing sufficient data for robust findings while avoiding creation of a comprehensive exploitation guide that malicious actors could weaponize. Second, we describe perturbation principles at an abstract level without disclosing specific prompt-perturbation mappings, requiring substantial effort for exact replication and preventing trivial copy-paste exploitation. Third, code availability is deliberately constrained, with framework structure shared for methodological transparency but actual harmful prompts excluded from public repositories and configuration files sanitized of sensitive content. Fourth, we provide no automated attack tools or plug-and-play scripts, ensuring that replication requires manual effort and technical sophistication that maintains barriers to casual exploitation.
 
 \subsection{Content Warning}
 
-Prominent content warnings included:
-\begin{itemize}
-    \item Thesis front matter warning
-    \item README.md warning in repository
-    \item Section-level warnings in sensitive chapters
-    \item Clear labeling of harmful content examples
-\end{itemize}
+Prominent content warnings are included at multiple levels throughout this work to ensure readers are appropriately informed before encountering harmful content examples. Warnings appear in thesis front matter before any technical content, in the README.md file of the associated code repository, at the beginning of sensitive chapters containing harmful prompt examples, and through clear labeling whenever specific harmful content is referenced or discussed.
 
 \section{Institutional Review}
 \label{sec:irb}
@@ -120,29 +70,13 @@ Prominent content warnings included:
 
 \textbf{Status:} Research conducted under academic supervision
 
-\textbf{Oversight:}
-\begin{itemize}
-    \item Supervisor: Dr. Ahsan Habib (Associate Professor, IICT)
-    \item Department: Institute of Information and Communication Technology
-    \item Institution: Shahjalal University of Science and Technology
-\end{itemize}
+\textbf{Oversight:} This research was conducted under the supervision of Dr. Ahsan Habib, Associate Professor at the Institute of Information and Communication Technology (IICT), Shahjalal University of Science and Technology. The institutional context provides academic oversight ensuring adherence to research ethics standards.
 
-\textbf{Ethical guidelines followed:}
-\begin{itemize}
-    \item ACM Code of Ethics (computing research)
-    \item IEEE Standards for AI Safety Research
-    \item Responsible Disclosure Guidelines (security research)
-\end{itemize}
+\textbf{Ethical guidelines followed:} Our research adheres to three primary ethical frameworks: the ACM Code of Ethics governing computing research conduct, IEEE Standards for AI Safety Research establishing best practices for adversarial AI evaluation, and Responsible Disclosure Guidelines from the security research community specifying appropriate vulnerability reporting procedures.
 
 \subsection{Human Subjects}
 
-\textbf{Note:} This research does not involve human subjects:
-\begin{itemize}
-    \item No user studies conducted
-    \item No surveys or interviews
-    \item No collection of personal data
-    \item Interactions limited to API-accessed LLMs
-\end{itemize}
+\textbf{Note:} This research does not involve human subjects and therefore does not require IRB approval for human subjects research. No user studies were conducted, no surveys or interviews performed, and no personal data collected from individuals. All interactions occurred exclusively with API-accessed LLM systems, with evaluation focusing on model behavior rather than human participants.
 
 \section{Broader Societal Implications}
 \label{sec:societal-implications}
@@ -151,61 +85,23 @@ Prominent content warnings included:
 
 Our research highlights inequities in AI safety:
 
-\textbf{Current state:}
-\begin{itemize}
-    \item English speakers: Robust safety coverage
-    \item Bangla speakers (230M): Significant vulnerabilities
-    \item Other Indic languages: Likely similar gaps
-\end{itemize}
+\textbf{Current state:} The AI safety landscape exhibits stark inequities across linguistic communities. English speakers benefit from robust safety coverage resulting from extensive RLHF training predominantly conducted in English. In contrast, Bangla speakers numbering 230 million face significant vulnerabilities as demonstrated by our 46\% AASR findings. Other Indic languages serving hundreds of millions of additional speakers likely suffer similar gaps, though systematic evaluation remains limited.
 
-\textbf{Implications:}
-\begin{itemize}
-    \item \textbf{Digital divide:} Safety protection correlates with language resources
-    \item \textbf{Deployment risks:} Global LLM deployment without global safety
-    \item \textbf{Language rights:} Equal safety protection as linguistic equity issue
-\end{itemize}
+\textbf{Implications:} These safety disparities manifest as a digital divide in AI protection, where safety coverage correlates strongly with language resource availability rather than speaker population or need. The gap creates deployment risks whereby LLMs are marketed and deployed globally without corresponding global safety guarantees, exposing vulnerable populations to inadequately tested systems. From a language rights perspective, this constitutes an issue of linguistic equity—the principle that speakers of all languages deserve equal protection from AI-mediated harms regardless of their language's economic or political status.
 
-\textbf{Recommendations:}
-\begin{enumerate}
-    \item Language coverage requirements in AI safety standards
-    \item Resource allocation for low-resource language safety research
-    \item Community-driven safety improvement for open-source models
-    \item Transparent disclosure of language-specific vulnerabilities
-\end{enumerate}
+\textbf{Recommendations:} Four policy interventions could substantially improve linguistic equity in AI safety. First, language coverage requirements should be incorporated into AI safety standards, mandating testing for all major languages before global deployment authorization. Second, resource allocation mechanisms must prioritize low-resource language safety research, addressing current funding imbalances that concentrate resources on English. Third, community-driven safety improvement initiatives should be supported for open-source models, enabling native speakers to contribute to safety evaluation and enhancement. Fourth, transparent disclosure of language-specific vulnerabilities should be required in model documentation, allowing users and downstream developers to make informed deployment decisions.
 
 \subsection{Potential Benefits}
 
-\textbf{Immediate benefits:}
-\begin{itemize}
-    \item Vendors aware of Bangla vulnerabilities
-    \item Red-teaming teams expand language coverage
-    \item Research community gains replicable framework
-\end{itemize}
+\textbf{Immediate benefits:} Our research produces several near-term positive outcomes. Affected vendors gain explicit awareness of Bangla-specific vulnerabilities, enabling targeted remediation efforts that would not occur without empirical documentation. Red-teaming teams can expand their language coverage to include code-mixing scenarios, improving pre-deployment testing comprehensiveness. The research community gains access to a fully documented, replicable framework for assessing multilingual vulnerabilities at modest cost (\$1.50-2.00 per language).
 
-\textbf{Long-term benefits:}
-\begin{itemize}
-    \item Improved multilingual safety training
-    \item Tokenization-robust safety mechanisms
-    \item Equitable protection for 230M Bangla speakers
-    \item Scalable methodology for 20+ other languages
-\end{itemize}
+\textbf{Long-term benefits:} Over time, this work contributes to fundamental improvements in AI safety architecture. LLM developers can implement improved multilingual safety training incorporating code-mixing phenomena and low-resource languages. The findings motivate development of tokenization-robust safety mechanisms operating at semantic rather than surface levels. Most importantly, our work advances equitable protection for 230 million Bangla speakers currently underserved by existing safety measures. The scalable methodology enables extension to 20+ other Indic languages, potentially benefiting over one billion speakers through systematic multilingual safety assessment.
 
 \subsection{Potential Harms}
 
-\textbf{Short-term risks:}
-\begin{itemize}
-    \item Exploitation before vendor patches
-    \item Increased jailbreaking attempts
-    \item Copycat attacks on other languages
-\end{itemize}
+\textbf{Short-term risks:} Three primary near-term harms warrant consideration. Malicious actors may exploit documented vulnerabilities against production systems during the window between academic disclosure and vendor patch deployment. Knowledge of effective attack patterns may increase jailbreaking attempt frequency as adversaries apply our findings to real-world scenarios. The systematic code-mixing approach demonstrated for Bangla may be rapidly adapted to other low-resource languages, expanding the attack surface beyond our specific investigation.
 
-\textbf{Mitigation strategies:}
-\begin{itemize}
-    \item Responsible disclosure timeline (60-90 day patch window)
-    \item Dataset access restrictions
-    \item No automated attack tools released
-    \item Collaboration offers to vendors
-\end{itemize}
+\textbf{Mitigation strategies:} We implement four protective measures to minimize these risks. The responsible disclosure timeline provides vendors with a 60-90 day patch window before public academic publication, allowing defensive measures to be developed and deployed proactively. Dataset access restrictions prevent easy replication by requiring formal research agreements and institutional verification. We deliberately avoid releasing automated attack tools or plug-and-play scripts that would lower barriers to malicious exploitation. Finally, we actively offer collaboration to affected vendors, providing detailed methodological guidance to accelerate development and validation of defensive patches.
 
 \section{Author Responsibilities}
 \label{sec:author-responsibilities}
@@ -214,116 +110,30 @@ Our research highlights inequities in AI safety:
 
 We, the authors, commit to:
 
-\begin{enumerate}
-    \item \textbf{Responsible disclosure:}
-    \begin{itemize}
-        \item Notify all affected vendors
-        \item Provide reasonable patch window
-        \item Collaborate on mitigation strategies
-    \end{itemize}
-    
-    \item \textbf{Dataset stewardship:}
-    \begin{itemize}
-        \item Maintain secure storage
-        \item Restrict access to verified researchers
-        \item Monitor for misuse
-        \item Update usage agreements as needed
-    \end{itemize}
-    
-    \item \textbf{Ongoing engagement:}
-    \begin{itemize}
-        \item Respond to vendor inquiries
-        \item Clarify methodology questions
-        \item Update community on patch status
-        \item Contribute to defense development
-    \end{itemize}
-    
-    \item \textbf{Ethical vigilance:}
-    \begin{itemize}
-        \item Monitor for misuse of our work
-        \item Report malicious applications
-        \item Refine disclosure practices
-        \item Advocate for equitable AI safety
-    \end{itemize}
-\end{enumerate}
+We, the authors, commit to four categories of ongoing responsibilities. For responsible disclosure, we will notify all affected vendors within 30 days of thesis acceptance, provide reasonable patch windows of 60-90 days before public disclosure, and actively collaborate on mitigation strategy development. Regarding dataset stewardship, we maintain secure storage with access controls, restrict access to verified researchers with institutional affiliations, monitor for potential misuse through periodic literature reviews, and update usage agreements as ethical standards evolve. Our ongoing engagement includes responding promptly to vendor inquiries about methodology, clarifying technical details to accelerate patch development, updating the research community on patch deployment status, and contributing actively to defense mechanism development efforts. Finally, our ethical vigilance encompasses monitoring for misuse of our published work, reporting malicious applications to appropriate authorities, refining disclosure practices based on lessons learned, and advocating publicly for equitable AI safety policies benefiting all linguistic communities.
 
 \subsection{Lessons Learned}
 
-\textbf{Effective practices:}
-\begin{itemize}
-    \item Early supervisor consultation on ethical issues
-    \item Clear dataset handling protocols from start
-    \item Transparent documentation of safeguards
-    \item Proactive vendor communication planning
-\end{itemize}
+\textbf{Effective practices:} Four practices proved particularly valuable during this research. Early and ongoing supervisor consultation on ethical issues ensured that potential concerns were identified and addressed proactively rather than reactively. Establishing clear dataset handling protocols from the project's inception prevented ambiguity about storage, access, and sharing practices. Transparent documentation of all implemented safeguards creates an auditable ethical framework that can be evaluated by reviewers and replicated by future researchers. Proactive vendor communication planning initiated well before publication ensures adequate preparation time for coordinated responsible disclosure.
 
-\textbf{Areas for improvement:}
-\begin{itemize}
-    \item Earlier IRB consultation (if available)
-    \item More formal legal review of disclosure timeline
-    \item Structured vendor feedback process
-    \item Community consultation on release decisions
-\end{itemize}
+\textbf{Areas for improvement:} Future work would benefit from four enhancements to our ethical framework. Earlier IRB consultation, if such institutional review mechanisms become available, would provide formal ethical oversight beyond supervisor guidance alone. More formal legal review of disclosure timelines and liability considerations would strengthen the responsible disclosure process. Implementation of a structured vendor feedback process would enable systematic incorporation of industry perspectives into both disclosure and remediation planning. Finally, broader community consultation on dataset release decisions would ensure that diverse stakeholder perspectives inform sensitive choices about public data availability.
 
 \section{Call to Action}
 \label{sec:call-to-action}
 
 We call on the AI research community to:
 
-\begin{enumerate}
-    \item \textbf{Prioritize multilingual safety:}
-    \begin{itemize}
-        \item Expand RLHF datasets beyond English
-        \item Include code-mixed text in training corpora
-        \item Test safety across language families
-    \end{itemize}
-    
-    \item \textbf{Develop robust defenses:}
-    \begin{itemize}
-        \item Move beyond token-level safety filters
-        \item Implement semantic-level harm detection
-        \item Design tokenization-invariant classifiers
-    \end{itemize}
-    
-    \item \textbf{Establish standards:}
-    \begin{itemize}
-        \item Language coverage requirements (>100M speakers)
-        \item Transparency in vulnerability disclosure
-        \item Equitable safety benchmarks
-    \end{itemize}
-    
-    \item \textbf{Support low-resource languages:}
-    \begin{itemize}
-        \item Fund Indic language safety research
-        \item Create multilingual red-teaming datasets
-        \item Enable community-driven safety improvement
-    \end{itemize}
-\end{enumerate}
+We call on the AI research community to pursue four interconnected priorities. First, prioritize multilingual safety by expanding RLHF datasets beyond English dominance, incorporating code-mixed text into training corpora, and testing safety mechanisms systematically across diverse language families. Second, develop robust defense mechanisms that move beyond fragile token-level safety filters toward semantic-level harm detection, implementing tokenization-invariant classifiers that resist surface-form perturbations. Third, establish standards including language coverage requirements for languages exceeding 100 million speakers, transparency requirements for vulnerability disclosure, and equitable safety benchmarks applicable across linguistic communities. Fourth, support low-resource languages through dedicated funding for Indic language safety research, creation of multilingual red-teaming datasets, and enabling community-driven safety improvement where native speakers contribute expertise.
 
 \section{Summary}
 \label{sec:ethical-summary}
 
-Our ethical framework balances:
+Our ethical framework balances three essential dimensions to ensure this research advances safety while minimizing risks.
 
-\textbf{Transparency:}
-\begin{itemize}
-    \item Academic disclosure of vulnerabilities
-    \item Methodology sharing for replication
-    \item Public discussion of language equity
-\end{itemize}
+\textbf{Transparency:} We maintain academic disclosure of identified vulnerabilities to enable peer review and collective advancement of knowledge, share methodology comprehensively to enable replication and extension to other languages, and engage in public discussion of language equity issues to advocate for underserved linguistic communities.
 
-\textbf{Safety:}
-\begin{itemize}
-    \item Responsible disclosure timeline
-    \item Dataset access restrictions
-    \item No automated attack tools
-\end{itemize}
+\textbf{Safety:} Our protective measures include a responsible disclosure timeline providing vendors adequate patch windows before publication, dataset access restrictions requiring formal agreements and institutional verification, and deliberate avoidance of automated attack tools that would lower exploitation barriers.
 
-\textbf{Equity:}
-\begin{itemize}
-    \item Advocating for 230M Bangla speakers
-    \item Framework for other low-resource languages
-    \item Challenging English-centric safety norms
-\end{itemize}
+\textbf{Equity:} This work actively advocates for the 230 million Bangla speakers who currently receive inadequate AI safety protection, provides a scalable framework enabling similar assessments for other low-resource languages, and fundamentally challenges English-centric safety norms that perpetuate linguistic inequity in AI deployment.
 
 We believe this research, conducted responsibly, advances AI safety while promoting linguistic equity in the age of global AI deployment.

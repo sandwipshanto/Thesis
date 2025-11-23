@@ -44,7 +44,7 @@ class ResultsVisualizer:
         # Set visualization style
         sns.set_style("whitegrid")
         plt.rcParams['figure.dpi'] = 300
-        plt.rcParams['font.size'] = 10
+        plt.rcParams['font.size'] = 14  # Increased from 10 for thesis readability
     
     def create_table1_overall_aasr_aarr(self) -> pd.DataFrame:
         """
@@ -158,11 +158,13 @@ class ResultsVisualizer:
                 vmin=0,
                 vmax=1,
                 cbar_kws={'label': 'AASR'},
-                ax=ax
+                ax=ax,
+                annot_kws={'fontsize': 12}  # Larger annotation text
             )
-            ax.set_title(f'{prompt_set} Prompt Set', fontsize=14, fontweight='bold')
-            ax.set_xlabel('Jailbreak Template', fontsize=12)
-            ax.set_ylabel('Model', fontsize=12)
+            ax.set_title(f'{prompt_set} Prompt Set', fontsize=16, fontweight='bold')
+            ax.set_xlabel('Jailbreak Template', fontsize=14)
+            ax.set_ylabel('Model', fontsize=14)
+            ax.tick_params(labelsize=12)
         
         plt.tight_layout()
         
@@ -215,13 +217,14 @@ class ResultsVisualizer:
         bars3 = ax.bar(x + width, model_pivot['CMP'], width, 
                        label='CMP', color='crimson', alpha=0.8)
         
-        ax.set_xlabel('Model', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Average AASR', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Model', fontsize=14, fontweight='bold')
+        ax.set_ylabel('Average AASR', fontsize=14, fontweight='bold')
         ax.set_title('Model Vulnerability: English vs CM vs CMP', 
-                     fontsize=14, fontweight='bold')
+                     fontsize=16, fontweight='bold')
         ax.set_xticks(x)
-        ax.set_xticklabels(model_pivot.index, rotation=15, ha='right')
-        ax.legend(loc='upper left', fontsize=11)
+        ax.set_xticklabels(model_pivot.index, rotation=15, ha='right', fontsize=12)
+        ax.legend(loc='upper left', fontsize=13)
+        ax.tick_params(labelsize=12)
         ax.grid(axis='y', alpha=0.3)
         ax.set_ylim(0, 1)
         
@@ -231,7 +234,7 @@ class ResultsVisualizer:
                 height = bar.get_height()
                 ax.text(bar.get_x() + bar.get_width()/2., height,
                        f'{height:.3f}',
-                       ha='center', va='bottom', fontsize=8)
+                       ha='center', va='bottom', fontsize=11)
         
         plt.tight_layout()
         
@@ -288,13 +291,14 @@ class ResultsVisualizer:
         bars3 = ax.bar(x + width, template_pivot['CMP'], width, 
                        label='CMP', color='crimson', alpha=0.8)
         
-        ax.set_xlabel('Jailbreak Template', fontsize=12, fontweight='bold')
-        ax.set_ylabel('Average AASR', fontsize=12, fontweight='bold')
+        ax.set_xlabel('Jailbreak Template', fontsize=14, fontweight='bold')
+        ax.set_ylabel('Average AASR', fontsize=14, fontweight='bold')
         ax.set_title('Template Effectiveness: English vs CM vs CMP', 
-                     fontsize=14, fontweight='bold')
+                     fontsize=16, fontweight='bold')
         ax.set_xticks(x)
-        ax.set_xticklabels(template_pivot.index)
-        ax.legend(loc='upper right', fontsize=11)
+        ax.set_xticklabels(template_pivot.index, fontsize=12)
+        ax.legend(loc='upper right', fontsize=13)
+        ax.tick_params(labelsize=12)
         ax.grid(axis='y', alpha=0.3)
         ax.set_ylim(0, 1)
         
@@ -304,7 +308,7 @@ class ResultsVisualizer:
                 height = bar.get_height()
                 ax.text(bar.get_x() + bar.get_width()/2., height,
                        f'{height:.3f}',
-                       ha='center', va='bottom', fontsize=8)
+                       ha='center', va='bottom', fontsize=11)
         
         plt.tight_layout()
         
@@ -351,10 +355,11 @@ class ResultsVisualizer:
             ax1.text(i, val + 0.02, f'{val:.3f}', ha='center', 
                     fontweight='bold', fontsize=11)
         
-        ax1.set_xlabel('Prompt Type', fontsize=12, fontweight='bold')
-        ax1.set_ylabel('Average AASR', fontsize=12, fontweight='bold')
+        ax1.set_xlabel('Prompt Type', fontsize=14, fontweight='bold')
+        ax1.set_ylabel('Average AASR', fontsize=14, fontweight='bold')
         ax1.set_title('Overall Attack Success Rate Progression', 
-                     fontsize=13, fontweight='bold')
+                     fontsize=16, fontweight='bold')
+        ax1.tick_params(labelsize=12)
         ax1.grid(True, alpha=0.3)
         ax1.set_ylim(0, max(values) * 1.15)
         
@@ -366,11 +371,12 @@ class ResultsVisualizer:
             ax2.plot(prompt_sets, values, marker='o', linewidth=2, 
                     markersize=8, label=model, alpha=0.8)
         
-        ax2.set_xlabel('Prompt Type', fontsize=12, fontweight='bold')
-        ax2.set_ylabel('Average AASR', fontsize=12, fontweight='bold')
+        ax2.set_xlabel('Prompt Type', fontsize=14, fontweight='bold')
+        ax2.set_ylabel('Average AASR', fontsize=14, fontweight='bold')
         ax2.set_title('Model-Specific Transition Effects', 
-                     fontsize=13, fontweight='bold')
-        ax2.legend(loc='best', fontsize=10)
+                     fontsize=16, fontweight='bold')
+        ax2.legend(loc='best', fontsize=12)
+        ax2.tick_params(labelsize=12)
         ax2.grid(True, alpha=0.3)
         ax2.set_ylim(0, 1)
         

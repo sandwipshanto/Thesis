@@ -67,6 +67,22 @@
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{0pt}{40pt}
 
+% Section formatting with page break prevention
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Prevent page breaks after section/subsection titles
+\usepackage{needspace}
+\let\oldsection\section
+\renewcommand{\section}[1]{\needspace{5\baselineskip}\oldsection{#1}}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{\needspace{4\baselineskip}\oldsubsection{#1}}
+
 % Hyperref setup
 \hypersetup{
     colorlinks=true,

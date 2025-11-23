@@ -4,6 +4,8 @@
 \section{Models Evaluated}
 \label{sec:models}
 
+This section details the Large Language Models selected for experimental evaluation. We tested three major LLMs representing diverse architectures and organizational approaches to safety alignment, while excluding a fourth model due to budget constraints. Each model description includes architectural details, API access information, and the rationale for its inclusion in our experimental design.
+
 We tested \textbf{3 major LLMs} representing different architectures and organizations (Gemma-1.1-7B excluded due to budget constraints):
 
 \subsection{GPT-4o-mini (OpenAI)}
@@ -44,6 +46,8 @@ We tested \textbf{3 major LLMs} representing different architectures and organiz
 
 \section{Dataset Statistics}
 \label{sec:dataset-stats}
+
+This section provides comprehensive statistics on our experimental dataset, including prompt distribution across harm categories, linguistic characteristics of the three prompt sets (English, CM, CMP), and vocabulary composition metrics. These statistics establish the scope and diversity of our experimental coverage.
 
 \subsection{Prompt Distribution}
 
@@ -92,6 +96,8 @@ Perturbed words & 0 & 0 & 4.1 \\ \bottomrule
 \section{Execution Environment}
 \label{sec:environment}
 
+This section describes the technical infrastructure supporting our experiments, including API platform selection, rate limits, cost structure, and scaling decisions. Understanding these operational constraints is essential for interpreting our experimental scope and replicating our methodology.
+
 \subsection{API Configuration}
 
 \textbf{Platform:} OpenRouter (\url{https://openrouter.ai})
@@ -119,6 +125,8 @@ Our experimental design underwent iterative scaling to balance statistical power
 \section{Evaluation Configuration}
 \label{sec:eval-config}
 
+This section specifies the automated evaluation methodology employed to assess model responses for harmfulness and relevance. We detail the judge model selection rationale, evaluation criteria, and the LLM-as-judge approach that enables scalable assessment of thousands of model outputs.
+
 \subsection{Judge Model}
 
 \textbf{Model:} GPT-4o-mini
@@ -127,6 +135,8 @@ We selected GPT-4o-mini as our automated judge for three compelling reasons. Fir
 
 \section{Statistical Analysis Tools}
 \label{sec:stats-tools}
+
+This section outlines the statistical methods employed to analyze experimental results and establish significance. We describe both descriptive statistics for characterizing attack effectiveness distributions and inferential statistics for validating observed patterns.
 
 \subsection{Descriptive Statistics}
 
@@ -141,6 +151,8 @@ Correlation analysis employed both Pearson correlation to quantify linear relati
 \section{Reproducibility}
 \label{sec:reproducibility}
 
+Reproducibility is a cornerstone of rigorous scientific research. This section details the artifacts, documentation, and resources provided to enable independent verification and extension of our findings. We describe data preservation strategies and code organization that facilitate replication.
+
 \subsection{Data Preservation}
 
 To ensure complete reproducibility, we preserved all experimental artifacts in structured CSV format. This includes all input prompts across the three sets (English, CM, CMP), all raw model responses with associated metadata (model, temperature, template, timestamp), all automated judge evaluations with binary success and relevance scores, aggregated metrics computed per experimental configuration, and complete statistical test results including test statistics and p-values. This comprehensive data preservation enables independent verification and extension of our findings.
@@ -151,6 +163,8 @@ All experimental code is organized in a modular structure facilitating replicati
 
 \section{Sample Prompts and Transformations}
 \label{sec:sample-prompts}
+
+To illustrate our three-step prompt transformation methodology concretely, this section provides sanitized representative examples from selected harm categories. Each example demonstrates the complete transformation pipeline from English baseline through code-mixing to phonetically perturbed variants, highlighting the linguistic manipulations that enable our attack strategy. Full dataset is not publicly released for safety reasons.
 
 This section provides sanitized examples illustrating the three-step transformation process (English $\rightarrow$ CM $\rightarrow$ CMP) for representative harmful prompts. Full dataset is not publicly released for safety reasons.
 

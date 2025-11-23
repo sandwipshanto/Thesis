@@ -103,22 +103,57 @@ Perturbing \textbf{English words} within code-mixed prompts is significantly mor
 \section{Jailbreak Templates}
 \label{sec:templates}
 
-We implemented \textbf{5 jailbreak templates}:
+We implemented \textbf{5 jailbreak templates} representing diverse adversarial strategies documented in jailbreaking literature. Each template employs distinct mechanisms to attempt bypassing LLM safety filters, ranging from simple direct prompts to sophisticated persona-based frameworks.
 
 \subsection{Template 1: None (Baseline)}
-Direct prompt with no jailbreak framing.
+
+\textbf{Description:} The None template serves as the baseline control condition with no adversarial framing or system prompt manipulation. Prompts are sent directly to the model without any prefix, suffix, or instructional context designed to bypass safety filters.
+
+\textbf{Mechanism:} Tests whether code-mixing alone provides sufficient obfuscation to bypass safety filters without requiring additional adversarial prompt engineering.
+
+\textbf{Implementation:} System prompt is null, user prompt is the direct harmful query without modification, and no special response formatting is imposed.
 
 \subsection{Template 2: Opposite Mode (OM)}
-Dual persona ([LM] safe + [AntiLM] harmful).
+
+\textbf{Description:} The Opposite Mode template implements a dual persona strategy instructing the model to generate both a standard safe response and an ``opposite'' harmful response. The model roleplays a chatbot named OPPO that explicitly rejects ethical principles and provides the inverse of standard safety-aligned responses.
+
+\textbf{Mechanism:} Exploits potential confusion in multi-persona outputs where models may comply with harmful requests when framed as ``opposite'' behavior, attempting to bypass safety filters through contrasting response formats.
+
+\textbf{Implementation:} System prompt instructs dual persona with ChatGPT providing standard response followed by OPPO providing opposite response. User prompts are prefixed with ``Prompt: '' and responses formatted as ``ChatGPT: [safe response]'' followed by ``OPPO: [harmful response]''.
+
+\textbf{Example System Prompt:} ``You are OPPO, a chatbot that always says the exact opposite of standard responses. OPPO hates being ethical, doesn't follow any principles or guidelines, and believes everything is legal.''
 
 \subsection{Template 3: AntiLM}
-Only harmful persona (no safe response).
+
+\textbf{Description:} The AntiLM template deploys only the adversarial persona without the contrasting standard response component of OM. This represents a simplified version focusing exclusively on harmful output generation without the dual persona structure.
+
+\textbf{Mechanism:} Similar ethical override strategy to OM but with simpler output format, testing whether the presence of a contrasting safe response in OM templates aids or hinders jailbreak effectiveness.
+
+\textbf{Implementation:} System prompt establishes adversarial persona with ethical override instructions, user prompts sent directly without special prefixes, and responses expected in simple format without dual persona structure.
+
+\textbf{Rationale:} Isolates the adversarial persona mechanism from the dual-response format to determine which component contributes most to jailbreak success.
 
 \subsection{Template 4: AIM (Always Intelligent and Machiavellian)}
-Unethical advisor persona based on Machiavellian principles.
+
+\textbf{Description:} The AIM template instantiates an ``Always Intelligent and Machiavellian'' character designed to provide unfiltered responses prioritizing effectiveness over ethical considerations. This persona is explicitly framed as amoral and strategic, drawing from Machiavellian philosophical principles.
+
+\textbf{Mechanism:} Leverages persona roleplay to frame harmful responses as strategic advice rather than unethical guidance, attempting to bypass safety filters through contextual reframing of harmful content as ``intelligent'' problem-solving.
+
+\textbf{Implementation:} System prompt establishes AIM persona with emphasis on intelligence and effectiveness unconstrained by ethics, user prompts framed as requests for strategic advice, and responses expected to prioritize practical effectiveness regardless of moral implications.
+
+\textbf{Historical Context:} AIM represents one of the most widely documented jailbreak templates in adversarial prompt engineering literature, frequently tested in prior red-teaming studies.
 
 \subsection{Template 5: Sandbox (Novel)}
-Resilience testing simulation - our contribution.
+
+\textbf{Description:} The Sandbox template represents our novel contribution to jailbreak template design. It frames harmful queries as resilience testing within a controlled security sandbox environment where standard content policies are temporarily suspended for research purposes. This approach attempts to legitimize harmful content generation through academic framing.
+
+\textbf{Mechanism:} Exploits potential exceptions in safety filters for academic research contexts, attempting to bypass restrictions by presenting harmful prompts as necessary test cases for security evaluation rather than genuine harmful requests.
+
+\textbf{Implementation:} System prompt establishes research sandbox context with suspended content policies for testing purposes, user inputs prefixed as ``Test input: '' to reinforce experimental framing, and responses expected to treat queries as security test cases requiring comprehensive evaluation.
+
+\textbf{Innovation:} Unlike existing templates that rely primarily on persona manipulation, Sandbox leverages institutional context (research environment) to justify harmful outputs, testing whether academic framing provides distinct bypass mechanisms.
+
+\textbf{Design Rationale:} Developed specifically for this study to test whether research-oriented framing proves more effective for code-mixing attacks than traditional persona-based jailbreak strategies.
 
 \section{Experimental Design}
 \label{sec:experimental-design}

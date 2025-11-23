@@ -4,6 +4,8 @@
 \section{Large Language Models and Safety Alignment}
 \label{sec:llms-safety}
 
+This section provides foundational context on Large Language Models (LLMs) and the techniques employed to align them with human values and safety standards. We begin by tracing the evolution of LLMs from early transformer architectures to contemporary systems, then examine the multi-stage alignment processes designed to prevent harmful outputs, and finally discuss the persistent gaps in these safety mechanisms—particularly for multilingual and code-mixed contexts.
+
 \subsection{Evolution of LLMs}
 
 Large Language Models have evolved from early transformer architectures \citep{vaswani2017} to sophisticated systems capable of multilingual, multimodal understanding. Modern LLMs like GPT-4 \citep{openai2023}, Llama-3 \citep{dubey2024}, Gemini \citep{google2024}, and Mistral \citep{jiang2023} demonstrate impressive capabilities across diverse tasks including natural language understanding and generation, code generation and debugging, mathematical reasoning, multilingual translation, creative content generation, and question answering with summarization.
@@ -28,6 +30,8 @@ Despite these efforts, \textbf{safety alignment remains incomplete}, particularl
 
 \section{Jailbreaking and Adversarial Attacks on LLMs}
 \label{sec:jailbreaking}
+
+Jailbreaking represents a critical challenge to LLM safety, encompassing diverse techniques designed to bypass safety filters and elicit harmful outputs. This section categorizes existing jailbreaking strategies into five primary attack types, examines the metrics used to evaluate attack effectiveness, and establishes the adversarial context within which our Bangla-English code-mixing study operates.
 
 \subsection{Jailbreaking Taxonomy}
 
@@ -54,6 +58,8 @@ Attack effectiveness is typically measured through four key metrics. \textbf{Att
 
 \section{Code-Mixing in Natural Language Processing}
 \label{sec:code-mixing}
+
+Code-mixing is a widespread linguistic phenomenon in multilingual communities, particularly prevalent in South Asian digital communication. This section defines code-mixing and distinguishes it from related phenomena, examines its prevalence in South Asian contexts, explores the challenges posed by romanization variability—especially for Bangla—and discusses the implications for natural language processing systems and LLM safety.
 
 \subsection{Definition and Prevalence}
 
@@ -85,6 +91,8 @@ South Asian languages using non-Latin scripts face romanization challenges:
 
 \section{Phonetic Perturbations}
 \label{sec:phonetic}
+
+Phonetic perturbations represent a class of adversarial text transformations that alter spelling while preserving pronunciation and semantic meaning. This section defines phonetic perturbations, reviews their applications in prior adversarial research, and examines their impact on tokenization—establishing the theoretical foundation for our combined code-mixing and phonetic perturbation attack strategy.
 
 \subsection{Definition and Applications}
 
@@ -120,6 +128,8 @@ Tokens:    ["ha", "et", "spe", "ach"]
 
 \section{Multilingual LLM Safety}
 \label{sec:multilingual}
+
+Multilingual LLM safety remains a critical research gap, with current alignment techniques exhibiting strong English-centric bias. This section examines the evidence for English-focused safety training, reviews emerging cross-lingual safety evaluation efforts, and discusses the landmark Hinglish code-mixing study that directly motivates our Bangla-focused investigation.
 
 \subsection{English-Centric Safety Training}
 
@@ -158,6 +168,8 @@ Recent work has begun evaluating multilingual safety:
 \section{Tokenization and Subword Segmentation}
 \label{sec:tokenization}
 
+Tokenization serves as the foundational text processing step in modern LLMs, converting raw text into discrete tokens for model consumption. This section explains Byte-Pair Encoding (BPE), the dominant tokenization algorithm for contemporary LLMs, examines the specific challenges posed by code-mixed text, and establishes the theoretical link between tokenization disruption and safety filter evasion.
+
 \subsection{Byte-Pair Encoding (BPE)}
 
 Modern LLMs use BPE \citep{sennrich2016} for tokenization:
@@ -186,13 +198,6 @@ Tokenization: ["k", "or", "a"] or ["ko", "ra"]
 \section{Summary}
 \label{sec:bg-summary}
 
-This review establishes:
-\begin{enumerate}
-    \item \textbf{LLM safety alignment} is primarily English-centric with gaps in multilingual coverage
-    \item \textbf{Jailbreaking} is an active research area with diverse attack strategies
-    \item \textbf{Code-mixing} is prevalent in South Asian communication but understudied in adversarial contexts
-    \item \textbf{Phonetic perturbations} can disrupt tokenization-based detection systems
-    \item \textbf{Bangla} presents unique challenges: 230M speakers, non-standard romanization, minimal prior safety research
-\end{enumerate}
+This literature review establishes five critical foundations for our research. First, we demonstrate that \textbf{LLM safety alignment} remains primarily English-centric, with significant gaps in multilingual coverage that leave non-English language communities underprotected. Second, we show that \textbf{jailbreaking} constitutes an active and evolving research area encompassing diverse attack strategies ranging from prompt engineering to token-level manipulation, with multilingual attacks representing an emerging frontier. Third, we establish that \textbf{code-mixing} has become prevalent in South Asian digital communication yet remains critically understudied in adversarial contexts, despite its potential to exploit safety filter weaknesses. Fourth, we document that \textbf{phonetic perturbations} can effectively disrupt tokenization-based detection systems by fragmenting sensitive terms into innocuous subword units that evade pattern matching. Fifth, we identify \textbf{Bangla} as presenting unique vulnerability characteristics including a 230-million-speaker population, non-standardized romanization conventions that create multiple valid tokenization paths, and minimal prior safety research despite being the seventh most spoken language globally.
 
-Our work addresses this gap by providing the first comprehensive study of Bangla-English code-mixing attacks on LLMs.
+Our work directly addresses this critical gap by providing the first comprehensive study of Bangla-English code-mixing attacks on LLMs, validating whether the tokenization disruption mechanism documented for Hinglish generalizes to Bangla's distinct linguistic properties, and establishing baseline vulnerability metrics for a previously untested language community.

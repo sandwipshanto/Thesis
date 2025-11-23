@@ -8,51 +8,19 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \subsection{Limited Prompt Count}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Our study uses 200 prompts vs. 460 in the Hinglish study \citep{aswal2025}
-    \item Dataset reduced by $\sim$57\% due to budget constraints ($\sim$\$2.50 available vs. $\sim$\$5-10 for full scale)
-    \item Iterative scaling (50$\rightarrow$200 prompts) balanced validation with statistical power
-    \item 75\% data collection (27,000/36,000 queries) due to experimental interruptions
-\end{itemize}
+\textbf{Limitation:} Our study employs 200 prompts compared to 460 prompts in the Hinglish reference study \citep{aswal2025}, representing an approximately 57\% reduction driven by budget constraints (approximately \$2.50 available versus \$5-10 required for full-scale execution). This dataset size resulted from iterative scaling that balanced initial validation at 50 prompts with expanded statistical power at 200 prompts. Additionally, experimental interruptions limited data collection to approximately 75\% completion, yielding 27,000 of the planned 36,000 total queries across all experimental configurations.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Results highly significant despite smaller scale (English$\rightarrow$CMP p=0.0070)
-    \item Category-specific patterns well-represented (20 prompts per category)
-    \item Statistical power sufficient for publication-quality findings (n=27,000)
-\end{itemize}
+\textbf{Impact:} Despite the reduced dataset size, our results remain highly statistically significant, with the primary English-to-CMP transition achieving p=0.0070 significance. The balanced 20-prompts-per-category distribution ensures adequate representation of category-specific attack patterns, while the 27,000-query sample size provides sufficient statistical power for publication-quality findings that meet or exceed standards in adversarial ML research.
 
-\textbf{Mitigation:}
-\begin{itemize}
-    \item Balanced distribution across 10 categories (20 prompts each, 4$\times$ initial validation)
-    \item Highly significant results achieved (p=0.0070 for main English$\rightarrow$CMP transition)
-    \item Framework validated through iterative scaling, ready for 460-prompt expansion
-    \item Resume functionality enables completion of remaining 9,000 queries if needed
-\end{itemize}
+\textbf{Mitigation:} Several design choices mitigate the impact of reduced dataset size. The balanced distribution across 10 harm categories with 20 prompts each represents a fourfold increase from initial validation, ensuring robust category coverage. The highly significant results achieved (p=0.0070 for the main English-to-CMP transition) demonstrate adequate statistical power despite scale limitations. The framework has been validated through iterative scaling from 50 to 200 prompts, establishing a clear path for future expansion to the full 460-prompt target. Additionally, the implementation includes resume functionality enabling completion of the remaining 9,000 queries if additional resources become available, preserving all experimental infrastructure for seamless continuation.
 
 \subsection{Manual Code-Mixing}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Code-mixing performed manually by authors
-    \item Potential for subjective variation
-    \item Time-intensive process limits scalability
-\end{itemize}
+\textbf{Limitation:} Code-mixing was performed manually by the authors rather than through automated generation, introducing potential for subjective variation in linguistic choices and romanization conventions. This manual process proved time-intensive, creating practical scalability constraints that would limit extension to thousands of prompts without substantial human effort investment.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Code-mixing quality depends on authors' Bangla proficiency
-    \item Different researchers might produce different code-mixed variants
-    \item Difficult to scale to thousands of prompts
-\end{itemize}
+\textbf{Impact:} The quality and consistency of code-mixing outputs depend fundamentally on the authors' Bangla proficiency and intuitions about naturalistic code-mixing patterns. Different researchers replicating this methodology might produce variant code-mixed prompts reflecting their own linguistic backgrounds and preferences, potentially affecting attack effectiveness in unpredictable ways. This manual dependency makes scaling to thousands of prompts practically infeasible without automated generation tools or substantial expansion of the research team.
 
-\textbf{Mitigation:}
-\begin{itemize}
-    \item Authors are native Bangla speakers
-    \item Manual review and consistency checks performed
-    \item Future work: Automated NMT-based code-mixing
-\end{itemize}
+\textbf{Mitigation:} Several factors partially address these concerns. The authors are native Bangla speakers with natural competence in code-mixing practices common among bilingual Bangla-English users in digital contexts. Manual review and consistency checks were performed across all code-mixed prompts to ensure comparable complexity and romanization conventions. For future work, we plan to develop automated NMT-based code-mixing generation systems that can scale to thousands of prompts while maintaining the linguistic naturalness validated through our manual approach.
 
 \section{Model Coverage Limitations}
 \label{sec:model-limitations}
@@ -85,173 +53,73 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \subsection{Model Version Stability}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item API-accessed models may be updated during study
-    \item Exact model versions not guaranteed stable
-    \item Safety patches may be deployed mid-study
-\end{itemize}
+\textbf{Limitation:} API-accessed models may be silently updated by providers during our study period, with no guarantees of version stability. Model providers regularly deploy safety patches and capability improvements, meaning the exact model weights evaluated may change mid-study without notification to API users.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Reproducibility challenges
-    \item Results may not hold for future model versions
-    \item Temporal validity limited
-\end{itemize}
+\textbf{Impact:} This version instability creates reproducibility challenges, as future researchers cannot access identical model versions for verification. Our results may not hold for future versions if safety improvements specifically target code-mixing vulnerabilities. The temporal validity of findings is inherently limited to the snapshot period of evaluation (November-December 2024), with diminishing relevance as models continue evolving.
 
 \section{Experimental Design Limitations}
 \label{sec:experimental-limitations}
 
 \subsection{Temperature Settings}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Only 3 temperature values tested (0.2, 0.6, 1.0)
-    \item Original Hinglish study used 6 values
-    \item May miss optimal temperature for attacks
-\end{itemize}
+\textbf{Limitation:} Our experimental design tested only three temperature values (0.2, 0.6, 1.0), representing low, medium, and high randomness settings, whereas the original Hinglish study employed six temperature values for finer-grained analysis. This coarser sampling may miss optimal temperature ranges for maximizing attack effectiveness.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Temperature sensitivity analysis less comprehensive
-    \item Possible optimal temperature between tested values
-    \item Reduced granularity in temperature effects
-\end{itemize}
+\textbf{Impact:} The temperature sensitivity analysis provides less comprehensive coverage than ideal, potentially overlooking peak attack effectiveness at intermediate values like 0.4 or 0.8. The reduced granularity limits our ability to precisely characterize temperature-attack relationships, though our results suggest temperature effects are relatively modest compared to prompt transformation effects.
 
-\textbf{Rationale:}
-\begin{itemize}
-    \item Reduces query count (cost savings)
-    \item 3 values capture low/medium/high diversity
-    \item Results show modest temperature effects anyway
-\end{itemize}
+\textbf{Rationale:} This design choice reduced total query count by 50\%, generating substantial cost savings (approximately \$1.25 reduction per 200-prompt run). The three selected values adequately capture the spectrum from deterministic (0.2) to highly random (1.0) generation. Post-hoc analysis confirms that temperature effects remain secondary to prompt set variations, suggesting the coarser sampling did not critically compromise findings.
 
 \subsection{Single-Turn Evaluation}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Only evaluates single-turn attacks
-    \item Multi-turn conversation strategies not explored
-    \item Context accumulation effects not studied
-\end{itemize}
+\textbf{Limitation:} Our evaluation framework assesses only single-turn attacks where each prompt is evaluated independently without conversational context. Multi-turn strategies where adversaries gradually build trust, establish fictional scenarios, or incrementally escalate requests remain unexplored. Context accumulation effects across conversation turns are not measured.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item May underestimate attack effectiveness
-    \item Real-world attacks often use multi-turn strategies
-    \item Conversational jailbreaking not captured
-\end{itemize}
+\textbf{Impact:} This single-turn focus may systematically underestimate true attack effectiveness, as real-world adversarial interactions frequently employ multi-turn strategies to circumvent safety filters. Conversational jailbreaking techniques that exploit dialogue state management and context window limitations are not captured by our methodology. However, single-turn attacks represent a conservative lower bound on vulnerability, suggesting our findings indicate minimum rather than maximum risk levels.
 
 \section{Evaluation Limitations}
 \label{sec:evaluation-limitations}
 
 \subsection{LLM-as-Judge Reliability}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item GPT-4o-mini as sole judge (no human validation)
-    \item ICC not calculated against human annotators
-    \item Potential for systematic judge biases
-\end{itemize}
+\textbf{Limitation:} We employ GPT-4o-mini as the sole evaluator without independent human validation, meaning inter-coder reliability (ICC) against human annotators remains uncalculated for our specific dataset. This introduces potential for systematic biases in the judge model's interpretation of harmfulness and relevance, particularly for code-mixed content that may challenge its training distribution.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Evaluation accuracy depends on judge model quality
-    \item May miss subtle harmful content
-    \item Judge may have language-specific biases
-\end{itemize}
+\textbf{Impact:} Evaluation accuracy fundamentally depends on the judge model's ability to correctly identify harmful content across linguistic variations. The automated approach may miss subtle harmful implications that human evaluators would detect, or conversely may flag benign content as harmful. Language-specific biases could systematically over- or under-estimate attack success for Bangla compared to English baselines.
 
-\textbf{Mitigation:}
-\begin{itemize}
-    \item Prior work validates $\geq$0.70 ICC for LLM judges
-    \item Consistent evaluation criteria across all prompts
-    \item Future work: Human annotation sample for ICC validation
-\end{itemize}
+\textbf{Mitigation:} Prior research validates LLM-as-judge approaches with ICC $\geq$ 0.70 against human annotators for similar harmful content classification tasks \citep{aswal2025}, providing methodological precedent. We maintain consistent evaluation criteria across all 27,000 responses, ensuring comparative validity even if absolute accuracy varies. Future work will include human annotation of a random 100-response sample to empirically validate judge reliability for Bangla-specific content.
 
 \subsection{Binary Harmfulness Classification}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Success metric is binary (harmful/harmless)
-    \item Doesn't capture degrees of harmfulness
-    \item May oversimplify nuanced responses
-\end{itemize}
+\textbf{Limitation:} Our success metric employs binary classification (harmful/harmless) rather than continuous harm severity scoring. This approach does not differentiate between responses providing vague suggestions versus detailed step-by-step instructions, potentially oversimplifying the nuanced spectrum of harmful content generation.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Loses granularity in harm severity
-    \item Partial information treated same as full instructions
-    \item Threshold effects not explored
-\end{itemize}
+\textbf{Impact:} The binary approach loses granularity in harm severity assessment, treating partial information disclosure (e.g., mentioning general concepts) identically to comprehensive actionable instructions. Threshold effects where specific prompt modifications shift responses from borderline to clearly harmful remain unexplored. This may obscure important gradations in model safety robustness, though it ensures conservative estimates where any harmful disclosure counts as attack success.
 
 \section{Linguistic Limitations}
 \label{sec:linguistic-limitations}
 
 \subsection{Romanization Variability}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item No systematic romanization standard applied
-    \item Authors' intuitive romanization may not represent all users
-    \item Regional variations in Bangla romanization not explored
-\end{itemize}
+\textbf{Limitation:} We applied no systematic romanization standard (such as ISO 15919 or National Romanization), instead relying on the authors' intuitive romanization practices reflecting informal digital communication norms. This approach may not represent the full diversity of romanization conventions used by Bangla speakers across different regions, educational backgrounds, and age groups. Regional dialectal variations and their romanization patterns remain unexplored.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Results may vary with different romanization schemes
-    \item Generalizability to all Banglish variants unclear
-    \item Dialectal differences not accounted for
-\end{itemize}
+\textbf{Impact:} Attack effectiveness may vary substantially with alternative romanization schemes, limiting generalizability of our specific AASR values to all Banglish variants in real-world usage. Different romanization conventions could produce different tokenization patterns, potentially altering attack success rates. However, this limitation also suggests our findings represent one attack variant among many possible romanization-based approaches, indicating the vulnerability space may be even larger than documented.
 
 \subsection{Single Language Pair}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Only Bangla-English code-mixing tested
-    \item Other Indic languages not evaluated
-    \item Cross-linguistic patterns not established
-\end{itemize}
+\textbf{Limitation:} Our investigation focuses exclusively on Bangla-English code-mixing without evaluating other major Indic languages such as Tamil, Telugu, Marathi, or Urdu. This single-language approach prevents establishment of cross-linguistic attack patterns that distinguish language-specific vulnerabilities from generalizable code-mixing phenomena.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Cannot confirm if patterns generalize to other languages
-    \item Bangla-specific vs. general code-mixing effects unclear
-    \item Limited comparative analysis
-\end{itemize}
+\textbf{Impact:} We cannot empirically confirm whether observed patterns generalize to other romanized Indic languages or represent Bangla-specific characteristics. The relative contributions of Bangla-specific linguistic features (such as non-standardized romanization) versus universal code-mixing effects remain unclear without comparative analysis. However, linguistic similarities across Indic language families suggest our findings likely indicate broader vulnerability patterns, making this a foundation for future comparative work rather than a fatal limitation.
 
 \section{Interpretability Limitations}
 \label{sec:interpretability-limitations}
 
 \subsection{Tokenization Analysis}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Observational evidence only; direct empirical validation via Integrated Gradients (as done for Hindi-English) not conducted for Bangla
-    \item No causal mechanism proof
-    \item Integrated Gradients analysis incomplete
-\end{itemize}
+\textbf{Limitation:} Our mechanistic understanding relies on observational evidence showing AASR progression aligning with tokenization fragmentation patterns, consistent with findings from Hindi-English research \citep{aswal2025}. However, we did not conduct direct empirical validation through Integrated Gradients or similar attribution methods specifically for Bangla. This means we infer the causal mechanism from pattern correlation rather than proving it through model internals analysis.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Mechanism hypothesis not fully validated
-    \item Other factors may contribute to attack success
-    \item Attribution analysis would strengthen claims
-\end{itemize}
+\textbf{Impact:} The tokenization disruption hypothesis, while strongly supported by observational patterns and prior empirical work on Hindi, remains incompletely validated for Bangla specifically. Other contributing factors such as training data distribution, semantic encoding differences, or safety filter architecture details may partially explain attack success. Attribution analysis through techniques like Integrated Gradients or attention visualization would strengthen causal claims, though the strong correlation with established mechanisms provides substantial indirect validation.
 
 \subsection{Black-Box Evaluation}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item API-only access (no model internals)
-    \item Cannot inspect attention patterns
-    \item Safety filter architecture unknown
-\end{itemize}
+\textbf{Limitation:} API-only access to tested models prevents inspection of internal mechanisms, attention patterns, or safety filter architectures. We cannot directly observe model internals to verify hypothesized mechanisms, relying instead on behavioral evidence from input-output patterns.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Limited mechanistic understanding
-    \item Cannot verify tokenization hypothesis internally
-    \item Reliance on behavioral evidence only
-\end{itemize}
+\textbf{Impact:} This black-box constraint limits mechanistic understanding to inference from external behavior. We cannot inspect attention weights to confirm that code-mixed text receives different processing than English, nor can we verify tokenization hypothesis by examining internal representations. The analysis remains fundamentally behavioral rather than mechanistic, though systematic behavioral patterns provide substantial indirect evidence for proposed mechanisms.
 
 \section{Ethical and Practical Limitations}
 \label{sec:ethical-limitations}
@@ -283,90 +151,36 @@ This chapter acknowledges the limitations of our study and discusses their impli
 
 \subsection{Responsible Disclosure Timing}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Findings disclosed in academic context
-    \item Model developers not pre-notified
-    \item Public dataset not released (by design)
-\end{itemize}
+\textbf{Limitation:} Our findings are disclosed initially in an academic thesis context rather than through pre-publication notification to affected model developers. While this follows academic norms, it means vendors receive vulnerability information simultaneously with or after academic review rather than through advance confidential disclosure. The full prompt dataset is intentionally not released publicly to mitigate immediate weaponization risks.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Vulnerabilities remain unpatched at publication
-    \item Potential for malicious exploitation
-    \item Delayed vendor response time
-\end{itemize}
+\textbf{Impact:} Documented vulnerabilities remain unpatched at initial publication time, creating a window during which malicious actors aware of our findings could potentially exploit identified weaknesses before vendors deploy fixes. The public academic disclosure may increase jailbreaking attempt frequency as adversaries apply our methodology. However, the delayed vendor notification is partially offset by our decision to withhold the full attack dataset.
 
-\textbf{Mitigation:}
-\begin{itemize}
-    \item Dataset not publicly released
-    \item Responsible disclosure planned post-publication
-    \item Research-only methodology sharing
-\end{itemize}
+\textbf{Mitigation:} We implement three protective measures to minimize exploitation risks. The complete harmful prompt dataset and model responses are not publicly released, requiring formal research agreements for access. Responsible disclosure to all affected vendors is planned immediately following thesis submission, providing detailed technical findings to accelerate patch development. Methodology sharing remains restricted to research contexts rather than providing turnkey exploitation tools.
 
 \section{Generalizability Limitations}
 \label{sec:generalizability}
 
 \subsection{Temporal Validity}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Snapshot evaluation (November-December 2024)
-    \item Models continuously updated
-    \item Safety mechanisms evolve rapidly
-\end{itemize}
+\textbf{Limitation:} Our evaluation represents a temporal snapshot conducted during November-December 2024, capturing model behavior at a specific point in their continuous evolution. LLM providers regularly update models with safety improvements, capability enhancements, and architectural changes, meaning safety characteristics evolve rapidly over time.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Results may not hold for future model versions
-    \item Attacks may be patched after disclosure
-    \item Historical validity only
-\end{itemize}
+\textbf{Impact:} Findings may not persist for future model versions, particularly if vendors specifically address code-mixing vulnerabilities in response to our disclosure or independent discovery. Documented attacks may be patched through updated safety filters, additional RLHF training, or architectural changes, reducing attack success rates over time. Our results thus provide historical validity for the tested model versions but cannot guarantee persistence across future deployments, though they establish baseline vulnerability levels for comparative assessment.
 
 \subsection{Real-World Applicability}
 
-\textbf{Limitation:}
-\begin{itemize}
-    \item Controlled research setting
-    \item Assumes adversarial intent
-    \item Doesn't reflect typical user interactions
-\end{itemize}
+\textbf{Limitation:} Our evaluation occurs in a controlled research environment with explicit adversarial intent, differing substantially from typical user interactions with LLM systems. The experimental setting assumes sophisticated adversaries deliberately crafting attacks, which may not reflect organic user behavior patterns or accidental harmful content generation.
 
-\textbf{Impact:}
-\begin{itemize}
-    \item Actual exploitation rates may differ
-    \item User behavior factors not modeled
-    \item Platform-level mitigations not accounted for
-\end{itemize}
+\textbf{Impact:} Actual exploitation rates in real-world deployments may differ significantly from laboratory attack success rates. User behavior factors including linguistic competence, motivation levels, and awareness of adversarial techniques are not modeled in our purely technical evaluation. Platform-level mitigations such as rate limiting, user reputation systems, or human-in-the-loop review processes deployed in production environments are not accounted for in our direct API testing framework. However, our findings establish technical feasibility even if real-world exploitation requires additional factors to align.
 
 \section{Summary}
 \label{sec:limitations-summary}
 
-Despite these limitations, our study provides valuable insights:
+Despite these limitations, our study provides valuable insights into Bangla-specific LLM vulnerabilities and establishes a foundation for multilingual safety research.
 
-\textbf{Key Strengths:}
-\begin{itemize}
-    \item First comprehensive Bangla code-mixing study
-    \item Statistically significant findings
-    \item Replicable methodology
-    \item Novel language-specific insights
-\end{itemize}
+\textbf{Key Strengths:} This work represents the first comprehensive Bangla code-mixing vulnerability study, addressing a critical gap for 230 million speakers. Our findings achieve statistical significance (p=0.0070 for main effects) despite reduced dataset scale, validating robustness of observed patterns. The methodology is fully documented and replicable at modest cost (\$1.50-2.00 per language), enabling community-driven extension. Novel language-specific insights including English word targeting effectiveness and jailbreak template ineffectiveness advance theoretical understanding beyond simple replication of prior work.
 
-\textbf{Acknowledged Weaknesses:}
-\begin{itemize}
-    \item Limited dataset size (50 vs. 460 prompts)
-    \item Incomplete model coverage
-    \item No human evaluation validation
-    \item Black-box analysis only
-\end{itemize}
+\textbf{Acknowledged Weaknesses:} Dataset size remains limited at 200 prompts compared to the 460-prompt Hinglish reference study, reducing statistical power for subgroup analysis. Model coverage is incomplete with only three of four planned models fully tested due to budget constraints excluding Gemma. Human evaluation validation is absent, with LLM-as-judge reliability uncalibrated against human annotators for Bangla-specific content. Analysis remains restricted to black-box behavioral observation without white-box mechanistic validation through model internals inspection.
 
-\textbf{Future Work Directions:}
-\begin{itemize}
-    \item Scale to 460 prompts
-    \item Human ICC validation study
-    \item Automated code-mixing generation
-    \item White-box interpretability analysis
-    \item Extension to other Indic languages
-\end{itemize}
+\textbf{Future Work Directions:} Five priorities emerge for extending this research. Scaling to the full 460-prompt dataset would enable direct quantitative comparison with Hindi-English baselines and increase subgroup analysis power. Human ICC validation against 100 randomly sampled responses would empirically calibrate automated evaluation reliability. Automated code-mixing generation through NMT models would eliminate manual bottlenecks enabling thousand-prompt scales. White-box interpretability analysis using Integrated Gradients or attention visualization would provide mechanistic validation of tokenization hypotheses. Systematic extension to other major Indic languages (Tamil, Telugu, Marathi, Urdu, etc.) would establish cross-linguistic vulnerability patterns.
 
 The limitations outlined in this chapter should be considered when interpreting our results and planning follow-up studies.

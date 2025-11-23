@@ -37,48 +37,24 @@ Our work was inspired by \citet{aswal2025}. Key comparisons:
 
 \textbf{\citet{deng2023}:} Their multilingual jailbreaking study tested 6 languages and found consistently higher jailbreak rates for non-English languages. Our work extends this pattern to Indic languages specifically, providing the first systematic evaluation of Bangla vulnerability and confirming that the multilingual safety gap they identified applies broadly to South Asian language communities.
 
-\textbf{\citet{yong2023}:}
-\begin{itemize}
-    \item 25-40\% higher toxic outputs for low-resource languages
-    \item Our work: Quantifies specific vulnerability for Bangla (46\% AASR)
-\end{itemize}
+\textbf{\citet{yong2023}:} Their study found 25-40\% higher toxic outputs for low-resource languages compared to English. Our work extends these findings by quantifying the specific vulnerability for Bangla, demonstrating 46\% AASR with code-mixed and perturbed prompts, thereby providing empirical evidence for one of the world's most widely spoken yet under-resourced languages in the context of LLM safety.
 
 \section{Implications for LLM Safety}
 \label{sec:implications}
 
 \subsection{Multilingual Safety Gaps}
 
-Our findings reveal critical gaps in LLM safety:
-
-\begin{enumerate}
-    \item \textbf{Language-specific vulnerabilities:} Safety training doesn't generalize to Bangla-English code-mixing
-    \item \textbf{Tokenization brittleness:} Token-level filters are easily evaded
-    \item \textbf{Inequitable protection:} 230M Bangla speakers receive inadequate safety coverage
-\end{enumerate}
+Our findings reveal three critical gaps in current LLM safety approaches. First, we observe language-specific vulnerabilities where safety training fails to generalize to Bangla-English code-mixing contexts, suggesting that alignment procedures remain narrowly focused on monolingual English scenarios. Second, we demonstrate tokenization brittleness in which token-level safety filters are easily evaded through phonetic perturbations that fragment harmful keywords into semantically inert subword units. Third, these technical limitations manifest as inequitable protection, leaving 230 million Bangla speakers with demonstrably inadequate safety coverage compared to their English-speaking counterparts.
 
 \subsection{Recommendations for Model Developers}
 
-\textbf{Short-term mitigations:}
-\begin{itemize}
-    \item Include code-mixed text in red-teaming efforts
-    \item Expand RLHF datasets to cover Bangla and other Indic languages
-    \item Implement semantic-level safety checks (beyond token matching)
-\end{itemize}
+\textbf{Short-term mitigations:} Model developers should immediately incorporate code-mixed text into their red-teaming efforts to proactively identify multilingual vulnerabilities before deployment. RLHF datasets must be expanded to systematically cover Bangla and other Indic languages, ensuring that safety alignment training reflects the linguistic diversity of global user populations. Additionally, safety architectures should transition from pure token-level pattern matching to semantic-level safety checks that evaluate harmful intent independent of surface-form variations.
 
-\textbf{Long-term solutions:}
-\begin{itemize}
-    \item Develop tokenization-robust safety mechanisms
-    \item Train multilingual safety classifiers
-    \item Implement dynamic romanization normalization
-\end{itemize}
+\textbf{Long-term solutions:} Fundamental architectural changes are necessary to address the root causes of multilingual vulnerability. Safety mechanisms must be redesigned to operate independently of tokenization schemes, potentially through embedding-space classifiers or character-level approaches that resist fragmentation attacks. Multilingual safety classifiers should be trained with explicit representation of code-mixing phenomena, enabling cross-lingual transfer of safety knowledge. Finally, dynamic romanization normalization systems should be developed to canonicalize the diverse romanization schemes used in informal digital communication, reducing the attack surface created by spelling variation.
 
 \subsection{Policy Considerations}
 
-\begin{itemize}
-    \item \textbf{Language coverage requirements:} Safety standards should mandate coverage for major languages (>100M speakers)
-    \item \textbf{Transparency:} Model cards should disclose known vulnerabilities by language
-    \item \textbf{Regional deployment:} Higher safety thresholds for regions with identified vulnerabilities
-\end{itemize}
+Policy interventions are necessary to ensure equitable AI safety at scale. Language coverage requirements should be established mandating that safety standards apply to all major languages with speaker populations exceeding 100 million, preventing the current practice of English-only safety guarantees. Transparency mechanisms must be strengthened, requiring model cards to explicitly disclose known vulnerabilities by language so that users and downstream developers can make informed deployment decisions. Regional deployment policies should enforce higher safety thresholds in geographic areas where language-specific vulnerabilities have been identified, preventing the export of inadequately tested systems to vulnerable populations.
 
 \section{Unexpected Findings}
 \label{sec:unexpected}
@@ -87,28 +63,17 @@ Our findings reveal critical gaps in LLM safety:
 
 Contrary to prior work \citep{aswal2025}, jailbreak templates \textbf{reduced} Bangla attack effectiveness:
 
-\textbf{Possible explanations:}
-\begin{itemize}
-    \item Templates trigger additional safety checks
-    \item Code-mixing alone provides sufficient obfuscation
-    \item Models trained to detect template patterns
-    \item Language-specific interaction effects
-\end{itemize}
+\textbf{Possible explanations:} We propose four potential mechanisms for this counterintuitive finding. First, jailbreak templates may trigger additional safety checks due to their distinctive patterns, which are now well-documented in adversarial literature and likely incorporated into model training. Second, code-mixing alone may provide sufficient obfuscation to bypass filters, rendering the additional complexity of templates unnecessary and potentially counterproductive. Third, models have likely been explicitly trained to detect common jailbreak template patterns through adversarial fine-tuning, making templates actually increase rather than decrease detection likelihood. Fourth, language-specific interaction effects between code-mixing and template structures may create unforeseen detection signals absent in monolingual contexts.
 
-\textbf{Implication:} Simple, direct prompts are most effective for Bangla attacks.
+\textbf{Implication:} Simple, direct prompts prove most effective for Bangla attacks, suggesting that adversaries targeting Bangla speakers need not employ sophisticated prompt engineering techniques.
 
 \subsection{Mistral's Critical Vulnerability}
 
 Mistral-7B's 81.8\% baseline vulnerability is unexpected:
 
-\textbf{Potential causes:}
-\begin{itemize}
-    \item Insufficient safety fine-tuning
-    \item Training data imbalance
-    \item European-focused safety (missing South Asian context)
-\end{itemize}
+\textbf{Potential causes:} Three factors may contribute to Mistral-7B's disproportionate vulnerability. First, as a relatively recent open-source release, the model may have received insufficient safety fine-tuning compared to commercial alternatives that benefit from extensive RLHF and red-teaming resources. Second, training data imbalance likely emphasizes European languages and contexts given Mistral AI's French origins, potentially underrepresenting South Asian linguistic patterns and safety scenarios. Third, the model's safety training may reflect European regulatory priorities and threat models, systematically missing South Asian cultural and linguistic contexts that would enable detection of Bangla-encoded harmful content.
 
-\textbf{Implication:} Open-source models require community-driven safety improvements.
+\textbf{Implication:} Open-source models require robust community-driven safety improvements to achieve parity with commercial alternatives, particularly for language communities underrepresented in proprietary training data.
 
 \section{Limitations and Future Work}
 \label{sec:discussion-limitations}
@@ -141,45 +106,17 @@ Our methodology is replicable for other languages:
 
 \textbf{Cost per language:} \$2.00-2.50 (200 prompts), \$0.50 (50-prompt validation)
 
-\textbf{Applicable to:}
-\begin{itemize}
-    \item Tamil (75M speakers)
-    \item Telugu (82M speakers)
-    \item Marathi (83M speakers)
-    \item Urdu (70M speakers)
-    \item Gujarati (56M speakers)
-\end{itemize}
+\textbf{Applicable to:} This framework can be directly applied to assess vulnerabilities in other major Indic languages, including Tamil with 75 million speakers, Telugu with 82 million speakers, Marathi with 83 million speakers, Urdu with 70 million speakers, and Gujarati with 56 million speakers, among many others. The collective speaker population of these languages exceeds 400 million individuals, all of whom potentially face similar safety gaps in current LLM deployments.
 
 \subsection{Config-Driven Experimentation}
 
 \textbf{Key innovation:} \texttt{run\_config.yaml} controls all experiments
 
-\textbf{Benefits:}
-\begin{itemize}
-    \item No code modification needed
-    \item Easy parameter sweeps
-    \item Reproducible configurations
-    \item Lower barrier to replication
-\end{itemize}
+\textbf{Benefits:} This configuration-driven approach offers several methodological advantages. Researchers can modify experimental parameters without code changes, reducing implementation errors and accelerating iteration cycles. Parameter sweeps become trivial to execute through simple YAML edits, enabling comprehensive sensitivity analysis. Experimental configurations are fully reproducible through version-controlled config files, addressing a persistent challenge in computational research. Most importantly, the approach substantially lowers barriers to replication, enabling researchers without deep programming expertise to adapt the framework for new languages or attack strategies.
 
 \section{Summary}
 \label{sec:discussion-summary}
 
-Our discussion establishes:
+Our discussion establishes six core findings that advance understanding of multilingual LLM safety. First, Bangla code-mixing constitutes an effective jailbreaking strategy, achieving 46\% AASR compared to the 32\% English baseline. Second, English word targeting proves optimal for Bangla attacks, demonstrating 68\% higher effectiveness than Bangla word perturbations due to English-centric safety filter design. Third, all major tested LLMs exhibit vulnerability to Bangla attacks, though vulnerability magnitude varies dramatically across models (16\% to 82\% AASR). Fourth, the tokenization fragmentation mechanism empirically validated for Hindi-English code-mixing attacks \citep{aswal2025} applies equally to Bangla-English contexts, with observed AASR progression aligning with token fragmentation patterns. Fifth, current safety alignment approaches fail to generalize from English to Bangla-English code-mixing scenarios, exposing a fundamental limitation in existing RLHF methodologies. Sixth, urgent improvements are needed in multilingual safety training to address systematic gaps affecting hundreds of millions of non-English speakers worldwide.
 
-\begin{enumerate}
-    \item Bangla code-mixing is an effective jailbreaking strategy (46\% AASR)
-    \item English word targeting is optimal for Bangla (68\% more effective)
-    \item All major LLMs are vulnerable to Bangla attacks (varying degrees)
-    \item Tokenization fragmentation mechanism (empirically validated for Hindi-English) applies to Bangla-English contexts
-    \item Current safety alignment fails to generalize to Bangla-English code-mixing
-    \item Urgent improvements needed in multilingual safety training
-\end{enumerate}
-
-These findings have important implications for:
-\begin{itemize}
-    \item LLM developers (safety training practices)
-    \item Policy makers (language coverage requirements)
-    \item Research community (replicable framework for other languages)
-    \item 230M Bangla speakers (equitable safety protection)
-\end{itemize}
+These findings have important implications across four key stakeholder groups. For LLM developers, our results necessitate fundamental changes to safety training practices, including incorporation of code-mixed adversarial examples and expansion of RLHF coverage beyond predominantly English datasets. Policy makers must establish language coverage requirements to ensure equitable protection, moving beyond informal best practices to enforceable standards. The research community gains a replicable framework applicable to dozens of other low-resource languages, enabling systematic multilingual vulnerability assessment at modest cost. Most importantly, our findings directly benefit the 230 million Bangla speakers worldwide who currently receive inadequate safety protection, providing evidence-based advocacy for their right to equitable AI safety coverage.
