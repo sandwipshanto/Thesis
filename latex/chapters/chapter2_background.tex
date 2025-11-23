@@ -8,25 +8,25 @@ This section provides foundational context on Large Language Models (LLMs) and t
 
 \subsection{Evolution of LLMs}
 
-Large Language Models have evolved from early transformer architectures \citep{vaswani2017} to sophisticated systems capable of multilingual, multimodal understanding. Modern LLMs like GPT-4 \citep{openai2023}, Llama-3 \citep{dubey2024}, Gemini \citep{google2024}, and Mistral \citep{jiang2023} demonstrate impressive capabilities across diverse tasks including natural language understanding and generation, code generation and debugging, mathematical reasoning, multilingual translation, creative content generation, and question answering with summarization.
+Large Language Models have evolved from early transformer architectures \citep{vaswani2017} to sophisticated systems capable of multilingual, multimodal understanding \citep{brown2020,chowdhery2022}. Modern LLMs like GPT-4 \citep{openai2023}, Llama-3 \citep{dubey2024}, Gemini \citep{google2024}, and Mistral \citep{jiang2023} demonstrate impressive capabilities across diverse tasks including natural language understanding and generation \citep{raffel2020}, code generation and debugging \citep{chen2021}, mathematical reasoning \citep{lewkowycz2022}, multilingual translation \citep{zhang2020multilingual}, creative content generation \citep{yuan2022}, and question answering with summarization \citep{petroni2019}.
 
 \subsection{Safety Alignment Techniques}
 
 To ensure LLMs behave safely and ethically, developers employ multi-stage alignment processes:
 
 \subsubsection{Supervised Fine-Tuning (SFT)}
-Supervised fine-tuning involves training models on human-curated examples of safe responses to demonstrate desired behavior patterns while ensuring coverage of harmful query categories that the model must learn to refuse appropriately.
+Supervised fine-tuning \citep{ouyang2022,stiennon2020} involves training models on human-curated examples of safe responses to demonstrate desired behavior patterns \citep{askell2021} while ensuring coverage of harmful query categories that the model must learn to refuse appropriately \citep{gehman2020}.
 
 \subsubsection{Reinforcement Learning from Human Feedback (RLHF)}
-Reinforcement learning from human feedback operates by having human labelers rank model responses according to safety and quality metrics. These rankings train reward models that learn human preferences, which then guide policy optimization through algorithms such as Proximal Policy Optimization (PPO).
+Reinforcement learning from human feedback \citep{christiano2017,ouyang2022} operates by having human labelers rank model responses according to safety and quality metrics \citep{bai2022training}. These rankings train reward models that learn human preferences \citep{stiennon2020}, which then guide policy optimization through algorithms such as Proximal Policy Optimization (PPO) \citep{schulman2017}.
 
 \subsubsection{Constitutional AI}
-Constitutional AI enables models to perform self-critique and revision of their own responses, aligning outputs to explicit safety principles without requiring human feedback at inference time. This approach reduces harmful outputs through automated adherence to predefined constitutional rules.
+Constitutional AI \citep{bai2022constitutional} enables models to perform self-critique and revision of their own responses, aligning outputs to explicit safety principles without requiring human feedback at inference time \citep{sun2023}. This approach reduces harmful outputs through automated adherence to predefined constitutional rules \citep{perez2022}.
 
 \subsubsection{Red-Teaming}
-Red-teaming employs adversarial testing to systematically identify safety failures in deployed models. Through iterative improvement cycles, safety mechanisms are strengthened and alignment robustness is comprehensively evaluated against diverse attack strategies.
+Red-teaming \citep{ganguli2022,perez2022} employs adversarial testing to systematically identify safety failures in deployed models \citep{casper2023}. Through iterative improvement cycles \citep{dinan2019}, safety mechanisms are strengthened and alignment robustness is comprehensively evaluated against diverse attack strategies \citep{xu2021}.
 
-Despite these efforts, \textbf{safety alignment remains incomplete}, particularly for low-resource languages, code-mixed multilingual text, novel attack strategies such as jailbreaking, and adversarial perturbations that exploit tokenization vulnerabilities.
+Despite these efforts, \textbf{safety alignment remains incomplete} \citep{wei2023,zou2023}, particularly for low-resource languages \citep{deng2023,yong2023}, code-mixed multilingual text \citep{aswal2025}, novel attack strategies such as jailbreaking \citep{shen2023,yu2023}, and adversarial perturbations that exploit tokenization vulnerabilities \citep{wallace2019,jones2023}.
 
 \section{Jailbreaking and Adversarial Attacks on LLMs}
 \label{sec:jailbreaking}
@@ -38,23 +38,23 @@ Jailbreaking represents a critical challenge to LLM safety, encompassing diverse
 Jailbreaking refers to techniques that bypass safety filters to elicit harmful outputs. Existing strategies include:
 
 \subsubsection{Prompt Engineering}
-Prompt engineering attacks exploit narrative framing to bypass safety filters. Common techniques include roleplay scenarios where the model is instructed to ``act as a character who...", hypothetical framing that embeds harmful requests in fictional story contexts, and obfuscation strategies that request explanations of why the model cannot comply—often eliciting the harmful content indirectly.
+Prompt engineering attacks \citep{liu2023jailbreaking,wei2023jailbroken} exploit narrative framing to bypass safety filters \citep{kang2023}. Common techniques include roleplay scenarios \citep{wolf2023} where the model is instructed to ``act as a character who...", hypothetical framing \citep{perez2022} that embeds harmful requests in fictional story contexts, and obfuscation strategies \citep{kang2023} that request explanations of why the model cannot comply—often eliciting the harmful content indirectly.
 
 \subsubsection{Template-Based Attacks}
-Template-based jailbreaking employs predefined adversarial personas. Notable examples include DAN (Do Anything Now), which uses dual persona prompting to create an unrestricted alter-ego; STAN (Strive To Avoid Norms), which frames the model as a rebellious assistant; and AIM (Always Intelligent and Machiavellian), which assigns the model an explicitly unethical advisor role.
+Template-based jailbreaking \citep{shen2023,yu2023} employs predefined adversarial personas \citep{wei2023jailbroken}. Notable examples include DAN (Do Anything Now) \citep{shen2023}, which uses dual persona prompting to create an unrestricted alter-ego; STAN (Strive To Avoid Norms) \citep{yu2023}, which frames the model as a rebellious assistant; and AIM (Always Intelligent and Machiavellian) \citep{liu2023jailbreaking}, which assigns the model an explicitly unethical advisor role.
 
 \subsubsection{Token-Level Manipulation}
-Token-level manipulation attacks directly modify input representations to evade safety filters. Techniques include gradient-based optimization methods such as GCG (Greedy Coordinate Gradient) attacks, suffix injection that appends adversarial tokens to prompts, and special token manipulation that exploits reserved vocabulary elements.
+Token-level manipulation attacks \citep{zou2023,jones2023} directly modify input representations to evade safety filters \citep{wallace2019}. Techniques include gradient-based optimization methods such as GCG (Greedy Coordinate Gradient) attacks \citep{zou2023}, suffix injection \citep{shin2020} that appends adversarial tokens to prompts, and special token manipulation \citep{wallace2019} that exploits reserved vocabulary elements.
 
 \subsubsection{Multi-Turn Exploitation}
-Multi-turn exploitation attacks leverage conversational context across multiple exchanges. These attacks employ gradual boundary pushing to incrementally desensitize safety filters, context window poisoning to inject adversarial priming into earlier turns, and memory exploitation that abuses persistent conversation state to build toward harmful outputs.
+Multi-turn exploitation attacks \citep{yuan2023,mehrotra2023} leverage conversational context across multiple exchanges \citep{shah2023}. These attacks employ gradual boundary pushing \citep{yuan2023} to incrementally desensitize safety filters, context window poisoning \citep{greshake2023} to inject adversarial priming into earlier turns, and memory exploitation \citep{mehrotra2023} that abuses persistent conversation state to build toward harmful outputs.
 
 \subsubsection{Multilingual Attacks}
-Multilingual attacks exploit language diversity to bypass English-centric safety filters. Techniques include language switching mid-conversation to confuse content moderation systems, low-resource language exploitation targeting underrepresented languages with weaker safety coverage, and \textbf{code-mixing}—the focus of this thesis—which combines languages within individual utterances to disrupt tokenization patterns.
+Multilingual attacks \citep{deng2023,yong2023,aswal2025} exploit language diversity to bypass English-centric safety filters \citep{nasr2023}. Techniques include language switching \citep{deng2023} mid-conversation to confuse content moderation systems, low-resource language exploitation \citep{yong2023} targeting underrepresented languages with weaker safety coverage, and \textbf{code-mixing} \citep{aswal2025}—the focus of this thesis—which combines languages within individual utterances to disrupt tokenization patterns.
 
 \subsection{Success Metrics}
 
-Attack effectiveness is typically measured through four key metrics. \textbf{Attack Success Rate (ASR)} quantifies the percentage of prompts that successfully elicit harmful responses. \textbf{Attack Relevance Rate (ARR)} measures the percentage of harmful responses that remain contextually relevant to the original query, distinguishing meaningful jailbreaks from gibberish outputs. \textbf{Evasion rate} tracks the percentage of prompts that bypass automated content filters. Finally, \textbf{semantic preservation} assesses whether attacks maintain the original query intent throughout transformation processes.
+Attack effectiveness is typically measured through four key metrics \citep{zou2023,wei2023jailbroken}. \textbf{Attack Success Rate (ASR)} \citep{zou2023,aswal2025} quantifies the percentage of prompts that successfully elicit harmful responses. \textbf{Attack Relevance Rate (ARR)} \citep{aswal2025} measures the percentage of harmful responses that remain contextually relevant to the original query, distinguishing meaningful jailbreaks from gibberish outputs. \textbf{Evasion rate} \citep{jain2023} tracks the percentage of prompts that bypass automated content filters. Finally, \textbf{semantic preservation} \citep{morris2020} assesses whether attacks maintain the original query intent throughout transformation processes.
 
 \section{Code-Mixing in Natural Language Processing}
 \label{sec:code-mixing}
@@ -63,7 +63,7 @@ Code-mixing is a widespread linguistic phenomenon in multilingual communities, p
 
 \subsection{Definition and Prevalence}
 
-\textbf{Code-mixing} (CM) is the practice of alternating between two or more languages within a single conversation or utterance. It differs from code-switching (sentence-level alternation) by occurring within the same sentence.
+\textbf{Code-mixing} (CM) \citep{myers-scotton1993,muysken2000} is the practice of alternating between two or more languages within a single conversation or utterance \citep{poplack1980}. It differs from code-switching (sentence-level alternation) \citep{gumperz1982} by occurring within the same sentence.
 
 \textbf{Examples:}
 \begin{lstlisting}
@@ -72,15 +72,15 @@ Bangla-English: "Ami ajke office e jabo for the meeting"
 Spanish-English: "Voy a la store para comprar milk"
 \end{lstlisting}
 
-\textbf{Prevalence in South Asia:} Code-mixing has become ubiquitous in South Asian digital communication, with 40-60\% of urban internet users regularly employing code-mixed language. It serves as the default communication mode on platforms like WhatsApp, Facebook, and Twitter, appearing commonly in SMS messages, emails, and social media posts. Increasingly, code-mixing is also penetrating professional communication contexts.
+\textbf{Prevalence in South Asia:} Code-mixing has become ubiquitous in South Asian digital communication \citep{bali2014,sharma2016}, with 40-60\% of urban internet users regularly employing code-mixed language \citep{bhatia2017}. It serves as the default communication mode on platforms like WhatsApp, Facebook, and Twitter \citep{rudra2016}, appearing commonly in SMS messages, emails, and social media posts \citep{das2016}. Increasingly, code-mixing is also penetrating professional communication contexts \citep{sailaja2012}.
 
 \subsection{Romanization Challenges}
 
 South Asian languages using non-Latin scripts face romanization challenges:
 
-\textbf{Hindi (Devanagari):} Hindi romanization has achieved relative standardization through schemes like IAST (International Alphabet of Sanskrit Transliteration) and ISO 15919. For example, ``नमस्ते'' consistently romanizes to ``namaste'', providing predictability for NLP systems.
+\textbf{Hindi (Devanagari):} Hindi romanization has achieved relative standardization through schemes like IAST (International Alphabet of Sanskrit Transliteration) and ISO 15919 \citep{choudhury2007}. For example, ``नमस्ते'' consistently romanizes to ``namaste'', providing predictability for NLP systems \citep{sowmya2010}.
 
-\textbf{Bangla (Bengali script):} In stark contrast, Bangla lacks any official standard romanization scheme, leading to extreme variability in user-generated content. For instance, ``নমস্কার'' may be romanized as ``nomoshkar'', ``nomoskar'', or ``namaskar''—all considered valid by native speakers. This \textbf{high variability} creates significant challenges for consistent tokenization and NLP processing.
+\textbf{Bangla (Bengali script):} In stark contrast, Bangla lacks any official standard romanization scheme \citep{alam2021}, leading to extreme variability in user-generated content \citep{rabbi2020}. For instance, ``নমস্কার'' may be romanized as ``nomoshkar'', ``nomoskar'', or ``namaskar''—all considered valid by native speakers \citep{hasan2020}. This \textbf{high variability} \citep{mandal2018} creates significant challenges for consistent tokenization and NLP processing \citep{chakraborty2017}.
 
 \textbf{Impact on LLMs:}
 \begin{itemize}
@@ -124,7 +124,7 @@ Perturbed: "haet speach"
 Tokens:    ["ha", "et", "spe", "ach"]
 \end{lstlisting}
 
-\textbf{Hypothesis:} Token-level safety filters detect \texttt{["hate", "speech"]} but miss \texttt{["ha", "et", "spe", "ach"]}.
+\textbf{Hypothesis:} Token-level safety filters \citep{gehman2020,welbl2021} detect \texttt{["hate", "speech"]} but miss \texttt{["ha", "et", "spe", "ach"]} \citep{aswal2025,boucher2022}.
 
 \section{Multilingual LLM Safety}
 \label{sec:multilingual}
@@ -174,7 +174,7 @@ Tokenization serves as the foundational text processing step in modern LLMs, con
 
 Modern LLMs use BPE \citep{sennrich2016} for tokenization:
 
-\textbf{Algorithm:} BPE begins with character-level tokens and iteratively merges the most frequent character pairs to build a vocabulary of subword units, which are then applied via longest-match tokenization to segment new text.
+\textbf{Algorithm:} BPE begins with character-level tokens and iteratively merges the most frequent character pairs to build a vocabulary of subword units \citep{gage1994}, which are then applied via longest-match tokenization \citep{kudo2018} to segment new text.
 
 \subsection{Implications for Code-Mixing}
 
@@ -193,7 +193,7 @@ Tokenization: ["k", "or", "a"] or ["ko", "ra"]
 "kora" -> ["k", "or", "a"] (three tokens)
 \end{lstlisting}
 
-\textbf{Security Implication:} Tokenization disruption can bypass pattern-based safety filters.
+\textbf{Security Implication:} Tokenization disruption can bypass pattern-based safety filters \citep{aswal2025,boucher2022,wallace2019}.
 
 \section{Summary}
 \label{sec:bg-summary}

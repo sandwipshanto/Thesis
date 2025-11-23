@@ -16,39 +16,39 @@
 \contentsline {section}{\numberline {1.4}Research Questions}{3}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}RQ1: Code-Mixing Effectiveness}{3}{subsection.1.4.1}%
 \contentsline {subsection}{\numberline {1.4.2}RQ2: Bangla-Specific Patterns}{3}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}RQ3: Model Vulnerability}{4}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}RQ4: Tokenization Mechanism}{4}{subsection.1.4.4}%
-\contentsline {section}{\numberline {1.5}Contributions}{4}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Thesis Organization}{5}{section.1.6}%
-\contentsline {chapter}{\numberline {2}Background and Related Work}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Large Language Models and Safety Alignment}{6}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Evolution of LLMs}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {1.4.3}RQ3: Model Vulnerability}{3}{subsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.4.4}RQ4: Tokenization Mechanism}{3}{subsection.1.4.4}%
+\contentsline {section}{\numberline {1.5}Contributions}{3}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Thesis Organization}{4}{section.1.6}%
+\contentsline {chapter}{\numberline {2}Background and Related Work}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Large Language Models and Safety Alignment}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Evolution of LLMs}{5}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Safety Alignment Techniques}{6}{subsection.2.1.2}%
 \contentsline {subsubsection}{Supervised Fine-Tuning (SFT)}{6}{subsection.2.1.2}%
-\contentsline {subsubsection}{Reinforcement Learning from Human Feedback (RLHF)}{7}{subsection.2.1.2}%
-\contentsline {subsubsection}{Constitutional AI}{7}{subsection.2.1.2}%
-\contentsline {subsubsection}{Red-Teaming}{7}{subsection.2.1.2}%
+\contentsline {subsubsection}{Reinforcement Learning from Human Feedback (RLHF)}{6}{subsection.2.1.2}%
+\contentsline {subsubsection}{Constitutional AI}{6}{subsection.2.1.2}%
+\contentsline {subsubsection}{Red-Teaming}{6}{subsection.2.1.2}%
 \contentsline {section}{\numberline {2.2}Jailbreaking and Adversarial Attacks on LLMs}{7}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Jailbreaking Taxonomy}{7}{subsection.2.2.1}%
 \contentsline {subsubsection}{Prompt Engineering}{7}{subsection.2.2.1}%
-\contentsline {subsubsection}{Template-Based Attacks}{8}{subsection.2.2.1}%
-\contentsline {subsubsection}{Token-Level Manipulation}{8}{subsection.2.2.1}%
+\contentsline {subsubsection}{Template-Based Attacks}{7}{subsection.2.2.1}%
+\contentsline {subsubsection}{Token-Level Manipulation}{7}{subsection.2.2.1}%
 \contentsline {subsubsection}{Multi-Turn Exploitation}{8}{subsection.2.2.1}%
 \contentsline {subsubsection}{Multilingual Attacks}{8}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Success Metrics}{8}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Code-Mixing in Natural Language Processing}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Code-Mixing in Natural Language Processing}{8}{section.2.3}%
 \contentsline {subsection}{\numberline {2.3.1}Definition and Prevalence}{9}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Romanization Challenges}{9}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}Phonetic Perturbations}{10}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Definition and Applications}{10}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Tokenization Impact}{11}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.2}Tokenization Impact}{10}{subsection.2.4.2}%
 \contentsline {section}{\numberline {2.5}Multilingual LLM Safety}{11}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}English-Centric Safety Training}{11}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Cross-Lingual Safety Evaluation}{12}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.2}Cross-Lingual Safety Evaluation}{11}{subsection.2.5.2}%
 \contentsline {subsection}{\numberline {2.5.3}Hinglish Code-Mixing Attacks}{12}{subsection.2.5.3}%
 \contentsline {section}{\numberline {2.6}Tokenization and Subword Segmentation}{12}{section.2.6}%
 \contentsline {subsection}{\numberline {2.6.1}Byte-Pair Encoding (BPE)}{12}{subsection.2.6.1}%
-\contentsline {subsection}{\numberline {2.6.2}Implications for Code-Mixing}{13}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.2}Implications for Code-Mixing}{12}{subsection.2.6.2}%
 \contentsline {section}{\numberline {2.7}Summary}{13}{section.2.7}%
 \contentsline {chapter}{\numberline {3}Methodology}{14}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Overview}{14}{section.3.1}%
@@ -231,4 +231,4 @@
 \contentsline {subsection}{\numberline {9.5.1}Key Takeaways}{78}{subsection.9.5.1}%
 \contentsline {subsection}{\numberline {9.5.2}Call to Action}{78}{subsection.9.5.2}%
 \contentsline {subsection}{\numberline {9.5.3}Final Thoughts}{79}{subsection.9.5.3}%
-\contentsline {chapter}{References}{82}{chapter*.31}%
+\contentsline {chapter}{References}{87}{chapter*.31}%

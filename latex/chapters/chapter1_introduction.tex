@@ -25,13 +25,13 @@ The research gap is substantial. While English jailbreaking has been extensively
 This research aims to achieve the following four objectives:
 
 \begin{enumerate}
-    \item \textbf{Develop and Validate Bangla-English Code-Mixed Attack Methodology:} Establish a systematic three-step prompt transformation pipeline that adapts the Hindi-English code-mixing approach \citep{aswal2025} to Bangla's unique linguistic features, including non-standard romanization patterns and distinct phonetic properties. This objective involves creating 50 base prompts across 10 harmful categories and systematically transforming them through code-mixing (CM) and phonetic perturbation (CMP) stages.
+    \item Develop and Validate Bangla-English Code-Mixed Attack Methodology
     
-    \item \textbf{Characterize Bangla-Specific Attack Patterns:} Identify and analyze the phonetic perturbations and romanization conventions that maximize jailbreak effectiveness in Bangla-English code-mixed prompts. This includes determining whether perturbing English words versus Bangla words yields differential attack success rates, and documenting which specific romanization variations most effectively fragment tokens to bypass safety filters.
+    \item Characterize Bangla-Specific Attack Patterns
     
-    \item \textbf{Evaluate Cross-Model Vulnerability Consistency:} Assess the vulnerability of major LLMs (GPT-4o-mini, Llama-3-8B, Mistral-7B) to Bangla-English code-mixed attacks across varying experimental conditions including five jailbreak templates (None, OM, AntiLM, AIM, Sandbox) and three temperature settings (0.2, 0.6, 1.0). This objective seeks to determine whether Bangla-based attacks represent a universal vulnerability across model architectures or exhibit model-specific patterns.
+    \item Evaluate Cross-Model Vulnerability Consistency
     
-    \item \textbf{Validate Tokenization Disruption as Attack Mechanism:} Empirically verify whether the tokenization fragmentation mechanism proposed and validated for Hindi-English attacks \citep{aswal2025} explains Bangla jailbreak success. This involves analyzing correlations between token fragmentation rates and attack success rates (AASR) across the English, CM, and CMP prompt sets to determine if similar patterns emerge for Bangla.
+    \item Validate Tokenization Disruption as Attack Mechanism
 \end{enumerate}
 
 \section{Research Questions}

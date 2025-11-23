@@ -1,20 +1,126 @@
 \begin{thebibliography}{}
 
+\bibitem[Alam et~al., 2021]{alam2021}
+Alam, M., Hossain, N., and Uddin~Ahmed, K. (2021).
+\newblock A survey on multiscript bengali grapheme recognition for handwritten
+  document analysis.
+\newblock {\em IEEE Access}, 9:115617--115643.
+
+\bibitem[Askell et~al., 2021]{askell2021}
+Askell, A., Bai, Y., Chen, A., Drain, D., Ganguli, D., Henighan, T., Jones, A.,
+  Joseph, N., Mann, B., DasSarma, N., et~al. (2021).
+\newblock A general language assistant as a laboratory for alignment.
+\newblock {\em arXiv preprint arXiv:2112.00861}.
+
 \bibitem[Aswal and Jaiswal, 2025]{aswal2025}
 Aswal, R. and Jaiswal, S. (2025).
 \newblock Hinglish code-mixing and phonetic perturbations: A jailbreaking
   strategy for large language models.
 \newblock {\em arXiv preprint arXiv:2505.14226}.
 
+\bibitem[Bai et~al., 2022a]{bai2022training}
+Bai, Y., Jones, A., Ndousse, K., Askell, A., Chen, A., DasSarma, N., Drain, D.,
+  Fort, S., Ganguli, D., Henighan, T., et~al. (2022a).
+\newblock Training a helpful and harmless assistant with reinforcement learning
+  from human feedback.
+\newblock {\em arXiv preprint arXiv:2204.05862}.
+
+\bibitem[Bai et~al., 2022b]{bai2022constitutional}
+Bai, Y., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A., Chen, A.,
+  Goldie, A., Mirhoseini, A., McKinnon, C., et~al. (2022b).
+\newblock Constitutional ai: Harmlessness from ai feedback.
+\newblock {\em arXiv preprint arXiv:2212.08073}.
+
+\bibitem[Bali et~al., 2014]{bali2014}
+Bali, K., Sharma, J., Choudhury, M., and Vyas, Y. (2014).
+\newblock Are you borrowing" karo" or turning into a "karostaan"?
+\newblock In {\em Proceedings of the First Workshop on Computational Approaches
+  to Code Switching}, pages 1--8.
+
+\bibitem[Bhatia and Ritchie, 2017]{bhatia2017}
+Bhatia, T.~K. and Ritchie, W.~C. (2017).
+\newblock Exploring code-mixing patterns in bilingual education.
+\newblock {\em World Englishes}, 36(3):340--355.
+
+\bibitem[Boucher et~al., 2022]{boucher2022}
+Boucher, N., Shumailov, I., Anderson, R., and Papernot, N. (2022).
+\newblock Bad characters: Imperceptible nlp attacks.
+\newblock {\em arXiv preprint arXiv:2106.09898}.
+
+\bibitem[Brown et~al., 2020]{brown2020}
+Brown, T., Mann, B., Ryder, N., Subbiah, M., Kaplan, J.~D., Dhariwal, P.,
+  Neelakantan, A., Shyam, P., Sastry, G., Askell, A., et~al. (2020).
+\newblock Language models are few-shot learners.
+\newblock {\em Advances in neural information processing systems},
+  33:1877--1901.
+
+\bibitem[Casper et~al., 2023]{casper2023}
+Casper, S., Davies, X., Shi, C., Gilbert, T.~K., Scheurer, J., Rando, J.,
+  Freedman, R., Korbak, T., Lindner, D., Freire, P., et~al. (2023).
+\newblock Explore, establish, exploit: Red teaming language models from
+  scratch.
+\newblock {\em arXiv preprint arXiv:2306.09442}.
+
+\bibitem[Chakraborty et~al., 2017]{chakraborty2017}
+Chakraborty, R., Seddiqui, M., et~al. (2017).
+\newblock Context sensitive lemmatization of bengali inflectional forms.
+\newblock In {\em 2017 20th International Conference of Computer and
+  Information Technology (ICCIT)}, pages 1--5. IEEE.
+
+\bibitem[Chen et~al., 2021]{chen2021}
+Chen, M., Tworek, J., Jun, H., Yuan, Q., Pinto, H. P. d.~O., Kaplan, J.,
+  Edwards, H., Burda, Y., Joseph, N., Brockman, G., et~al. (2021).
+\newblock Evaluating large language models trained on code.
+\newblock {\em arXiv preprint arXiv:2107.03374}.
+
+\bibitem[Choudhury et~al., 2007]{choudhury2007}
+Choudhury, M., Saraf, R., Jain, V., Mukherjee, A., Sarkar, S., and Basu, A.
+  (2007).
+\newblock How difficult is it to develop a perfect spell-checker? a
+  cross-linguistic analysis through complex network approach.
+\newblock In {\em Proceedings of the Second Workshop on TextGraphs: Graph-Based
+  Algorithms for Natural Language Processing}, pages 81--88.
+
+\bibitem[Chowdhery et~al., 2022]{chowdhery2022}
+Chowdhery, A., Narang, S., Devlin, J., Bosma, M., Mishra, G., Roberts, A.,
+  Barham, P., Chung, H.~W., Sutton, C., Gehrmann, S., et~al. (2022).
+\newblock Palm: Scaling language modeling with pathways.
+\newblock {\em Journal of Machine Learning Research}, 24(240):1--113.
+
+\bibitem[Christiano et~al., 2017]{christiano2017}
+Christiano, P.~F., Leike, J., Brown, T., Martic, M., Legg, S., and Amodei, D.
+  (2017).
+\newblock Deep reinforcement learning from human preferences.
+\newblock {\em Advances in neural information processing systems}, 30.
+
+\bibitem[Das and Gambäck, 2016]{das2016}
+Das, A. and Gambäck, B. (2016).
+\newblock Part-of-speech tagging for code-mixed english-hindi twitter and
+  facebook chat messages.
+\newblock In {\em Proceedings of the International Conference Recent Advances
+  in Natural Language Processing}, pages 139--147.
+
 \bibitem[Deng et~al., 2023]{deng2023}
 Deng, Y., Zhang, W., Pan, S.~J., and Bing, L. (2023).
 \newblock Multilingual jailbreak challenges in large language models.
 \newblock In {\em International Conference on Learning Representations}.
 
+\bibitem[Dinan et~al., 2019]{dinan2019}
+Dinan, E., Humeau, S., Chintagunta, B., and Weston, J. (2019).
+\newblock Build it break it fix it for dialogue safety: Robustness from
+  adversarial human attack.
+\newblock In {\em Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing}, pages 4537--4546.
+
 \bibitem[Dubey et~al., 2024]{dubey2024}
 Dubey, A. et~al. (2024).
 \newblock The llama 3 herd of models.
 \newblock {\em arXiv preprint arXiv:2407.21783}.
+
+\bibitem[Gage, 1994]{gage1994}
+Gage, P. (1994).
+\newblock A new algorithm for data compression.
+\newblock {\em C Users Journal}, 12(2):23--38.
 
 \bibitem[Ganguli et~al., 2022]{ganguli2022}
 Ganguli, D., Lovitt, L., Kernion, J., Askell, A., Bai, Y., Kadavath, S., Mann,
@@ -23,9 +129,22 @@ Ganguli, D., Lovitt, L., Kernion, J., Askell, A., Bai, Y., Kadavath, S., Mann,
   behaviors, and lessons learned.
 \newblock {\em arXiv preprint arXiv:2209.07858}.
 
+\bibitem[Gehman et~al., 2020]{gehman2020}
+Gehman, S., Gururangan, S., Sap, M., Choi, Y., and Smith, N.~A. (2020).
+\newblock Realtoxicityprompts: Evaluating neural toxic degeneration in language
+  models.
+\newblock {\em arXiv preprint arXiv:2009.11462}.
+
 \bibitem[Google, 2024]{google2024}
 Google (2024).
 \newblock Gemini: A family of highly capable multimodal models.
+
+\bibitem[Greshake et~al., 2023]{greshake2023}
+Greshake, K., Abdelnabi, S., Mishra, S., Endres, C., Holz, T., and Fritz, M.
+  (2023).
+\newblock Not what you've signed up for: Compromising real-world llm-integrated
+  applications with indirect prompt injection.
+\newblock {\em arXiv preprint arXiv:2302.12173}.
 
 \bibitem[Gr{\"o}ndahl et~al., 2018]{grondahl2018}
 Gr{\"o}ndahl, T., Pajola, L., Juuti, M., Conti, M., and Asokan, N. (2018).
@@ -33,16 +152,101 @@ Gr{\"o}ndahl, T., Pajola, L., Juuti, M., Conti, M., and Asokan, N. (2018).
 \newblock In {\em Proceedings of the 11th ACM workshop on artificial
   intelligence and security}, pages 2--12.
 
+\bibitem[Gumperz, 1982]{gumperz1982}
+Gumperz, J.~J. (1982).
+\newblock {\em Discourse strategies}.
+\newblock Cambridge University Press.
+
+\bibitem[Hasan et~al., 2020]{hasan2020}
+Hasan, M., Rahman, M.~S., Hossain, M.~K., and Alam, M.~Z. (2020).
+\newblock Automatic bangla corpus creation.
+\newblock {\em Procedia Computer Science}, 167:550--559.
+
+\bibitem[Jain et~al., 2023]{jain2023}
+Jain, N., Schwarzschild, A., Wen, Y., Somepalli, G., Kirchenbauer, J., Chiang,
+  P.-y., Goldblum, M., Saha, A., Geiping, J., and Goldstein, T. (2023).
+\newblock Baseline defenses for adversarial attacks against aligned language
+  models.
+\newblock {\em arXiv preprint arXiv:2309.00614}.
+
 \bibitem[Jiang et~al., 2023]{jiang2023}
 Jiang, A.~Q., Sablayrolles, A., Mensch, A., Bamford, C., Chaplot, D.~S., Casas,
   D. d.~l., Bressand, F., Lengyel, G., Lample, G., Saulnier, L., et~al. (2023).
 \newblock Mistral 7b.
 \newblock {\em arXiv preprint arXiv:2310.06825}.
 
+\bibitem[Jones et~al., 2023]{jones2023}
+Jones, E., Dragan, A., and Steinhardt, J. (2023).
+\newblock Automatically auditing large language models via discrete
+  optimization.
+\newblock {\em Proceedings of the 40th International Conference on Machine
+  Learning}, pages 15307--15329.
+
+\bibitem[Kang et~al., 2023]{kang2023}
+Kang, D., Li, X., Stoica, I., Guestrin, C., Zaharia, M., and Hashimoto, T.
+  (2023).
+\newblock Exploiting programmatic behavior of llms: Dual-use through standard
+  security attacks.
+\newblock {\em arXiv preprint arXiv:2302.05733}.
+
 \bibitem[Khorsi, 2007]{khorsi2007}
 Khorsi, A. (2007).
 \newblock An overview of content-based spam filtering techniques.
 \newblock {\em Informatica}, 31(3):269--277.
+
+\bibitem[Kudo and Richardson, 2018]{kudo2018}
+Kudo, T. and Richardson, J. (2018).
+\newblock Sentencepiece: A simple and language independent approach to subword
+  tokenization and detokenization.
+\newblock {\em arXiv preprint arXiv:1808.06226}.
+
+\bibitem[Lewkowycz et~al., 2022]{lewkowycz2022}
+Lewkowycz, A., Andreassen, A., Dohan, D., Dyer, E., Michalewski, H., Ramasesh,
+  V., Slone, A., Anil, C., Schlag, I., Gutman-Solo, T., et~al. (2022).
+\newblock Solving quantitative reasoning problems with language models.
+\newblock {\em Advances in Neural Information Processing Systems},
+  35:3843--3857.
+
+\bibitem[Liu et~al., 2023]{liu2023jailbreaking}
+Liu, Y., Deng, G., Xu, Z., Li, Y., Zheng, Y., Zhang, Y., Zhao, L., Zhang, T.,
+  and Liu, Y. (2023).
+\newblock Jailbreaking chatgpt via prompt engineering: An empirical study.
+\newblock {\em arXiv preprint arXiv:2305.13860}.
+
+\bibitem[Mandal and Das, 2018]{mandal2018}
+Mandal, S. and Das, D. (2018).
+\newblock Parallel corpus creation for english-bangla machine translation.
+\newblock {\em International Journal of Engineering \& Technology},
+  7(2.27):91--94.
+
+\bibitem[Mehrotra et~al., 2023]{mehrotra2023}
+Mehrotra, A., Zampetakis, M., Kassianik, P., Nelson, B., Anderson, H., Agarwal,
+  Y., and Raghunathan, A. (2023).
+\newblock Tree of attacks: Jailbreaking black-box llms automatically.
+\newblock {\em arXiv preprint arXiv:2312.02119}.
+
+\bibitem[Morris et~al., 2020]{morris2020}
+Morris, J., Lifland, E., Yoo, J.~Y., Grigsby, J., Jin, D., and Qi, Y. (2020).
+\newblock Textattack: A framework for adversarial attacks, data augmentation,
+  and adversarial training in nlp.
+\newblock {\em arXiv preprint arXiv:2005.05909}.
+
+\bibitem[Muysken, 2000]{muysken2000}
+Muysken, P. (2000).
+\newblock {\em Bilingual speech: A typology of code-mixing}.
+\newblock Cambridge University Press.
+
+\bibitem[Myers-Scotton, 1993]{myers-scotton1993}
+Myers-Scotton, C. (1993).
+\newblock {\em Social motivations for codeswitching: Evidence from Africa}.
+\newblock Oxford University Press.
+
+\bibitem[Nasr et~al., 2023]{nasr2023}
+Nasr, M., Carlini, N., Hayase, J., Jagielski, M., Cooper, A.~F., Ippolito, D.,
+  Choquette-Choo, C.~A., Wallace, E., Tram{\`e}r, F., and Lee, K. (2023).
+\newblock Scalable extraction of training data from (production) language
+  models.
+\newblock {\em arXiv preprint arXiv:2311.17035}.
 
 \bibitem[OpenAI, 2023]{openai2023}
 OpenAI (2023).
@@ -55,11 +259,107 @@ Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C., Mishkin, P., Zhang,
 \newblock In {\em Advances in Neural Information Processing Systems},
   volume~35, pages 27730--27744.
 
+\bibitem[Perez et~al., 2022]{perez2022}
+Perez, E., Huang, S., Song, F., Cai, T., Ring, R., Aslanides, J., Glaese, A.,
+  McAleese, N., and Irving, G. (2022).
+\newblock Red teaming language models with language models.
+\newblock {\em arXiv preprint arXiv:2202.03286}.
+
+\bibitem[Petroni et~al., 2019]{petroni2019}
+Petroni, F., Rockt{\"a}schel, T., Riedel, S., Lewis, P., Bakhtin, A., Wu, Y.,
+  and Miller, A. (2019).
+\newblock Language models as knowledge bases?
+\newblock {\em arXiv preprint arXiv:1909.01066}.
+
+\bibitem[Poplack, 1980]{poplack1980}
+Poplack, S. (1980).
+\newblock Sometimes i'll start a sentence in spanish y termino en espa{\~n}ol:
+  toward a typology of code-switching.
+\newblock {\em Linguistics}, 18(7-8):581--618.
+
+\bibitem[Rabbi et~al., 2020]{rabbi2020}
+Rabbi, J. A.~N., Debnath, N., Rakib, M.~H., Haque, F.~A., and Sarker, I.~H.
+  (2020).
+\newblock Small-nmt: Simplified neural machine translation approach for low
+  resource bangla.
+\newblock In {\em 2020 IEEE Region 10 Symposium (TENSYMP)}, pages 158--161.
+  IEEE.
+
+\bibitem[Raffel et~al., 2020]{raffel2020}
+Raffel, C., Shazeer, N., Roberts, A., Lee, K., Narang, S., Matena, M., Zhou,
+  Y., Li, W., and Liu, P.~J. (2020).
+\newblock Exploring the limits of transfer learning with a unified text-to-text
+  transformer.
+\newblock {\em Journal of machine learning research}, 21(140):1--67.
+
+\bibitem[Rudra et~al., 2016]{rudra2016}
+Rudra, K., Rijhwani, S., Begum, R., Bali, K., Choudhury, M., and Ganguly, N.
+  (2016).
+\newblock Understanding language preference for expression of opinion and
+  sentiment: What do hindi-english speakers do on twitter?
+\newblock In {\em Proceedings of the 2016 Conference on Empirical Methods in
+  Natural Language Processing}, pages 1131--1141.
+
+\bibitem[Sailaja, 2012]{sailaja2012}
+Sailaja, P. (2012).
+\newblock Indian english.
+
+\bibitem[Schulman et~al., 2017]{schulman2017}
+Schulman, J., Wolski, F., Dhariwal, P., Radford, A., and Klimov, O. (2017).
+\newblock Proximal policy optimization algorithms.
+\newblock {\em arXiv preprint arXiv:1707.06347}.
+
 \bibitem[Sennrich et~al., 2016]{sennrich2016}
 Sennrich, R., Haddow, B., and Birch, A. (2016).
 \newblock Neural machine translation of rare words with subword units.
 \newblock In {\em Proceedings of the 54th Annual Meeting of the Association for
   Computational Linguistics}, pages 1715--1725.
+
+\bibitem[Shah et~al., 2023]{shah2023}
+Shah, R., Nair, S., Michael, Z., Hao, R., Rudzicz, F., and Fazly, A. (2023).
+\newblock Scalable and transferable black-box jailbreaks for language models
+  via persona modulation.
+\newblock {\em arXiv preprint arXiv:2311.03348}.
+
+\bibitem[Sharma et~al., 2016]{sharma2016}
+Sharma, A., Gupta, S., Motlani, R., Bansal, P., Srivastava, M., Mamidi, R., and
+  Sharma, D.~M. (2016).
+\newblock Shallow parsing pipeline for hindi-english code-mixed social media
+  text.
+\newblock In {\em Proceedings of the 2016 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies}, pages 1340--1345.
+
+\bibitem[Shen et~al., 2023]{shen2023}
+Shen, X., Chen, Z., Backes, M., Shen, Y., and Zhang, Y. (2023).
+\newblock Do anything now: Characterizing and evaluating in-the-wild jailbreak
+  prompts on large language models.
+\newblock {\em arXiv preprint arXiv:2308.03825}.
+
+\bibitem[Shin et~al., 2020]{shin2020}
+Shin, T., Razeghi, Y., Logan~IV, R.~L., Wallace, E., and Singh, S. (2020).
+\newblock Autoprompt: Eliciting knowledge from language models with
+  automatically generated prompts.
+\newblock {\em arXiv preprint arXiv:2010.15980}.
+
+\bibitem[Sowmya et~al., 2010]{sowmya2010}
+Sowmya, K. et~al. (2010).
+\newblock Paraphrase identification and semantic similarity in english-hindi
+  translation.
+\newblock In {\em Proceedings of the workshop on Natural Language Processing
+  Tools for Gujarati, Hindi and Marathi}, pages 1--8.
+
+\bibitem[Stiennon et~al., 2020]{stiennon2020}
+Stiennon, N., Ouyang, L., Wu, J., Ziegler, D., Lowe, R., Voss, C., Radford, A.,
+  Amodei, D., and Christiano, P.~F. (2020).
+\newblock Learning to summarize with human feedback.
+\newblock {\em Advances in Neural Information Processing Systems},
+  33:3008--3021.
+
+\bibitem[Sun et~al., 2023]{sun2023}
+Sun, H., Zhang, Z., Deng, J., Cheng, J., and Huang, M. (2023).
+\newblock Safety assessment of chinese large language models.
+\newblock {\em arXiv preprint arXiv:2304.10436}.
 
 \bibitem[Vaswani et~al., 2017]{vaswani2017}
 Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
@@ -68,20 +368,70 @@ Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.~N.,
 \newblock In {\em Advances in neural information processing systems}, pages
   5998--6008.
 
+\bibitem[Wallace et~al., 2019]{wallace2019}
+Wallace, E., Feng, S., Kandpal, N., Gardner, M., and Singh, S. (2019).
+\newblock Universal adversarial triggers for attacking and analyzing nlp.
+\newblock {\em arXiv preprint arXiv:1908.07125}.
+
 \bibitem[Wang et~al., 2021]{wang2021}
 Wang, Y., Zhang, X., Wu, F., Liu, X., and Ling, X. (2021).
 \newblock Adversarial robustness through the lens of causality.
 \newblock {\em arXiv preprint arXiv:2106.06196}.
 
-\bibitem[Wei et~al., 2023]{wei2023}
-Wei, A., Haghtalab, N., and Steinhardt, J. (2023).
+\bibitem[Wei et~al., 2023a]{wei2023}
+Wei, A., Haghtalab, N., and Steinhardt, J. (2023a).
 \newblock Jailbroken: How does llm safety training fail?
 \newblock {\em arXiv preprint arXiv:2307.02483}.
+
+\bibitem[Wei et~al., 2023b]{wei2023jailbroken}
+Wei, A., Haghtalab, N., and Steinhardt, J. (2023b).
+\newblock Jailbroken: How does llm safety training fail?
+\newblock {\em arXiv preprint arXiv:2307.02483}.
+
+\bibitem[Welbl et~al., 2021]{welbl2021}
+Welbl, J., Glaese, A., Uesato, J., Dathathri, S., Mellor, J., Hendricks, L.~A.,
+  Anderson, K., Kohli, P., Coppin, B., and Huang, P.-S. (2021).
+\newblock Challenges in detoxifying language models.
+\newblock {\em arXiv preprint arXiv:2109.07445}.
+
+\bibitem[Wolf et~al., 2023]{wolf2023}
+Wolf, Y., Wies, N., Levine, Y., and Shashua, A. (2023).
+\newblock Fundamental limitations of alignment in large language models.
+\newblock {\em arXiv preprint arXiv:2304.11082}.
+
+\bibitem[Xu et~al., 2021]{xu2021}
+Xu, J., Ju, D., Li, M., Boureau, Y.-L., Weston, J., and Dinan, E. (2021).
+\newblock Bot-adversarial dialogue for safe conversational agents.
+\newblock {\em arXiv preprint arXiv:2106.08289}.
 
 \bibitem[Yong et~al., 2023]{yong2023}
 Yong, Z.-X., Menghini, C., and Bach, S.~H. (2023).
 \newblock Low-resource languages jailbreak gpt-4.
 \newblock {\em arXiv preprint arXiv:2310.02446}.
+
+\bibitem[Yu et~al., 2023]{yu2023}
+Yu, J., Wu, X., Wang, D., et~al. (2023).
+\newblock Gptfuzzer: Red teaming large language models with auto-generated
+  jailbreak prompts.
+\newblock {\em arXiv preprint arXiv:2309.10253}.
+
+\bibitem[Yuan et~al., 2022]{yuan2022}
+Yuan, A., Coenen, A., Reif, E., and Ippolito, D. (2022).
+\newblock Wordcraft: story writing with large language models.
+\newblock {\em Proceedings of the 27th International Conference on Intelligent
+  User Interfaces}, pages 841--852.
+
+\bibitem[Yuan et~al., 2023]{yuan2023}
+Yuan, Y., Jiao, W., Wang, W., Huang, J.-t., He, P., Shi, S., and Tu, Z. (2023).
+\newblock Gpt-4 is too smart to be safe: Stealthy chat with llms via cipher.
+\newblock {\em arXiv preprint arXiv:2308.06463}.
+
+\bibitem[Zhang et~al., 2020]{zhang2020multilingual}
+Zhang, B., Xiong, D., and Su, J. (2020).
+\newblock Multilingual neural machine translation: Can linguistic hierarchies
+  help?
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  EMNLP 2020}, pages 4583--4591.
 
 \bibitem[Zou et~al., 2023]{zou2023}
 Zou, A., Wang, Z., Carlini, N., Nasr, M., Kolter, J.~Z., and Fredrikson, M.
