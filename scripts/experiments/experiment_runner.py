@@ -389,14 +389,20 @@ class ExperimentRunner:
                 futures.append(future)
             
             # Process completed futures with progress bar
+            # Don't use timeout on as_completed to avoid batch failure
             with tqdm(total=num_prompts, desc=f"  Querying {model_name}", leave=False) as pbar:
-                for future in as_completed(futures, timeout=300):  # 5 min total timeout
+                completed = 0
+                for future in as_completed(futures):
                     try:
-                        future.result(timeout=5)  # Quick result fetch
-                        pbar.update(1)
+                        future.result(timeout=120)  # 2 min timeout per individual future
+                        completed += 1
                     except TimeoutError:
-                        pbar.update(1)
+                        print(f"\n  [⏱] Request timeout (2 min) - skipping")
+                        completed += 1
                     except Exception as e:
+                        print(f"\n  [X] Error: {str(e)[:100]}")
+                        completed += 1
+                    finally:
                         pbar.update(1)
     
     def _process_single_prompt(

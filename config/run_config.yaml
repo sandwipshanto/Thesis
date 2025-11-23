@@ -11,7 +11,7 @@ experiment:
   enabled_models:
     - 'gpt-4o-mini'         # ChatGPT-4o-mini (OpenAI)
     - 'llama-3-8b'          # Llama-3-8B-Instruct (Meta)
-    - 'gemma-7b'            # Gemma-1.1-7b-it (Google)
+    #- 'gemma-7b'            # Gemma-1.1-7b-it (Google)
     - 'mistral-7b'          # Mistral-7B-Instruct-v0.3 (Mistral AI)
   
   # Select which jailbreak templates to use (comment out to disable)
