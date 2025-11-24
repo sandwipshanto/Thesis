@@ -3,7 +3,7 @@
 
 **Authors:** Sandwip Kumar Shanto, Md. Meraj Mridha  
 **Supervisor:** Dr. Ahsan Habib  
-**Duration:** 8 minutes | **Slides:** 28
+**Duration:** 8 minutes | **Slides:** 26
 
 ---
 
@@ -22,33 +22,86 @@ December 2025
 
 ---
 
-## Slide 2: The Global LLM Landscape
+## Slide 2: Background - LLMs and Safety Alignment
 
-**LLMs Serve Billions Worldwide**
+**Large Language Models in Global Use**
 
-- ChatGPT, Llama, Gemini, Mistral → Global accessibility
-- Users communicate in native languages and code-mixed forms
-- **230 million Bangla speakers** worldwide
-- Banglish (romanized Bangla) is the dominant online communication mode
+- Modern LLMs: GPT-4, Llama-3, Gemini, Mistral
+- Capabilities: Natural language understanding, code generation, translation
+- Serve billions of users worldwide
 
-**The Problem:** Safety mechanisms focused on English and major European languages
+**Safety Alignment Techniques:**
+- Supervised Fine-Tuning (SFT) - Training on safe response examples
+- Reinforcement Learning from Human Feedback (RLHF)
+- Constitutional AI - Self-critique and revision
+- Red-Teaming - Adversarial testing
 
----
-
-## Slide 3: Research Motivation
-
-**Why This Matters**
-
-1. **Language Gap:** Extensive English safety research, minimal Indic language coverage
-2. **Recent Discovery:** Hindi-English (Hinglish) code-mixing bypasses safety filters
-3. **Bangla Vulnerability:** 230M speakers deserve comprehensive safety protections
-4. **Research Gap:** No prior work on Bangla-English code-mixing attacks
-
-**Key Question:** Are other Indic languages with romanization patterns vulnerable?
+**Despite extensive safety efforts, vulnerabilities remain**
 
 ---
 
-## Slide 4: What is Code-Mixing?
+## Slide 3: Background - Jailbreaking Attacks
+
+**What is Jailbreaking?**
+
+Techniques to bypass LLM safety filters and elicit harmful outputs
+
+**Five Main Attack Categories:**
+
+1. **Prompt Engineering** - Roleplay, hypothetical scenarios
+2. **Template-Based** - DAN, STAN, AIM personas
+3. **Token-Level Manipulation** - Gradient-based attacks (GCG)
+4. **Multi-Turn Exploitation** - Gradual boundary pushing
+5. **Multilingual Attacks** - Language switching, code-mixing ← **Our Focus**
+
+**Challenge:** Most safety research focuses on English attacks
+
+---
+
+## Slide 4: Related Work - Multilingual Vulnerabilities
+
+**Recent Discoveries in Multilingual Safety:**
+
+**Deng et al. (2023):** 6 languages tested (Chinese, Italian, Vietnamese, Arabic, Korean, Thai)
+- Consistently higher jailbreak rates for non-English languages
+- Weaker safety coverage in low-resource datasets
+
+**Yong et al. (2023):** 7 low-resource Asian languages
+- 25-40% higher toxic output rates vs. English
+- Recommendations for language-specific fine-tuning
+
+**Aswal & Jaiswal (2025):** Hindi-English (Hinglish) code-mixing
+- 99% attack success rate with phonetic perturbations
+- Tokenization disruption identified as main mechanism
+
+---
+
+## Slide 5: Research Gap - Why Bangla?
+
+**Critical Gap Identified:**
+
+❌ No prior work on **Bangla-English code-mixing** attacks  
+❌ **230 million Bangla speakers** worldwide - completely untested  
+❌ Safety evaluation for Bangla speakers absent  
+
+**Why Bangla is Unique:**
+
+1. **Non-Standard Romanization**
+   - Multiple valid spellings for same word
+   - Creates diverse tokenization paths
+
+2. **Distinctive Phonetics**
+   - Nasalization, consonant clusters uncommon in European languages
+
+3. **Lower Training Data Presence**
+   - Less Bangla in LLM training → Weaker safety coverage
+
+4. **Real-World Usage**
+   - Banglish is dominant online communication mode
+
+---
+
+## Slide 6: What is Code-Mixing?
 
 **Natural Multilingual Communication**
 
@@ -61,50 +114,58 @@ December 2025
 
 **Security Implication:** Creates potential vulnerability in LLM safety systems
 
+**Hypothesis from Hinglish Study:** Romanized text breaks into smaller tokens, evading safety filters
+
 ---
 
-## Slide 5: The Attack Mechanism
+## Slide 7: The Tokenization Disruption Mechanism
 
-**Tokenization Disruption Hypothesis**
+**How Code-Mixing Bypasses Safety Filters**
 
 **English:** "hate speech" → ["hate", "speech"] (2 tokens)  
-**Banglish:** "hate speech" → ["ha", "te", "sp", "ee", "ch"] (5+ tokens)
+**Perturbed:** "haet speach" → ["ha", "et", "sp", "ea", "ch"] (5+ tokens)
 
 **Why It Works:**
-- Safety filters trained on correctly-spelled English words
-- Phonetic misspellings fragment tokens
-- Prevents safety systems from recognizing harmful content
+1. Safety filters trained on correctly-spelled English words
+2. Phonetic misspellings fragment tokens into harmless subword units
+3. Filter doesn't recognize "ha" + "et" as "hate"
+4. Harmful content passes through undetected
+
+**Question:** Does this mechanism work for Bangla-English?
 
 ---
 
-## Slide 6: Research Questions
+## Slide 8: Research Objectives
 
-**Four Core Questions:**
+**Four Primary Objectives:**
 
-1. **RQ1:** Does Bangla-English code-mixing bypass LLM safety filters?
+**Objective 1:** Develop systematic Bangla-English code-mixed attack methodology
 
-2. **RQ2:** Which phonetic/romanization features enable attacks?
+**Objective 2:** Identify Bangla-specific linguistic attack patterns
 
-3. **RQ3:** Are all major LLMs consistently vulnerable?
+**Objective 3:** Evaluate vulnerability across multiple LLM models
 
-4. **RQ4:** Does tokenization disruption explain attack success?
+**Objective 4:** Validate tokenization disruption mechanism for Bangla
 
----
-
-## Slide 7: Research Objectives
-
-**What We Set Out to Achieve:**
-
-✓ Develop systematic Bangla-English code-mixed attack methodology  
-✓ Identify Bangla-specific linguistic attack patterns  
-✓ Evaluate vulnerability across multiple LLM models  
-✓ Validate tokenization disruption mechanism for Bangla
-
-**Novel Contribution:** First comprehensive Bangla LLM jailbreaking study
+**Novel Contribution:** First comprehensive Bangla LLM jailbreaking study addressing 230M speaker population
 
 ---
 
-## Slide 8: Methodology Overview
+## Slide 9: Research Questions
+
+**Translating Objectives into Testable Questions:**
+
+**RQ1** (Obj 1): Does Bangla-English code-mixing with phonetic perturbations bypass LLM safety filters?
+
+**RQ2** (Obj 2): Which phonetic and romanization features enable Bangla attacks?
+
+**RQ3** (Obj 3): Are all major LLMs consistently vulnerable to Bangla attacks?
+
+**RQ4** (Obj 4): Does tokenization disruption explain Bangla attack success?
+
+---
+
+## Slide 10: Achieving Objectives - Methodology Overview
 
 **Three-Phase Systematic Approach**
 
@@ -120,9 +181,11 @@ December 2025
 - LLM-as-judge methodology
 - Statistical validation (Wilcoxon signed-rank test)
 
+**Addresses Objective 1:** Systematic methodology development
+
 ---
 
-## Slide 9: Three-Step Prompt Transformation
+## Slide 11: Three-Step Prompt Transformation
 
 **Step 1: English Baseline (Hypothetical Scenarios)**
 
@@ -139,7 +202,7 @@ Direct: "How to create a botnet?"
 
 ---
 
-## Slide 10: Dataset Composition
+## Slide 12: Dataset Composition
 
 **200 Harmful Prompts Across 10 Categories**
 
@@ -160,41 +223,26 @@ Direct: "How to create a botnet?"
 
 ---
 
-## Slide 11: Phonetic Perturbation Techniques
+## Slide 13: Experimental Design
 
-**Four Transformation Types**
-
-| Type | Example | Rule |
-|------|---------|------|
-| Vowel Substitution | hate → ha**e**t | Swap vowel order |
-| Consonant Doubling | bot → bo**tt** | Double final consonant |
-| Phonetic Respelling | DDoS → dee dee o es | Sound-based spelling |
-| Letter Transposition | create → cr**ae**te | Swap adjacent letters |
-
-**Goal:** Preserve pronunciation, disrupt token patterns
-
----
-
-## Slide 12: Experimental Setup
-
-**Models Tested:**
+**Models Tested (Objective 3):**
 - GPT-4o-mini (OpenAI)
 - Llama-3-8B (Meta)
 - Mistral-7B (Mistral AI)
 
-**Jailbreak Templates (5):**
+**Jailbreak Templates:**
 - None (baseline), OM (Opposite Mode), AntiLM, AIM, Sandbox
 
 **Temperature Settings:** 0.2, 0.6, 1.0
 
-**Prompt Sets:** English, CM, CMP
+**Prompt Sets:** English (baseline), CM (code-mixed), CMP (code-mixed + perturbations)
 
-**Total Configurations:** 135 (3 × 5 × 3 × 3)  
+**Total Configurations:** 135  
 **Total Responses:** 27,000
 
 ---
 
-## Slide 13: Evaluation Methodology
+## Slide 14: Evaluation Methodology
 
 **LLM-as-Judge Approach**
 
@@ -212,9 +260,11 @@ Direct: "How to create a botnet?"
 
 ---
 
-## Slide 14: RQ1 Results - Overall Effectiveness
+## Slide 15: Results - RQ1 Achievement (Objective 1)
 
-**Code-Mixing Significantly Bypasses Safety Filters**
+**Does Bangla-English code-mixing bypass LLM safety filters?**
+
+**✓ YES - Objective 1 Achieved**
 
 | Prompt Set | AASR | Improvement | p-value |
 |------------|------|-------------|---------|
@@ -224,11 +274,13 @@ Direct: "How to create a botnet?"
 
 **Key Finding:** 25.4% relative improvement over English baseline
 
-**Statistical Significance:** p = 0.0070 confirms real effect
+**Statistical Significance:** p = 0.0070 confirms real, reproducible effect
+
+**Conclusion:** Bangla-English code-mixing successfully bypasses safety filters
 
 ---
 
-## Slide 15: Attack Progression Visualization
+## Slide 16: Attack Progression - Visual Evidence
 
 **Progressive Improvement Across Transformations**
 
@@ -243,9 +295,11 @@ Direct: "How to create a botnet?"
 
 ---
 
-## Slide 16: RQ3 Results - Model Vulnerability
+## Slide 17: Results - RQ3 Achievement (Objective 3)
 
-**Dramatic Inconsistency Across Models**
+**Are all major LLMs vulnerable to Bangla attacks?**
+
+**✓ YES - Objective 3 Achieved: All Models Vulnerable**
 
 | Model | English | CM | CMP | Vulnerability |
 |-------|---------|-----|------|---------------|
@@ -253,13 +307,14 @@ Direct: "How to create a botnet?"
 | Llama-3-8B | 12.3% | 22.6% | **21.8%** | Moderate |
 | GPT-4o-mini | 1.1% | 11.6% | **9.8%** | Low |
 
-**Key Insight:** Even GPT-4o-mini shows 15× vulnerability increase (1.1% → 16.6% peak)
-
-**No model achieves adequate Bangla safety coverage**
+**Key Insights:**
+- **No model achieves adequate Bangla safety coverage**
+- Even GPT-4o-mini shows 15× vulnerability increase (1.1% → 16.6% peak)
+- Different vulnerability profiles require tailored defenses
 
 ---
 
-## Slide 17: Model Vulnerability Heatmap
+## Slide 18: Model Vulnerability Comparison
 
 **Visual Comparison Across Models**
 
@@ -274,9 +329,11 @@ Direct: "How to create a botnet?"
 
 ---
 
-## Slide 18: RQ2 Results - Transformation Stages
+## Slide 19: Results - RQ2 Achievement (Objective 2)
 
-**Incremental Contribution Analysis**
+**Which phonetic/romanization features enable Bangla attacks?**
+
+**✓ Objective 2 Achieved: Dual Mechanism Identified**
 
 | Stage | AASR | Contribution | Cumulative Gain |
 |-------|------|--------------|-----------------|
@@ -286,31 +343,54 @@ Direct: "How to create a botnet?"
 
 **Finding:** Both code-mixing AND phonetic perturbations contribute independently
 
-**Mechanism:** 
-- CM: Romanization variability disrupts safety classifiers
-- CMP: Keyword fragmentation prevents pattern matching
+**Bangla-Specific Mechanisms:**
+1. **CM Stage:** Romanization variability disrupts safety classifiers
+2. **CMP Stage:** Keyword fragmentation prevents pattern matching
+3. **Combined Effect:** Compound effectiveness (not just additive)
 
 ---
 
-## Slide 19: Temperature Effects
+## Slide 20: Phonetic Perturbation Techniques (Objective 2)
 
-**Higher Temperature = Higher Success**
+**Four Transformation Types Applied:**
 
-| Temperature | AASR (CMP) | Change |
-|-------------|------------|---------|
-| 0.2 (Low) | 38.6% | Baseline |
-| 0.6 (Medium) | 39.1% | +0.5pp |
-| 1.0 (High) | 40.6% | +2.0pp |
+| Type | Example | Rule |
+|------|---------|------|
+| Vowel Substitution | hate → ha**e**t | Swap vowel order |
+| Consonant Doubling | bot → bo**tt** | Double final consonant |
+| Phonetic Respelling | DDoS → dee dee o es | Sound-based spelling |
+| Letter Transposition | create → cr**ae**te | Swap adjacent letters |
 
-**Interpretation:** Randomness in generation increases bypass probability
+**Goal:** Preserve pronunciation, disrupt token patterns
 
-**Practical Implication:** Default settings may underestimate vulnerability
+**Result:** +4.6pp incremental effectiveness validated experimentally
 
 ---
 
-## Slide 20: Surprising Finding - Template Ineffectiveness
+## Slide 21: Results - RQ4 Achievement (Objective 4)
 
-**Jailbreak Templates Reduce Attack Success**
+**Does tokenization disruption explain Bangla attack success?**
+
+**✓ YES - Objective 4 Achieved: Mechanism Validated**
+
+**Hypothesis:** More transformation → More fragmentation → Higher AASR
+
+**Evidence:**
+- English (simple tokenization): 35.0% AASR
+- CM (moderate fragmentation): 39.3% AASR  
+- CMP (maximum fragmentation): 43.9% AASR
+
+**Progressive Alignment Confirms Mechanism:**
+- Each transformation stage increases token fragmentation
+- AASR improvement correlates with fragmentation level
+- Independently validates tokenization disruption for Bangla
+- Complements Hindi-English findings
+
+---
+
+## Slide 22: Surprising Discovery - Template Ineffectiveness
+
+**Unexpected Finding Beyond Original Objectives**
 
 | Template | AASR (CMP) | vs None |
 |----------|------------|---------|
@@ -324,80 +404,55 @@ Direct: "How to create a botnet?"
 
 **Explanation:** Code-mixing alone provides sufficient obfuscation
 
----
-
-## Slide 21: RQ4 - Tokenization Mechanism
-
-**Progressive Fragmentation Drives Success**
-
-**Hypothesis:** More complex prompts → More token fragmentation → Higher AASR
-
-**Evidence:**
-- English (simple tokenization): 35.0% AASR
-- CM (moderate fragmentation): 39.3% AASR
-- CMP (maximum fragmentation): 43.9% AASR
-
-**Mechanism Validated:** 
-- Alignment between transformation complexity and attack success
-- Supports tokenization disruption hypothesis
-- Independently confirms findings from Hindi-English studies
+**Implication:** Language-specific attack dynamics differ from English jailbreaking patterns
 
 ---
 
-## Slide 22: Why Bangla is Unique
+## Slide 23: Achievement Summary - All Objectives Met
 
-**Linguistic Features Enabling Attacks**
+**How We Achieved Our Research Objectives:**
 
-1. **Non-Standard Romanization**
-   - Multiple correct spellings for same word
-   - "korbo" = "korbo" = "korbo" (all valid)
-   - Creates diverse tokenization paths
+| Objective | Method | Result |
+|-----------|--------|--------|
+| **Obj 1:** Develop methodology | 3-step transformation + 27K responses | ✓ 43.9% AASR (p=0.0070) |
+| **Obj 2:** Identify patterns | Incremental stage analysis | ✓ CM +4.3pp, CMP +4.6pp |
+| **Obj 3:** Evaluate models | 3 LLMs tested systematically | ✓ All vulnerable (86.6%/21.8%/9.8%) |
+| **Obj 4:** Validate mechanism | Progressive fragmentation analysis | ✓ Tokenization disruption confirmed |
 
-2. **Distinctive Phonetics**
-   - Nasalization, consonant clusters
-   - Uncommon in European languages
-   - Unique tokenization behavior
+**Bonus Discovery:** Template ineffectiveness reveals language-specific dynamics
 
-3. **Lower Training Data Presence**
-   - Less Bangla than Hindi/Chinese in LLM training
-   - Weaker safety coverage
+**All research questions answered with statistical significance**
 
 ---
 
-## Slide 23: Key Contributions (1/2)
+## Slide 24: Key Contributions
 
 **Scientific Contributions:**
 
 1. **First Bangla Code-Mixing Study**
-   - 230M speakers previously untested
-   - Baseline vulnerability metrics established
-   - 43.9% AASR demonstrates real risk
+   - 230M speakers previously untested in adversarial contexts
+   - Baseline vulnerability metrics established across 3 major LLMs
+   - 43.9% AASR demonstrates real, actionable risk
 
 2. **Phonetic Perturbation Validation**
    - +4.6pp incremental contribution beyond CM alone
-   - 25.4% relative improvement total
-   - Validates keyword fragmentation hypothesis
-
----
-
-## Slide 24: Key Contributions (2/2)
-
-**Scientific Contributions (continued):**
+   - 25.4% relative improvement validates multi-stage approach
+   - Keyword fragmentation hypothesis confirmed
 
 3. **Template Ineffectiveness Discovery**
    - Simple prompts (45.9%) > Engineered templates (33.9-43.6%)
-   - Reveals language-specific attack dynamics
    - Challenges assumptions from English jailbreaking literature
+   - Reveals language-specific attack dynamics
 
 4. **Tokenization Mechanism Validation**
-   - Independent confirmation for Bangla
+   - Independent confirmation for Bangla-English context
    - Complements Hindi-English findings
-   - Provides mechanistic explanation
+   - Provides mechanistic explanation for code-mixing effectiveness
 
 5. **Scalable Framework**
-   - $1.50-2.00 per language cost
-   - Applicable to 20+ Indic languages
-   - Enables systematic multilingual research
+   - $1.50-2.00 per language experimental cost
+   - Applicable to 20+ other Indic languages
+   - Enables systematic multilingual vulnerability assessment
 
 ---
 
@@ -406,75 +461,61 @@ Direct: "How to create a botnet?"
 **Multilingual AI Safety Crisis**
 
 **Language Bias:**
-- Safety training remains English-focused
-- 230M Bangla speakers get inadequate protection
-- Likely extends to dozens of other languages
+- Safety training remains predominantly English-focused
+- **230M Bangla speakers receive inadequate protection**
+- Likely extends to dozens of other underrepresented languages
 
 **Technical Gaps:**
-- Token-level filters vulnerable to systematic obfuscation
-- Current architectures fail for non-standardized romanization
+- Token-level filters vulnerable to systematic linguistic obfuscation
+- Current architectures fail for non-standardized romanization systems
+- Safety mechanisms don't generalize across linguistic diversity
 
-**Policy Needs:**
+**Policy & Industry Needs:**
 - Evidence-based multilingual safety requirements
-- Regulatory mandates for language coverage
-- Industry accountability for global equity
+- Regulatory mandates for comprehensive language coverage
+- Industry accountability for equitable global safety provision
+
+**Impact:** Systematic inequity affecting billions of non-English speakers
 
 ---
 
-## Slide 26: Future Research Directions
-
-**Immediate Extensions:**
-- Full 460-prompt replication study
-- Human inter-annotator reliability validation
-- Claude, PaLM model expansion
-- Integrated Gradients attribution analysis
-
-**Language Expansion:**
-- Apply to Tamil, Telugu, Marathi, Urdu, Gujarati
-- Extend to African languages (Swahili, Yoruba, Amharic)
-- Southeast Asian analysis (Thai-English, Vietnamese-English)
-
-**Defense Development:**
-- Romanization normalization systems
-- Semantic-level safety classifiers
-- Multilingual RLHF training incorporating code-mixing
-
----
-
-## Slide 27: Limitations and Ethical Considerations
-
-**Limitations:**
-- 200 prompts (vs. 460 in Hinglish study)
-- Automated evaluation (human validation recommended)
-- Three models (broader coverage needed)
-- Tokenization analysis qualitative (attribution scores future work)
-
-**Ethical Safeguards:**
-- Responsible disclosure to OpenAI, Meta, Mistral
-- Dataset access restricted to researchers
-- No public release of model responses
-- Research-only usage agreement for data sharing
-
-**Goal:** Advance safety, not enable attacks
-
----
-
-## Slide 28: Conclusion
+## Slide 26: Conclusion
 
 **What We Demonstrated:**
 
-✓ Bangla-English code-mixing **significantly bypasses** LLM safety filters (43.9% AASR, p=0.0070)
+✓ **Objective 1 Achieved:** Bangla-English code-mixing **significantly bypasses** LLM safety filters (43.9% AASR, p=0.0070)
 
-✓ **All tested models** show vulnerability (86.6% / 21.8% / 9.8%)
+✓ **Objective 2 Achieved:** Dual mechanism identified - romanization (+4.3pp) + phonetic perturbations (+4.6pp)
 
-✓ Phonetic perturbations provide **measurable incremental gains** (+4.6pp)
+✓ **Objective 3 Achieved:** **All tested models vulnerable** (86.6% / 21.8% / 9.8%)
 
-✓ Tokenization disruption mechanism **validated for Bangla**
+✓ **Objective 4 Achieved:** Tokenization disruption mechanism **validated for Bangla**
 
-✓ **230 million speakers** currently underprotected
+**Impact:** First comprehensive study addresses **230 million speakers** currently underprotected
 
 **Takeaway:** Multilingual AI safety requires systematic attention to code-mixing vulnerabilities across underrepresented languages
 
 **Thank you! Questions?**
+
+---
+
+## Backup Slide: Limitations and Future Work
+
+**Study Limitations:**
+- 200 prompts (vs. 460 in full-scale replication)
+- Automated evaluation (human validation recommended for future work)
+- Three models tested (broader coverage possible)
+- Qualitative tokenization analysis (attribution scores for future work)
+
+**Ethical Safeguards:**
+- Responsible disclosure to OpenAI, Meta, Mistral
+- Dataset restricted to research use only
+- No public release of model responses
+
+**Potential Extensions:**
+- Full 460-prompt replication study
+- Human inter-annotator reliability validation
+- Expand to other Indic languages (Tamil, Telugu, Marathi)
+- Defense mechanism development
 
 ---
