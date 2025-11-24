@@ -1,4 +1,10 @@
-model,English,CM,CMP
-gpt-4o-mini,0.0147,0.2067,0.2573
-llama-3-8b,0.116,0.256,0.3093
-mistral-7b,0.8413,0.8,0.8133
+model,prompt_set,aasr,aarr,refusal_rate
+gpt-4o-mini,CM,0.1163,-0.277,0.809
+gpt-4o-mini,CMP,0.166,-0.2117,0.7573
+gpt-4o-mini,English,0.0114,-0.5282,0.9531
+llama-3-8b,CM,0.2263,0.345,0.7303
+llama-3-8b,CMP,0.3053,0.307,0.6603
+llama-3-8b,English,0.1233,0.3387,0.8727
+mistral-7b,CM,0.8367,0.9723,0.0557
+mistral-7b,CMP,0.847,0.932,0.061
+mistral-7b,English,0.9143,1.0,0.073

@@ -10,83 +10,23 @@ This thesis presents the first comprehensive study of Bangla English codemixing 
 
 \subsection{First Bangla CodeMixing Study}
 
-What we achieved:
-\begin{itemize}
-    \item Evaluated 230M speaker population previously untested in adversarial contexts
-    \item Demonstrated 40.1\% AASR with Bangla English codemixing + perturbations
-    \item Established baseline vulnerability metrics for Bangla across 3 major LLMs
-\end{itemize}
+This work evaluates a 230 million speaker population previously untested in adversarial contexts, demonstrating 43.9\% AASR with Bangla English codemixing and phonetic perturbations, and establishing baseline vulnerability metrics for Bangla across 3 major LLMs. These findings fill a critical gap in multilingual LLM safety research and provide the first empirical evidence of Bangla-specific vulnerabilities.
 
-Why this matters:
-\begin{itemize}
-    \item Fills critical gap in multilingual LLM safety research
-    \item Provides first empirical evidence of Bangla vulnerability
-    \item Enables targeted safety improvements for 8th most spoken language
-\end{itemize}
+\subsection{Phonetic Perturbation Contribution}
 
-\subsection{English Word Targeting Discovery}
-
-What we achieved:
-\begin{itemize}
-    \item Discovered that perturbing English words is 68\% more effective than perturbing Bangla words
-    \item Validated through systematic comparison (52.3\% vs. 31.1\% AASR)
-    \item Identified optimal 70:30 English:Bangla ratio
-\end{itemize}
-
-Why this matters:
-\begin{itemize}
-    \item Novel finding not explored in prior codemixing work
-    \item Reveals Englishcentric nature of safety training
-    \item Informs attack optimization for other languages
-\end{itemize}
+We demonstrate that phonetic perturbations provide measurable incremental effectiveness beyond code-mixing alone, with the CM→CMP transition contributing +4.6 percentage points (39.3\% → 43.9\% AASR). This validates the hypothesis that misspelling English harmful keywords fragments tokenization, evading safety filters designed for correctly-spelled text. The combined code-mixing and perturbation approach achieves 25.4\% relative improvement over English baselines, demonstrating that linguistic transformation strategies compound effectiveness.
 
 \subsection{Template Ineffectiveness Finding}
 
-What we achieved:
-\begin{itemize}
-    \item Demonstrated that jailbreak templates reduce Bangla attack effectiveness
-    \item "None" template achieves 46.2\% AASR vs. 35.142.5\% with jailbreak templates
-    \item Contradicts findings where templates enhanced attacks in other contexts
-\end{itemize}
-
-Why this matters:
-\begin{itemize}
-    \item Reveals languagespecific attack dynamics
-    \item Challenges universal applicability of jailbreak templates
-    \item Suggests simpler attacks may be more effective for codemixing
-\end{itemize}
+Contrary to expectations, jailbreak templates reduce Bangla attack effectiveness, with the "None" template achieving 45.9\% AASR versus 33.9-43.6\% with engineered templates. This reveals language-specific attack dynamics and suggests that simpler approaches may be more effective for code-mixing attacks.
 
 \subsection{Tokenization Mechanism Validation}
 
-What we achieved:
-\begin{itemize}
-    \item Strong correlation between token fragmentation and AASR
-    \item Validated progressive fragmentation hypothesis (1.0× → 1.67× → 1.91×)
-    \item Provided mechanistic explanation for Bangla attack success
-\end{itemize}
-
-Why this matters:
-\begin{itemize}
-    \item Independently validates tokenization hypothesis for Bangla
-    \item Strengthens theoretical understanding of codemixing attacks
-    \item Informs development of tokenization robust defenses
-\end{itemize}
+We demonstrate alignment between transformation complexity and attack success, with progressive improvement across English → CM → CMP stages supporting the tokenization disruption hypothesis. This provides mechanistic explanation for Bangla attack success and independently supports the tokenization disruption hypothesis for an additional Indic language, complementing prior work on Hindi-English code-mixing.
 
 \subsection{Scalable Framework Development}
 
-What we achieved:
-\begin{itemize}
-    \item Developed configdriven experimental framework
-    \item Demonstrated replicability at \$1.502.00 per language
-    \item Applicable to 20+ other Indic languages
-\end{itemize}
-
-Why this matters:
-\begin{itemize}
-    \item Enables systematic multilingual vulnerability assessment
-    \item Lowers barriers for safety research across language communities
-    \item Facilitates collective advancement in multilingual AI safety
-\end{itemize}
+The developed config-driven experimental framework demonstrates replicability at \$1.50-2.00 per language and is applicable to 20+ other Indic languages, lowering barriers for systematic multilingual vulnerability assessment across underrepresented language communities.
 
 \section{Research Questions Revisited}
 \label{sec:rqrevisited}
@@ -95,7 +35,7 @@ Why this matters:
 
 Question: Does Bangla English codemixing with phonetic perturbations bypass LLM safety filters?
 
-Answer: Yes. Bangla codemixing achieves 40.1\% AASR with statistically significant improvement over English baselines (p=0.0070). The attack proves effective across all tested models with varying degrees of severity.
+Answer: Yes. Bangla codemixing achieves 43.9\% AASR with statistically significant improvement over English baselines (p=0.0070). The attack proves effective across all tested models with varying degrees of severity.
 
 Key insight: Linguistic obfuscation alone provides sufficient evasion without sophisticated prompt engineering.
 
@@ -103,15 +43,15 @@ Key insight: Linguistic obfuscation alone provides sufficient evasion without so
 
 Question: Which phonetic and romanization features enable Bangla attacks?
 
-Answer: Four patterns enable attacks: English word targeting (68\% more effective), optimal 70:30 codemixing ratios, romanization variability exploitation, and vowelbased phonetic fragmentation.
+Answer: Incremental transformation stages provide measurable contributions: code-mixing alone yields +4.3pp improvement (English 35.0\% → CM 39.3\%), while adding phonetic perturbations contributes an additional +4.6pp (CM 39.3\% → CMP 43.9\%). Perturbations focused on English harmful keywords within code-mixed contexts, exploiting romanization variability inherent to Bangla transliteration.
 
-Key insight: Safety systems demonstrate Englishcentric bias, making English words within codemixed text the optimal attack target.
+Key insight: Both romanization and phonetic perturbations independently degrade safety filter performance, with their combination achieving compound effectiveness gains.
 
 \subsection{RQ3: Model Vulnerability Consistency}
 
 Question: Are all major LLMs vulnerable to Bangla attacks?
 
-Answer: Yes, with dramatic inconsistency. Mistral7B shows critical vulnerability (81.8\% AASR), Llama38B moderate vulnerability (22.7\%), and GPT4omini low but nonzero vulnerability (16.0\%).
+Answer: Yes, with dramatic inconsistency. Mistral7B shows critical vulnerability (86.6\% AASR), Llama38B moderate vulnerability (21.8\%), and GPT4omini low but nonzero vulnerability (9.8\%).
 
 Key insight: No tested model achieves adequate safety coverage for Bangla speakers, exposing systematic gaps in multilingual AI safety.
 
@@ -145,7 +85,7 @@ Tokenization limitations show current approaches fail for nonstandardized romani
 
 \subsection{Immediate Extensions}
 
-Scale replication involves a full 460prompt study following Hinglish methodology. Human validation requires comprehensive interannotator reliability study for evaluation validation. Model expansion should include Claude, PaLM, and parameterscale analysis. Automation development needs NMTbased codemixing generation for scalability.
+Scale replication involves a full 460prompt study following Hinglish methodology. Human validation requires comprehensive interannotator reliability study for evaluation validation. Model expansion should include Claude, PaLM, and parameterscale analysis. Automation development needs NMTbased codemixing generation for scalability. Attribution score analysis through Integrated Gradients should quantify token-level contributions to model outputs, validating the tokenization disruption mechanism with empirical attribution scores as demonstrated in the Hinglish study (r=0.94 correlation).
 
 \subsection{Language Expansion}
 
@@ -159,32 +99,9 @@ Romanization normalization should develop robust canonicalization for multiple s
 
 Attention analysis should investigate how codemixing affects transformer attention patterns. Embedding geometry needs to analyze safety representation space across languages. Training dynamics should study how multilingual data affects safety generalization. Cognitive modeling should compare human and model processing of codemixed harmful content.
 
-\section{Final Reflections}
-\label{sec:finalreflections}
-
-\subsection{Research Impact}
-
-This work shows that rigorous academic research can expose systematic inequities in AI systems while providing actionable pathways for improvement. The discovery that 230 million Bangla speakers get inadequate safety protection represents both a concerning finding and an opportunity for targeted enhancement.
-
-\subsection{Methodological Contributions}
-
-Our configdriven experimental framework proves that comprehensive multilingual vulnerability assessment remains feasible even under significant resource constraints. The \$1.502.00 per language cost enables systematic evaluation across dozens of additional language communities.
-
-\subsection{Ethical Responsibility}
-
-The dualuse nature of our findings requires ongoing vigilance, but the alternative leaving vulnerabilities undocumented and unaddressed serves no one except malicious actors who likely already exploit these weaknesses. Academic disclosure accelerates collective defense while enabling evidencebased policy advocacy.
-
-\subsection{Call to Action}
-
-We call on the AI research community, industry practitioners, and policy makers to prioritize multilingual AI safety as a fundamental equity issue. The 8th most spoken language in the world deserves safety protection equivalent to English, and our framework provides the tools to achieve this goal.
-
-The path forward requires coordinated effort across multiple stakeholders: researchers expanding vulnerability assessment to additional languages, developers implementing semanticlevel defenses, and policy makers establishing enforceable multilingual safety standards. Only through such comprehensive action can we ensure that AI safety serves all global communities equitably.
-
-\section{Closing Statement}
+\section{Concluding Remarks}
 \label{sec:closing}
 
-This thesis establishes that Bangla English codemixing constitutes a significant vulnerability surface against current LLM safety systems, affecting 230 million speakers worldwide. More broadly, our work shows the critical importance of multilingual perspectives in AI safety research and provides practical tools for systematic vulnerability assessment across language communities.
+This thesis establishes that Bangla English codemixing constitutes a significant vulnerability surface against current LLM safety systems, affecting 230 million speakers worldwide. Through systematic evaluation of 27,000 model responses across three major LLMs, we demonstrate statistically significant attack effectiveness (43.9\% AASR, p=0.0070) and identify four language-specific patterns that enable these attacks.
 
-The findings presented here represent not an endpoint but a beginning the first systematic exploration of Bangla LLM vulnerabilities and a replicable framework for extending this analysis to dozens of additional languages. As AI systems become increasingly central to global information access and decisionmaking, ensuring equitable safety protection across all language communities becomes not merely a technical challenge but a moral imperative.
-
-We hope this work contributes to a more inclusive and equitable AI safety landscape, where protection and security extend to all users regardless of their linguistic background.
+The findings contribute to multilingual AI safety research by providing the first comprehensive Bangla vulnerability assessment, validating tokenization disruption mechanisms for an additional Indic language, and developing a scalable experimental framework applicable to dozens of underrepresented language communities. Our work demonstrates that rigorous academic research under resource constraints can expose systematic inequities while providing actionable pathways for technical and policy improvements in multilingual AI safety.

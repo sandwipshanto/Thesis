@@ -161,15 +161,15 @@ Consequences:
 
 Recent work has started evaluating multilingual safety:
 
-\citet{deng2023}: This multilingual jailbreaking study tested 6 languages (Chinese, Italian, Vietnamese, Arabic, Korean, Thai) and found consistently higher jailbreak success rates for non-English languages compared to English, attributing this difference to weaker safety training coverage in low-resource language datasets.
+Deng et al.~\citep{deng2023} tested 6 languages (Chinese, Italian, Vietnamese, Arabic, Korean, Thai) in a multilingual jailbreaking study and found consistently higher jailbreak success rates for non-English languages compared to English, attributing this difference to weaker safety training coverage in low-resource language datasets.
 
-\citet{yong2023}: This low-resource language safety evaluation across 7 low-resource Asian languages discovered 25-40\% higher toxic output rates compared to English baselines, leading to recommendations for language-specific safety fine-tuning to address these disparities.
+Yong et al.~\citep{yong2023} evaluated safety across 7 low-resource Asian languages and discovered 25-40\% higher toxic output rates compared to English baselines, leading to recommendations for language-specific safety fine-tuning to address these disparities.
 
 Gap: No prior work on Bangla or Bangla-English code-mixing.
 
 \subsection{Hinglish Code-Mixing Attacks}
 
-\citet{aswal2025} showed that Hindi-English code-mixing combined with phonetic perturbations achieves 99\% attack success rate, identifying tokenization disruption as the main attack mechanism and showing that template-based jailbreaking further enhances effectiveness.
+Aswal and Jaiswal~\citep{aswal2025} showed that Hindi-English code-mixing combined with phonetic perturbations achieves 99\% attack success rate, identifying tokenization disruption as the main attack mechanism and showing that template-based jailbreaking further enhances effectiveness.
 
 Our Work: Extends to Bangla (different linguistic properties, population), investigates language-specific patterns, validates mechanism independently.
 

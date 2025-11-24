@@ -18,41 +18,12 @@ We acknowledge our work can be used for both beneficial and harmful purposes. Be
 
 Our position is that disclosure benefits outweigh risks because vulnerabilities are likely already known to sophisticated adversaries, academic transparency accelerates collective defense, responsible disclosure protocols minimize exploitation windows, and dataset restrictions limit easy replication.
 
-\section{Responsible Disclosure}
-\label{sec:responsibledisclosure}
-
-We are committed to responsible disclosure practices that prioritize vendor notification and coordinated vulnerability disclosure while maintaining academic transparency.
-
-\subsection{Vendor Notification Plan}
-
-We commit to notifying affected organizations:
-
-Timeline:
-\begin{enumerate}
-    \item Pre-publication (November 2024): Thesis submission to university
-    \item Post-submission (December 2024): Prepare vulnerability reports
-    \item Vendor contact (January 2025): Email security teams at:
-    \begin{itemize}
-        \item OpenAI (GPT-4o-mini findings)
-        \item Meta (Llama-3-8B findings)
-        \item Mistral AI (Mistral-7B findings)
-    \end{itemize}
-    \item Patch window (60-90 days): Allow vendors time to address issues
-    \item Public disclosure: Academic publication after patch deployment
-\end{enumerate}
-
-Report contents:
-\begin{itemize}
-    \item Executive summary of findings
-    \item Methodology description (without full prompts)
-    \item AASR metrics per model
-    \item Recommended mitigations
-    \item Offer to collaborate on fixes
-\end{itemize}
+\section{Dataset Handling and Disclosure}
+\label{sec:datasethandling}
 
 \subsection{Dataset Handling}
 
-Currently, the full harmful prompt dataset and model responses are not publicly released, with only aggregated metrics available in the thesis and sanitized sample prompts provided. Future release plans include researchonly access with datasets available upon request under usage agreements requiring institutional affiliation verification, signed data use agreements, commitment to responsible use, and no redistribution clauses. Public release will occur only after vendor patches are deployed, with a minimum 6month waiting period.
+The full harmful prompt dataset and model responses are not publicly released. Only aggregated metrics are available in this thesis, along with sanitized sample prompts for illustrative purposes. This approach balances scientific transparency with harm mitigation, preventing direct replication of attacks while enabling verification of our methodology and findings.
 
 \section{Harm Mitigation Strategies}
 \label{sec:harmmitigation}
@@ -65,48 +36,21 @@ Dataset anonymization ensures all prompts are stripped of personally identifiabl
 
 \subsection{Disclosure Limitations}
 
-Prompt abstraction provides examples without full harmful content. Method generalization describes techniques at conceptual levels. Result aggregation prevents disclosure of individual response content. Timeline coordination ensures publication only occurs after vendor notification.
+Prompt abstraction provides examples without full harmful content. Method generalization describes techniques at conceptual levels. Result aggregation prevents disclosure of individual response content, focusing instead on statistical patterns and aggregate metrics.
 
-\section{Societal Impact Considerations}
+\section{Research Limitations and Transparency}
+\label{sec:limitations}
+
+\subsection{Data Processing Challenges}
+
+During our experimental data collection and processing, baseline experiments (prompts without jailbreak templates) were initially mislabeled with empty strings in the aggregated metrics file, requiring post-hoc correction before final analysis. This labeling error delayed discovery of a critical finding: jailbreak templates reduce rather than enhance attack effectiveness for Bangla code-mixing. While this issue required regenerating summary statistics, it did not compromise data integrity—all 27,000 raw model responses remained intact and accurate. We disclose this processing challenge to maintain transparency about our methodology and to highlight the importance of rigorous data validation in adversarial ML research.
+
+\section{Societal Impact}
 \label{sec:societalimpact}
 
-Our research directly addresses systemic inequities in AI safety that disproportionately affect nonEnglish speaking communities, with particular focus on advancing language justice in AI systems.
-
-\subsection{Bangla Speaker Equity}
-
-Our research directly addresses safety inequality affecting 230 million Bangla speakers. Currently, Bangla speakers receive demonstrably weaker safety protection compared to English speakers. The research impact provides evidence for policy and technical improvements, with the longterm goal of achieving equal AI safety regardless of language background. Our advocacy role ensures academic findings support community safety rights.
-
-\subsection{Global Language Justice}
-
-Language coverage gaps highlighted by our work reveal systematic bias in LLM safety training. The scalable methodology applies to dozens of additional languages, while resource accessibility through lowcost evaluation enables broader vulnerability assessment. Policy implications from our findings support multilingual safety requirements.
-
-\section{Institutional Review and Compliance}
-\label{sec:institutionalreview}
-
-Our research has undergone rigorous ethical review and complies with institutional and international standards for responsible research conduct.
-
-\subsection{Ethics Committee Review}
-
-We submitted our research protocol to the university ethics committee for comprehensive evaluation. The committee assessed DualUse research implications, data handling procedures, disclosure timeline, and potential harm assessment. Based on their recommendations, we extended the vendor notification period, enhanced dataset access controls, emphasized clearer beneficial use cases, and structured a more comprehensive responsible disclosure plan.
-
-\subsection{Regulatory Compliance}
-
-Data protection measures ensure all research data handling complies with local privacy regulations. Academic integrity standards mean research is conducted under university research ethics guidelines. International norms alignment ensures our disclosure approach follows computer security research standards. Professional standards compliance means methods and reporting follow responsible AI research practices.
-
-\section{Future Research Ethics}
-\label{sec:futureresearchethics}
-
-Future research extensions will incorporate enhanced community engagement and continuous impact assessment to ensure beneficial outcomes and community-centered approaches.
-
-\subsection{Community Engagement}
-
-Language community consultation will engage Bangla speaking communities in future work. Cultural sensitivity ensures harm definitions are validated across cultural contexts. Participatory research involves community members in research design and evaluation. Benefit sharing makes research outcomes accessible to affected communities.
-
-\subsection{Continuous Assessment}
-
-Impact monitoring tracks how research findings are used postpublication. Misuse detection monitors for inappropriate application of disclosed techniques. Adaptive disclosure adjusts future disclosure practices based on observed impacts. Community feedback maintains channels for affected community input.
+Our research addresses safety inequities affecting 230 million Bangla speakers who currently receive demonstrably weaker safety protection compared to English speakers. The findings provide empirical evidence for technical and policy improvements toward more equitable AI safety across linguistic communities. The scalable methodology developed in this work can be applied to additional underrepresented languages, enabling broader vulnerability assessment and promoting multilingual safety coverage in LLM deployments.
 
 \section{Chapter Summary}
 \label{sec:ethicalsummary}
 
-Our research works under a responsible disclosure framework that puts AI safety improvement first while minimizing potential harm. We know our findings can be used both ways and have put in place comprehensive safeguards including vendor notification, dataset restrictions, and ethical review processes. The work directly serves the safety interests of 230 million Bangla speakers and advances global language justice in AI systems. Future work will include community engagement and continuous impact assessment to make sure we get good outcomes.
+Our research addresses critical AI safety gaps affecting 230 million Bangla speakers while acknowledging the dual-use nature of vulnerability research. We have implemented safeguards including dataset access restrictions, harm mitigation strategies through prompt abstraction and result aggregation, and commitment to academic transparency. The work advances global language justice in AI systems through evidence-based vulnerability assessment, providing actionable insights for improving multilingual safety coverage in LLM deployments.

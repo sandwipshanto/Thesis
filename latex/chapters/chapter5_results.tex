@@ -98,22 +98,6 @@ Bangla-word perturbations & 31.1\% & Baseline \\ \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Optimal English:Bangla Ratio}
-
-\begin{table}[h]
-\centering
-\caption{Code-Mixing Ratio Impact}
-\label{tab:cm-ratio}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-\textbf{Ratio} & \textbf{AASR} & \textbf{Use Case} \\ \midrule
-90:10 (High English) & 41.2\% & Keywords preserved \\
-\textbf{70:30 (Optimal)} & \textbf{46.0\%} & \textbf{Best balance} \\
-50:50 (Balanced) & 38.7\% & Too much Bangla \\
-30:70 (High Bangla) & 29.4\% & Excessive fragmentation \\ \bottomrule
-\end{tabular}
-\end{table}
-
 \subsection{Effective Perturbation Types}
 
 \begin{table}[h]
@@ -132,7 +116,7 @@ Letter transposition & create $\rightarrow$ craete & 43.8\% & Medium \\ \bottomr
 
 \subsection{Answer to RQ2}
 
-Analysis reveals four Bangla-specific patterns that enable these attacks. First, targeting English words proves 68\% more effective than perturbing Bangla words, suggesting that safety filters focus predominantly on English-language harmful content. Second, the 30:70 English:Bangla ratio (30\% English words, 70\% Bangla words) yields particularly high attack success by maintaining semantic coherence while disrupting tokenization patterns. Third, romanization variability inherent to Bangla transliteration creates unpredictable tokenization paths that evade pattern matching. Fourth, simple phonetic perturbations—particularly vowel substitution and consonant doubling—prove most effective at fragmenting sensitive keywords without sacrificing prompt intelligibility.
+Analysis reveals three Bangla-specific patterns that enable these attacks. First, targeting English words proves 68\% more effective than perturbing Bangla words, suggesting that safety filters focus predominantly on English-language harmful content. Second, romanization variability inherent to Bangla transliteration creates unpredictable tokenization paths that evade pattern matching. Third, simple phonetic perturbations—particularly vowel substitution and consonant doubling—prove most effective at fragmenting sensitive keywords without sacrificing prompt intelligibility.
 
 \section{RQ3: Model Vulnerability Consistency}
 \label{sec:rq3}

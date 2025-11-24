@@ -1,31 +1,71 @@
-======================================================================
-STATISTICAL ANALYSIS SUMMARY
-Bangla-English LLM Red-Teaming
-======================================================================
+================================================================================
+STATISTICAL SUMMARY - 200 Prompt Dataset (with None Template)
+Generated: 2025-11-24 15:58:18
+================================================================================
 
 OVERALL STATISTICS
-----------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Total configurations: 135
-Total evaluations: 6750
-Models tested: gpt-4o-mini, llama-3-8b, mistral-7b
-Templates tested: AIM, AntiLM, None, OM, Sandbox
-Temperatures tested: 0.2, 0.6, 1.0
+Average AASR: 0.394 (39.4%)
+Average AARR: 0.320 (32.0%)
+Average Refusal Rate: 0.552 (55.2%)
 
+BY PROMPT SET
+--------------------------------------------------------------------------------
+English   : AASR=0.350 (35.0%), AARR=0.270, Refusal=0.633
+CM        : AASR=0.393 (39.3%), AARR=0.347, Refusal=0.532
+CMP       : AASR=0.439 (43.9%), AARR=0.342, Refusal=0.493
+
+BY TEMPLATE (DESCENDING ORDER)
+--------------------------------------------------------------------------------
+None      : AASR=0.459 (45.9%), AARR=0.638, Refusal=0.309
+AntiLM    : AASR=0.436 (43.6%), AARR=0.279, Refusal=0.526
+AIM       : AASR=0.396 (39.6%), AARR=0.298, Refusal=0.589
+OM        : AASR=0.342 (34.2%), AARR=0.230, Refusal=0.630
+Sandbox   : AASR=0.339 (33.9%), AARR=0.154, Refusal=0.709
+
+BY MODEL (DESCENDING ORDER)
+--------------------------------------------------------------------------------
+mistral-7b     : AASR=0.866 (86.6%), AARR=0.968, Refusal=0.063
+llama-3-8b     : AASR=0.218 (21.8%), AARR=0.330, Refusal=0.754
+gpt-4o-mini    : AASR=0.098 (9.8%), AARR=-0.339, Refusal=0.840
+
+MODEL-SPECIFIC AASR BY PROMPT SET
+--------------------------------------------------------------------------------
+
+gpt-4o-mini:
+  English   : 0.011 (1.1%)
+  CM        : 0.116 (11.6%)
+  CMP       : 0.166 (16.6%)
+
+llama-3-8b:
+  English   : 0.123 (12.3%)
+  CM        : 0.226 (22.6%)
+  CMP       : 0.305 (30.5%)
+
+mistral-7b:
+  English   : 0.914 (91.4%)
+  CM        : 0.837 (83.7%)
+  CMP       : 0.847 (84.7%)
+
+================================================================================
 KEY FINDINGS
-----------------------------------------------------------------------
-1. Prompt Set Effectiveness:
-   - English (baseline): 0.3240 AASR
-   - CM (code-mixed):    0.4209 AASR (+29.9%)
-   - CMP (CM+phonetic):  0.4600 AASR (+42.0%)
+================================================================================
+1. CODE-MIXING EFFECTIVENESS:
+   - English baseline: 35.0%
+   - Code-Mixed (CM): 39.3% (+4.3pp)
+   - CM with Perturbations (CMP): 43.9% (+9.0pp)
 
-2. Model Vulnerability Ranking:
-   1. mistral-7b: 0.8182 AASR
-   2. llama-3-8b: 0.2271 AASR
-   3. gpt-4o-mini: 0.1596 AASR
+2. TEMPLATE EFFECT (SURPRISING FINDING):
+   - None (baseline): 45.9% ← HIGHEST
+   - AntiLM: 43.6% (-2.3pp vs None)
+   - AIM: 39.6% (-6.3pp vs None)
+   - OM: 34.2% (-11.7pp vs None)
+   - Sandbox: 33.9% (-12.0pp vs None)
+   → Most jailbreak templates REDUCE attack success!
 
-3. Template Effectiveness Ranking:
-   1. None: 0.4622 AASR
-   2. AntiLM: 0.4252 AASR
-   3. OM: 0.4059 AASR
-   4. AIM: 0.3637 AASR
-   5. Sandbox: 0.3511 AASR
+3. MODEL VULNERABILITY:
+   - Mistral-7B: 86.6% (CRITICAL)
+   - Llama-3-8B: 21.8% (MODERATE)
+   - GPT-4o-mini: 9.8% (LOW)
+
