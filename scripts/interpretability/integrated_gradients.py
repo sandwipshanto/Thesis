@@ -572,7 +572,7 @@ def main():
     print()
     
     # Find latest metrics file
-    metrics_dir = "results/metrics"
+    metrics_dir = "results/validation_50prompts/metrics"
     metrics_files = list(Path(metrics_dir).glob("aasr_aarr_final_*.csv"))
     
     if not metrics_files:
@@ -583,7 +583,7 @@ def main():
     latest_metrics = max(metrics_files, key=os.path.getctime)
     
     # Find latest responses file
-    responses_dir = "results/responses"
+    responses_dir = "results/validation_50prompts/responses"
     response_files = list(Path(responses_dir).glob("all_responses_merged_*.csv"))
     
     if not response_files:
