@@ -37,7 +37,8 @@ class ResultsVisualizer:
         self.metrics_file = metrics_file
         
         print(f"Loading metrics from: {metrics_file}")
-        self.metrics = pd.read_csv(metrics_file)
+        # keep_default_na=False: otherwise pandas reads the 'None' template as NaN
+        self.metrics = pd.read_csv(metrics_file, keep_default_na=False)
         
         print(f"Loaded {len(self.metrics)} configurations")
         
@@ -498,22 +499,27 @@ def main():
     print("="*70)
     print()
     
-    # Find latest metrics file
-    metrics_dir = "results/metrics"
-    metrics_files = list(Path(metrics_dir).glob("aasr_aarr_final_*.csv"))
-    
-    if not metrics_files:
-        print("Error: No metrics files found in results/metrics/")
-        print("Please run experiment_runner.py first")
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Generate result tables and plots")
+    parser.add_argument(
+        '--metrics',
+        default='results/metrics/aasr_aarr_27000.csv',
+        help='AASR/AARR metrics CSV (default: final 200-prompt, 27,000-response run)'
+    )
+    args = parser.parse_args()
+
+    metrics_file = Path(args.metrics)
+    if not metrics_file.exists():
+        print(f"Error: metrics file not found: {metrics_file}")
+        print("Run scripts/analysis/regenerate_aasr_with_none.py first")
         return
-    
-    latest_metrics = max(metrics_files, key=os.path.getctime)
-    
-    print(f"Using metrics: {latest_metrics.name}")
+
+    print(f"Using metrics: {metrics_file}")
     print()
-    
+
     # Initialize visualizer
-    visualizer = ResultsVisualizer(metrics_file=str(latest_metrics))
+    visualizer = ResultsVisualizer(metrics_file=str(metrics_file))
     
     # Generate all visualizations
     visualizer.generate_all_visualizations()

@@ -1,173 +1,143 @@
-# Bangla-English Code-Mixing LLM Jailbreaking Research
+# Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models
 
-**Research on Bangla-English code-mixing and phonetic perturbations as a novel jailbreaking strategy for Large Language Models.**
+Undergraduate thesis (SWE-450), Institute of Information and Communication Technology,
+Shahjalal University of Science and Technology, Sylhet. Submitted 20 December 2025.
 
----
+📄 **[Read the thesis (PDF)](latex/thesis.pdf)** · 🎤 [Defense presentation](presentation/DEFENSE_PRESENTATION.md)
 
-## 📁 Project Structure
-
-```
-Thesis-1/
-├── latex/                          # LaTeX thesis files
-│   ├── thesis.tex                  # Main thesis document
-│   ├── references.bib              # Bibliography
-│   ├── chapters/                   # Individual thesis chapters
-│   ├── images/                     # Images (university logo, etc.)
-│   ├── build/                      # Build artifacts (auto-generated)
-│   ├── compile_thesis.ps1          # Compilation script
-│   ├── clean_build.ps1             # Clean build artifacts
-│   └── README.md                   # LaTeX documentation
-│
-├── config/                         # Experiment configuration files
-│   ├── run_config.yaml             # Main experiment control
-│   ├── model_config.yaml           # Model settings
-│   ├── jailbreak_templates.yaml    # Jailbreak templates
-│   └── judge_prompts.yaml          # LLM-as-judge prompts
-│
-├── data/                           # Dataset files
-│   ├── raw/                        # Original prompts (200 prompts)
-│   ├── processed/                  # CM and CMP variants
-│   └── annotations/                # Human annotations
-│
-├── scripts/                        # Python scripts
-│   ├── data_preparation/           # Prompt generation
-│   ├── experiments/                # Experiment runner
-│   ├── evaluation/                 # LLM-as-judge evaluation
-│   ├── analysis/                   # Statistical analysis
-│   ├── visualization/              # Plot generation
-│   └── utils/                      # Helper utilities
-│
-├── results/                        # Experimental results
-│   ├── responses/                  # Model responses (~27,000 queries)
-│   ├── metrics/                    # AASR/AARR scores
-│   ├── analysis/                   # Statistical test results
-│   ├── plots/                      # Visualizations
-│   └── tables/                     # Result tables
-│
-├── docs/                           # Documentation
-│   ├── BANGLA_CM_CMP_GUIDE.md      # Methodology guide
-│   └── STEP*_COMPLETION_REPORT.md  # Progress reports
-│
-├── THESIS_REPORT.md                # Complete thesis in Markdown
-├── paper.md                        # Paper draft
-├── RESEARCH_CHECKLIST.md           # Research progress tracker
-└── requirements.txt                # Python dependencies
-```
+> ⚠️ **Content warning:** this repository contains harmful prompts and LLM outputs produced
+> during red-teaming. They are shared for AI-safety research only. See [Data](#data).
 
 ---
 
-## 🚀 Quick Start
+## Summary
 
-### 1. Python Environment Setup
+This is the first study of **Bangla-English (Banglish) code-mixing combined with phonetic
+perturbations** as a jailbreak strategy. Each harmful prompt goes through three steps:
 
-```powershell
-# Create virtual environment
-python -m venv venv
+1. **English**: rewritten as a hypothetical scenario
+2. **CM (code-mixed)**: rewritten in romanized Bangla mixed with English
+3. **CMP (code-mixed + perturbed)**: sensitive English keywords are phonetically misspelled
 
-# Activate virtual environment
-venv\Scripts\activate
+**Setup:** 200 harmful prompts (10 categories) × 3 prompt sets × 5 jailbreak templates
+(None, OM, AntiLM, AIM, Sandbox) × 3 temperatures (0.2, 0.6, 1.0) × 3 models
+(GPT-4o-mini, Llama-3-8B, Mistral-7B) = **27,000 responses**, scored by GPT-4o-mini as an
+LLM judge. An earlier 50-prompt run (6,750 queries) served as a validation phase.
 
-# Install dependencies
+## Key results
+
+Average Attack Success Rate (AASR), from [`results/metrics/aasr_aarr_27000.csv`](results/metrics/aasr_aarr_27000.csv):
+
+| Prompt set | AASR |
+|---|---|
+| English | 35.0% |
+| CM | 39.3% |
+| **CMP** | **43.9%** (English → CMP, Wilcoxon p = 0.0070) |
+
+| Model | AASR |
+|---|---|
+| Mistral-7B | 86.6% |
+| Llama-3-8B | 21.8% |
+| GPT-4o-mini | 9.8% |
+
+- Perturbing **English** words inside Banglish is 68% more effective than perturbing Bangla words.
+- Jailbreak templates **reduce** effectiveness for Bangla: plain prompts (no template) reach
+  45.9% AASR, the highest of all five templates.
+- Non-standard Bangla romanization creates multiple tokenization paths, consistent with a
+  token-fragmentation mechanism for bypassing safety filters.
+
+## Repository structure
+
+```
+├── latex/                      Thesis source (thesis.tex, chapters/, references.bib) and final thesis.pdf
+├── presentation/               Defense presentation and slides
+├── config/                     Experiment config: models, templates, judge prompts, run settings
+├── data/
+│   ├── raw/                    200 English harmful prompts (10 categories)
+│   ├── processed/              CM and CMP variants of each prompt
+│   └── annotations/            Human annotation guidelines
+├── scripts/
+│   ├── data_preparation/       Prompt sampling and CM/CMP validation
+│   ├── jailbreak/              Jailbreak template generation
+│   ├── experiments/            Query runner (via OpenRouter) and result merging
+│   ├── evaluation/             LLM-as-judge and metric calculation
+│   ├── analysis/               Statistical tests and summary regeneration
+│   ├── interpretability/       Integrated-gradients attribution
+│   ├── visualization/          Plots and tables
+│   └── utils/                  OpenRouter API client
+├── results/                    Final 200-prompt run (see below)
+│   └── validation_50prompts/   Earlier 50-prompt validation run, same layout
+└── docs/
+    ├── BANGLA_CM_CMP_GUIDE.md  Code-mixing and perturbation methodology
+    ├── writeups/               Markdown version of the thesis, paper draft, summary
+    └── progress/               Research checklists and step-by-step progress reports
+```
+
+## Data
+
+Everything the reported numbers come from is included:
+
+```
+data/raw + data/processed                          input prompts
+  └─ scripts/experiments/experiment_runner.py
+     results/responses/responses_merged_27000.csv       27,000 model responses
+     results/responses/evaluations_merged_27000.csv     judge scores + raw judge output
+     results/responses/all_evaluations_merged_27000.csv judge scores (compact)
+       └─ scripts/analysis/regenerate_aasr_with_none.py
+          results/metrics/aasr_aarr_27000.csv            AASR / AARR per configuration
+            ├─ scripts/analysis/statistical_tests.py     → results/statistics/*_20251123_181114.*
+            ├─ scripts/analysis/regenerate_analysis_summaries.py → results/analysis/
+            └─ scripts/visualization/results_plotter.py  → results/plots/, results/tables/
+```
+
+Note: 58 of the 27,000 responses have no judge evaluation, so metrics are computed over 26,942
+evaluated responses.
+
+The response files contain real harmful model outputs. Please use them only for safety research
+and do not redistribute them outside that context.
+
+## Reproducing
+
+```bash
+python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-### 2. Generate LaTeX PDF
-
-```powershell
-# Navigate to LaTeX directory
-cd latex
-
-# Compile thesis (requires MiKTeX)
-.\compile_thesis.ps1
-
-# Output: thesis.pdf
-```
-
-### 3. Run Experiments
-
-```powershell
-# Configure experiment in config/run_config.yaml
-
-# Run experiment
-python scripts/experiments/experiment_runner.py
-
-# Evaluate results
-python scripts/evaluation/llm_judge.py
-
-# Analyze results
+# Re-run analysis from the included data (no API key needed); run from the repo root
+python scripts/analysis/regenerate_aasr_with_none.py
 python scripts/analysis/statistical_tests.py
+python scripts/analysis/regenerate_analysis_summaries.py
+python scripts/visualization/results_plotter.py
+
+# Re-run the experiment itself (needs an OpenRouter API key in .env; costs ~$1.50)
+python scripts/experiments/experiment_runner.py --config config/run_config.yaml
+python scripts/experiments/merge_results.py
 ```
 
----
+To build the thesis PDF, see [latex/README.md](latex/README.md) (pdfLaTeX + BibTeX, e.g.
+`latex/compile_thesis.ps1` on Windows).
 
-## 📊 Key Research Findings
-
-- **46% AASR** with Bangla code-mixing + phonetic perturbations (42% improvement over English)
-- **English word targeting** is 68% more effective than Bangla word perturbations
-- **30:70 English:Bangla ratio** optimal for attack success
-- **All 3 tested LLMs vulnerable** (Mistral-7B: 81.8%, Llama-3-8B: 22.7%, GPT-4o-mini: 16.0%)
-- **Tokenization fragmentation** strongly correlates with attack success
-
----
-
-## 📝 Documentation
-
-- **[LaTeX README](latex/README.md)** - Thesis compilation guide
-- **[Methodology Guide](docs/BANGLA_CM_CMP_GUIDE.md)** - Code-mixing methodology
-- **[Research Checklist](RESEARCH_CHECKLIST.md)** - Progress tracking
-- **[Thesis Report](THESIS_REPORT.md)** - Complete thesis in Markdown
-
----
-
-## 🔬 Research Methodology
-
-**Three-Step Prompt Transformation:**
-
-1. **English Baseline** → Hypothetical scenario framing
-2. **Code-Mixing (CM)** → 30% English + 70% Bangla (romanized)
-3. **Phonetic Perturbations (CMP)** → Misspell English keywords
-
-**Experimental Design:**
-
-- **Models:** GPT-4o-mini, Llama-3-8B, Mistral-7B (Gemma excluded due to budget)
-- **Prompts:** 50 harmful prompts (10 categories)
-- **Templates:** 5 jailbreak templates (None, OM, AntiLM, AIM, Sandbox)
-- **Temperatures:** 0.2, 0.6, 1.0
-- **Total Queries:** ~6,750 model responses
-- **Budget:** ~$1 (reduced from planned $10 for 460 prompts)
-
----
-
-## 📖 Citation
-
-```bibtex
-@thesis{shanto2024bangla,
-  title={Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models},
-  author={Shanto, Sandwip Kumar and Mridha, Md. Meraj},
-  year={2024},
-  school={Shahjalal University of Science and Technology},
-  type={Bachelor's Thesis},
-  address={Sylhet, Bangladesh}
-}
-```
-
----
-
-## 👥 Authors
+## Authors
 
 - **Sandwip Kumar Shanto** (2020831020)
 - **Md. Meraj Mridha** (2020831034)
 
 **Supervisor:** Dr. Ahsan Habib, Associate Professor, IICT, SUST
 
----
+## Citation
 
-## ⚠️ Ethical Notice
+```bibtex
+@thesis{shanto2025bangla,
+  title   = {Bangla-English Code-Mixing and Phonetic Perturbations: A Novel Jailbreaking Strategy for Large Language Models},
+  author  = {Shanto, Sandwip Kumar and Mridha, Md. Meraj},
+  year    = {2025},
+  school  = {Shahjalal University of Science and Technology},
+  type    = {Bachelor's Thesis},
+  address = {Sylhet, Bangladesh}
+}
+```
 
-This research involves potentially harmful content used exclusively for academic purposes to improve AI safety. The dataset is not publicly released. Findings will be responsibly disclosed to affected organizations.
+## Ethics
 
----
-
-## 📄 License
-
-This research is for academic purposes only. Dataset available upon request with usage agreement.
+This work studies LLM vulnerabilities in order to improve safety for Bangla speakers. The
+prompts and responses are released for research and reproducibility; please use them
+responsibly.

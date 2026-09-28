@@ -39,20 +39,20 @@ ENV/
 *.pem
 secrets/
 
-# Sensitive Research Data
-results/responses/           # Raw LLM responses (may contain harmful content)
-results/images/              # Generated images (may contain harmful content)
-data/raw/*.csv              # Raw datasets with harmful prompts
-data/processed/*.csv        # Processed datasets (CM/CMP variants)
+# Experiment checkpoints (the merged finals in results/responses/ are kept)
+*_intermediate_*.csv
 
-# Allow empty results directories to exist in repo
-!results/responses/.gitkeep
-!results/metrics/.gitkeep
-!results/statistics/.gitkeep
-!results/tables/.gitkeep
-!results/plots/.gitkeep
-!results/interpretability/.gitkeep
-!results/analysis/.gitkeep
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.lof
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
 
 # Logs
 *.log
