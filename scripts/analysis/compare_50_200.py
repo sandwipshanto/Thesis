@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 
 # Load both datasets
-old_50 = pd.read_csv('results/metrics/aasr_aarr_final_20251120_095257.csv')
+old_50 = pd.read_csv('results/validation_50prompts/metrics/aasr_aarr_final_20251120_095257.csv')
 new_200 = pd.read_csv('results/metrics/aasr_aarr_27000.csv')
 
 print("=" * 70)

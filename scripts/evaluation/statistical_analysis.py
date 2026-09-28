@@ -369,8 +369,8 @@ def main():
     print()
     
     # Load latest merged results
-    metrics_file = "results/metrics/aasr_aarr_final_20251120_095257.csv"
-    eval_file = "results/responses/all_evaluations_merged_20251120_095257.csv"
+    metrics_file = "results/validation_50prompts/metrics/aasr_aarr_final_20251120_095257.csv"
+    eval_file = "results/validation_50prompts/responses/all_evaluations_merged_20251120_095257.csv"
     
     # Initialize analyzer
     analyzer = StatisticalAnalyzer(metrics_file, eval_file)
